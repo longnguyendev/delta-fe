@@ -1,0 +1,9 @@
+<svg viewBox="0 0 214 48" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Delta Energy logo, light variant">
+  <title>Delta Energy (light surface variant)</title>
+  <g transform="translate(0 7)">
+    <path d="M10.2 0H34L20.4 34H0Z" fill="#FFFFFF"/>
+    <path d="M10.2 0H34L26.52 18.7H13.6Z" fill="#7CB342"/>
+  </g>
+  <text x="46" y="25" font-family="Montserrat, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-weight="800" font-size="19" letter-spacing="-0.19" fill="#FFFFFF">DELTA ENERGY</text>
+  <text x="46" y="37.5" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-weight="500" font-size="10.5" letter-spacing="0.32" fill="#B4BAC0">Dịch vụ &amp; Giải pháp Kỹ thuật</text>
+</svg>

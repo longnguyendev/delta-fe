@@ -1,26 +1,113 @@
+@import "./variables.css";
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+ * Delta Energy — Tailwind theme
+ *
+ * Tailwind v4 configures its theme in CSS (there is no tailwind.config.ts).
+ * Every token below is bound to the brand CSS variables in ./variables.css,
+ * so utilities stay in sync with the design tokens, and the `.dark`
+ * overrides in variables.css keep working automatically.
+ */
+
+/* Dark variant follows the `.dark` class contract from variables.css */
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* --- Generated brand tokens (app/variables.css is the source of truth) --- */
+  --color-primary: var(--brand-color-primary);
+  --color-primary-hover: var(--brand-color-primary-hover);
+  --color-primary-active: var(--brand-color-primary-active);
+  --color-primary-bg: var(--brand-color-primary-bg);
+  --color-primary-border: var(--brand-color-primary-border);
+  --color-on-primary: var(--brand-color-primary-text);
+  --color-success: var(--brand-color-success);
+  --color-warning: var(--brand-color-warning);
+  --color-error: var(--brand-color-error);
+  --color-info: var(--brand-color-info);
+  --color-link: var(--brand-color-link);
+  --color-link-hover: var(--brand-color-link-hover);
+  --color-text: var(--brand-color-text);
+  --color-text-secondary: var(--brand-color-text-secondary);
+  --color-text-tertiary: var(--brand-color-text-tertiary);
+  --color-text-quaternary: var(--brand-color-text-quaternary);
+  --color-fill: var(--brand-color-fill);
+  --color-fill-secondary: var(--brand-color-fill-secondary);
+  --color-fill-tertiary: var(--brand-color-fill-tertiary);
+  --color-fill-quaternary: var(--brand-color-fill-quaternary);
+  --color-layout: var(--brand-color-bg-layout);
+  --color-container: var(--brand-color-bg-container);
+  --color-elevated: var(--brand-color-bg-elevated);
+  --color-border: var(--brand-color-border);
+  --color-border-secondary: var(--brand-color-border-secondary);
+
+  /* --- Measured contract roles (CLAUDE.md §0) --- */
+  --color-bg: #ffffff;
+  --color-surface: #f7f9fa;
+  --color-fg: #1f2937;
+  --color-muted: #4b5563;
+  --color-line: #e5e7eb;
+  --color-accent: #7cb342;
+  --color-accent-2: #5e8c31;
+  --color-on-accent: #12200a;
+  --color-accent-accessible: #557f2c;
+  /* Recorded supporting neutrals — footer text tones on the #1F2937 band */
+  --color-footer-text: #d7dbdf;
+  --color-footer-muted: #9ca3af;
+
+  /* --- Type --- */
+  --font-sans: var(--font-inter), var(--brand-font-family);
+  --font-head: var(--font-montserrat), system-ui, -apple-system, "Segoe UI",
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--brand-font-family-code);
+
+  /* --- Size & radius in step with the brand scale --- */
+  --text-sm: var(--brand-font-size-sm);
+  --text-base: var(--brand-font-size);
+  --text-lg: var(--brand-font-size-lg);
+  --text-xl: var(--brand-font-size-xl);
+  --radius-xs: var(--brand-border-radius-xs);
+  --radius-sm: var(--brand-border-radius-sm);
+  --radius-md: var(--brand-border-radius);
+  --radius-lg: var(--brand-border-radius-lg);
+
+  /* --- Motion --- */
+  --ease-brand: var(--brand-motion-ease-in-out);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Clear the sticky 76px header when jumping to anchors */
+    scroll-padding-top: 88px;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    @apply bg-layout text-text antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-head font-extrabold text-fg;
+    line-height: var(--brand-line-height-heading);
+    overflow-wrap: break-word;
+  }
+
+  a {
+    @apply text-link;
+  }
+
+  /* Never removed — 2px lime outline at 2px offset */
+  :focus-visible {
+    outline: 2px solid var(--brand-color-primary);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
 }
