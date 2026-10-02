@@ -1,0 +1,273 @@
+/**
+ * Vietnamese copy — the source of truth for the dictionary shape.
+ * `en.ts` is typed against `Dictionary`, so a missing key fails the build.
+ */
+export const vi = {
+  meta: {
+    title: "Delta Energy — Dịch vụ & Giải pháp Kỹ thuật Công nghiệp",
+    description:
+      "Delta Energy (CÔNG TY TNHH DỊCH VỤ KỸ THUẬT DELTA ENERGY) cung cấp thiết bị, giải pháp kỹ thuật và dịch vụ hiện trường cho nhà máy và công trình công nghiệp — từ tư vấn giải pháp, cung cấp thiết bị đến lắp đặt và bảo trì vận hành.",
+  },
+  nav: {
+    label: "Điều hướng chính",
+    home: "Delta Energy — về đầu trang",
+    items: [
+      { href: "#solutions", label: "Giải pháp" },
+      { href: "#services", label: "Dịch vụ" },
+      { href: "#projects", label: "Dự án" },
+      { href: "#faq", label: "FAQ" },
+      { href: "#contact", label: "Liên hệ" },
+    ],
+    call: "Gọi 1900 1234",
+    openMenu: "Mở menu",
+    closeMenu: "Đóng menu",
+    drawerLabel: "Menu điều hướng",
+    languageLabel: "Chọn ngôn ngữ",
+    languageNames: { vi: "Tiếng Việt", en: "English" },
+  },
+  hero: {
+    eyebrow: "Giải pháp kỹ thuật công nghiệp",
+    h1Pre: "Đối tác kỹ thuật cho ",
+    h1Accent: "vận hành công nghiệp bền vững",
+    lead: "Chúng tôi cung cấp thiết bị chính hãng, giải pháp kỹ thuật và dịch vụ hiện trường cho nhà máy, công trình công nghiệp — từ tư vấn giải pháp, cung cấp thiết bị đến lắp đặt và bảo trì vận hành.",
+    ctaPrimary: "Nhận báo giá",
+    ctaSecondary: "Xem hồ sơ năng lực",
+    stats: [
+      { value: "10+", label: "Năm kinh nghiệm" },
+      { value: "150+", label: "Dự án hoàn thành" },
+      { value: "40+", label: "Đối tác chiến lược" },
+    ],
+    imgAlt: "Sơ đồ hệ thống kỹ thuật trên nền lưới bản vẽ 40px",
+  },
+  trust: {
+    line: "Được tin tưởng bởi 40+ đối tác chiến lược",
+    sectors: [
+      "Năng lượng",
+      "Sản xuất",
+      "Thực phẩm & Đồ uống",
+      "Hóa chất",
+      "Kho vận & Logistics",
+    ],
+  },
+  problem: {
+    kicker: "Vấn đề vận hành",
+    title: "Mỗi giờ ngừng máy đều có cái giá của nó",
+    lead: "Nghe quen không? Càng để lâu, những vấn đề này càng âm thầm bào mòn hiệu suất vận hành của nhà máy.",
+    items: [
+      {
+        title: "Ngừng máy ngoài kế hoạch",
+        body: "Sự cố nhỏ không được xử lý kịp thời sẽ lan rộng thành ngừng máy ngoài kế hoạch, kéo theo thiệt hại sản lượng và trễ tiến độ giao hàng.",
+      },
+      {
+        title: "Chi phí bảo trì khó dự toán",
+        body: "Thiết bị thiếu lịch bảo trì định kỳ dẫn đến hỏng hóc đột xuất, chi phí sửa chữa phát sinh khó kiểm soát.",
+      },
+      {
+        title: "Thiết bị không rõ nguồn gốc",
+        body: "Thiết bị không chính hãng tiềm ẩn rủi ro an toàn, giảm tuổi thọ hệ thống và không có hỗ trợ kỹ thuật từ nhà sản xuất.",
+      },
+    ],
+  },
+  pillars: {
+    kicker: "Vì sao chọn Delta Energy",
+    title: "Cách chúng tôi giải quyết bài toán vận hành",
+    lead: "Ba trụ cột định hình cách Delta Energy làm việc với từng khách hàng.",
+    items: [
+      {
+        title: "Đối tác trọn vòng đời",
+        body: "Tư vấn giải pháp → cung cấp thiết bị → lắp đặt → bảo trì vận hành, do một đội kỹ thuật chịu trách nhiệm xuyên suốt.",
+      },
+      {
+        title: "Bằng chứng thay lời nói",
+        body: "10+ năm kinh nghiệm, 150+ dự án hoàn thành, 40+ đối tác chiến lược — con số được công bố rõ ràng ngay trên trang.",
+      },
+      {
+        title: "Vận hành liên tục là cam kết",
+        body: "Giảm thiểu thời gian ngừng máy, vận hành liên tục 24/7, an toàn và hiệu quả cho từng công trình.",
+      },
+    ],
+  },
+  process: {
+    kicker: "Quy trình làm việc",
+    title: "Vận hành ổn định chỉ sau ba bước",
+    lead: "Không gián đoạn sản xuất. Không dự án kéo dài hàng tháng.",
+    items: [
+      {
+        title: "Khảo sát & tư vấn",
+        body: "Kỹ thuật viên khảo sát hiện trạng, lắng nghe yêu cầu vận hành và đề xuất giải pháp phù hợp.",
+      },
+      {
+        title: "Báo giá & cung cấp",
+        body: "Báo giá minh bạch, thiết bị chính hãng, tiến độ giao hàng rõ ràng.",
+      },
+      {
+        title: "Lắp đặt & bàn giao",
+        body: "Lắp đặt, chạy thử và bàn giao vận hành; hỗ trợ kỹ thuật sau bàn giao.",
+      },
+    ],
+  },
+  ctaBand: {
+    title: "Cần tư vấn ngay cho hệ thống của Quý khách?",
+    lead: "Gọi hotline 1900 1234 — chúng tôi phản hồi trong giờ làm việc.",
+    cta: "Gọi tư vấn ngay",
+  },
+  services: {
+    kicker: "Dịch vụ",
+    title: "Bốn mảng dịch vụ kỹ thuật cốt lõi",
+    lead: "Mỗi mảng dịch vụ đều có quy trình riêng — và đều quy về một mục tiêu: vận hành liên tục.",
+    readMore: "Đọc thêm →",
+    items: [
+      {
+        kicker: "Dịch vụ 01",
+        title: "Cung cấp thiết bị công nghiệp chính hãng",
+        body: "Thiết bị có nguồn gốc rõ ràng, kèm chứng từ và bảo hành theo quy định nhà sản xuất — máy bơm, van điều khiển, thiết bị đo lường và phụ kiện hệ thống.",
+        alt: "Minh họa cụm bơm và đường ống công nghiệp",
+      },
+      {
+        kicker: "Dịch vụ 02",
+        title: "Giải pháp kỹ thuật theo yêu cầu",
+        body: "Khảo sát hiện trạng, phân tích yêu cầu vận hành và đề xuất giải pháp kỹ thuật phù hợp với từng công trình công nghiệp.",
+        alt: "Sơ đồ hệ thống kỹ thuật công nghiệp",
+      },
+      {
+        kicker: "Dịch vụ 03",
+        title: "Lắp đặt & nâng cấp hệ thống",
+        body: "Thi công lắp đặt, đấu nối và nâng cấp hệ thống điện, đường ống và thiết bị — có kiểm tra, chạy thử trước khi bàn giao.",
+        alt: "Minh họa nâng cấp hệ thống điện điều khiển",
+      },
+      {
+        kicker: "Dịch vụ 04",
+        title: "Bảo trì & vận hành định kỳ",
+        body: "Lịch bảo trì theo khuyến nghị nhà sản xuất và điều kiện vận hành thực tế, giúp giảm thiểu thời gian ngừng máy và kéo dài tuổi thọ thiết bị.",
+        alt: "Minh họa bảo trì định kỳ giàn máy",
+      },
+    ],
+  },
+  statsBand: {
+    items: [
+      { value: "10+", label: "Năm kinh nghiệm" },
+      { value: "150+", label: "Dự án hoàn thành" },
+      { value: "40+", label: "Đối tác chiến lược" },
+      { value: "24/7", label: "Hỗ trợ kỹ thuật" },
+    ],
+  },
+  projects: {
+    kicker: "Hồ sơ năng lực",
+    title: "Những dự án đã bàn giao trên thực tế",
+    lead: "Kết quả thực tế từ các công trình chúng tôi đã thực hiện — bằng con số, không bằng tính từ.",
+    readMore: "Đọc thêm →",
+    items: [
+      {
+        tag: "Điện công nghiệp",
+        title: "Nâng cấp hệ thống điện điều khiển",
+        body: "Thay thế tủ điều khiển cũ, đấu nối và chạy thử toàn bộ hệ thống điện cho dây chuyền sản xuất.",
+        alt: "Minh họa dự án nâng cấp hệ thống điện điều khiển",
+      },
+      {
+        tag: "Thiết bị công nghiệp",
+        title: "Cung cấp cụm bơm & đường ống",
+        body: "Cung cấp và lắp đặt cụm bơm cùng hệ thống đường ống cho nhà máy chế biến.",
+        alt: "Minh họa dự án cung cấp cụm bơm và đường ống",
+      },
+      {
+        tag: "Bảo trì vận hành",
+        title: "Bảo trì định kỳ giàn máy",
+        body: "Lập lịch và thực hiện bảo trì định kỳ giàn máy theo khuyến nghị của nhà sản xuất.",
+        alt: "Minh họa dự án bảo trì định kỳ giàn máy",
+      },
+    ],
+  },
+  faq: {
+    kicker: "Trước khi liên hệ",
+    title: "Câu hỏi thường gặp từ khách hàng",
+    items: [
+      {
+        q: "Delta Energy cung cấp những dịch vụ nào?",
+        a: "Chúng tôi cung cấp thiết bị công nghiệp chính hãng, giải pháp kỹ thuật theo yêu cầu, lắp đặt & nâng cấp hệ thống và bảo trì vận hành định kỳ cho nhà máy, công trình công nghiệp.",
+      },
+      {
+        q: "Quy trình nhận báo giá mất bao lâu?",
+        a: "Sau khi nhận yêu cầu, chúng tôi phản hồi trong ngày làm việc và gửi báo giá chi tiết sau khi khảo sát hiện trạng (nếu cần).",
+      },
+      {
+        q: "Thiết bị có chính hãng không?",
+        a: "Toàn bộ thiết bị do Delta Energy cung cấp đều có nguồn gốc rõ ràng, kèm chứng từ và bảo hành theo quy định nhà sản xuất.",
+      },
+      {
+        q: "Có hỗ trợ bảo trì định kỳ không?",
+        a: "Có. Chúng tôi xây dựng lịch bảo trì theo khuyến nghị của nhà sản xuất và điều kiện vận hành thực tế, giúp giảm thiểu thời gian ngừng máy.",
+      },
+      {
+        q: "Làm thế nào để liên hệ?",
+        a: "Quý khách có thể gọi hotline 1900 1234, nhắn Zalo hoặc gửi yêu cầu báo giá qua biểu mẫu trên trang. Lưu ý: trang hiện chưa hỗ trợ đặt mua trực tuyến.",
+      },
+    ],
+  },
+  contact: {
+    kicker: "Liên hệ",
+    title: "Nhận báo giá trong ngày làm việc",
+    lead: "Ba cách liên hệ — chọn cách thuận tiện nhất với Quý khách.",
+    badge: "Phản hồi nhanh nhất",
+    items: [
+      {
+        title: "Báo giá qua hotline",
+        body: "Trao đổi trực tiếp với kỹ thuật viên về nhu cầu của Quý khách.",
+        cta: "Gọi 1900 1234",
+      },
+      {
+        title: "Tư vấn qua Zalo",
+        body: "Gửi mô tả và ảnh hiện trạng qua Zalo, chúng tôi phản hồi sớm nhất.",
+        cta: "Nhắn Zalo",
+      },
+      {
+        title: "Gửi yêu cầu báo giá",
+        body: "Điền biểu mẫu yêu cầu, chúng tôi gửi báo giá chi tiết trong ngày làm việc.",
+        cta: "Gửi yêu cầu",
+      },
+    ],
+    footnote:
+      "Trang hiện chưa hỗ trợ đặt mua trực tuyến. Quý khách vui lòng liên hệ hotline hoặc Zalo để nhận báo giá.",
+  },
+  finalCta: {
+    title: "Sẵn sàng cho hệ thống vận hành ổn định hơn?",
+    lead: "Gửi yêu cầu hôm nay, chúng tôi phản hồi trong ngày làm việc.",
+    call: "Gọi tư vấn ngay — 1900 1234",
+    zalo: "Nhắn Zalo →",
+    note: "Phản hồi trong ngày làm việc · Báo giá minh bạch",
+  },
+  footer: {
+    tagline:
+      "Delta Energy cung cấp thiết bị, giải pháp kỹ thuật và dịch vụ hiện trường cho nhà máy và công trình công nghiệp — từ tư vấn, cung cấp thiết bị đến lắp đặt và bảo trì vận hành.",
+    cols: [
+      {
+        heading: "Điều hướng",
+        links: [
+          { href: "#solutions", label: "Giải pháp" },
+          { href: "#services", label: "Dịch vụ" },
+          { href: "#projects", label: "Dự án" },
+          { href: "#faq", label: "FAQ" },
+        ],
+      },
+      {
+        heading: "Công ty",
+        links: [
+          { href: "#projects", label: "Giới thiệu" },
+          { href: "#projects", label: "Hồ sơ năng lực" },
+          { href: "#contact", label: "Liên hệ" },
+        ],
+      },
+      {
+        heading: "Liên hệ",
+        links: [
+          { href: "tel:19001234", label: "Hotline 1900 1234" },
+          { href: "#contact", label: "Nhắn Zalo" },
+          { href: "#contact", label: "Gửi yêu cầu báo giá" },
+        ],
+      },
+    ],
+    legal: "© 2026 Delta Energy · CÔNG TY TNHH DỊCH VỤ KỸ THUẬT DELTA ENERGY",
+    values: "Kỹ thuật · Đáng tin cậy · Rõ ràng",
+  },
+};
+
+export type Dictionary = typeof vi;

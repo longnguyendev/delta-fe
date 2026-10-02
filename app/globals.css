@@ -19,14 +19,31 @@
   --color-primary-hover: var(--brand-color-primary-hover);
   --color-primary-active: var(--brand-color-primary-active);
   --color-primary-bg: var(--brand-color-primary-bg);
+  --color-primary-bg-hover: var(--brand-color-primary-bg-hover);
   --color-primary-border: var(--brand-color-primary-border);
+  --color-primary-border-hover: var(--brand-color-primary-border-hover);
   --color-on-primary: var(--brand-color-primary-text);
   --color-success: var(--brand-color-success);
+  --color-success-bg: var(--brand-color-success-bg);
+  --color-success-border: var(--brand-color-success-border);
+  --color-success-hover: var(--brand-color-success-hover);
+  --color-success-active: var(--brand-color-success-active);
   --color-warning: var(--brand-color-warning);
+  --color-warning-bg: var(--brand-color-warning-bg);
+  --color-warning-border: var(--brand-color-warning-border);
+  --color-warning-hover: var(--brand-color-warning-hover);
+  --color-warning-active: var(--brand-color-warning-active);
   --color-error: var(--brand-color-error);
+  --color-error-bg: var(--brand-color-error-bg);
+  --color-error-border: var(--brand-color-error-border);
+  --color-error-hover: var(--brand-color-error-hover);
+  --color-error-active: var(--brand-color-error-active);
   --color-info: var(--brand-color-info);
+  --color-info-bg: var(--brand-color-info-bg);
+  --color-info-border: var(--brand-color-info-border);
   --color-link: var(--brand-color-link);
   --color-link-hover: var(--brand-color-link-hover);
+  --color-link-active: var(--brand-color-link-active);
   --color-text: var(--brand-color-text);
   --color-text-secondary: var(--brand-color-text-secondary);
   --color-text-tertiary: var(--brand-color-text-tertiary);
@@ -66,13 +83,55 @@
   --text-base: var(--brand-font-size);
   --text-lg: var(--brand-font-size-lg);
   --text-xl: var(--brand-font-size-xl);
+  /* Heading scale — fontSizeHeading1…5 in the tokens */
+  --text-heading-1: var(--brand-font-size-heading-1);
+  --text-heading-2: var(--brand-font-size-heading-2);
+  --text-heading-3: var(--brand-font-size-heading-3);
+  --text-heading-4: var(--brand-font-size-heading-4);
+  --text-heading-5: var(--brand-font-size-heading-5);
+  --leading-brand: var(--brand-line-height);
+  --leading-heading: var(--brand-line-height-heading);
+  --font-weight-strong: var(--brand-font-weight-strong);
   --radius-xs: var(--brand-border-radius-xs);
   --radius-sm: var(--brand-border-radius-sm);
   --radius-md: var(--brand-border-radius);
   --radius-lg: var(--brand-border-radius-lg);
 
+  /*
+   * Spacing scale (sizeXXS…sizeXXL) and control heights. Named keys are
+   * additive — Tailwind keeps resolving its numeric scale (p-4, gap-8) from
+   * the base `--spacing` variable, so both systems coexist.
+   * `h-control` / `min-h-control` are the 44px minimum touch target.
+   */
+  --spacing-xxs: var(--brand-size-xxs);
+  --spacing-xs: var(--brand-size-xs);
+  --spacing-sm: var(--brand-size-sm);
+  --spacing-md: var(--brand-size);
+  --spacing-lg: var(--brand-size-md);
+  --spacing-xl: var(--brand-size-lg);
+  --spacing-2xl: var(--brand-size-xl);
+  --spacing-3xl: var(--brand-size-xxl);
+  --spacing-control-xs: var(--brand-control-height-xs);
+  --spacing-control-sm: var(--brand-control-height-sm);
+  --spacing-control: var(--brand-control-height);
+  --spacing-control-lg: var(--brand-control-height-lg);
+
   /* --- Motion --- */
   --ease-brand: var(--brand-motion-ease-in-out);
+  --ease-brand-out: var(--brand-motion-ease-out);
+  --transition-duration-fast: var(--brand-motion-duration-fast);
+  --transition-duration-mid: var(--brand-motion-duration-mid);
+  --transition-duration-slow: var(--brand-motion-duration-slow);
+
+  /*
+   * Deliberately NOT mapped to utilities:
+   * · lineWidth (1px) — `border-line` is already the border *colour* utility
+   *   (from --color-line) and is used throughout; a width key of the same
+   *   name would collide with it. 1px is Tailwind's default `border` anyway.
+   * · primaryPalette 1–10 — the raw ramp stays available as CSS variables.
+   *   Exposing it as colour utilities invites colours outside the seven
+   *   roles, which CLAUDE.md §0 forbids.
+   */
 }
 
 @layer base {

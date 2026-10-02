@@ -1,3 +1,4 @@
+import { lang } from "next/root-params";
 import { Contact } from "@/components/contact";
 import { CtaBand } from "@/components/cta-band";
 import { Faq } from "@/components/faq";
@@ -12,11 +13,14 @@ import { Projects } from "@/components/projects";
 import { Services } from "@/components/services";
 import { StatsBand } from "@/components/stats-band";
 import { TrustStrip } from "@/components/trust-strip";
+import { getDictionary } from "@/lib/i18n/dictionaries";
 
-export default function Page() {
+export default async function Page() {
+  const [locale, t] = await Promise.all([lang(), getDictionary()]);
+
   return (
     <div id="top" className="flex flex-1 flex-col">
-      <Header />
+      <Header t={t.nav} lang={locale} />
       <main>
         <Hero />
         <TrustStrip />

@@ -2,29 +2,63 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { locales } from "@/lib/i18n/config";
+import type { Dictionary } from "@/lib/i18n/vi";
 import { ButtonLink, Container } from "./ui";
 
-const NAV = [
-  { href: "#giai-phap", label: "Giải pháp" },
-  { href: "#dich-vu", label: "Dịch vụ" },
-  { href: "#du-an", label: "Dự án" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#lien-he", label: "Liên hệ" },
-];
+type HeaderProps = {
+  t: Dictionary["nav"];
+  lang: string;
+};
+
+/** Swaps the locale segment of the current path, keeping the rest of the URL. */
+function LanguageSwitcher({
+  current,
+  t,
+}: {
+  current: string;
+  t: Dictionary["nav"];
+}) {
+  const pathname = usePathname();
+  const rest = pathname.split("/").slice(2).filter(Boolean).join("/");
+  const suffix = rest ? `/${rest}` : "";
+
+  return (
+    <div role="group" aria-label={t.languageLabel} className="flex items-center">
+      {locales.map((locale) => {
+        const active = locale === current;
+
+        return (
+          <Link
+            key={locale}
+            href={`/${locale}${suffix}`}
+            hrefLang={locale}
+            lang={locale}
+            title={t.languageNames[locale]}
+            aria-label={`${locale.toUpperCase()} — ${t.languageNames[locale]}`}
+            aria-current={active ? "page" : undefined}
+            className={`inline-flex h-11 min-w-11 items-center justify-center rounded-md px-2 text-sm font-semibold uppercase transition-colors duration-150 ${
+              active ? "text-fg" : "text-text-quaternary hover:text-link-hover"
+            }`}
+          >
+            {locale}
+          </Link>
+        );
+      })}
+    </div>
+  );
+}
 
 /** Sticky 76px header; under 900px the nav becomes an off-canvas drawer. */
-export function Header() {
+export function Header({ t, lang }: HeaderProps) {
   const [open, setOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-20 border-b border-line bg-container">
       <Container className="flex h-[76px] items-center justify-between gap-6">
-        <Link
-          href="#top"
-          aria-label="Delta Energy — về đầu trang"
-          className="shrink-0"
-        >
+        <Link href="#top" aria-label={t.home} className="shrink-0">
           <Image
             src="/logos/delta-energy-lockup.svg"
             alt="Delta Energy"
@@ -36,10 +70,10 @@ export function Header() {
         </Link>
 
         <nav
-          aria-label="Điều hướng chính"
+          aria-label={t.label}
           className="hidden items-center gap-7 min-[900px]:flex"
         >
-          {NAV.map((item) => (
+          {t.items.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -51,17 +85,19 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <ButtonLink
-            href="tel:19001234"
-            variant="ghost"
-            className="hidden min-[1100px]:inline-flex"
-          >
-            Gọi 1900 1234
-          </ButtonLink>
+          <div className="hidden min-[900px]:block">
+            <LanguageSwitcher current={lang} t={t} />
+          </div>
+          {/* Wrapper carries the breakpoint — `ButtonLink` always sets `inline-flex`. */}
+          <div className="hidden min-[1100px]:block">
+            <ButtonLink href="tel:19001234" variant="ghost">
+              {t.call}
+            </ButtonLink>
+          </div>
           <button
             type="button"
             onClick={() => setOpen(true)}
-            aria-label="Mở menu"
+            aria-label={t.openMenu}
             aria-expanded={open}
             className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-line text-fg min-[900px]:hidden"
           >
@@ -85,12 +121,12 @@ export function Header() {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label="Menu điều hướng"
+          aria-label={t.drawerLabel}
           className="fixed inset-0 z-50 min-[900px]:hidden"
         >
           <button
             type="button"
-            aria-label="Đóng menu"
+            aria-label={t.closeMenu}
             onClick={() => setOpen(false)}
             className="absolute inset-0 h-full w-full bg-fg/40"
           />
@@ -105,7 +141,7 @@ export function Header() {
               />
               <button
                 type="button"
-                aria-label="Đóng menu"
+                aria-label={t.closeMenu}
                 onClick={() => setOpen(false)}
                 className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-line text-fg"
               >
@@ -123,8 +159,8 @@ export function Header() {
                 </svg>
               </button>
             </div>
-            <nav aria-label="Điều hướng chính" className="flex flex-col">
-              {NAV.map((item) => (
+            <nav aria-label={t.label} className="flex flex-col">
+              {t.items.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -135,13 +171,14 @@ export function Header() {
                 </Link>
               ))}
             </nav>
-            <div className="mt-auto pt-6">
+            <div className="mt-auto flex flex-col gap-3 pt-6">
+              <LanguageSwitcher current={lang} t={t} />
               <ButtonLink
                 href="tel:19001234"
                 variant="secondary"
                 className="w-full"
               >
-                Gọi 1900 1234
+                {t.call}
               </ButtonLink>
             </div>
           </div>
