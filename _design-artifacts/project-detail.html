@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lắp đặt hệ thống bơm &amp; đường ống công nghệ — Dự án Delta Energy</title>
+<meta name="description" content="Case study: Delta Energy thiết kế, lắp đặt và bàn giao hệ thống bơm, đường ống công nghệ cho nhà máy sản xuất tại KCN Bình Dương." />
+<!-- Self-hosted webfonts from the Delta Energy brand bundle: no CDN, no network
+     dependency. Montserrat 700/800 + Inter 400/500/600, latin-ext + latin + vietnamese. -->
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+  :root{
+    --lime:#7CB342;
+    --lime-dark:#5E8C31;
+    --lime-light:#EDF5E4;
+    --ink:#1F2937;
+    --ink-soft:#4B5563;
+    --bg:#FFFFFF;
+    --bg-alt:#F7F9FA;
+    --line:#E5E7EB;
+    --white:#FFFFFF;
+    --radius:3px;
+    --font-head:'Montserrat', system-ui, -apple-system, 'Segoe UI', Helvetica Neue, Arial, sans-serif;
+    --font-body:'Inter', system-ui, -apple-system, 'Segoe UI', Helvetica Neue, Arial, sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:var(--font-body); font-size:16px; line-height:1.6;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  img,svg{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+  section{padding:88px 0;}
+  @media(max-width:768px){ section{padding:56px 0;} }
+
+  h1,h2,h3,h4{font-family:var(--font-head); font-weight:800; letter-spacing:-0.01em; color:var(--ink);}
+  h1{font-size:clamp(30px,4.2vw,46px); line-height:1.14; letter-spacing:-0.015em;}
+  h2{font-size:clamp(24px,3.2vw,34px); line-height:1.2;}
+  h3{font-size:16.5px; line-height:1.4;}
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--font-head); font-weight:700; font-size:13px;
+    letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft);
+    margin-bottom:14px;
+  }
+  .eyebrow::before{content:""; width:22px; height:2px; background:var(--lime-dark); flex:none;}
+  .section-head{max-width:660px; margin-bottom:44px;}
+  .section-head p{color:var(--ink-soft); font-size:16px; margin-top:14px;}
+  .lead{color:var(--ink-soft); font-size:17px; max-width:600px;}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--font-body); font-weight:600; font-size:15px;
+    padding:13px 26px; border-radius:var(--radius);
+    border:1.5px solid transparent; cursor:pointer; min-height:48px;
+    transition:background .15s ease, color .15s ease, border-color .15s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--lime); color:var(--ink);}
+  /* Hover swaps BOTH colours → ink on white, 14.68:1. Contrast rises from
+     6.78:1; it never drops to the site's white-on-lime-dark 3.98:1. */
+  .btn-primary:hover{background:var(--ink); color:#FFFFFF;}
+  .btn-primary:active{background:var(--ink); color:#FFFFFF;}
+  .btn-outline{border-color:var(--ink); color:var(--ink); background:transparent;}
+  .btn-outline:hover{border-color:var(--lime-dark); color:var(--ink); background:var(--bg-alt);}
+  .btn-sm{padding:9px 18px; font-size:13.5px; min-height:44px;}
+
+  header{position:sticky; top:0; z-index:60; background:var(--bg); border-bottom:1px solid var(--line);}
+  .nav{display:flex; align-items:center; justify-content:space-between; height:76px;}
+  .brand{display:flex; align-items:center; gap:10px; font-family:var(--font-head); font-weight:800; font-size:19px; letter-spacing:-0.01em; color:var(--ink);}
+  .brand-mark{width:34px; height:34px; background:var(--ink); position:relative; flex:none; clip-path:polygon(30% 0, 100% 0, 60% 100%, 0 100%);}
+  .brand-mark span{position:absolute; inset:0; background:var(--lime); clip-path:polygon(30% 0, 100% 0, 78% 55%, 40% 55%);}
+  .brand small{display:block; font-family:var(--font-body); font-weight:500; font-size:10.5px; color:var(--ink-soft); letter-spacing:0.03em;}
+  .nav-links{display:flex; gap:34px; align-items:center;}
+  .nav-links a{font-size:14.5px; font-weight:500; color:var(--ink-soft); transition:color .15s ease;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-links a[aria-current="page"]{color:var(--ink); font-weight:600; box-shadow:inset 0 -2px 0 var(--lime-dark);}
+  .nav-cta{display:flex; align-items:center; gap:18px;}
+  .nav-mobile-cta{display:none;}
+  /* The drawer CTA is an <a> inside .nav-links; these two rules out-specify
+     `.nav-links a` so the button keeps ink-on-lime and a white hover label. */
+  .nav-links a.btn{font-size:13.5px; font-weight:600; color:var(--ink);}
+  .nav-links a.btn:hover{color:#FFFFFF;}
+  .hamburger{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:12px; min-width:44px; min-height:44px; align-items:center; justify-content:center;}
+  .hamburger span{width:24px; height:2px; background:var(--ink);}
+  @media(max-width:960px){
+    .nav-links{
+      position:fixed; top:76px; left:0; right:0; bottom:0;
+      background:var(--bg); flex-direction:column; align-items:flex-start;
+      padding:30px 24px; gap:22px; transform:translateX(100%);
+      transition:transform .22s ease; overflow-y:auto;
+    }
+    .nav-links.open{transform:translateX(0);}
+    .nav-links a{font-size:17px;}
+    .nav-links a[aria-current="page"]{box-shadow:none; color:var(--lime-dark);}
+    .nav-cta .btn-outline{display:none;}
+    .hamburger{display:flex;}
+    .nav-mobile-cta{display:inline-flex; margin-top:10px;}
+  }
+  /* Under 620px the header keeps only the mark + menu; the call action moves
+     into the drawer (and stays on the floating action stack). */
+  @media(max-width:620px){
+    .nav-cta .btn{display:none;}
+  }
+  /* Long Vietnamese button labels wrap instead of forcing a horizontal scroll. */
+  @media(max-width:460px){
+    .btn{white-space:normal; text-align:center;}
+    .brand{font-size:17px;}
+    .brand small{display:none;}
+  }
+  @media(prefers-reduced-motion:reduce){ .nav-links{transition:none;} }
+
+  /* Hero */
+  .case-hero{
+    position:relative; padding:68px 0 72px;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, var(--line) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, var(--line) 40px),
+      var(--bg-alt);
+    background-size:40px 40px, 40px 40px, cover;
+    border-bottom:1px solid var(--line);
+  }
+  .crumbs{font-size:13px; color:var(--ink-soft); margin-bottom:26px; display:flex; gap:8px; flex-wrap:wrap; align-items:center;}
+  .crumbs a{transition:color .15s ease;}
+  .crumbs a:hover{color:var(--ink); text-decoration:underline;}
+  .crumbs span[aria-hidden]{color:var(--ink-soft);}
+  .case-hero h1{max-width:20ch; margin-bottom:22px;}
+  .case-actions{margin-top:30px; display:flex; gap:14px; flex-wrap:wrap;}
+
+  .meta{
+    display:grid; grid-template-columns:repeat(5,1fr); gap:0;
+    border:1px solid var(--line); border-radius:var(--radius); background:var(--white);
+    margin-top:44px; overflow:hidden;
+  }
+  @media(max-width:960px){ .meta{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:520px){ .meta{grid-template-columns:1fr;} }
+  .meta div{padding:20px 22px; border-right:1px solid var(--line);}
+  .meta div:last-child{border-right:none;}
+  @media(max-width:960px){
+    .meta div{border-bottom:1px solid var(--line);}
+    .meta div:nth-child(2n){border-right:none;}
+    .meta div:last-child{border-bottom:none; border-right:none;}
+  }
+  @media(max-width:520px){
+    .meta div{border-right:none;}
+  }
+  .meta dt{font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:6px;}
+  .meta dd{font-size:14.5px; font-weight:600; color:var(--ink); line-height:1.4;}
+
+  /* Two-column body */
+  .split{display:grid; grid-template-columns:0.95fr 1.05fr; gap:60px; align-items:start;}
+  @media(max-width:960px){ .split{grid-template-columns:1fr; gap:34px;} }
+  .prose p{color:var(--ink-soft); margin-bottom:16px; max-width:60ch;}
+  .prose p:last-child{margin-bottom:0;}
+
+  /* Scope */
+  .scope{background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .scope-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:22px;}
+  @media(max-width:640px){ .scope-grid{grid-template-columns:1fr;} }
+  .scope-item{background:var(--white); border:1px solid var(--line); border-radius:var(--radius); padding:26px 24px; display:flex; gap:18px;}
+  .scope-item .num{
+    font-family:var(--font-head); font-weight:800; font-size:19px; color:var(--lime-dark);
+    line-height:1; flex:none; padding-top:3px; min-width:26px;
+  }
+  .scope-item h3{font-size:15.5px; margin-bottom:8px;}
+  .scope-item p{font-size:14px; color:var(--ink-soft);}
+
+  /* Diagram */
+  .diagram{margin:0;}
+  .diagram img{width:100%; height:auto; border:1px solid var(--line); border-radius:var(--radius); background:var(--bg-alt);}
+  .diagram figcaption{font-size:12.5px; color:var(--ink-soft); margin-top:14px; padding-top:14px; border-top:1px solid var(--line);}
+
+  /* Timeline */
+  .timeline{border-top:1px solid var(--line); margin-top:8px;}
+  .tl-item{display:grid; grid-template-columns:150px 1fr; gap:28px; padding:26px 0; border-bottom:1px solid var(--line);}
+  @media(max-width:640px){ .tl-item{grid-template-columns:1fr; gap:8px;} }
+  .tl-when{font-size:13px; color:var(--ink-soft); padding-top:3px;}
+  .tl-when b{display:block; font-family:var(--font-head); font-weight:800; font-size:14px; color:var(--ink); margin-bottom:4px;}
+  .tl-body h3{font-size:15.5px; margin-bottom:6px;}
+  .tl-body p{font-size:14px; color:var(--ink-soft); max-width:56ch;}
+  .tl-item.done .tl-when::before{content:""; display:block; width:20px; height:3px; background:var(--lime-dark); margin-bottom:9px;}
+  .tl-item.done .tl-when b{color:var(--ink);}
+
+  /* Outcomes */
+  .outcomes{background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .outcome-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  @media(max-width:900px){ .outcome-grid{grid-template-columns:1fr;} }
+  .outcome{background:var(--white); border:1px solid var(--line); border-radius:var(--radius); padding:26px 24px;}
+  .outcome h3{font-size:15.5px; margin-bottom:10px;}
+  .outcome p{font-size:14px; color:var(--ink-soft);}
+  .outcome .mark{width:26px; height:3px; background:var(--lime-dark); margin-bottom:18px;}
+
+  /* Related */
+  .related-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:22px;}
+  @media(max-width:760px){ .related-grid{grid-template-columns:1fr;} }
+  .related-card{background:var(--white); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column; transition:border-color .15s ease;}
+  .related-card:hover{border-color:var(--ink-soft);}
+  .related-thumb{aspect-ratio:300/190; background:var(--bg-alt); border-bottom:1px solid var(--line); overflow:hidden;}
+  .related-thumb img{width:100%; height:100%; object-fit:contain; transition:transform .3s ease;}
+  .related-card:hover .related-thumb img{transform:scale(1.05);}
+  @media(prefers-reduced-motion:reduce){ .related-thumb img, .related-card{transition:none;} }
+  .related-body{padding:22px; display:flex; flex-direction:column; flex:1;}
+  .tag{display:flex; align-items:center; gap:8px; font-size:11.5px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px;}
+  .tag::before{content:""; width:7px; height:7px; background:var(--lime-dark); flex:none;}
+  .related-body h3{margin-bottom:10px;}
+  .related-body p{font-size:14px; color:var(--ink-soft); margin-bottom:18px;}
+  .card-link{
+    margin-top:auto; align-self:flex-start;
+    display:inline-flex; align-items:center; gap:8px; min-height:44px;
+    font-size:13.5px; font-weight:600; color:var(--ink);
+  }
+  .card-link .arw{color:var(--lime-dark); transition:transform .15s ease;}
+  .card-link:hover{text-decoration:underline; text-underline-offset:3px;}
+  .card-link:hover .arw{transform:translateX(3px);}
+  .card-link:focus-visible{outline:2px solid var(--lime); outline-offset:2px;}
+
+  /* CTA */
+  .cta{background:var(--ink); color:var(--line);}
+  .cta-grid{display:grid; grid-template-columns:1fr auto; gap:44px; align-items:center;}
+  @media(max-width:860px){ .cta-grid{grid-template-columns:1fr; gap:26px;} }
+  .cta h2{color:#FFFFFF; margin-bottom:12px;}
+  .cta p{font-size:15.5px; color:var(--line); max-width:560px;}
+  .cta-actions{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn-onDark{border:1.5px solid var(--line); color:#FFFFFF; background:transparent;}
+  .btn-onDark:hover{background:#FFFFFF; color:var(--ink); border-color:#FFFFFF;}
+
+  footer{background:var(--ink); color:var(--line); padding:64px 0 26px; border-top:1px solid rgba(229,231,235,0.16);}
+  .footer-grid{display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:40px; margin-bottom:44px;}
+  @media(max-width:900px){ .footer-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:560px){ .footer-grid{grid-template-columns:1fr;} }
+  footer h4{color:#FFFFFF; font-size:14px; margin-bottom:18px; letter-spacing:0.02em; font-family:var(--font-head);}
+  .foot-brand{display:flex; align-items:center; gap:10px; margin-bottom:14px;}
+  .foot-brand .brand-mark{background:#FFFFFF;}
+  .foot-brand strong{font-family:var(--font-head); color:#FFFFFF; font-size:17px;}
+  footer .foot-desc{font-size:13.5px; color:var(--line); max-width:290px; margin-bottom:18px;}
+  footer ul{list-style:none;}
+  footer ul li{margin-bottom:11px; font-size:13.5px;}
+  footer ul li a{color:var(--line); transition:color .15s ease;}
+  footer ul li a:hover{color:#FFFFFF; text-decoration:underline; text-underline-offset:3px;}
+  .foot-bottom{border-top:1px solid rgba(229,231,235,0.16); padding-top:22px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:12.5px; color:var(--line);}
+
+  .fab-stack{position:fixed; right:20px; bottom:22px; z-index:80; display:flex; flex-direction:column; gap:12px;}
+  .fab{width:54px; height:54px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 18px rgba(0,0,0,0.22); color:#FFFFFF;}
+  .fab-zalo{background:#0068FF;}
+  .fab-phone{background:var(--lime-dark); animation:ring 2.2s infinite;}
+  .fab svg{width:26px; height:26px;}
+  .fab:hover{filter:brightness(0.92);}
+  @keyframes ring{0%,100%{transform:scale(1);} 10%{transform:scale(1.08);} 20%{transform:scale(1);}}
+  @media (prefers-reduced-motion: reduce){ .fab-phone{animation:none;} }
+
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){ .reveal{transform:none; transition:opacity .5s ease;} }
+  :focus-visible{outline:2px solid var(--lime); outline-offset:2px;}
+  .skip{position:absolute; left:-9999px; top:0; background:var(--ink); color:#FFFFFF; padding:12px 18px; z-index:200; border-radius:var(--radius);}
+  .skip:focus{left:12px; top:12px;}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Bỏ qua điều hướng, đến nội dung chính</a>
+
+<header data-od-id="site-header">
+  <div class="wrap nav">
+    <a href="du-an.html" class="brand" aria-label="Delta Energy — trang dự án">
+      <span class="brand-mark" aria-hidden="true"><span></span></span>
+      <span>DELTA ENERGY<small>Dịch vụ &amp; Giải pháp Kỹ thuật</small></span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Điều hướng chính">
+      <a href="https://longnguyendev.github.io/demo3" target="_blank" rel="noopener">Trang chủ</a>
+      <a href="https://longnguyendev.github.io/demo3#about" target="_blank" rel="noopener">Giới thiệu</a>
+      <a href="https://longnguyendev.github.io/demo3#products" target="_blank" rel="noopener">Sản phẩm &amp; Dịch vụ</a>
+      <a href="du-an.html" aria-current="page">Dự án</a>
+      <a href="https://longnguyendev.github.io/demo3#news" target="_blank" rel="noopener">Tin tức</a>
+      <a href="https://longnguyendev.github.io/demo3#contact" target="_blank" rel="noopener">Liên hệ</a>
+      <a href="tel:19001234" class="btn btn-primary btn-sm nav-mobile-cta">Gọi tư vấn ngay</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="https://longnguyendev.github.io/demo3#contact" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Nhận báo giá</a>
+      <a href="tel:19001234" class="btn btn-primary btn-sm">Gọi tư vấn ngay</a>
+      <button class="hamburger" id="hamburger" aria-label="Mở menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="case-hero" data-od-id="case-hero">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Bạn đang ở">
+        <a href="https://longnguyendev.github.io/demo3" target="_blank" rel="noopener">Trang chủ</a>
+        <span aria-hidden="true">/</span>
+        <a href="du-an.html">Dự án</a>
+        <span aria-hidden="true">/</span>
+        <span>Lắp đặt hệ thống bơm &amp; đường ống công nghệ</span>
+      </nav>
+      <p class="eyebrow">Nhà máy sản xuất — KCN Bình Dương</p>
+      <h1 data-od-id="case-title">Lắp đặt hệ thống bơm &amp; đường ống công nghệ</h1>
+      <p class="lead">Thiết kế và lắp đặt hệ thống bơm, đường ống cho dây chuyền sản xuất, đảm bảo vận hành liên tục 24/7.</p>
+
+      <dl class="meta" data-od-id="case-meta">
+        <div><dt>Hạng mục</dt><dd>Lắp đặt &amp; vận hành hệ thống</dd></div>
+        <div><dt>Địa điểm</dt><dd>Khu công nghiệp Bình Dương</dd></div>
+        <div><dt>Lĩnh vực</dt><dd>Nhà máy sản xuất</dd></div>
+        <div><dt>Trạng thái</dt><dd>Đã bàn giao</dd></div>
+        <div><dt>Bàn giao</dt><dd>12/09/2026</dd></div>
+      </dl>
+
+      <div class="case-actions">
+        <a class="btn btn-primary" href="https://longnguyendev.github.io/demo3#contact" target="_blank" rel="noopener" data-od-id="case-cta-quote">Nhận báo giá hạng mục tương tự</a>
+        <a class="btn btn-outline" href="du-an.html">Xem tất cả dự án</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-od-id="case-context">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">Bối cảnh</p>
+        <h2>Yêu cầu của chủ đầu tư</h2>
+      </div>
+      <div class="prose">
+        <p>Nhà máy sản xuất tại Khu công nghiệp Bình Dương cần hoàn thiện hệ thống bơm và đường ống công nghệ phục vụ dây chuyền sản xuất. Hạng mục nằm trong giai đoạn mở rộng năng lực sản xuất, yêu cầu hệ thống chạy ổn định và hạn chế tối đa thời gian dừng dây chuyền để bảo trì.</p>
+        <p>Delta Energy tham gia từ bước khảo sát hiện trạng: đối chiếu sơ đồ công nghệ, lưu lượng và thông số vận hành của từng cụm thiết bị, từ đó đề xuất cấu hình bơm, đường ống và phụ kiện phù hợp với mặt bằng hiện hữu.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="scope" data-od-id="case-scope">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Phạm vi công việc</p>
+        <h2>Bốn hạng mục Delta Energy thực hiện</h2>
+        <p>Từ khảo sát, cung cấp thiết bị, lắp đặt đến bàn giao và hướng dẫn bảo trì — một đầu mối chịu trách nhiệm xuyên suốt.</p>
+      </div>
+      <div class="scope-grid">
+        <div class="scope-item reveal" data-od-id="scope-survey">
+          <span class="num">01</span>
+          <div>
+            <h3>Khảo sát hiện trạng &amp; tư vấn giải pháp</h3>
+            <p>Đo đạc hiện trạng, đối chiếu sơ đồ công nghệ và đề xuất giải pháp tối ưu về kỹ thuật và chi phí đầu tư.</p>
+          </div>
+        </div>
+        <div class="scope-item reveal" data-od-id="scope-design">
+          <span class="num">02</span>
+          <div>
+            <h3>Thiết kế hệ thống bơm &amp; đường ống</h3>
+            <p>Lựa chọn cấu hình bơm, đường kính và vật liệu đường ống, bố trí van và thiết bị đo theo thông số vận hành.</p>
+          </div>
+        </div>
+        <div class="scope-item reveal" data-od-id="scope-install">
+          <span class="num">03</span>
+          <div>
+            <h3>Lắp đặt, chạy thử &amp; hiệu chỉnh</h3>
+            <p>Thi công lắp đặt, chạy thử có tải và hiệu chỉnh thông số hệ thống theo đúng tiêu chuẩn kỹ thuật đề ra.</p>
+          </div>
+        </div>
+        <div class="scope-item reveal" data-od-id="scope-handover">
+          <span class="num">04</span>
+          <div>
+            <h3>Bàn giao, hướng dẫn &amp; bảo trì định kỳ</h3>
+            <p>Bàn giao hồ sơ nghiệm thu, hướng dẫn vận hành và đưa hệ thống vào kế hoạch bảo trì định kỳ.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-od-id="case-system">
+    <div class="wrap split">
+      <figure class="diagram reveal">
+        <img src="imagery/hero-system-diagram.svg" alt="Sơ đồ hệ thống kỹ thuật: cụm bơm, đường ống, đồng hồ đo áp suất và các khối thiết bị nhà máy" width="480" height="400">
+        <figcaption>Sơ đồ nguyên lý hệ thống bơm &amp; đường ống công nghệ bàn giao cho nhà máy.</figcaption>
+      </figure>
+      <div>
+        <p class="eyebrow">Giải pháp kỹ thuật</p>
+        <h2>Một hệ thống, một điểm chịu trách nhiệm</h2>
+        <div class="prose" style="margin-top:18px;">
+          <p>Cụm bơm được bố trí theo nguyên tắc dự phòng, đường ống công nghệ đi nổi trên giá đỡ để thuận tiện kiểm tra và bảo trì. Van điều khiển và đồng hồ đo áp suất được đặt tại các vị trí quan sát trực tiếp từ lối vận hành.</p>
+          <p>Toàn bộ thiết bị do Delta Energy cung cấp là thiết bị chính hãng, đúng thông số theo hồ sơ kỹ thuật của từng hệ thống, kèm chứng từ và tài liệu kỹ thuật khi bàn giao.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scope" data-od-id="case-timeline">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Tiến độ triển khai</p>
+        <h2>Các mốc chính của dự án</h2>
+        <p>Bốn giai đoạn theo quy trình chuẩn Delta Energy áp dụng cho các hạng mục lắp đặt và vận hành hệ thống.</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="tl-when"><b>Giai đoạn 1</b>Khảo sát</div>
+          <div class="tl-body">
+            <h3>Khảo sát hiện trạng tại nhà máy</h3>
+            <p>Đo đạc mặt bằng, đối chiếu sơ đồ công nghệ và xác nhận thông số vận hành của từng cụm thiết bị.</p>
+          </div>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-when"><b>Giai đoạn 2</b>Thiết kế &amp; cung cấp</div>
+          <div class="tl-body">
+            <h3>Chốt phương án và cung cấp thiết bị</h3>
+            <p>Thống nhất cấu hình bơm, đường ống, van và thiết bị đo; cung cấp thiết bị chính hãng đúng thông số.</p>
+          </div>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-when"><b>Giai đoạn 3</b>Lắp đặt</div>
+          <div class="tl-body">
+            <h3>Thi công lắp đặt và chạy thử</h3>
+            <p>Lắp đặt theo bản vẽ đã chốt, chạy thử có tải và hiệu chỉnh thông số hệ thống.</p>
+          </div>
+        </div>
+        <div class="tl-item done reveal">
+          <div class="tl-when"><b>12/09/2026</b>Bàn giao</div>
+          <div class="tl-body">
+            <h3>Nghiệm thu và bàn giao hệ thống</h3>
+            <p>Nghiệm thu theo tiêu chuẩn kỹ thuật đề ra, bàn giao hồ sơ và hướng dẫn vận hành, đưa vào kế hoạch bảo trì định kỳ.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="outcomes" data-od-id="case-outcomes">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Kết quả bàn giao</p>
+        <h2>Hệ thống đi vào vận hành</h2>
+        <p>Ba kết quả Delta Energy cam kết cho mọi hạng mục lắp đặt &amp; vận hành hệ thống.</p>
+      </div>
+      <div class="outcome-grid">
+        <div class="outcome reveal" data-od-id="outcome-standard">
+          <div class="mark"></div>
+          <h3>Đúng tiêu chuẩn kỹ thuật</h3>
+          <p>Hệ thống bơm và đường ống được thi công, chạy thử và nghiệm thu theo đúng tiêu chuẩn kỹ thuật đề ra.</p>
+        </div>
+        <div class="outcome reveal" data-od-id="outcome-uptime">
+          <div class="mark"></div>
+          <h3>Vận hành liên tục</h3>
+          <p>Dây chuyền sản xuất vận hành liên tục, giảm thiểu thời gian ngừng máy nhờ nguyên tắc bố trí dự phòng.</p>
+        </div>
+        <div class="outcome reveal" data-od-id="outcome-handover">
+          <div class="mark"></div>
+          <h3>Hồ sơ đầy đủ</h3>
+          <p>Hồ sơ nghiệm thu, tài liệu thiết bị và hướng dẫn vận hành — bảo trì được bàn giao đầy đủ cho nhà máy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-od-id="case-related">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Dự án liên quan</p>
+        <h2>Các hạng mục cùng nhóm dịch vụ</h2>
+      </div>
+      <div class="related-grid">
+        <article class="related-card reveal" data-od-id="related-electrical">
+          <div class="related-thumb"><img src="imagery/project-electrical-upgrade.svg" alt="Sơ đồ tủ điện và hệ thống điều khiển" width="300" height="190" loading="lazy" decoding="async"></div>
+          <div class="related-body">
+            <span class="tag">Nhà máy chế biến — KCN Long An</span>
+            <h3>Nâng cấp tủ điện &amp; hệ thống điều khiển</h3>
+            <p>Cải tạo hệ thống điện điều khiển, tích hợp giám sát vận hành theo thời gian thực cho toàn nhà máy.</p>
+            <a class="card-link" href="du-an.html">Xem trong danh sách dự án <span class="arw" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+        <article class="related-card reveal" data-od-id="related-maintenance">
+          <div class="related-thumb"><img src="imagery/project-maintenance-rig.svg" alt="Sơ đồ van và thiết bị đo trong bảo trì định kỳ" width="300" height="190" loading="lazy" decoding="async"></div>
+          <div class="related-body">
+            <span class="tag">Nhà máy nhiệt điện — Miền Trung</span>
+            <h3>Bảo trì định kỳ hệ thống van &amp; thiết bị đo</h3>
+            <p>Thực hiện bảo trì, hiệu chuẩn thiết bị đo lường và van điều khiển theo kế hoạch bảo dưỡng định kỳ.</p>
+            <a class="card-link" href="du-an.html">Xem trong danh sách dự án <span class="arw" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" data-od-id="case-cta">
+    <div class="wrap cta-grid">
+      <div>
+        <h2>Cần khảo sát một hạng mục tương tự?</h2>
+        <p>Gửi hiện trạng hoặc bản vẽ hệ thống, đội ngũ kỹ thuật Delta Energy sẽ khảo sát và đề xuất giải pháp phù hợp.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="https://longnguyendev.github.io/demo3#contact" target="_blank" rel="noopener" data-od-id="case-cta-form">Gửi yêu cầu báo giá</a>
+        <a class="btn btn-onDark" href="tel:19001234">Gọi 1900 1234</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer data-od-id="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="foot-brand">
+          <span class="brand-mark" aria-hidden="true"><span></span></span>
+          <strong>DELTA ENERGY</strong>
+        </div>
+        <p class="foot-desc">Công ty TNHH Dịch vụ Kỹ thuật Delta Energy — đối tác kỹ thuật tin cậy cho doanh nghiệp công nghiệp.</p>
+      </div>
+      <div>
+        <h4>Công ty</h4>
+        <ul>
+          <li><a href="https://longnguyendev.github.io/demo3#about" target="_blank" rel="noopener">Giới thiệu</a></li>
+          <li><a href="du-an.html">Dự án</a></li>
+          <li><a href="https://longnguyendev.github.io/demo3#news" target="_blank" rel="noopener">Tin tức</a></li>
+          <li><a href="https://longnguyendev.github.io/demo3#contact" target="_blank" rel="noopener">Liên hệ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Sản phẩm</h4>
+        <ul>
+          <li><a href="https://longnguyendev.github.io/demo3#products" target="_blank" rel="noopener">Thiết bị bơm</a></li>
+          <li><a href="https://longnguyendev.github.io/demo3#products" target="_blank" rel="noopener">Van điều khiển</a></li>
+          <li><a href="https://longnguyendev.github.io/demo3#products" target="_blank" rel="noopener">Thiết bị đo lường</a></li>
+          <li><a href="https://longnguyendev.github.io/demo3#products" target="_blank" rel="noopener">Điện &amp; điều khiển</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Thông tin công ty</h4>
+        <ul>
+          <li>CÔNG TY TNHH DVKT DELTA ENERGY</li>
+          <li>MST: 0300 000 000</li>
+          <li>Hotline: <a href="tel:19001234">1900 1234</a></li>
+          <li>Email: <a href="mailto:info@deltaenergy.vn">info@deltaenergy.vn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Delta Energy. Bảo lưu mọi quyền.</span>
+      <span>Thông tin dự án được cập nhật theo từng đợt bàn giao.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="fab-stack">
+  <a class="fab fab-zalo" href="https://zalo.me" target="_blank" rel="noopener" aria-label="Chat Zalo với Delta Energy">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 5.8 2 10.5c0 2.7 1.5 5.1 3.9 6.7-.2 1-.9 2.6-1.9 3.6 0 0 3-.3 4.9-1.8.9.2 1.9.3 3.1.3 5.5 0 10-3.8 10-8.8S17.5 2 12 2Z"/></svg>
+  </a>
+  <a class="fab fab-phone" href="tel:19001234" aria-label="Gọi hotline 1900 1234">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+  </a>
+</div>
+
+<script>
+(function () {
+  var burger = document.getElementById('hamburger');
+  var navLinks = document.getElementById('navLinks');
+  if (burger && navLinks) {
+    burger.addEventListener('click', function () {
+      var open = navLinks.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.setAttribute('aria-label', open ? 'Đóng menu' : 'Mở menu');
+    });
+  }
+
+  var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>

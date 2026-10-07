@@ -1,0 +1,12 @@
+query ProjectsDetail(
+  $filters: ProjectFiltersInput
+  $sort: [String]
+  $pagination: PaginationArg
+) {
+  projects(filters: $filters, sort: $sort, pagination: $pagination) {
+    ...Project
+    localizations {
+      ...Project
+    }
+  }
+}

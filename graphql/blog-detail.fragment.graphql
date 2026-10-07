@@ -1,0 +1,4 @@
+fragment BlogDetail on Blog {
+  ...Blog
+  content
+}

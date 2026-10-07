@@ -1,0 +1,22 @@
+query Projects(
+  $pagination: PaginationArg
+  $sort: [String]
+  $locale: I18NLocaleCode
+) {
+  projects_connection(pagination: $pagination, sort: $sort, locale: $locale) {
+    nodes {
+      ...Project
+      localizations {
+        slug
+        locale
+        updatedAt
+      }
+    }
+    pageInfo {
+      total
+      page
+      pageSize
+      pageCount
+    }
+  }
+}

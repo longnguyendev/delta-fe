@@ -1,0 +1,4 @@
+fragment ProjectDetail on Project {
+  ...Project
+  content
+}

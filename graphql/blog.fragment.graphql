@@ -1,0 +1,12 @@
+fragment Blog on Blog {
+  documentId
+  title
+  description
+  slug
+  createdAt
+  updatedAt
+  locale
+  thumbnail {
+    ...Image
+  }
+}

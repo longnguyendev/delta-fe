@@ -3,6 +3,7 @@ import { Inter, Montserrat } from "next/font/google";
 import { lang } from "next/root-params";
 import { locales } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
+import { ReactQueryProvider } from "@/lib/client";
 import "../globals.css";
 
 const inter = Inter({
@@ -42,7 +43,9 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
       data-scroll-behavior="smooth"
       className={`${inter.variable} ${montserrat.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <ReactQueryProvider>{children}</ReactQueryProvider>
+      </body>
     </html>
   );
 }

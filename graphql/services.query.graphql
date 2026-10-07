@@ -1,0 +1,9 @@
+query Services(
+  $pagination: PaginationArg
+  $sort: [String]
+  $locale: I18NLocaleCode
+) {
+  services(pagination: $pagination, sort: $sort, locale: $locale) {
+    ...Service
+  }
+}

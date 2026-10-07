@@ -1,0 +1,12 @@
+query BlogsDetail(
+  $filters: BlogFiltersInput
+  $pagination: PaginationArg
+  $locale: I18NLocaleCode
+) {
+  blogs(filters: $filters, pagination: $pagination, locale: $locale) {
+    ...BlogDetail
+    localizations {
+      ...BlogDetail
+    }
+  }
+}

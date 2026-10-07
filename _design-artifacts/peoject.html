@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dự án đã thực hiện — Delta Energy</title>
+<meta name="description" content="Hồ sơ năng lực Delta Energy: các công trình tiêu biểu trong lĩnh vực bơm, đường ống công nghệ, tủ điện điều khiển và bảo trì hệ thống van, thiết bị đo cho nhà máy công nghiệp." />
+<!-- Self-hosted webfonts from the Delta Energy brand bundle: no CDN, no network
+     dependency. Montserrat 700/800 + Inter 400/500/600, latin-ext + latin + vietnamese. -->
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+  :root{
+    --lime:#7CB342;
+    --lime-dark:#5E8C31;
+    --lime-light:#EDF5E4;
+    --ink:#1F2937;
+    --ink-soft:#4B5563;
+    --bg:#FFFFFF;
+    --bg-alt:#F7F9FA;
+    --line:#E5E7EB;
+    --white:#FFFFFF;
+    --radius:3px;
+    --font-head:'Montserrat', system-ui, -apple-system, 'Segoe UI', Helvetica Neue, Arial, sans-serif;
+    --font-body:'Inter', system-ui, -apple-system, 'Segoe UI', Helvetica Neue, Arial, sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:var(--font-body); font-size:16px; line-height:1.6;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  img,svg{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+  section{padding:88px 0;}
+  @media(max-width:768px){ section{padding:56px 0;} }
+
+  h1,h2,h3,h4{font-family:var(--font-head); font-weight:800; letter-spacing:-0.01em; color:var(--ink);}
+  h1{font-size:clamp(32px,4.6vw,50px); line-height:1.12; letter-spacing:-0.015em;}
+  h2{font-size:clamp(26px,3.4vw,36px); line-height:1.2;}
+  h3{font-size:16.5px; line-height:1.4;}
+
+  /* Eyebrow — lime carried by a rule (non-text), label in ink-soft so the
+     13px uppercase text clears AA instead of the site's 3.98:1 lime. */
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--font-head); font-weight:700; font-size:13px;
+    letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft);
+    margin-bottom:14px;
+  }
+  .eyebrow::before{content:""; width:22px; height:2px; background:var(--lime-dark); flex:none;}
+
+  .section-head{max-width:660px; margin-bottom:44px;}
+  .section-head p{color:var(--ink-soft); font-size:16px; margin-top:14px;}
+  .lead{color:var(--ink-soft); font-size:17px; max-width:560px;}
+
+  /* Buttons */
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--font-body); font-weight:600; font-size:15px;
+    padding:13px 26px; border-radius:var(--radius);
+    border:1.5px solid transparent; cursor:pointer; min-height:48px;
+    transition:background .15s ease, color .15s ease, border-color .15s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--lime); color:var(--ink);}
+  /* Hover swaps BOTH colours → ink on white, 14.68:1. Contrast rises from
+     6.78:1; it never drops to the site's white-on-lime-dark 3.98:1. */
+  .btn-primary:hover{background:var(--ink); color:#FFFFFF;}
+  .btn-primary:active{background:var(--ink); color:#FFFFFF;}
+  .btn-outline{border-color:var(--ink); color:var(--ink); background:transparent;}
+  .btn-outline:hover{border-color:var(--lime-dark); color:var(--ink); background:var(--bg-alt);}
+  .btn-sm{padding:9px 18px; font-size:13.5px; min-height:44px;}
+  .btn[disabled]{opacity:.45; cursor:not-allowed;}
+
+  /* Header */
+  header{position:sticky; top:0; z-index:60; background:var(--bg); border-bottom:1px solid var(--line);}
+  .nav{display:flex; align-items:center; justify-content:space-between; height:76px;}
+  .brand{display:flex; align-items:center; gap:10px; font-family:var(--font-head); font-weight:800; font-size:19px; letter-spacing:-0.01em; color:var(--ink);}
+  .brand-mark{width:34px; height:34px; background:var(--ink); position:relative; flex:none; clip-path:polygon(30% 0, 100% 0, 60% 100%, 0 100%);}
+  .brand-mark span{position:absolute; inset:0; background:var(--lime); clip-path:polygon(30% 0, 100% 0, 78% 55%, 40% 55%);}
+  .brand small{display:block; font-family:var(--font-body); font-weight:500; font-size:10.5px; color:var(--ink-soft); letter-spacing:0.03em;}
+  .nav-links{display:flex; gap:34px; align-items:center;}
+  .nav-links a{font-size:14.5px; font-weight:500; color:var(--ink-soft); transition:color .15s ease;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-links a[aria-current="page"]{color:var(--ink); font-weight:600; box-shadow:inset 0 -2px 0 var(--lime-dark);}
+  .nav-cta{display:flex; align-items:center; gap:18px;}
+  .nav-mobile-cta{display:none;}
+  /* The drawer CTA is an <a> inside .nav-links; these two rules out-specify
+     `.nav-links a` so the button keeps ink-on-lime and a white hover label. */
+  .nav-links a.btn{font-size:13.5px; font-weight:600; color:var(--ink);}
+  .nav-links a.btn:hover{color:#FFFFFF;}
+  .hamburger{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:12px; min-width:44px; min-height:44px; align-items:center; justify-content:center;}
+  .hamburger span{width:24px; height:2px; background:var(--ink);}
+  @media(max-width:960px){
+    .nav-links{
+      position:fixed; top:76px; left:0; right:0; bottom:0;
+      background:var(--bg); flex-direction:column; align-items:flex-start;
+      padding:30px 24px; gap:22px; transform:translateX(100%);
+      transition:transform .22s ease; overflow-y:auto;
+    }
+    .nav-links.open{transform:translateX(0);}
+    .nav-links a{font-size:17px;}
+    .nav-links a[aria-current="page"]{box-shadow:none; color:var(--lime-dark);}
+    .nav-cta .btn-outline{display:none;}
+    .hamburger{display:flex;}
+    .nav-mobile-cta{display:inline-flex; margin-top:10px;}
+  }
+  /* Under 620px the header keeps only the mark + menu; the call action moves
+     into the drawer (and stays on the floating action stack). */
+  @media(max-width:620px){
+    .nav-cta .btn{display:none;}
+  }
+  /* Long Vietnamese button labels wrap instead of forcing a horizontal scroll. */
+  @media(max-width:460px){
+    .btn{white-space:normal; text-align:center;}
+    .brand{font-size:17px;}
+    .brand small{display:none;}
+  }
+  @media(prefers-reduced-motion:reduce){ .nav-links{transition:none;} }
+
+  /* Page hero */
+  .page-hero{
+    position:relative; padding:76px 0 72px;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, var(--line) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, var(--line) 40px),
+      var(--bg-alt);
+    background-size:40px 40px, 40px 40px, cover;
+    border-bottom:1px solid var(--line);
+  }
+  .crumbs{font-size:13px; color:var(--ink-soft); margin-bottom:26px; display:flex; gap:8px; flex-wrap:wrap;}
+  .crumbs a{transition:color .15s ease;}
+  .crumbs a:hover{color:var(--ink); text-decoration:underline;}
+  .crumbs span[aria-hidden]{color:var(--ink-soft);}
+  .page-hero h1{margin-bottom:22px;}
+  .hero-stats{display:flex; gap:40px; flex-wrap:wrap; margin-top:40px; border-top:1px solid var(--line); padding-top:26px;}
+  .hero-stats div strong{display:block; font-family:var(--font-head); font-weight:800; font-size:28px; color:var(--lime-dark); line-height:1.1;}
+  .hero-stats div span{font-size:13px; color:var(--ink-soft);}
+
+  /* Filter */
+  .filters{background:var(--bg); border-bottom:1px solid var(--line); padding:22px 0;}
+  .filter-row{display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
+  .chip{
+    font-family:var(--font-body); font-weight:600; font-size:13.5px;
+    padding:9px 16px; min-height:44px; border-radius:var(--radius);
+    border:1px solid var(--line); background:var(--bg-alt); color:var(--ink-soft);
+    cursor:pointer; transition:background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .chip:hover{background:var(--bg); border-color:var(--ink-soft); color:var(--ink);}
+  .chip[aria-pressed="true"]{background:var(--ink); border-color:var(--ink); color:#FFFFFF;}
+  .filter-note{font-size:13px; color:var(--ink-soft); margin-top:14px;}
+  .filter-note b{color:var(--ink); font-weight:600;}
+
+  /* Projects */
+  .projects-list{background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .project-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  @media(max-width:960px){ .project-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:640px){ .project-grid{grid-template-columns:1fr;} }
+  .project-card{
+    background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
+    overflow:hidden; display:flex; flex-direction:column;
+    transition:border-color .15s ease;
+  }
+  .project-card:hover{border-color:var(--ink-soft);}
+  .project-card[hidden]{display:none;}
+  .project-thumb{aspect-ratio:300/190; overflow:hidden; background:var(--bg-alt); border-bottom:1px solid var(--line);}
+  /* contain, not cover: the harvested illustrations keep their full frame and
+     sit on the same #F7F9FA plate the site draws them on, so no seam appears. */
+  .project-thumb img{width:100%; height:100%; object-fit:contain; transition:transform .3s ease;}
+  .project-card:hover .project-thumb img{transform:scale(1.05);}
+  @media(prefers-reduced-motion:reduce){ .project-thumb img, .project-card{transition:none;} }
+  .project-body{padding:22px; display:flex; flex-direction:column; flex:1;}
+  .tag{display:flex; align-items:center; gap:8px; font-size:11.5px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px;}
+  .tag::before{content:""; width:7px; height:7px; background:var(--lime-dark); flex:none;}
+  .project-body h3{margin-bottom:10px;}
+  .project-body p{font-size:14px; color:var(--ink-soft); margin-bottom:18px;}
+  .card-link{
+    margin-top:auto; align-self:flex-start;
+    display:inline-flex; align-items:center; gap:8px; min-height:44px;
+    font-size:13.5px; font-weight:600; color:var(--ink);
+  }
+  .card-link .arw{color:var(--lime-dark); transition:transform .15s ease;}
+  .card-link:hover{text-decoration:underline; text-underline-offset:3px;}
+  .card-link:hover .arw{transform:translateX(3px);}
+  .card-link:focus-visible{outline:2px solid var(--lime); outline-offset:2px;}
+  .empty{margin-top:26px; font-size:14.5px; color:var(--ink-soft);}
+
+  /* Featured */
+  .featured{background:var(--bg);}
+  .featured-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:60px; align-items:center;}
+  @media(max-width:960px){ .featured-grid{grid-template-columns:1fr; gap:36px;} }
+  .featured-visual{background:var(--bg-alt); border:1px solid var(--line); border-radius:var(--radius); padding:20px;}
+  .featured-visual img{width:100%; height:auto;}
+  .featured-visual figcaption{font-size:12.5px; color:var(--ink-soft); margin-top:14px; padding-top:14px; border-top:1px solid var(--line);}
+  .featured-meta{display:flex; flex-wrap:wrap; gap:14px 34px; border-top:1px solid var(--line); padding-top:24px; margin-top:28px;}
+  .featured-meta div strong{display:block; font-family:var(--font-head); font-weight:800; font-size:19px; color:var(--ink);}
+  .featured-meta div span{font-size:12.5px; color:var(--ink-soft);}
+  .featured-actions{margin-top:30px; display:flex; gap:14px; flex-wrap:wrap;}
+
+  /* Lifecycle */
+  .lifecycle{background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .step-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:22px; counter-reset:step;}
+  @media(max-width:960px){ .step-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:640px){ .step-grid{grid-template-columns:1fr;} }
+  .step{background:var(--white); border:1px solid var(--line); border-radius:var(--radius); padding:26px 24px;}
+  .step .num{
+    font-family:var(--font-head); font-weight:800; font-size:26px; color:var(--lime-dark);
+    line-height:1; margin-bottom:16px; display:block;
+  }
+  .step h3{font-size:16px; margin-bottom:10px;}
+  .step p{font-size:14px; color:var(--ink-soft);}
+
+  /* CTA */
+  .cta{background:var(--ink); color:var(--line);}
+  .cta-grid{display:grid; grid-template-columns:1fr auto; gap:44px; align-items:center;}
+  @media(max-width:860px){ .cta-grid{grid-template-columns:1fr; gap:26px;} }
+  .cta h2{color:#FFFFFF; margin-bottom:12px;}
+  .cta p{font-size:15.5px; color:var(--line); max-width:560px;}
+  .cta-actions{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn-onDark{border:1.5px solid var(--line); color:#FFFFFF; background:transparent;}
+  .btn-onDark:hover{background:#FFFFFF; color:var(--ink); border-color:#FFFFFF;}
+
+  /* Footer */
+  footer{background:var(--ink); color:var(--line); padding:64px 0 26px; border-top:1px solid rgba(229,231,235,0.16);}
+  .footer-grid{display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:40px; margin-bottom:44px;}
+  @media(max-width:900px){ .footer-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:560px){ .footer-grid{grid-template-columns:1fr;} }
+  footer h4{color:#FFFFFF; font-size:14px; margin-bottom:18px; letter-spacing:0.02em; font-family:var(--font-head);}
+  .foot-brand{display:flex; align-items:center; gap:10px; margin-bottom:14px;}
+  .foot-brand .brand-mark{background:#FFFFFF;}
+  .foot-brand strong{font-family:var(--font-head); color:#FFFFFF; font-size:17px;}
+  footer .foot-desc{font-size:13.5px; color:var(--line); max-width:290px; margin-bottom:18px;}
+  footer ul{list-style:none;}
+  footer ul li{margin-bottom:11px; font-size:13.5px;}
+  footer ul li a{color:var(--line); transition:color .15s ease;}
+  footer ul li a:hover{color:#FFFFFF; text-decoration:underline; text-underline-offset:3px;}
+  .foot-bottom{border-top:1px solid rgba(229,231,235,0.16); padding-top:22px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:12.5px; color:var(--line);}
+
+  /* Floating actions */
+  .fab-stack{position:fixed; right:20px; bottom:22px; z-index:80; display:flex; flex-direction:column; gap:12px;}
+  .fab{
+    width:54px; height:54px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 6px 18px rgba(0,0,0,0.22); color:#FFFFFF;
+  }
+  .fab-zalo{background:#0068FF;}
+  .fab-phone{background:var(--lime-dark); animation:ring 2.2s infinite;}
+  .fab svg{width:26px; height:26px;}
+  .fab:hover{filter:brightness(0.92);}
+  @keyframes ring{0%,100%{transform:scale(1);} 10%{transform:scale(1.08);} 20%{transform:scale(1);}}
+  @media (prefers-reduced-motion: reduce){ .fab-phone{animation:none;} }
+
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){ .reveal{transform:none; transition:opacity .5s ease;} }
+  :focus-visible{outline:2px solid var(--lime); outline-offset:2px;}
+  .skip{position:absolute; left:-9999px; top:0; background:var(--ink); color:#FFFFFF; padding:12px 18px; z-index:200; border-radius:var(--radius);}
+  .skip:focus{left:12px; top:12px;}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Bỏ qua điều hướng, đến nội dung chính</a>
+
+<header data-od-id="site-header">
+  <div class="wrap nav">
+    <a href="du-an.html" class="brand" aria-label="Delta Energy — trang chủ">
+      <span class="brand-mark" aria-hidden="true"><span></span></span>
+      <span>DELTA ENERGY<small>Dịch vụ &amp; Giải pháp Kỹ thuật</small></span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Điều hướng chính">
+      <a href="https://longnguyendev.github.io/demo3" target="_blank" rel="noopener">Trang chủ</a>
+      <a href="https://longnguyendev.github.io/demo3#about" target="_blank" rel="noopener">Giới thiệu</a>
+      <a href="https://longnguyendev.github.io/demo3#products" target="_blank" rel="noopener">Sản phẩm &amp; Dịch vụ</a>
+      <a href="du-an.html" aria-current="page">Dự án</a>
+      <a href="https://longnguyendev.github.io/demo3#news" target="_blank" rel="noopener">Tin tức</a>
+      <a href="https://longnguyendev.github.io/demo3#contact" target="_blank" rel="noopener">Liên hệ</a>
+      <a href="tel:19001234" class="btn btn-primary btn-sm nav-mobile-cta">Gọi tư vấn ngay</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="https://longnguyendev.github.io/demo3#contact" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Nhận báo giá</a>
+      <a href="tel:19001234" class="btn btn-primary btn-sm">Gọi tư vấn ngay</a>
+      <button class="hamburger" id="hamburger" aria-label="Mở menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero" data-od-id="projects-hero">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Bạn đang ở">
+        <a href="https://longnguyendev.github.io/demo3" target="_blank" rel="noopener">Trang chủ</a>
+        <span aria-hidden="true">/</span>
+        <span>Dự án</span>
+      </nav>
+      <p class="eyebrow">Hồ sơ năng lực</p>
+      <h1 data-od-id="projects-title">Dự án đã thực hiện</h1>
+      <p class="lead">Một số công trình tiêu biểu Delta Energy đã triển khai cùng đối tác trong ngành công nghiệp.</p>
+      <div class="hero-stats" data-od-id="projects-stats">
+        <div><strong>10+</strong><span>Năm kinh nghiệm</span></div>
+        <div><strong>150+</strong><span>Dự án hoàn thành</span></div>
+        <div><strong>40+</strong><span>Đối tác chiến lược</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="filters" data-od-id="projects-filters">
+    <div class="wrap">
+      <div class="filter-row" role="group" aria-label="Lọc dự án theo nhóm dịch vụ">
+        <button class="chip" type="button" data-filter="all" aria-pressed="true">Tất cả</button>
+        <button class="chip" type="button" data-filter="tu-van" aria-pressed="false">Tư vấn giải pháp</button>
+        <button class="chip" type="button" data-filter="thiet-bi" aria-pressed="false">Thiết bị &amp; vật tư</button>
+        <button class="chip" type="button" data-filter="lap-dat" aria-pressed="false">Lắp đặt &amp; vận hành</button>
+        <button class="chip" type="button" data-filter="bao-tri" aria-pressed="false">Bảo trì &amp; sửa chữa</button>
+      </div>
+      <p class="filter-note" id="filterNote" role="status">Đang hiển thị <b>6</b> trên 6 dự án.</p>
+    </div>
+  </div>
+
+  <section class="projects-list" data-od-id="projects-grid-section">
+    <div class="wrap">
+      <div class="project-grid" id="projectGrid">
+
+        <article class="project-card reveal" data-cat="lap-dat" data-od-id="project-card-binh-duong-pump">
+          <div class="project-thumb"><img src="imagery/project-pump-pipeline.svg" alt="Sơ đồ bơm và đường ống công nghệ" width="300" height="190" loading="lazy" decoding="async"></div>
+          <div class="project-body">
+            <span class="tag">Nhà máy sản xuất — KCN Bình Dương</span>
+            <h3>Lắp đặt hệ thống bơm &amp; đường ống công nghệ</h3>
+            <p>Thiết kế và lắp đặt hệ thống bơm, đường ống cho dây chuyền sản xuất, đảm bảo vận hành liên tục 24/7.</p>
+            <a class="card-link" href="du-an-chi-tiet.html">Xem chi tiết <span class="arw" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-cat="lap-dat" data-od-id="project-card-long-an-electrical">
+          <div class="project-thumb"><img src="imagery/project-electrical-upgrade.svg" alt="Sơ đồ tủ điện và hệ thống điều khiển" width="300" height="190" loading="lazy" decoding="async"></div>
+          <div class="project-body">
+            <span class="tag">Nhà máy chế biến — KCN Long An</span>
+            <h3>Nâng cấp tủ điện &amp; hệ thống điều khiển</h3>
+            <p>Cải tạo hệ thống điện điều khiển, tích hợp giám sát vận hành theo thời gian thực cho toàn nhà máy.</p>
+            <a class="card-link" href="du-an-chi-tiet.html">Xem chi tiết <span class="arw" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-cat="bao-tri" data-od-id="project-card-mien-trung-maintenance">
+          <div class="project-thumb"><img src="imagery/project-maintenance-rig.svg" alt="Sơ đồ van và thiết bị đo trong bảo trì định kỳ" width="300" height="190" loading="lazy" decoding="async"></div>
+          <div class="project-body">
+            <span class="tag">Nhà máy nhiệt điện — Miền Trung</span>
+            <h3>Bảo trì định kỳ hệ thống van &amp; thiết bị đo</h3>
+            <p>Thực hiện bảo trì, hiệu chuẩn thiết bị đo lường và van điều khiển theo kế hoạch bảo dưỡng định kỳ.</p>
+            <a class="card-link" href="du-an-chi-tiet.html">Xem chi tiết <span class="arw" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-cat="thiet-bi" data-od-id="project-card-dong-nai-instruments">
+          <div class="project-thumb"><img src="imagery/news-valve-line.svg" alt="Sơ đồ van điều khiển và thiết bị đo lường" width="300" height="190" loading="lazy" decoding="async"></div>
+          <div class="project-body">
+            <span class="tag">Nhà máy chế biến — KCN Đồng Nai</span>
+            <h3>Cung cấp thiết bị đo lường &amp; vật tư thay thế</h3>
+            <p>Cung cấp đồng hồ đo, van điều khiển và vật tư kỹ thuật chính hãng, đúng thông số cho từng hệ thống.</p>
+            <a class="card-link" href="du-an-chi-tiet.html">Xem chi tiết <span class="arw" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-cat="tu-van" data-od-id="project-card-hai-phong-survey">
+          <div class="project-thumb"><img src="imagery/about-factory-blocks.svg" alt="Sơ đồ khối nhà máy và đồng hồ đo trong khảo sát hiện trạng" width="400" height="320" loading="lazy" decoding="async"></div>
+          <div class="project-body">
+            <span class="tag">Nhà máy sản xuất — KCN Hải Phòng</span>
+            <h3>Khảo sát hiện trạng &amp; tư vấn giải pháp kỹ thuật</h3>
+            <p>Khảo sát hiện trạng hệ thống, đề xuất giải pháp tối ưu về kỹ thuật và chi phí đầu tư cho từng hạng mục.</p>
+            <a class="card-link" href="du-an-chi-tiet.html">Xem chi tiết <span class="arw" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-cat="lap-dat" data-od-id="project-card-mien-bac-handover">
+          <div class="project-thumb"><img src="imagery/news-project-handover.svg" alt="Sơ đồ bàn giao hệ thống công nghệ" width="300" height="190" loading="lazy" decoding="async"></div>
+          <div class="project-body">
+            <span class="tag">Nhà máy nhiệt điện — Miền Bắc</span>
+            <h3>Chạy thử, nghiệm thu &amp; bàn giao hệ thống</h3>
+            <p>Chạy thử, nghiệm thu và bàn giao hệ thống theo đúng tiêu chuẩn kỹ thuật đề ra, kèm hồ sơ vận hành.</p>
+            <a class="card-link" href="du-an-chi-tiet.html">Xem chi tiết <span class="arw" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+      </div>
+      <p class="empty" id="emptyState" hidden>Chưa có dự án nào trong nhóm dịch vụ này.</p>
+    </div>
+  </section>
+
+  <section class="featured" data-od-id="projects-featured">
+    <div class="wrap featured-grid">
+      <figure class="featured-visual reveal">
+        <img src="imagery/hero-system-diagram.svg" alt="Sơ đồ hệ thống kỹ thuật: đồng hồ đo, cụm bơm và khối nhà máy" width="480" height="400">
+        <figcaption>Hệ thống bơm &amp; đường ống công nghệ — Nhà máy sản xuất, KCN Bình Dương.</figcaption>
+      </figure>
+      <div>
+        <p class="eyebrow">Dự án tiêu biểu</p>
+        <h2>Bàn giao hệ thống bơm &amp; đường ống tại Bình Dương</h2>
+        <p class="lead" style="margin-top:16px;">Delta Energy thiết kế, lắp đặt và bàn giao hệ thống bơm, đường ống công nghệ cho dây chuyền sản xuất, đảm bảo vận hành liên tục 24/7.</p>
+        <div class="featured-meta">
+          <div><strong>09/2026</strong><span>Thời điểm bàn giao</span></div>
+          <div><strong>KCN Bình Dương</strong><span>Địa điểm</span></div>
+          <div><strong>Lắp đặt &amp; vận hành</strong><span>Nhóm dịch vụ</span></div>
+        </div>
+        <div class="featured-actions">
+          <a class="btn btn-primary" href="du-an-chi-tiet.html" data-od-id="featured-cta">Đọc case study</a>
+          <a class="btn btn-outline" href="https://longnguyendev.github.io/demo3#news" target="_blank" rel="noopener">Tin tức bàn giao</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lifecycle" data-od-id="projects-lifecycle">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Quy trình triển khai</p>
+        <h2>Bốn nhóm dịch vụ chính</h2>
+        <p>Bốn nhóm dịch vụ chính giúp khách hàng vận hành hệ thống công nghiệp an toàn, hiệu quả và đúng tiến độ.</p>
+      </div>
+      <div class="step-grid">
+        <div class="step reveal" data-od-id="step-consulting">
+          <span class="num">01</span>
+          <h3>Tư vấn giải pháp kỹ thuật</h3>
+          <p>Khảo sát hiện trạng, đề xuất giải pháp tối ưu về kỹ thuật và chi phí đầu tư cho từng dự án.</p>
+        </div>
+        <div class="step reveal" data-od-id="step-equipment">
+          <span class="num">02</span>
+          <h3>Thiết bị &amp; vật tư kỹ thuật</h3>
+          <p>Cung cấp thiết bị, phụ tùng và vật tư kỹ thuật chính hãng, đúng thông số cho từng hệ thống.</p>
+        </div>
+        <div class="step reveal" data-od-id="step-installation">
+          <span class="num">03</span>
+          <h3>Lắp đặt &amp; vận hành hệ thống</h3>
+          <p>Thi công lắp đặt, chạy thử và bàn giao hệ thống theo đúng tiêu chuẩn kỹ thuật đề ra.</p>
+        </div>
+        <div class="step reveal" data-od-id="step-maintenance">
+          <span class="num">04</span>
+          <h3>Bảo trì &amp; sửa chữa hệ thống</h3>
+          <p>Bảo trì định kỳ, xử lý sự cố và sửa chữa thiết bị công nghiệp, giảm thiểu thời gian ngừng máy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" data-od-id="projects-cta">
+    <div class="wrap cta-grid">
+      <div>
+        <h2>Trao đổi về hạng mục của bạn</h2>
+        <p>Gửi hiện trạng hoặc bản vẽ hệ thống, đội ngũ kỹ thuật Delta Energy sẽ khảo sát và tư vấn giải pháp phù hợp.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="https://longnguyendev.github.io/demo3#contact" target="_blank" rel="noopener" data-od-id="projects-cta-quote">Gửi yêu cầu báo giá</a>
+        <a class="btn btn-onDark" href="tel:19001234">Gọi 1900 1234</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer data-od-id="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="foot-brand">
+          <span class="brand-mark" aria-hidden="true"><span></span></span>
+          <strong>DELTA ENERGY</strong>
+        </div>
+        <p class="foot-desc">Công ty TNHH Dịch vụ Kỹ thuật Delta Energy — đối tác kỹ thuật tin cậy cho doanh nghiệp công nghiệp.</p>
+      </div>
+      <div>
+        <h4>Công ty</h4>
+        <ul>
+          <li><a href="https://longnguyendev.github.io/demo3#about" target="_blank" rel="noopener">Giới thiệu</a></li>
+          <li><a href="du-an.html">Dự án</a></li>
+          <li><a href="https://longnguyendev.github.io/demo3#news" target="_blank" rel="noopener">Tin tức</a></li>
+          <li><a href="https://longnguyendev.github.io/demo3#contact" target="_blank" rel="noopener">Liên hệ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Sản phẩm</h4>
+        <ul>
+          <li><a href="https://longnguyendev.github.io/demo3#products" target="_blank" rel="noopener">Thiết bị bơm</a></li>
+          <li><a href="https://longnguyendev.github.io/demo3#products" target="_blank" rel="noopener">Van điều khiển</a></li>
+          <li><a href="https://longnguyendev.github.io/demo3#products" target="_blank" rel="noopener">Thiết bị đo lường</a></li>
+          <li><a href="https://longnguyendev.github.io/demo3#products" target="_blank" rel="noopener">Điện &amp; điều khiển</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Thông tin công ty</h4>
+        <ul>
+          <li>CÔNG TY TNHH DVKT DELTA ENERGY</li>
+          <li>MST: 0300 000 000</li>
+          <li>Hotline: <a href="tel:19001234">1900 1234</a></li>
+          <li>Email: <a href="mailto:info@deltaenergy.vn">info@deltaenergy.vn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Delta Energy. Bảo lưu mọi quyền.</span>
+      <span>Dự án tiêu biểu được cập nhật theo từng đợt bàn giao.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="fab-stack">
+  <a class="fab fab-zalo" href="https://zalo.me" target="_blank" rel="noopener" aria-label="Chat Zalo với Delta Energy">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 5.8 2 10.5c0 2.7 1.5 5.1 3.9 6.7-.2 1-.9 2.6-1.9 3.6 0 0 3-.3 4.9-1.8.9.2 1.9.3 3.1.3 5.5 0 10-3.8 10-8.8S17.5 2 12 2Z"/></svg>
+  </a>
+  <a class="fab fab-phone" href="tel:19001234" aria-label="Gọi hotline 1900 1234">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+  </a>
+</div>
+
+<script>
+(function () {
+  // Hamburger
+  var burger = document.getElementById('hamburger');
+  var navLinks = document.getElementById('navLinks');
+  if (burger && navLinks) {
+    burger.addEventListener('click', function () {
+      var open = navLinks.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.setAttribute('aria-label', open ? 'Đóng menu' : 'Mở menu');
+    });
+  }
+
+  // Project filter
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var cards = Array.prototype.slice.call(document.querySelectorAll('#projectGrid .project-card'));
+  var note = document.getElementById('filterNote');
+  var empty = document.getElementById('emptyState');
+
+  function apply(cat) {
+    var shown = 0;
+    cards.forEach(function (card) {
+      var match = cat === 'all' || card.getAttribute('data-cat') === cat;
+      card.hidden = !match;
+      // A card that was display:none never intersects, so reveal it directly
+      // instead of waiting on the observer.
+      if (match) { shown++; card.classList.add('in'); }
+    });
+    chips.forEach(function (c) {
+      c.setAttribute('aria-pressed', c.getAttribute('data-filter') === cat ? 'true' : 'false');
+    });
+    if (note) note.innerHTML = 'Đang hiển thị <b>' + shown + '</b> trên ' + cards.length + ' dự án.';
+    if (empty) empty.hidden = shown !== 0;
+  }
+
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      apply(chip.getAttribute('data-filter'));
+    });
+  });
+
+  // Reveal on scroll — opacity + 14px rise, 500ms. Reduced motion keeps opacity only.
+  var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>

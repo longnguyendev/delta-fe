@@ -1,0 +1,16 @@
+fragment Project on Project {
+  documentId
+  title
+  description
+  slug
+  createdAt
+  updatedAt
+  locale
+  content
+  thumbnail {
+    ...Image
+  }
+  images {
+    ...Image
+  }
+}

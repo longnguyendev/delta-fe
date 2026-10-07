@@ -1,0 +1,12 @@
+fragment Service on Service {
+  documentId
+  name
+  description
+  thumbnail {
+    ...Image
+  }
+  service_items {
+    documentId
+    name
+  }
+}

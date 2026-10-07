@@ -1,0 +1,22 @@
+query Blogs(
+  $pagination: PaginationArg
+  $sort: [String]
+  $locale: I18NLocaleCode
+) {
+  blogs_connection(pagination: $pagination, sort: $sort, locale: $locale) {
+    nodes {
+      ...Blog
+      localizations {
+        slug
+        locale
+        updatedAt
+      }
+    }
+    pageInfo {
+      total
+      page
+      pageSize
+      pageCount
+    }
+  }
+}
