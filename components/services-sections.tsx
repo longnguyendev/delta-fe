@@ -24,7 +24,7 @@ export function ServicesHero({
         <p className="mt-5 max-w-[540px] text-[17px] leading-relaxed text-text-secondary">
           {t.hero.lead}
         </p>
-        <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-6 border-t border-line pt-6">
+        <dl className="mt-10 grid grid-cols-3 gap-x-5 gap-y-6 border-t border-line pt-6 md:gap-x-10">
           {t.hero.stats.map((stat) => (
             <div key={stat.label}>
               <dt className="font-head text-[26px] font-extrabold leading-none text-accent-2 md:text-[28px]">

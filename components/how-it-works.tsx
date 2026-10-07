@@ -1,22 +1,50 @@
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { Container, SectionHead } from "./ui";
 
-/** Step visuals are language-independent — zipped with `t.process.items`. */
+/**
+ * Step visuals are language-independent — zipped with `t.process.items`.
+ * Vẽ theo luật imagery của design system: khối mực #1F2937 ở nhiều mức mờ,
+ * nét 4px, và đúng MỘT điểm lime cho mỗi hình. (Bản cũ dùng
+ * --brand-color-border-secondary #F2F2F3 làm màu tô trên nền bg-layout #F6F6F7
+ * — chênh lệch 1.04:1 nên cả ba khung trông như trống.)
+ */
+const INK = "#1F2937";
+
 const STEP_VISUALS = [
+  // 1 · Khảo sát & tư vấn — đồng hồ áp suất trên tuyến ống
   <>
-    <rect x="14" y="40" width="92" height="9" rx="4.5" fill="var(--brand-color-border-secondary)" />
-    <rect x="14" y="58" width="58" height="9" rx="4.5" fill="var(--brand-color-border-secondary)" />
-    <rect x="14" y="80" width="40" height="14" rx="7" fill="var(--brand-color-primary)" />
+    <rect x="24" y="86" width="76" height="10" fill={INK} fillOpacity="0.16" />
+    <rect x="24" y="96" width="76" height="6" fill={INK} fillOpacity="0.34" />
+    <rect x="58" y="68" width="8" height="20" fill={INK} fillOpacity="0.45" />
+    <rect x="50" y="64" width="24" height="6" fill={INK} fillOpacity="0.3" />
+    <circle cx="62" cy="40" r="30" fill="none" stroke={INK} strokeOpacity="0.55" strokeWidth="4" />
+    <path d="M62 40 L62 14 A26 26 0 0 1 88 40 Z" fill="var(--brand-color-primary)" />
+    <path d="M62 40 L84 27" fill="none" stroke={INK} strokeOpacity="0.8" strokeWidth="4" />
+    <circle cx="62" cy="40" r="4.5" fill={INK} fillOpacity="0.85" />
   </>,
+  // 2 · Báo giá & cung cấp — tủ điều khiển
   <>
-    <rect x="14" y="38" width="44" height="38" rx="6" fill="none" stroke="var(--brand-color-border-secondary)" strokeWidth="2" />
-    <rect x="66" y="38" width="44" height="38" rx="6" fill="none" stroke="var(--brand-color-primary)" strokeWidth="2" />
-    <rect x="14" y="84" width="96" height="9" rx="4.5" fill="var(--brand-color-border-secondary)" />
+    <rect x="28" y="92" width="68" height="8" fill={INK} fillOpacity="0.18" />
+    <rect x="34" y="12" width="56" height="80" fill={INK} fillOpacity="0.1" />
+    <rect x="34" y="12" width="56" height="80" fill="none" stroke={INK} strokeOpacity="0.5" strokeWidth="4" />
+    <rect x="44" y="22" width="36" height="20" rx="2" fill="var(--brand-color-primary)" />
+    <circle cx="48" cy="54" r="3.2" fill={INK} fillOpacity="0.5" />
+    <circle cx="62" cy="54" r="3.2" fill={INK} fillOpacity="0.5" />
+    <circle cx="76" cy="54" r="3.2" fill={INK} fillOpacity="0.5" />
+    <path d="M44 70 H80 M44 78 H80" fill="none" stroke={INK} strokeOpacity="0.28" strokeWidth="4" />
+    <rect x="84" y="44" width="4" height="24" fill={INK} fillOpacity="0.6" />
   </>,
+  // 3 · Lắp đặt & bàn giao — van điều khiển trên tuyến ống đã đấu nối
   <>
-    <path d="M16 70l20 16 28-44" fill="none" stroke="var(--brand-color-primary)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-    <rect x="72" y="44" width="38" height="9" rx="4.5" fill="var(--brand-color-border-secondary)" />
-    <rect x="72" y="64" width="26" height="9" rx="4.5" fill="var(--brand-color-border-secondary)" />
+    <rect x="8" y="65" width="38" height="16" fill={INK} fillOpacity="0.16" />
+    <rect x="8" y="65" width="38" height="5" fill={INK} fillOpacity="0.34" />
+    <rect x="78" y="65" width="38" height="16" fill={INK} fillOpacity="0.16" />
+    <rect x="78" y="65" width="38" height="5" fill={INK} fillOpacity="0.34" />
+    <rect x="46" y="61" width="8" height="24" fill={INK} fillOpacity="0.4" />
+    <rect x="70" y="61" width="8" height="24" fill={INK} fillOpacity="0.4" />
+    <path d="M54 57 L62 73 L54 89 Z M70 57 L62 73 L70 89 Z" fill={INK} fillOpacity="0.55" />
+    <rect x="59" y="37" width="6" height="20" fill={INK} fillOpacity="0.45" />
+    <rect x="46" y="17" width="32" height="20" rx="3" fill="var(--brand-color-primary)" />
   </>,
 ];
 

@@ -33,11 +33,11 @@ export function Crumbs({
   return (
     <nav
       aria-label={t.label}
-      className="mb-6 flex flex-wrap items-center gap-2 text-[13px] text-text-secondary"
+      className="mb-2 flex flex-wrap items-center gap-2 text-[13px] text-text-secondary"
     >
       <Link
         href={`/${lang}`}
-        className="text-text-secondary underline-offset-[3px] transition-colors duration-150 hover:text-fg hover:underline"
+        className="inline-flex min-h-11 items-center text-text-secondary underline-offset-[3px] transition-colors duration-150 hover:text-fg hover:underline"
       >
         {t.home}
       </Link>
@@ -46,7 +46,7 @@ export function Crumbs({
         <>
           <Link
             href={listHref ?? `/${lang}/projects`}
-            className="text-text-secondary underline-offset-[3px] transition-colors duration-150 hover:text-fg hover:underline"
+            className="inline-flex min-h-11 items-center text-text-secondary underline-offset-[3px] transition-colors duration-150 hover:text-fg hover:underline"
           >
             {t.current}
           </Link>
@@ -79,7 +79,7 @@ export function ProjectsHero({
         <p className="mt-5 max-w-[540px] text-[17px] leading-relaxed text-text-secondary">
           {t.hero.lead}
         </p>
-        <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-6 border-t border-line pt-6">
+        <dl className="mt-10 grid grid-cols-3 gap-x-5 gap-y-6 border-t border-line pt-6 md:gap-x-10">
           {t.hero.stats.map((stat) => (
             <div key={stat.label}>
               <dt className="font-head text-[26px] font-extrabold leading-none text-accent-2 md:text-[28px]">

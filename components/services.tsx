@@ -76,7 +76,7 @@ export async function Services() {
                 </p>
                 <Link
                   href={`/${locale}/services/${HOME_SERVICE_SLUGS[index]}`}
-                  className="mt-6 inline-flex text-[15px] font-semibold text-link transition-colors duration-150 hover:text-link-hover"
+                  className="mt-4 inline-flex min-h-11 items-center text-[15px] font-semibold text-link transition-colors duration-150 hover:text-link-hover"
                 >
                   {t.services.readMore}
                 </Link>

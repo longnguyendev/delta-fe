@@ -40,12 +40,12 @@ export async function Footer() {
               <div className="mb-5 text-[13px] font-semibold uppercase tracking-[0.08em] text-footer-muted">
                 {col.heading}
               </div>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col">
                 {col.links.map((link) => (
                   <Link
                     key={link.label}
                     href={resolveHref(link.href, locale)}
-                    className="text-footer-text transition-colors duration-150 hover:text-footer-muted"
+                    className="inline-flex min-h-11 items-center text-footer-text transition-colors duration-150 hover:text-footer-muted"
                   >
                     {link.label}
                   </Link>

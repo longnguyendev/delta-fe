@@ -60,7 +60,7 @@ export async function Projects() {
                   <p className="mt-1 text-text-secondary">{project.body}</p>
                   <Link
                     href={`/${locale}/projects`}
-                    className="mt-4 inline-flex text-[15px] font-semibold text-link transition-colors duration-150 hover:text-link-hover"
+                    className="mt-2 inline-flex min-h-11 items-center text-[15px] font-semibold text-link transition-colors duration-150 hover:text-link-hover"
                   >
                     {t.projects.readMore}
                   </Link>
