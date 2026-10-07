@@ -17,7 +17,7 @@ export const en: Dictionary = {
     items: [
       { href: "#solutions", label: "Solutions" },
       { href: "#services", label: "Services" },
-      { href: "#projects", label: "Projects" },
+      { href: "/projects", label: "Projects" },
       { href: "#faq", label: "FAQ" },
       { href: "#contact", label: "Contact" },
     ],
@@ -179,6 +179,121 @@ export const en: Dictionary = {
         alt: "Illustration of a periodic rig maintenance project",
       },
     ],
+  },
+  projectsPage: {
+    meta: {
+      title: "Delivered projects — Delta Energy",
+      description:
+        "Delta Energy capability profile: representative works in pumping, process piping, control cabinets and maintenance of valve and instrument systems for industrial plants.",
+    },
+    crumbs: { label: "You are here", home: "Home", current: "Projects" },
+    hero: {
+      eyebrow: "Capability profile",
+      title: "Delivered projects",
+      lead: "A selection of representative works Delta Energy has delivered with partners across the industrial sector.",
+      stats: [
+        { value: "10+", label: "Years of experience" },
+        { value: "150+", label: "Projects delivered" },
+        { value: "40+", label: "Strategic partners" },
+      ],
+    },
+    filters: {
+      label: "Filter projects by service group",
+      all: "All",
+      categories: {
+        "tu-van": "Solution consulting",
+        "thiet-bi": "Equipment & materials",
+        "lap-dat": "Installation & operation",
+        "bao-tri": "Maintenance & repair",
+      },
+      showing: "Showing",
+      of: "of",
+      unit: "projects",
+      empty: "No projects in this service group yet.",
+    },
+    card: { viewDetail: "View details" },
+    featured: {
+      eyebrow: "Featured project",
+      metaLabels: {
+        handover: "Handover date",
+        location: "Location",
+        serviceGroup: "Service group",
+      },
+      ctaPrimary: "Read the case study",
+    },
+    lifecycle: {
+      eyebrow: "Delivery process",
+      title: "Four core service groups",
+      lead: "Every engagement runs through these four service groups — one point of responsibility end to end.",
+      items: [
+        {
+          title: "Engineering solution consulting",
+          body: "Survey the existing system and propose the best technical and cost-effective solution for each project.",
+        },
+        {
+          title: "Equipment & technical materials",
+          body: "Supply genuine equipment, spare parts and technical materials to the correct specification for each system.",
+        },
+        {
+          title: "System installation & operation",
+          body: "Carry out installation, commissioning and handover to the technical standards agreed for the project.",
+        },
+        {
+          title: "System maintenance & repair",
+          body: "Periodic maintenance, fault response and industrial equipment repair that minimise plant downtime.",
+        },
+      ],
+    },
+    cta: {
+      title: "Talk to us about your scope of work",
+      lead: "Send us the current condition or system drawings and Delta Energy's engineering team will survey and propose a suitable solution.",
+      quote: "Request a quote",
+      call: "Call 1900 1234",
+    },
+  },
+  projectDetail: {
+    hero: {
+      ctaQuote: "Request a quote for similar work",
+      allProjects: "View all projects",
+    },
+    metaLabels: {
+      scope: "Scope",
+      location: "Location",
+      sector: "Sector",
+      status: "Status",
+      handover: "Handover",
+    },
+    context: { eyebrow: "Background", title: "What the owner needed" },
+    scope: {
+      eyebrow: "Scope of work",
+      title: "What Delta Energy delivered",
+      lead: "From survey and equipment supply through installation to handover and maintenance guidance — one point of responsibility end to end.",
+    },
+    solution: {
+      eyebrow: "Engineering solution",
+      title: "The approach Delta Energy proposed",
+    },
+    timeline: {
+      eyebrow: "Delivery timeline",
+      title: "Key project milestones",
+      lead: "The phases of the standard Delta Energy process applied to this scope of work.",
+    },
+    outcomes: {
+      eyebrow: "Handover results",
+      title: "What Delta Energy committed to",
+      lead: "Three results Delta Energy commits to for this scope of work.",
+    },
+    related: {
+      eyebrow: "Related projects",
+      title: "Other related works",
+      linkLabel: "View details",
+    },
+    cta: {
+      title: "Need a survey for similar work?",
+      lead: "Send us the current condition or system drawings and Delta Energy's engineering team will survey and propose a suitable solution.",
+      quote: "Request a quote",
+      call: "Call 1900 1234",
+    },
   },
   faq: {
     kicker: "Before you get in touch",

@@ -14,7 +14,7 @@ export const vi = {
     items: [
       { href: "#solutions", label: "Giải pháp" },
       { href: "#services", label: "Dịch vụ" },
-      { href: "#projects", label: "Dự án" },
+      { href: "/projects", label: "Dự án" },
       { href: "#faq", label: "FAQ" },
       { href: "#contact", label: "Liên hệ" },
     ],
@@ -176,6 +176,118 @@ export const vi = {
         alt: "Minh họa dự án bảo trì định kỳ giàn máy",
       },
     ],
+  },
+  projectsPage: {
+    meta: {
+      title: "Dự án đã thực hiện — Delta Energy",
+      description:
+        "Hồ sơ năng lực Delta Energy: các công trình tiêu biểu trong lĩnh vực bơm, đường ống công nghệ, tủ điện điều khiển và bảo trì hệ thống van, thiết bị đo cho nhà máy công nghiệp.",
+    },
+    crumbs: { label: "Bạn đang ở", home: "Trang chủ", current: "Dự án" },
+    hero: {
+      eyebrow: "Hồ sơ năng lực",
+      title: "Dự án đã thực hiện",
+      lead: "Một số công trình tiêu biểu Delta Energy đã triển khai cùng đối tác trong ngành công nghiệp.",
+      stats: [
+        { value: "10+", label: "Năm kinh nghiệm" },
+        { value: "150+", label: "Dự án hoàn thành" },
+        { value: "40+", label: "Đối tác chiến lược" },
+      ],
+    },
+    filters: {
+      label: "Lọc dự án theo nhóm dịch vụ",
+      all: "Tất cả",
+      categories: {
+        "tu-van": "Tư vấn giải pháp",
+        "thiet-bi": "Thiết bị & vật tư",
+        "lap-dat": "Lắp đặt & vận hành",
+        "bao-tri": "Bảo trì & sửa chữa",
+      },
+      showing: "Đang hiển thị",
+      of: "trên",
+      unit: "dự án",
+      empty: "Chưa có dự án nào trong nhóm dịch vụ này.",
+    },
+    card: { viewDetail: "Xem chi tiết" },
+    featured: {
+      eyebrow: "Dự án tiêu biểu",
+      metaLabels: {
+        handover: "Thời điểm bàn giao",
+        location: "Địa điểm",
+        serviceGroup: "Nhóm dịch vụ",
+      },
+      ctaPrimary: "Đọc case study",
+    },
+    lifecycle: {
+      eyebrow: "Quy trình triển khai",
+      title: "Bốn nhóm dịch vụ chính",
+      lead: "Mỗi hạng mục đều đi qua bốn nhóm dịch vụ này — một đầu mối chịu trách nhiệm xuyên suốt.",
+      items: [
+        {
+          title: "Tư vấn giải pháp kỹ thuật",
+          body: "Khảo sát hiện trạng, đề xuất giải pháp tối ưu về kỹ thuật và chi phí đầu tư cho từng dự án.",
+        },
+        {
+          title: "Thiết bị & vật tư kỹ thuật",
+          body: "Cung cấp thiết bị, phụ tùng và vật tư kỹ thuật chính hãng, đúng thông số cho từng hệ thống.",
+        },
+        {
+          title: "Lắp đặt & vận hành hệ thống",
+          body: "Thi công lắp đặt, chạy thử và bàn giao hệ thống theo đúng tiêu chuẩn kỹ thuật đề ra.",
+        },
+        {
+          title: "Bảo trì & sửa chữa hệ thống",
+          body: "Bảo trì định kỳ, xử lý sự cố và sửa chữa thiết bị công nghiệp, giảm thiểu thời gian ngừng máy.",
+        },
+      ],
+    },
+    cta: {
+      title: "Trao đổi về hạng mục của bạn",
+      lead: "Gửi hiện trạng hoặc bản vẽ hệ thống, đội ngũ kỹ thuật Delta Energy sẽ khảo sát và tư vấn giải pháp phù hợp.",
+      quote: "Gửi yêu cầu báo giá",
+      call: "Gọi 1900 1234",
+    },
+  },
+  projectDetail: {
+    hero: {
+      ctaQuote: "Nhận báo giá hạng mục tương tự",
+      allProjects: "Xem tất cả dự án",
+    },
+    metaLabels: {
+      scope: "Hạng mục",
+      location: "Địa điểm",
+      sector: "Lĩnh vực",
+      status: "Trạng thái",
+      handover: "Bàn giao",
+    },
+    context: { eyebrow: "Bối cảnh", title: "Yêu cầu của chủ đầu tư" },
+    scope: {
+      eyebrow: "Phạm vi công việc",
+      title: "Các hạng mục Delta Energy thực hiện",
+      lead: "Từ khảo sát, cung cấp thiết bị, lắp đặt đến bàn giao và hướng dẫn bảo trì — một đầu mối chịu trách nhiệm xuyên suốt.",
+    },
+    solution: { eyebrow: "Giải pháp kỹ thuật", title: "Phương án Delta Energy đề xuất" },
+    timeline: {
+      eyebrow: "Tiến độ triển khai",
+      title: "Các mốc chính của dự án",
+      lead: "Các giai đoạn theo quy trình chuẩn Delta Energy áp dụng cho hạng mục này.",
+    },
+    outcomes: {
+      eyebrow: "Kết quả bàn giao",
+      title: "Kết quả Delta Energy cam kết",
+      lead: "Ba kết quả Delta Energy cam kết cho hạng mục này.",
+    },
+    related: {
+      eyebrow: "Dự án liên quan",
+      title: "Các hạng mục liên quan",
+      linkLabel: "Xem chi tiết",
+    },
+    cta: {
+      title: "Cần khảo sát một hạng mục tương tự?",
+      lead: "Gửi hiện trạng hoặc bản vẽ hệ thống, đội ngũ kỹ thuật Delta Energy sẽ khảo sát và đề xuất giải pháp phù hợp.",
+      quote: "Gửi yêu cầu báo giá",
+      call: "Gọi 1900 1234",
+    },
   },
   faq: {
     kicker: "Trước khi liên hệ",

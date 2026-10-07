@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { lang } from "next/root-params";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { Container, SectionHead } from "./ui";
 
@@ -23,7 +24,7 @@ const PROJECT_MEDIA = [
 ];
 
 export async function Projects() {
-  const t = await getDictionary();
+  const [locale, t] = await Promise.all([lang(), getDictionary()]);
 
   return (
     <section id="projects" className="py-14 md:py-[88px]">
@@ -58,7 +59,7 @@ export async function Projects() {
                   <h3 className="mt-2 text-[17px]">{project.title}</h3>
                   <p className="mt-1 text-text-secondary">{project.body}</p>
                   <Link
-                    href="#contact"
+                    href={`/${locale}/projects`}
                     className="mt-4 inline-flex text-[15px] font-semibold text-link transition-colors duration-150 hover:text-link-hover"
                   >
                     {t.projects.readMore}

@@ -31,18 +31,28 @@ export function Kicker({
   );
 }
 
-/** Centered section header — eyebrow → headline → support text. */
+/**
+ * Section header — eyebrow → headline → support text.
+ * Centered by default (landing bands); `align="start"` for the document-style
+ * layouts on the projects pages.
+ */
 export function SectionHead({
   kicker,
   title,
   lead,
+  align = "center",
 }: {
   kicker: string;
   title: ReactNode;
   lead?: ReactNode;
+  align?: "center" | "start";
 }) {
+  const centered = align === "center";
+
   return (
-    <div className="mx-auto mb-12 max-w-[680px] text-center">
+    <div
+      className={`mb-12 max-w-[680px] ${centered ? "mx-auto text-center" : ""}`}
+    >
       <Kicker>{kicker}</Kicker>
       <h2 className="mt-2.5 text-[clamp(26px,3.4vw,36px)] tracking-[-0.015em]">
         {title}

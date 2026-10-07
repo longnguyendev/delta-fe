@@ -54,11 +54,29 @@ function LanguageSwitcher({
 /** Sticky 76px header; under 900px the nav becomes an off-canvas drawer. */
 export function Header({ t, lang }: HeaderProps) {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const onHome = pathname === `/${lang}`;
+
+  /**
+   * Nav items are home-page anchors (`#services`) plus real routes (`/projects`).
+   * On the home page the anchors stay in-page; anywhere else they — and the
+   * logo — need the locale prefix, or the browser looks for the anchor here.
+   */
+  function resolveHref(href: string) {
+    if (href.startsWith("#")) return onHome ? href : `/${lang}${href}`;
+    if (href.startsWith("/")) return `/${lang}${href}`;
+
+    return href;
+  }
 
   return (
     <header className="sticky top-0 z-20 border-b border-line bg-container">
       <Container className="flex h-[76px] items-center justify-between gap-6">
-        <Link href="#top" aria-label={t.home} className="shrink-0">
+        <Link
+          href={resolveHref("#top")}
+          aria-label={t.home}
+          className="shrink-0"
+        >
           <Image
             src="/logos/delta-energy-lockup.svg"
             alt="Delta Energy"
@@ -71,12 +89,12 @@ export function Header({ t, lang }: HeaderProps) {
 
         <nav
           aria-label={t.label}
-          className="hidden items-center gap-7 min-[900px]:flex"
+          className="hidden items-center gap-7 min-[56.25rem]:flex"
         >
           {t.items.map((item) => (
             <Link
               key={item.href}
-              href={item.href}
+              href={resolveHref(item.href)}
               className="text-sm font-medium text-text-secondary transition-colors duration-150 hover:text-text"
             >
               {item.label}
@@ -85,11 +103,11 @@ export function Header({ t, lang }: HeaderProps) {
         </nav>
 
         <div className="flex items-center gap-3">
-          <div className="hidden min-[900px]:block">
+          <div className="hidden min-[56.25rem]:block">
             <LanguageSwitcher current={lang} t={t} />
           </div>
           {/* Wrapper carries the breakpoint — `ButtonLink` always sets `inline-flex`. */}
-          <div className="hidden min-[1100px]:block">
+          <div className="hidden min-[68.75rem]:block">
             <ButtonLink href="tel:19001234" variant="ghost">
               {t.call}
             </ButtonLink>
@@ -99,7 +117,7 @@ export function Header({ t, lang }: HeaderProps) {
             onClick={() => setOpen(true)}
             aria-label={t.openMenu}
             aria-expanded={open}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-line text-fg min-[900px]:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-line text-fg min-[56.25rem]:hidden"
           >
             <svg
               viewBox="0 0 24 24"
@@ -122,7 +140,7 @@ export function Header({ t, lang }: HeaderProps) {
           role="dialog"
           aria-modal="true"
           aria-label={t.drawerLabel}
-          className="fixed inset-0 z-50 min-[900px]:hidden"
+          className="fixed inset-0 z-50 min-[56.25rem]:hidden"
         >
           <button
             type="button"
@@ -163,7 +181,7 @@ export function Header({ t, lang }: HeaderProps) {
               {t.items.map((item) => (
                 <Link
                   key={item.href}
-                  href={item.href}
+                  href={resolveHref(item.href)}
                   onClick={() => setOpen(false)}
                   className="border-b border-line py-4 text-base font-medium text-text-secondary transition-colors duration-150 hover:text-text"
                 >

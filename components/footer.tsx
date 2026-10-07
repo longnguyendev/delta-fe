@@ -1,11 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
+import { lang } from "next/root-params";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { Container } from "./ui";
 
+/**
+ * The footer renders on every route, so its home-page anchors need the locale
+ * prefix — bare `#services` would look for that anchor on `/vi/projects`.
+ */
+function resolveHref(href: string, locale: string) {
+  if (href.startsWith("#")) return `/${locale}${href}`;
+  if (href.startsWith("/")) return `/${locale}${href}`;
+
+  return href;
+}
+
 /** Dark #1F2937 band — #D7DBDF is the lightest text allowed (CLAUDE.md §4). */
 export async function Footer() {
-  const t = await getDictionary();
+  const [locale, t] = await Promise.all([lang(), getDictionary()]);
 
   return (
     <footer className="bg-fg py-12 text-sm md:py-16">
@@ -32,7 +44,7 @@ export async function Footer() {
                 {col.links.map((link) => (
                   <Link
                     key={link.label}
-                    href={link.href}
+                    href={resolveHref(link.href, locale)}
                     className="text-footer-text transition-colors duration-150 hover:text-footer-muted"
                   >
                     {link.label}
