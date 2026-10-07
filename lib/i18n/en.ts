@@ -344,7 +344,60 @@ export const en: Dictionary = {
       },
     ],
     footnote:
-      "The site does not support online ordering yet. Please contact us by hotline or Zalo to receive a quote.",
+      "The site does not support online ordering yet. Please contact us by hotline, Zalo, or the form below to receive a quote.",
+  },
+  contactForm: {
+    panel: {
+      brand: "Delta Energy",
+      title: "Delta Energy — fast replies, clear quotes",
+      bullets: [
+        "Reply within the working day",
+        "Line-item quotes with clear detail",
+        "Engineering support through rollout",
+      ],
+    },
+    form: {
+      title: "Send a quote request",
+      support:
+        "Fill in your details and we will send a detailed quote within the working day.",
+      name: {
+        label: "Full name",
+        placeholder: "Jane Doe",
+        required: "Please enter your name.",
+      },
+      email: {
+        label: "Email",
+        placeholder: "you@company.com",
+        required: "Please enter your email.",
+        invalid: "That email doesn't look right — try name@company.com.",
+      },
+      phone: {
+        label: "Phone number",
+        placeholder: "0901 234 567",
+        optional: "Optional",
+        invalid:
+          "That phone number doesn't look right — try 0901 234 567 or +84 901 234 567.",
+      },
+      message: {
+        label: "What do you need?",
+        placeholder:
+          "Describe your requirement — equipment to quote, scale, expected timing…",
+        required: "Please describe your request.",
+      },
+      submit: "Send request",
+      submitting: "Sending…",
+      privacy:
+        "The details you provide are used to contact you and send your quote.",
+    },
+    success: {
+      title: "Request received",
+      body: "We reply within the working day and send a detailed quote based on what you shared.",
+      reset: "Send another request",
+    },
+    error: {
+      generic:
+        "We couldn't send your request. Please try again, or call the hotline 1900 1234 for help.",
+    },
   },
   finalCta: {
     title: "Ready for more stable operations?",

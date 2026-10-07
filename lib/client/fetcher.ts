@@ -1,26 +1,24 @@
 type FetchOptions = {
-  // eslint-disable-next-line no-undef
   cache?: RequestCache;
-  // eslint-disable-next-line no-undef
+
   next?: NextFetchRequestConfig;
 };
 
 export type RequestInit = {
-  // eslint-disable-next-line no-undef
   headers: (HeadersInit & FetchOptions) | FetchOptions;
 };
 
 export const fetcher = <TData, TVariables>(
   query: string,
   variables?: TVariables,
-  options?: RequestInit['headers']
+  options?: RequestInit["headers"],
 ) => {
   return async (): Promise<TData> => {
     const { next, cache, ...restOptions } = options || {};
     const res = await fetch(`${process.env.NEXT_PUBLIC_API}/graphql`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         ...restOptions,
       },
       body: JSON.stringify({ query, variables }),

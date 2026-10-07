@@ -101,3 +101,29 @@ export function ButtonLink({
     </Link>
   );
 }
+
+type ButtonProps = Omit<ComponentProps<"button">, "className"> & {
+  variant?: keyof (typeof buttonStyles)["variant"];
+  size?: keyof (typeof buttonStyles)["size"];
+  className?: string;
+};
+
+/** Action button — the same visual system as `ButtonLink`, for forms. */
+export function Button({
+  variant = "primary",
+  size = "md",
+  className = "",
+  type = "button",
+  children,
+  ...rest
+}: ButtonProps) {
+  return (
+    <button
+      type={type}
+      className={`${buttonStyles.base} ${buttonStyles.variant[variant]} ${buttonStyles.size[size]} ${className}`}
+      {...rest}
+    >
+      {children}
+    </button>
+  );
+}

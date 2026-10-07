@@ -15,7 +15,6 @@ export function convertCSSToObject(cssString?: string): CSSProperties {
       const trimmedValue = value.trim();
 
       // Convert numeric values to numbers, leave the rest as strings
-      // eslint-disable-next-line no-restricted-globals
       cssObject[key] = isNaN(Number(trimmedValue))
         ? trimmedValue
         : Number(trimmedValue);

@@ -1,15 +1,17 @@
+import { lang } from "next/root-params";
 import { getDictionary } from "@/lib/i18n/dictionaries";
+import { ContactForm } from "./contact-form";
 import { ButtonLink, Container, SectionHead } from "./ui";
 
 /** Destinations are language-independent — zipped with `t.contact.items`. */
 const CHANNEL_TARGETS = [
   { href: "tel:19001234", highlighted: false },
   { href: "#contact", highlighted: true },
-  { href: "#contact", highlighted: false },
+  { href: "#contact-form", highlighted: false },
 ];
 
 export async function Contact() {
-  const t = await getDictionary();
+  const [locale, t] = await Promise.all([lang(), getDictionary()]);
 
   return (
     <section id="contact" className="py-14 md:py-[88px]">
@@ -52,6 +54,7 @@ export async function Contact() {
             </article>
           ))}
         </div>
+        <ContactForm t={t.contactForm} lang={locale} />
         <p className="mt-6 text-center text-sm text-text-tertiary">
           {t.contact.footnote}
         </p>

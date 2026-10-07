@@ -338,7 +338,60 @@ export const vi = {
       },
     ],
     footnote:
-      "Trang hiện chưa hỗ trợ đặt mua trực tuyến. Quý khách vui lòng liên hệ hotline hoặc Zalo để nhận báo giá.",
+      "Trang hiện chưa hỗ trợ đặt mua trực tuyến. Quý khách vui lòng liên hệ hotline, Zalo hoặc gửi yêu cầu qua biểu mẫu bên dưới để nhận báo giá.",
+  },
+  contactForm: {
+    panel: {
+      brand: "Delta Energy",
+      title: "Delta Energy — phản hồi nhanh, báo giá minh bạch",
+      bullets: [
+        "Phản hồi trong ngày làm việc",
+        "Báo giá chi tiết theo từng hạng mục",
+        "Hỗ trợ kỹ thuật khi triển khai",
+      ],
+    },
+    form: {
+      title: "Gửi yêu cầu báo giá",
+      support:
+        "Điền thông tin bên dưới, chúng tôi gửi báo giá chi tiết trong ngày làm việc.",
+      name: {
+        label: "Họ và tên",
+        placeholder: "Nguyễn Văn A",
+        required: "Vui lòng nhập họ và tên.",
+      },
+      email: {
+        label: "Email",
+        placeholder: "ten@congty.com",
+        required: "Vui lòng nhập email.",
+        invalid: "Email chưa đúng định dạng — ví dụ: ten@congty.com.",
+      },
+      phone: {
+        label: "Số điện thoại",
+        placeholder: "0901 234 567",
+        optional: "Không bắt buộc",
+        invalid:
+          "Số điện thoại chưa đúng định dạng — ví dụ: 0901 234 567 hoặc +84 901 234 567.",
+      },
+      message: {
+        label: "Nội dung yêu cầu",
+        placeholder:
+          "Mô tả nhu cầu của Quý khách — thiết bị cần báo giá, quy mô, thời gian dự kiến…",
+        required: "Vui lòng nhập nội dung yêu cầu.",
+      },
+      submit: "Gửi yêu cầu",
+      submitting: "Đang gửi…",
+      privacy:
+        "Thông tin Quý khách cung cấp được dùng để liên hệ và gửi báo giá.",
+    },
+    success: {
+      title: "Đã nhận yêu cầu của Quý khách",
+      body: "Chúng tôi phản hồi trong ngày làm việc và gửi báo giá chi tiết theo nội dung Quý khách cung cấp.",
+      reset: "Gửi yêu cầu khác",
+    },
+    error: {
+      generic:
+        "Không gửi được yêu cầu. Quý khách vui lòng thử lại, hoặc gọi hotline 1900 1234 để được hỗ trợ.",
+    },
   },
   finalCta: {
     title: "Sẵn sàng cho hệ thống vận hành ổn định hơn?",
