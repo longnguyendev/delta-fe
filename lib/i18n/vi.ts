@@ -13,7 +13,7 @@ export const vi = {
     home: "Delta Energy — về đầu trang",
     items: [
       { href: "#solutions", label: "Giải pháp" },
-      { href: "#services", label: "Dịch vụ" },
+      { href: "/services", label: "Dịch vụ" },
       { href: "/projects", label: "Dự án" },
       { href: "#faq", label: "FAQ" },
       { href: "#contact", label: "Liên hệ" },
@@ -289,6 +289,102 @@ export const vi = {
       call: "Gọi 1900 1234",
     },
   },
+  servicesPage: {
+    meta: {
+      title: "Dịch vụ kỹ thuật cốt lõi — Delta Energy",
+      description:
+        "Bốn nhóm dịch vụ Delta Energy: tư vấn giải pháp kỹ thuật, thiết bị & vật tư, lắp đặt & vận hành, bảo trì & sửa chữa hệ thống cho nhà máy công nghiệp.",
+    },
+    crumbs: { label: "Bạn đang ở", home: "Trang chủ", current: "Dịch vụ" },
+    hero: {
+      eyebrow: "Lĩnh vực hoạt động",
+      title: "Dịch vụ kỹ thuật cốt lõi",
+      lead: "Bốn nhóm dịch vụ chính giúp khách hàng vận hành hệ thống công nghiệp an toàn, hiệu quả và đúng tiến độ.",
+      stats: [
+        { value: "10+", label: "Năm kinh nghiệm" },
+        { value: "150+", label: "Dự án hoàn thành" },
+        { value: "40+", label: "Đối tác chiến lược" },
+      ],
+    },
+    list: {
+      eyebrow: "Bốn nhóm dịch vụ",
+      title: "Từ khảo sát đến bảo trì vận hành",
+      lead: "Delta Energy đồng hành cùng khách hàng xuyên suốt vòng đời hệ thống — một đầu mối chịu trách nhiệm từ tư vấn giải pháp, cung cấp thiết bị, lắp đặt đến bảo trì vận hành.",
+      viewDetail: "Xem chi tiết dịch vụ",
+    },
+    products: {
+      eyebrow: "Sản phẩm theo nhóm dịch vụ",
+      title: "Thiết bị & vật tư kỹ thuật",
+      lead: "Sản phẩm được phân theo từng danh mục, có thông tin và hình ảnh chi tiết. Vui lòng liên hệ để được tư vấn báo giá — trang hiện chưa hỗ trợ đặt mua trực tuyến.",
+      quote: "Nhận báo giá",
+    },
+    commitments: {
+      eyebrow: "Cam kết dịch vụ",
+      title: "Ba điều Delta Energy giữ ở mọi hạng mục",
+      items: [
+        {
+          title: "Giảm thiểu thời gian ngừng máy",
+          body: "Công tác bảo trì và xử lý sự cố được tổ chức để hệ thống sớm trở lại trạng thái vận hành ổn định.",
+        },
+        {
+          title: "Thiết bị chính hãng, đúng thông số",
+          body: "Thiết bị, phụ tùng và vật tư được cung cấp đúng chủng loại theo hồ sơ kỹ thuật của từng hệ thống.",
+        },
+        {
+          title: "Đúng tiêu chuẩn kỹ thuật đề ra",
+          body: "Mỗi hạng mục đều có hồ sơ nghiệm thu và tài liệu bàn giao đầy đủ cho nhà máy.",
+        },
+      ],
+    },
+    cta: {
+      title: "Cần tư vấn một nhóm dịch vụ?",
+      lead: "Gửi hiện trạng hoặc bản vẽ hệ thống, đội ngũ kỹ thuật Delta Energy sẽ khảo sát và đề xuất giải pháp phù hợp.",
+      quote: "Gửi yêu cầu báo giá",
+      call: "Gọi 1900 1234",
+    },
+  },
+  serviceDetail: {
+    hero: {
+      eyebrow: "Nhóm dịch vụ",
+      ctaQuote: "Nhận báo giá dịch vụ",
+      allServices: "Xem tất cả dịch vụ",
+    },
+    metaLabels: {
+      group: "Nhóm dịch vụ",
+      scope: "Phạm vi",
+      equipment: "Thiết bị",
+      acceptance: "Nghiệm thu",
+      handover: "Bàn giao",
+    },
+    context: { eyebrow: "Phạm vi công việc" },
+    scope: {
+      eyebrow: "Bốn hạng mục",
+      title: "Delta Energy thực hiện trong nhóm dịch vụ này",
+      lead: "Từ khảo sát và chốt phương án đến bàn giao hồ sơ — mỗi bước đều có biên bản và tiêu chuẩn nghiệm thu rõ ràng.",
+    },
+    system: { eyebrow: "Thiết bị & hệ thống đảm nhận" },
+    timeline: {
+      eyebrow: "Quy trình thực hiện",
+      title: "Bốn giai đoạn triển khai",
+      lead: "Quy trình chuẩn Delta Energy áp dụng cho mọi hạng mục thuộc nhóm dịch vụ này.",
+    },
+    projects: {
+      eyebrow: "Dự án đã triển khai",
+      title: "Hạng mục cùng nhóm dịch vụ",
+      linkLabel: "Đọc case study",
+    },
+    others: {
+      eyebrow: "Dịch vụ liên quan",
+      title: "Các nhóm dịch vụ khác",
+      viewDetail: "Xem chi tiết dịch vụ",
+    },
+    cta: {
+      title: "Cần khảo sát một hạng mục tương tự?",
+      lead: "Gửi hiện trạng hoặc bản vẽ hệ thống, đội ngũ kỹ thuật Delta Energy sẽ khảo sát và đề xuất giải pháp phù hợp.",
+      quote: "Gửi yêu cầu báo giá",
+      call: "Gọi 1900 1234",
+    },
+  },
   faq: {
     kicker: "Trước khi liên hệ",
     title: "Câu hỏi thường gặp từ khách hàng",
@@ -408,7 +504,7 @@ export const vi = {
         heading: "Điều hướng",
         links: [
           { href: "#solutions", label: "Giải pháp" },
-          { href: "#services", label: "Dịch vụ" },
+          { href: "/services", label: "Dịch vụ" },
           { href: "#projects", label: "Dự án" },
           { href: "#faq", label: "FAQ" },
         ],

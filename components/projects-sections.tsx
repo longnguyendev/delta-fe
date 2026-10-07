@@ -16,16 +16,19 @@ export const BLUEPRINT_GRID = {
   backgroundSize: "40px 40px, 40px 40px",
 } as const;
 
-/** Breadcrumb — `Trang chủ / Dự án [/ tên dự án]`. */
+/** Breadcrumb — `Trang chủ / <danh sách> [/ <tên>]`. */
 export function Crumbs({
   t,
   lang,
   current,
+  listHref,
 }: {
-  t: Dictionary["projectsPage"]["crumbs"];
+  t: Dictionary["projectsPage"]["crumbs"] | Dictionary["servicesPage"]["crumbs"];
   lang: string;
-  /** Tiêu đề dự án — chỉ truyền ở trang chi tiết. */
+  /** Tiêu đề mục — chỉ truyền ở trang chi tiết. */
   current?: string;
+  /** Trang danh sách của mục — mặc định là danh sách dự án. */
+  listHref?: string;
 }) {
   return (
     <nav
@@ -42,7 +45,7 @@ export function Crumbs({
       {current ? (
         <>
           <Link
-            href={`/${lang}/projects`}
+            href={listHref ?? `/${lang}/projects`}
             className="text-text-secondary underline-offset-[3px] transition-colors duration-150 hover:text-fg hover:underline"
           >
             {t.current}
@@ -203,7 +206,11 @@ export function CtaDarkBand({
   t,
   contactHref,
 }: {
-  t: Dictionary["projectsPage"]["cta"] | Dictionary["projectDetail"]["cta"];
+  t:
+    | Dictionary["projectsPage"]["cta"]
+    | Dictionary["projectDetail"]["cta"]
+    | Dictionary["servicesPage"]["cta"]
+    | Dictionary["serviceDetail"]["cta"];
   contactHref: string;
 }) {
   return (

@@ -1,7 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
+import { lang } from "next/root-params";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { Container, Kicker, SectionHead } from "./ui";
+
+/**
+ * Slug trang chi tiết của từng mục, zip với `t.services.items` theo index.
+ * Thứ tự band trang chủ khác thứ tự canonical (thiết bị đứng trước tư vấn),
+ * nên không dùng thẳng `getServices()` ở đây.
+ */
+const HOME_SERVICE_SLUGS = ["thiet-bi", "tu-van", "lap-dat", "bao-tri"];
 
 /** Artwork is language-independent — zipped with `t.services.items` by index. */
 const SERVICE_MEDIA = [
@@ -28,7 +36,7 @@ const SERVICE_MEDIA = [
 ];
 
 export async function Services() {
-  const t = await getDictionary();
+  const [locale, t] = await Promise.all([lang(), getDictionary()]);
 
   return (
     <section
@@ -67,7 +75,7 @@ export async function Services() {
                   {service.body}
                 </p>
                 <Link
-                  href="#contact"
+                  href={`/${locale}/services/${HOME_SERVICE_SLUGS[index]}`}
                   className="mt-6 inline-flex text-[15px] font-semibold text-link transition-colors duration-150 hover:text-link-hover"
                 >
                   {t.services.readMore}

@@ -16,7 +16,7 @@ export const en: Dictionary = {
     home: "Delta Energy — back to top",
     items: [
       { href: "#solutions", label: "Solutions" },
-      { href: "#services", label: "Services" },
+      { href: "/services", label: "Services" },
       { href: "/projects", label: "Projects" },
       { href: "#faq", label: "FAQ" },
       { href: "#contact", label: "Contact" },
@@ -295,6 +295,102 @@ export const en: Dictionary = {
       call: "Call 1900 1234",
     },
   },
+  servicesPage: {
+    meta: {
+      title: "Core engineering services — Delta Energy",
+      description:
+        "Delta Energy's four service groups: engineering solution consulting, equipment & materials, installation & operation, and system maintenance & repair for industrial plants.",
+    },
+    crumbs: { label: "You are here", home: "Home", current: "Services" },
+    hero: {
+      eyebrow: "Areas of operation",
+      title: "Core engineering services",
+      lead: "Four service groups that help customers run industrial systems safely, efficiently and on schedule.",
+      stats: [
+        { value: "10+", label: "Years of experience" },
+        { value: "150+", label: "Projects delivered" },
+        { value: "40+", label: "Strategic partners" },
+      ],
+    },
+    list: {
+      eyebrow: "Four service groups",
+      title: "From survey to operation & maintenance",
+      lead: "Delta Energy works with customers across the whole system lifecycle — one point of responsibility from solution consulting and equipment supply through installation to maintenance.",
+      viewDetail: "View service details",
+    },
+    products: {
+      eyebrow: "Products by service group",
+      title: "Equipment & technical materials",
+      lead: "Products are organised by category, with detailed information and images. Please contact us for a quote — the site does not support online ordering yet.",
+      quote: "Request a quote",
+    },
+    commitments: {
+      eyebrow: "Service commitments",
+      title: "Three things Delta Energy holds to on every scope",
+      items: [
+        {
+          title: "Minimise downtime",
+          body: "Maintenance and fault response are organised so the system returns to stable operation as soon as possible.",
+        },
+        {
+          title: "Genuine equipment, correct specification",
+          body: "Equipment, spare parts and materials are supplied to the exact type called for in each system's technical file.",
+        },
+        {
+          title: "To the technical standard agreed",
+          body: "Every scope carries acceptance records and the full handover documentation for the plant.",
+        },
+      ],
+    },
+    cta: {
+      title: "Need advice on a service group?",
+      lead: "Send us the current condition or system drawings and Delta Energy's engineering team will survey and propose a suitable solution.",
+      quote: "Request a quote",
+      call: "Call 1900 1234",
+    },
+  },
+  serviceDetail: {
+    hero: {
+      eyebrow: "Service group",
+      ctaQuote: "Request a quote for this service",
+      allServices: "View all services",
+    },
+    metaLabels: {
+      group: "Service group",
+      scope: "Scope",
+      equipment: "Equipment",
+      acceptance: "Acceptance",
+      handover: "Handover",
+    },
+    context: { eyebrow: "Scope of work" },
+    scope: {
+      eyebrow: "Four work items",
+      title: "What Delta Energy delivers in this service group",
+      lead: "From survey and agreement of the approach through to documentation handover — every step carries records and clear acceptance standards.",
+    },
+    system: { eyebrow: "Equipment & systems covered" },
+    timeline: {
+      eyebrow: "Delivery process",
+      title: "Four delivery stages",
+      lead: "The standard Delta Energy process applied to every scope in this service group.",
+    },
+    projects: {
+      eyebrow: "Delivered projects",
+      title: "Work in the same service group",
+      linkLabel: "Read the case study",
+    },
+    others: {
+      eyebrow: "Related services",
+      title: "Other service groups",
+      viewDetail: "View service details",
+    },
+    cta: {
+      title: "Need a survey for similar work?",
+      lead: "Send us the current condition or system drawings and Delta Energy's engineering team will survey and propose a suitable solution.",
+      quote: "Request a quote",
+      call: "Call 1900 1234",
+    },
+  },
   faq: {
     kicker: "Before you get in touch",
     title: "Frequently asked questions",
@@ -414,7 +510,7 @@ export const en: Dictionary = {
         heading: "Navigation",
         links: [
           { href: "#solutions", label: "Solutions" },
-          { href: "#services", label: "Services" },
+          { href: "/services", label: "Services" },
           { href: "#projects", label: "Projects" },
           { href: "#faq", label: "FAQ" },
         ],
