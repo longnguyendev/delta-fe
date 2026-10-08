@@ -143,6 +143,20 @@
 
   body {
     @apply bg-layout text-text antialiased;
+    /*
+     * Đặt ở gốc để mọi phần tử chữ thừa hưởng (`overflow-wrap` là thuộc
+     * tính di truyền).
+     *
+     * Bình thường luật này KHÔNG đổi gì: `anywhere` chỉ bẻ khi một từ đơn
+     * lẻ không lọt nổi dòng — tức chỉ xảy ra khi máy phóng chữ / zoom lớn.
+     * Khác `break-word`, nó tham gia vào phép tính min-content, nên một từ
+     * dài ("150+", "hotline") không còn tạo ra sàn chiều rộng: ô lưới và
+     * ô flex co lại được thay vì đẩy cả trang rộng hơn viewport. Đó chính
+     * là cơ chế làm "card phình to" khi zoom.
+     *
+     * `text-balance` vẫn bị cấm: Chrome bẻ giữa từ tiếng Việt.
+     */
+    overflow-wrap: anywhere;
   }
 
   h1,
@@ -151,23 +165,12 @@
   h4 {
     @apply font-head font-extrabold text-fg;
     line-height: var(--brand-line-height-heading);
-    /* Không overflow-wrap ở heading: nó cho phép text-wrap:balance bẻ giữa từ */
     /*
-     * Mọi heading bị giới hạn 65vw ở mobile: nếu trình duyệt phóng chữ
-     * (font boost / text scaling), dòng vẫn không tràn ra ngoài màn hình.
-     * Các heading cần khổ rộng hơn đã đặt max-w riêng bằng utility (lớp
-     * utilities thắng base), và bản thân utility cũng dùng cùng ngưỡng này.
+     * Heading là block, tự xuống dòng trong khổ của phần tử cha — nó không
+     * thể rộng hơn cha, nên KHÔNG đặt max-width theo vw ở đây: khổ bị bó
+     * hẹp làm heading căn giữa lệch trái khỏi dòng mô tả bên dưới.
      */
-    max-width: 65vw;
-  }
-
-  @media (min-width: 48rem) {
-    h1,
-    h2,
-    h3,
-    h4 {
-      max-width: none;
-    }
+    overflow-wrap: anywhere;
   }
 
   a {
@@ -202,6 +205,8 @@ html {
 body {
   background-color: var(--brand-color-bg-layout);
   color: var(--brand-color-text);
+  /* Xem chú thích ở @layer base — chặn từ dài đẩy trang rộng ra. */
+  overflow-wrap: anywhere;
 }
 
 img,

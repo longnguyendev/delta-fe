@@ -42,7 +42,7 @@ export function ServiceDetailHero({
         <Kicker>
           {t.hero.eyebrow} {getServiceNumber(service)}
         </Kicker>
-        <h1 className="mt-2.5 max-w-[65vw] text-pretty text-[clamp(32px,4.6vw,50px)] leading-[1.12] tracking-[-0.01em] md:max-w-[20ch]">
+        <h1 className="mt-2.5 text-pretty text-[clamp(32px,4.6vw,50px)] leading-[1.12] tracking-[-0.01em] md:max-w-[20ch]">
           {service.name}
         </h1>
         <p className="mt-5 max-w-[540px] text-[17px] leading-relaxed text-text-secondary">
@@ -185,9 +185,16 @@ export function ServiceDetailSystem({
             {kit.map((item) => (
               <li
                 key={item.label}
-                className="flex items-baseline gap-3.5 border-b border-line py-3.5 text-[14.5px] text-text-secondary"
+                className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1 border-b border-line py-3.5 text-[14.5px] text-text-secondary"
               >
-                <b className="min-w-[118px] flex-none font-head text-[13px] font-extrabold text-fg">
+                {/*
+                  Không dùng `flex-none`: nhãn thành cột cứng, ở cỡ chữ phóng
+                  to nó rộng hơn cả màn hình và kéo hàng tràn ngang. Để mặc
+                  định co được + cho hàng xuống dòng thì nhãn và mô tả tự
+                  tách dòng khi hết chỗ; ở khổ chuẩn `min-w` giữ nguyên cột
+                  118px nên hình dạng không đổi.
+                */}
+                <b className="min-w-[118px] font-head text-[13px] font-extrabold text-fg">
                   {item.label}
                 </b>
                 <span>{item.body}</span>

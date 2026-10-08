@@ -18,7 +18,7 @@ export async function FinalCta() {
             className="absolute -bottom-[120px] -left-[80px] h-[260px] w-[260px] rounded-full bg-primary-active opacity-45"
           />
           <div className="relative">
-            <h2 className="mx-auto max-w-[60vw] text-pretty text-[clamp(28px,4vw,46px)] leading-[1.08] tracking-[-0.02em] text-on-primary md:max-w-[20ch]">
+            <h2 className="mx-auto text-pretty text-[clamp(28px,4vw,46px)] leading-[1.08] tracking-[-0.02em] text-on-primary md:max-w-[20ch]">
               {t.finalCta.title}
             </h2>
             <p className="mx-auto mt-6 max-w-[540px] text-lg text-on-primary/90">

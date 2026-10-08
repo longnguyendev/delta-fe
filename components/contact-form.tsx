@@ -135,13 +135,13 @@ export function ContactForm({
           <span className="inline-flex h-[30px] w-[30px] items-center justify-center rounded-md bg-white/20 text-on-primary">
             <CheckMark size={14} />
           </span>
-          <span className="font-head text-lg font-extrabold tracking-[-0.01em] whitespace-nowrap text-on-primary">
+          <span className="font-head text-lg font-extrabold tracking-[-0.01em] text-on-primary">
             {t.panel.brand}
           </span>
         </div>
 
         <div className="relative">
-          <h3 className="max-w-[65vw] text-[clamp(22px,2.6vw,30px)] leading-[1.15] tracking-[-0.02em] text-on-primary md:max-w-[24ch]">
+          <h3 className="text-[clamp(22px,2.6vw,30px)] leading-[1.15] tracking-[-0.02em] text-on-primary md:max-w-[24ch]">
             {t.panel.title}
           </h3>
           <ul className="mt-6 list-none p-0">

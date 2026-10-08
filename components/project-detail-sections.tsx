@@ -40,7 +40,7 @@ export function DetailHero({
           listHref={`/${lang}/projects`}
         />
         <Kicker>{project.tag}</Kicker>
-        <h1 className="mt-2.5 max-w-[65vw] text-pretty text-[clamp(32px,4.6vw,50px)] leading-[1.12] tracking-[-0.01em] md:max-w-[20ch]">
+        <h1 className="mt-2.5 text-pretty text-[clamp(32px,4.6vw,50px)] leading-[1.12] tracking-[-0.01em] md:max-w-[20ch]">
           {project.title}
         </h1>
         <p className="mt-5 max-w-[540px] text-[17px] leading-relaxed text-text-secondary">

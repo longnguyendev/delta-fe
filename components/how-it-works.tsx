@@ -62,7 +62,13 @@ export async function HowItWorks() {
         <div className="grid gap-8 md:grid-cols-3 md:gap-12">
           {t.process.items.map((step, index) => (
             <div key={step.title} className="flex flex-col gap-5">
-              <div className="aspect-[124/108] rounded-md border border-line bg-layout p-6">
+              {/*
+                Đệm theo % chứ không phải 24px cố định: khung co giãn theo
+                bề rộng cột, nên đệm cố định sẽ ăn mất tỉ lệ của hình khi
+                khung nhỏ lại (lưới 3 cột ở tablet) hoặc khi trình duyệt zoom.
+                7% của 342px = 24px — đúng bằng đệm thiết kế ở khổ chuẩn.
+              */}
+              <div className="aspect-[124/108] rounded-md border border-line bg-layout p-[7%]">
                 <svg
                   viewBox="0 0 124 108"
                   width="100%"
@@ -75,7 +81,13 @@ export async function HowItWorks() {
               </div>
               <div>
                 <div className="mb-2 flex items-center gap-3">
-                  <span className="inline-flex h-[26px] w-[26px] items-center justify-center rounded-full bg-primary text-sm font-semibold leading-none text-on-primary">
+                  {/*
+                    `min-h`/`min-w` chứ không phải `h`/`w`: ở cỡ chữ phóng
+                    to, chữ số to hơn vòng tròn 26px và tràn ra ngoài. Cho
+                    phép hộp lớn lên thì huy hiệu chuyển thành viên thuốc
+                    thay vì cắt chữ — ở khổ chuẩn nó vẫn là hình tròn 26px.
+                  */}
+                  <span className="inline-flex min-h-[26px] min-w-[26px] items-center justify-center rounded-full bg-primary px-1.5 py-0.5 text-sm font-semibold leading-none text-on-primary">
                     {index + 1}
                   </span>
                   <h3 className="text-xl">{step.title}</h3>

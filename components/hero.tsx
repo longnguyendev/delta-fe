@@ -12,7 +12,7 @@ export async function Hero() {
           <span className="inline-flex h-8 items-center rounded-sm border border-primary-border bg-primary-bg px-3 text-sm font-semibold leading-none text-accent-accessible">
             {t.hero.eyebrow}
           </span>
-          <h1 className="mt-6 max-w-[65vw] text-pretty text-[clamp(32px,4.6vw,50px)] leading-[1.12] tracking-[-0.01em] md:max-w-[18ch]">
+          <h1 className="mt-6 text-pretty text-[clamp(32px,4.6vw,50px)] leading-[1.12] tracking-[-0.01em] md:max-w-[18ch]">
             {t.hero.h1Pre}
             <span className="text-accent-2">{t.hero.h1Accent}</span>
           </h1>
@@ -27,9 +27,16 @@ export async function Hero() {
               {t.hero.ctaSecondary}
             </ButtonLink>
           </div>
+          {/*
+            `wrap-anywhere` trên từng ô: "150+" không có chỗ ngắt, nên ở cỡ
+            chữ phóng to nó tạo sàn chiều rộng và đẩy trang tràn ngang.
+          */}
           <dl className="mt-10 grid grid-cols-3 gap-x-5 gap-y-6 md:gap-x-10">
             {t.hero.stats.map((stat) => (
-              <div key={stat.label} className="border-t border-line pt-3">
+              <div
+                key={stat.label}
+                className="border-t border-line pt-3 wrap-anywhere"
+              >
                 <dt className="font-head text-[26px] font-extrabold leading-none text-accent-2 md:text-[28px]">
                   {stat.value}
                 </dt>

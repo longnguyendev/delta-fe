@@ -54,7 +54,7 @@ export function SectionHead({
       className={`mb-12 max-w-[680px] ${centered ? "mx-auto text-center" : ""}`}
     >
       <Kicker>{kicker}</Kicker>
-      <h2 className="mt-2.5 max-w-[60vw] text-pretty text-[clamp(26px,3.4vw,36px)] tracking-[-0.015em] md:max-w-none">
+      <h2 className="mt-2.5 text-pretty text-[clamp(26px,3.4vw,36px)] tracking-[-0.015em]">
         {title}
       </h2>
       {lead ? (
@@ -64,8 +64,17 @@ export function SectionHead({
   );
 }
 
+/**
+ * Nút dùng `min-h` + nhãn cho phép xuống dòng, không dùng `h` + nowrap.
+ *
+ * `whitespace-nowrap` biến nhãn nút thành chiều rộng không co được: khi máy
+ * phóng chữ (font boost / text scaling), nút "Xem hồ sơ năng lực" rộng 410px
+ * trên màn 390px và kéo CẢ TRANG rộng ra — mọi section trông như vỡ. `min-h`
+ * vẫn giữ đúng ngưỡng chạm 44/50px của CLAUDE.md, chỉ cho phép nút cao thêm
+ * nếu nhãn phải xuống dòng.
+ */
 const buttonStyles = {
-  base: "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-semibold leading-none select-none transition-colors duration-150 ease-brand",
+  base: "inline-flex items-center justify-center gap-2 rounded-md text-center font-semibold leading-tight select-none transition-colors duration-150 ease-brand",
   variant: {
     primary: "bg-primary text-on-primary hover:bg-primary-hover",
     secondary:
@@ -73,8 +82,8 @@ const buttonStyles = {
     ghost: "text-link hover:text-link-hover",
   },
   size: {
-    md: "h-11 px-4 text-[15px]",
-    lg: "h-[50px] px-[26px] text-[15px]",
+    md: "min-h-11 px-4 text-[15px]",
+    lg: "min-h-[50px] px-[26px] text-[15px]",
   },
 } as const;
 
