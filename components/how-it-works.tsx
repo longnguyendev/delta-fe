@@ -59,20 +59,28 @@ export async function HowItWorks() {
           title={t.process.title}
           lead={t.process.lead}
         />
-        <div className="grid gap-8 md:grid-cols-3 md:gap-12">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-12">
           {t.process.items.map((step, index) => (
             <div key={step.title} className="flex flex-col gap-5">
               {/*
-                Đệm theo % chứ không phải 24px cố định: khung co giãn theo
-                bề rộng cột, nên đệm cố định sẽ ăn mất tỉ lệ của hình khi
-                khung nhỏ lại (lưới 3 cột ở tablet) hoặc khi trình duyệt zoom.
+                Khung KHÔNG đặt `aspect-ratio`, và svg KHÔNG đặt
+                `height="100%"`: hai thứ đó tạo vòng lặp chiều cao
+                (chiều cao khung ← chiều cao svg ← 100% chiều cao khung).
+                Chrome và WebKit chọn hai điểm dừng khác nhau — đo được
+                khung 342×304 ở Chrome nhưng 342×348 ở WebKit, hình bị
+                thu nhỏ và chừa hai dải trống. Để svg tự quyết định chiều
+                cao theo tỉ lệ viewBox (`h-auto w-full`) thì mọi engine ra
+                cùng một kết quả, không còn gì để lặp.
+
+                Đệm vẫn theo % chứ không phải 24px cố định: khung co giãn
+                theo bề rộng cột, nên đệm cố định sẽ ăn mất tỉ lệ của hình
+                khi lưới chuyển 3 cột ở tablet hoặc khi trình duyệt zoom.
                 7% của 342px = 24px — đúng bằng đệm thiết kế ở khổ chuẩn.
               */}
-              <div className="aspect-[124/108] rounded-md border border-line bg-layout p-[7%]">
+              <div className="rounded-md border border-line bg-layout p-[7%]">
                 <svg
                   viewBox="0 0 124 108"
-                  width="100%"
-                  height="100%"
+                  className="block h-auto w-full"
                   preserveAspectRatio="xMidYMid meet"
                   aria-hidden="true"
                 >

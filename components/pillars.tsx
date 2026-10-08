@@ -57,7 +57,7 @@ export async function Pillars() {
           title={t.pillars.title}
           lead={t.pillars.lead}
         />
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
           {t.pillars.items.map((pillar, index) => (
             <article
               key={pillar.title}

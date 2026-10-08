@@ -12,7 +12,7 @@ export async function Problem() {
           title={t.problem.title}
           lead={t.problem.lead}
         />
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
           {t.problem.items.map((problem) => (
             <article
               key={problem.title}

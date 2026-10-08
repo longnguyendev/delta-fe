@@ -75,7 +75,7 @@ export function ProjectsFilters({
 
       <section className="border-b border-line bg-surface py-14 md:py-[88px]">
         <Container>
-          <div className="grid gap-[22px] md:grid-cols-2 min-[60rem]:grid-cols-3">
+          <div className="grid grid-cols-1 gap-[22px] md:grid-cols-2 min-[60rem]:grid-cols-3">
             {visible.map((project) => (
               <ProjectCard
                 key={project.slug}

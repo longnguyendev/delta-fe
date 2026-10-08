@@ -21,7 +21,7 @@ export async function Contact() {
           title={t.contact.title}
           lead={t.contact.lead}
         />
-        <div className="mx-auto grid max-w-[1000px] gap-5 md:grid-cols-3">
+        <div className="mx-auto grid grid-cols-1 max-w-[1000px] gap-5 md:grid-cols-3">
           {t.contact.items.map((channel, index) => (
             <article
               key={channel.title}

@@ -34,7 +34,7 @@ export async function Projects() {
           title={t.projects.title}
           lead={t.projects.lead}
         />
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
           {t.projects.items.map((project, index) => {
             const media = PROJECT_MEDIA[index];
 

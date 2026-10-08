@@ -123,7 +123,7 @@ export function ServicesList({
           title={t.list.title}
           lead={t.list.lead}
         />
-        <div className="grid gap-[22px] md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-[22px] md:grid-cols-2">
           {services.map((service, index) => (
             <ServiceCard
               key={service.slug}
@@ -158,7 +158,7 @@ export function ServicesProducts({
           title={t.products.title}
           lead={t.products.lead}
         />
-        <div className="grid gap-[22px] md:grid-cols-2 min-[60rem]:grid-cols-4">
+        <div className="grid grid-cols-1 gap-[22px] md:grid-cols-2 min-[60rem]:grid-cols-4">
           {products.map((product) => (
             <article
               key={product.src}
@@ -212,7 +212,7 @@ export function ServicesCommitments({ t }: { t: Dictionary["servicesPage"] }) {
           kicker={t.commitments.eyebrow}
           title={t.commitments.title}
         />
-        <div className="grid gap-[22px] md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-[22px] md:grid-cols-3">
           {t.commitments.items.map((item) => (
             <div
               key={item.title}

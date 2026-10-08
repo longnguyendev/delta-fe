@@ -47,7 +47,7 @@ export function DetailHero({
           {project.description}
         </p>
 
-        <dl className="mt-11 grid overflow-hidden rounded-md border border-line bg-container min-[32.5rem]:grid-cols-2 min-[60rem]:grid-cols-5">
+        <dl className="mt-11 grid grid-cols-1 overflow-hidden rounded-md border border-line bg-container min-[32.5rem]:grid-cols-2 min-[60rem]:grid-cols-5">
           {facts.map((fact) => (
             <div
               key={fact.label}
@@ -86,7 +86,7 @@ export function DetailContext({
 }) {
   return (
     <section className="py-14 md:py-[88px]">
-      <Container className="grid items-start gap-9 md:grid-cols-[0.95fr_1.05fr] md:gap-14">
+      <Container className="grid grid-cols-1 items-start gap-9 md:grid-cols-[0.95fr_1.05fr] md:gap-14">
         <div>
           <Kicker>{t.context.eyebrow}</Kicker>
           <h2 className="mt-2.5 text-[clamp(26px,3.4vw,36px)] leading-[1.2] tracking-[-0.015em]">
@@ -125,7 +125,7 @@ export function DetailScope({
           title={t.scope.title}
           lead={t.scope.lead}
         />
-        <div className="grid gap-[22px] md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-[22px] md:grid-cols-2">
           {project.detail.scope.map((item, index) => (
             <div
               key={item.title}
@@ -160,7 +160,7 @@ export function DetailSolution({
 
   return (
     <section className="py-14 md:py-[88px]">
-      <Container className="grid items-start gap-9 md:grid-cols-[0.95fr_1.05fr] md:gap-14">
+      <Container className="grid grid-cols-1 items-start gap-9 md:grid-cols-[0.95fr_1.05fr] md:gap-14">
         <figure>
           <Image
             src={diagram.src}
@@ -216,7 +216,7 @@ export function DetailTimeline({
           {project.detail.timeline.map((milestone) => (
             <div
               key={milestone.stage}
-              className="grid gap-2 border-b border-line py-[26px] md:grid-cols-[150px_1fr] md:gap-7"
+              className="grid grid-cols-1 gap-2 border-b border-line py-[26px] md:grid-cols-[150px_1fr] md:gap-7"
             >
               <div className="pt-[3px] text-[13px] text-text-secondary">
                 {milestone.done ? (
@@ -261,7 +261,7 @@ export function DetailOutcomes({
           title={t.outcomes.title}
           lead={t.outcomes.lead}
         />
-        <div className="grid gap-[22px] md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-[22px] md:grid-cols-3">
           {project.detail.outcomes.map((outcome) => (
             <div
               key={outcome.title}
@@ -303,7 +303,7 @@ export function DetailRelated({
           kicker={t.related.eyebrow}
           title={t.related.title}
         />
-        <div className="grid gap-[22px] md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-[22px] md:grid-cols-2">
           {projects.map((project) => (
             <ProjectCard
               key={project.slug}

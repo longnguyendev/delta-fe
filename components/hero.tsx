@@ -7,7 +7,7 @@ export async function Hero() {
 
   return (
     <section className="pt-[clamp(56px,9vw,108px)] pb-16 md:pb-20">
-      <Container className="grid items-center gap-10 md:grid-cols-[1.05fr_0.95fr] md:gap-14">
+      <Container className="grid grid-cols-1 items-center gap-10 md:grid-cols-[1.05fr_0.95fr] md:gap-14">
         <div>
           <span className="inline-flex h-8 items-center rounded-sm border border-primary-border bg-primary-bg px-3 text-sm font-semibold leading-none text-accent-accessible">
             {t.hero.eyebrow}

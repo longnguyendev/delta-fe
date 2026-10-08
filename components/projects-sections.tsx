@@ -119,7 +119,7 @@ export function ProjectsFeatured({
 
   return (
     <section className="py-14 md:py-[88px]">
-      <Container className="grid items-center gap-9 md:grid-cols-[1.05fr_0.95fr] md:gap-14">
+      <Container className="grid grid-cols-1 items-center gap-9 md:grid-cols-[1.05fr_0.95fr] md:gap-14">
         <figure className="rounded-md border border-line bg-surface p-5">
           <Image
             src={project.detail.diagram.src}
@@ -180,7 +180,7 @@ export function ProjectsLifecycle({ t }: { t: Dictionary["projectsPage"] }) {
           title={t.lifecycle.title}
           lead={t.lifecycle.lead}
         />
-        <div className="grid gap-[22px] md:grid-cols-2 min-[60rem]:grid-cols-4">
+        <div className="grid grid-cols-1 gap-[22px] md:grid-cols-2 min-[60rem]:grid-cols-4">
           {t.lifecycle.items.map((item, index) => (
             <div
               key={item.title}
@@ -215,7 +215,7 @@ export function CtaDarkBand({
 }) {
   return (
     <section className="bg-fg py-14 md:py-[88px]">
-      <Container className="grid items-center gap-7 md:grid-cols-[1fr_auto] md:gap-11">
+      <Container className="grid grid-cols-1 items-center gap-7 md:grid-cols-[1fr_auto] md:gap-11">
         <div>
           <h2 className="text-white">{t.title}</h2>
           <p className="mt-3 max-w-[560px] text-[15.5px] text-footer-text">

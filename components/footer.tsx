@@ -22,7 +22,7 @@ export async function Footer() {
   return (
     <footer className="bg-fg py-12 text-sm md:py-16">
       <Container>
-        <div className="grid gap-8 md:grid-cols-[2fr_1fr_1fr_1fr]">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-[2fr_1fr_1fr_1fr]">
           <div>
             <Image
               src="/logos/delta-energy-lockup-light.svg"

@@ -86,7 +86,7 @@ export async function Services() {
             return (
               <div
                 key={service.title}
-                className="grid items-center gap-8 md:grid-cols-2 md:gap-14"
+                className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-14"
               >
                 {index % 2 === 0 ? (
                   <>

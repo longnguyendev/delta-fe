@@ -26,7 +26,7 @@ export default async function Page() {
         <TrustStrip />
         <Problem />
         <Pillars />
-        {/* <HowItWorks /> */}
+        <HowItWorks />
         <CtaBand />
         <Services />
         <StatsBand />

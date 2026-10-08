@@ -102,7 +102,7 @@ export function ContactForm({
   return (
     <div
       id="contact-form"
-      className="mx-auto mt-12 grid max-w-[1000px] overflow-hidden rounded-md border border-line bg-container min-[900px]:grid-cols-[minmax(320px,4.6fr)_minmax(380px,5.4fr)]"
+      className="mx-auto mt-12 grid grid-cols-1 max-w-[1000px] overflow-hidden rounded-md border border-line bg-container min-[900px]:grid-cols-[minmax(320px,4.6fr)_minmax(380px,5.4fr)]"
     >
       {/* Brand panel — one lime surface, ink text (never white-on-lime). */}
       <div className="relative flex min-h-[300px] flex-col justify-between gap-8 overflow-hidden bg-primary p-8 md:p-10 min-[900px]:min-h-0">
@@ -208,7 +208,7 @@ export function ContactForm({
               </p>
             </header>
 
-            <div className="grid gap-5 min-[540px]:grid-cols-2">
+            <div className="grid grid-cols-1 gap-5 min-[540px]:grid-cols-2">
               <div>
                 <label htmlFor="cf-name" className={labelClass}>
                   <span>
