@@ -54,7 +54,7 @@ export function SectionHead({
       className={`mb-12 max-w-[680px] ${centered ? "mx-auto text-center" : ""}`}
     >
       <Kicker>{kicker}</Kicker>
-      <h2 className="mt-2.5 text-[clamp(26px,3.4vw,36px)] tracking-[-0.015em]">
+      <h2 className="mt-2.5 max-w-[60vw] text-pretty text-[clamp(26px,3.4vw,36px)] tracking-[-0.015em] md:max-w-none">
         {title}
       </h2>
       {lead ? (

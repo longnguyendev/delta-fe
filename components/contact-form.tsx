@@ -141,7 +141,7 @@ export function ContactForm({
         </div>
 
         <div className="relative">
-          <h3 className="max-w-[24ch] text-[clamp(22px,2.6vw,30px)] leading-[1.15] tracking-[-0.02em] text-on-primary">
+          <h3 className="max-w-[65vw] text-[clamp(22px,2.6vw,30px)] leading-[1.15] tracking-[-0.02em] text-on-primary md:max-w-[24ch]">
             {t.panel.title}
           </h3>
           <ul className="mt-6 list-none p-0">

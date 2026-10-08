@@ -73,7 +73,7 @@ export function ProjectsHero({
       <Container className="pb-12 pt-14 md:pb-[72px] md:pt-[76px]">
         <Crumbs t={t.crumbs} lang={lang} />
         <Kicker>{t.hero.eyebrow}</Kicker>
-        <h1 className="mt-2.5 max-w-[20ch] text-[clamp(32px,4.6vw,50px)] leading-[1.12] tracking-[-0.01em]">
+        <h1 className="mt-2.5 max-w-[65vw] text-pretty text-[clamp(32px,4.6vw,50px)] leading-[1.12] tracking-[-0.01em] md:max-w-[20ch]">
           {t.hero.title}
         </h1>
         <p className="mt-5 max-w-[540px] text-[17px] leading-relaxed text-text-secondary">

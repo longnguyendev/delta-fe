@@ -151,7 +151,23 @@
   h4 {
     @apply font-head font-extrabold text-fg;
     line-height: var(--brand-line-height-heading);
-    overflow-wrap: break-word;
+    /* Không overflow-wrap ở heading: nó cho phép text-wrap:balance bẻ giữa từ */
+    /*
+     * Mọi heading bị giới hạn 65vw ở mobile: nếu trình duyệt phóng chữ
+     * (font boost / text scaling), dòng vẫn không tràn ra ngoài màn hình.
+     * Các heading cần khổ rộng hơn đã đặt max-w riêng bằng utility (lớp
+     * utilities thắng base), và bản thân utility cũng dùng cùng ngưỡng này.
+     */
+    max-width: 65vw;
+  }
+
+  @media (min-width: 48rem) {
+    h1,
+    h2,
+    h3,
+    h4 {
+      max-width: none;
+    }
   }
 
   a {
@@ -169,4 +185,32 @@
       scroll-behavior: auto;
     }
   }
+}
+
+/*
+ * Resilience cho engine không hỗ trợ CSS cascade layers (@layer — các
+ * webview đời cũ): mọi luật dưới đây trùng giá trị với luật trong @layer
+ * base phía trên, nên trình duyệt hiện đại không thấy gì đổi. Nếu layer bị
+ * bỏ qua, trang vẫn đọc được: màu nền/chữ còn nguyên, ảnh không được render
+ * ở kích thước tự nhiên tràn màn hình, và font boosting bị chặn.
+ */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--brand-color-bg-layout);
+  color: var(--brand-color-text);
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+}
+
+img,
+video {
+  height: auto;
 }

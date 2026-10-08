@@ -12,7 +12,7 @@ export async function Hero() {
           <span className="inline-flex h-8 items-center rounded-sm border border-primary-border bg-primary-bg px-3 text-sm font-semibold leading-none text-accent-accessible">
             {t.hero.eyebrow}
           </span>
-          <h1 className="mt-6 max-w-[18ch] text-[clamp(32px,4.6vw,50px)] leading-[1.12] tracking-[-0.01em]">
+          <h1 className="mt-6 max-w-[65vw] text-pretty text-[clamp(32px,4.6vw,50px)] leading-[1.12] tracking-[-0.01em] md:max-w-[18ch]">
             {t.hero.h1Pre}
             <span className="text-accent-2">{t.hero.h1Accent}</span>
           </h1>
