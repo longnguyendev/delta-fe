@@ -5,7 +5,7 @@ import type { Service } from "@/lib/data/services";
 import { getServiceNumber } from "@/lib/data/services";
 import { ButtonLink, Container, Kicker, SectionHead } from "./ui";
 import { BLUEPRINT_GRID, Crumbs } from "./projects-sections";
-import { ProjectCard } from "./project-card";
+import { ProjectCard, SIZES_TWO_UP } from "./project-card";
 import { ServiceCard } from "./services-sections";
 
 /** Hero trang chi tiết dịch vụ — breadcrumb 3 cấp, dải meta 5 ô, hai hành động. */
@@ -254,10 +254,12 @@ export function ServiceDetailTimeline({
 export function ServiceDetailProjects({
   projects,
   t,
+  updating,
   lang,
 }: {
   projects: Project[];
   t: Dictionary["serviceDetail"];
+  updating: string;
   lang: string;
 }) {
   if (projects.length === 0) return null;
@@ -277,6 +279,8 @@ export function ServiceDetailProjects({
               project={project}
               href={`/${lang}/projects/${project.slug}`}
               linkLabel={t.projects.linkLabel}
+              updating={updating}
+              sizes={SIZES_TWO_UP}
             />
           ))}
         </div>

@@ -8,6 +8,10 @@ export const vi = {
     description:
       "Delta Energy (CÔNG TY TNHH DỊCH VỤ KỸ THUẬT DELTA ENERGY) cung cấp thiết bị, giải pháp kỹ thuật và dịch vụ hiện trường cho nhà máy và công trình công nghiệp — từ tư vấn giải pháp, cung cấp thiết bị đến lắp đặt và bảo trì vận hành.",
   },
+  /** Dùng chung — chuỗi thay cho trường chưa có dữ liệu bên Strapi. */
+  common: {
+    updating: "Đang cập nhật",
+  },
   nav: {
     label: "Điều hướng chính",
     home: "Delta Energy — về đầu trang",
@@ -195,18 +199,12 @@ export const vi = {
       ],
     },
     filters: {
-      label: "Lọc dự án theo nhóm dịch vụ",
+      label: "Lọc dự án theo hạng mục",
       all: "Tất cả",
-      categories: {
-        "tu-van": "Tư vấn giải pháp",
-        "thiet-bi": "Thiết bị & vật tư",
-        "lap-dat": "Lắp đặt & vận hành",
-        "bao-tri": "Bảo trì & sửa chữa",
-      },
       showing: "Đang hiển thị",
       of: "trên",
       unit: "dự án",
-      empty: "Chưa có dự án nào trong nhóm dịch vụ này.",
+      empty: "Chưa có dự án nào trong hạng mục này.",
     },
     card: { viewDetail: "Xem chi tiết" },
     featured: {
@@ -214,7 +212,7 @@ export const vi = {
       metaLabels: {
         handover: "Thời điểm bàn giao",
         location: "Địa điểm",
-        serviceGroup: "Nhóm dịch vụ",
+        category: "Hạng mục",
       },
       ctaPrimary: "Đọc case study",
     },
@@ -254,29 +252,13 @@ export const vi = {
       allProjects: "Xem tất cả dự án",
     },
     metaLabels: {
-      scope: "Hạng mục",
+      category: "Hạng mục",
       location: "Địa điểm",
       sector: "Lĩnh vực",
       status: "Trạng thái",
       handover: "Bàn giao",
     },
-    context: { eyebrow: "Bối cảnh", title: "Yêu cầu của chủ đầu tư" },
-    scope: {
-      eyebrow: "Phạm vi công việc",
-      title: "Các hạng mục Delta Energy thực hiện",
-      lead: "Từ khảo sát, cung cấp thiết bị, lắp đặt đến bàn giao và hướng dẫn bảo trì — một đầu mối chịu trách nhiệm xuyên suốt.",
-    },
-    solution: { eyebrow: "Giải pháp kỹ thuật", title: "Phương án Delta Energy đề xuất" },
-    timeline: {
-      eyebrow: "Tiến độ triển khai",
-      title: "Các mốc chính của dự án",
-      lead: "Các giai đoạn theo quy trình chuẩn Delta Energy áp dụng cho hạng mục này.",
-    },
-    outcomes: {
-      eyebrow: "Kết quả bàn giao",
-      title: "Kết quả Delta Energy cam kết",
-      lead: "Ba kết quả Delta Energy cam kết cho hạng mục này.",
-    },
+    context: { eyebrow: "Bối cảnh", title: "Tổng quan dự án" },
     related: {
       eyebrow: "Dự án liên quan",
       title: "Các hạng mục liên quan",

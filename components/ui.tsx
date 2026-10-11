@@ -2,10 +2,7 @@ import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 
 /** Page container — 1180px wide with 24px side padding (CLAUDE.md §2). */
-export function Container({
-  className = "",
-  ...rest
-}: ComponentProps<"div">) {
+export function Container({ className = "", ...rest }: ComponentProps<"div">) {
   return (
     <div
       className={`mx-auto w-full max-w-[1180px] px-6 ${className}`}
@@ -61,6 +58,27 @@ export function SectionHead({
         <p className="mt-3 text-[17px] text-text-secondary">{lead}</p>
       ) : null}
     </div>
+  );
+}
+
+/**
+ * Trạng thái "chưa có dữ liệu" — dùng chung chrome với card (`border-line`,
+ * radius 3px) để một mục trống vẫn đọc ra là một phần của trang, không phải lỗi
+ * hiển thị.
+ */
+export function UpdatingNotice({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <p
+      className={`rounded-md border border-line bg-container px-6 py-[26px] text-[14.5px] text-text-secondary ${className}`}
+    >
+      {children}
+    </p>
   );
 }
 

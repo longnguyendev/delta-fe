@@ -6,34 +6,35 @@ import { Header } from "@/components/header";
 import {
   DetailContext,
   DetailHero,
-  DetailOutcomes,
   DetailRelated,
-  DetailScope,
-  DetailSolution,
-  DetailTimeline,
 } from "@/components/project-detail-sections";
 import { CtaDarkBand } from "@/components/projects-sections";
-import { getProject, getProjects, getRelatedProjects } from "@/lib/data/projects";
 import { getDictionary } from "@/lib/i18n/dictionaries";
+import { defaultLocale } from "@/lib/i18n/config";
+import { getProject, getProjects, pickRelated } from "@/lib/server/projects";
 
-/** Chỉ 6 slug trong dữ liệu mock tồn tại — slug khác là 404. */
-export const dynamicParams = false;
+/**
+ * Dựng sẵn các slug đang có trên Strapi; slug thêm sau vẫn render được ngay nhờ
+ * `dynamicParams` mặc định, không phải build lại.
+ */
+export async function generateStaticParams() {
+  const projects = await getProjects(defaultLocale);
 
-export function generateStaticParams() {
-  return getProjects().map((project) => ({ slug: project.slug }));
+  return projects.map((project) => ({ slug: project.slug }));
 }
 
 export async function generateMetadata(
   props: PageProps<"/[lang]/projects/[slug]">,
 ): Promise<Metadata> {
   const { slug } = await props.params;
-  const project = getProject(slug);
+  const locale = await lang();
+  const project = await getProject(locale, slug);
 
   if (!project) return {};
 
   return {
     title: `${project.title} — Delta Energy`,
-    description: project.description,
+    description: project.description ?? undefined,
   };
 }
 
@@ -42,9 +43,11 @@ export default async function ProjectDetailPage(
 ) {
   const { slug } = await props.params;
   const [locale, t] = await Promise.all([lang(), getDictionary()]);
-  const project = getProject(slug);
+  const project = await getProject(locale, slug);
 
   if (!project) notFound();
+
+  const related = pickRelated(project, await getProjects(locale));
 
   return (
     <div className="flex flex-1 flex-col">
@@ -54,16 +57,18 @@ export default async function ProjectDetailPage(
           project={project}
           t={t.projectDetail}
           pages={t.projectsPage}
+          updating={t.common.updating}
           lang={locale}
         />
-        <DetailContext project={project} t={t.projectDetail} />
-        <DetailScope project={project} t={t.projectDetail} />
-        <DetailSolution project={project} t={t.projectDetail} />
-        <DetailTimeline project={project} t={t.projectDetail} />
-        <DetailOutcomes project={project} t={t.projectDetail} />
-        <DetailRelated
-          projects={getRelatedProjects(project)}
+        <DetailContext
+          project={project}
           t={t.projectDetail}
+          updating={t.common.updating}
+        />
+        <DetailRelated
+          projects={related}
+          t={t.projectDetail}
+          updating={t.common.updating}
           lang={locale}
         />
         <CtaDarkBand

@@ -1,0 +1,4 @@
+fragment ProjectCategory on ProjectCategory {
+  documentId
+  value
+}

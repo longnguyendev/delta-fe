@@ -11,6 +11,10 @@ export const en: Dictionary = {
     description:
       "Delta Energy (CÔNG TY TNHH DỊCH VỤ KỸ THUẬT DELTA ENERGY) supplies equipment, engineering solutions and field services for factories and industrial facilities — from solution consulting and equipment supply through installation and maintenance.",
   },
+  /** Shared — stands in for a field with no data in Strapi yet. */
+  common: {
+    updating: "Being updated",
+  },
   nav: {
     label: "Main navigation",
     home: "Delta Energy — back to top",
@@ -198,18 +202,12 @@ export const en: Dictionary = {
       ],
     },
     filters: {
-      label: "Filter projects by service group",
+      label: "Filter projects by category",
       all: "All",
-      categories: {
-        "tu-van": "Solution consulting",
-        "thiet-bi": "Equipment & materials",
-        "lap-dat": "Installation & operation",
-        "bao-tri": "Maintenance & repair",
-      },
       showing: "Showing",
       of: "of",
       unit: "projects",
-      empty: "No projects in this service group yet.",
+      empty: "No projects in this category yet.",
     },
     card: { viewDetail: "View details" },
     featured: {
@@ -217,7 +215,7 @@ export const en: Dictionary = {
       metaLabels: {
         handover: "Handover date",
         location: "Location",
-        serviceGroup: "Service group",
+        category: "Category",
       },
       ctaPrimary: "Read the case study",
     },
@@ -257,32 +255,13 @@ export const en: Dictionary = {
       allProjects: "View all projects",
     },
     metaLabels: {
-      scope: "Scope",
+      category: "Category",
       location: "Location",
       sector: "Sector",
       status: "Status",
       handover: "Handover",
     },
-    context: { eyebrow: "Background", title: "What the owner needed" },
-    scope: {
-      eyebrow: "Scope of work",
-      title: "What Delta Energy delivered",
-      lead: "From survey and equipment supply through installation to handover and maintenance guidance — one point of responsibility end to end.",
-    },
-    solution: {
-      eyebrow: "Engineering solution",
-      title: "The approach Delta Energy proposed",
-    },
-    timeline: {
-      eyebrow: "Delivery timeline",
-      title: "Key project milestones",
-      lead: "The phases of the standard Delta Energy process applied to this scope of work.",
-    },
-    outcomes: {
-      eyebrow: "Handover results",
-      title: "What Delta Energy committed to",
-      lead: "Three results Delta Energy commits to for this scope of work.",
-    },
+    context: { eyebrow: "Background", title: "Project overview" },
     related: {
       eyebrow: "Related projects",
       title: "Other related works",

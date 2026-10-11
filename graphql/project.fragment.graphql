@@ -7,10 +7,18 @@ fragment Project on Project {
   updatedAt
   locale
   content
+  location
+  sector {
+    ...Sector
+  }
+  delivery_date
   thumbnail {
     ...Image
   }
-  images {
-    ...Image
+  project_category {
+    ...ProjectCategory
+  }
+  project_status {
+    ...ProjectStatus
   }
 }

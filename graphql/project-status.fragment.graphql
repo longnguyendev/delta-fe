@@ -1,0 +1,4 @@
+fragment ProjectStatus on ProjectStatus {
+  documentId
+  value
+}

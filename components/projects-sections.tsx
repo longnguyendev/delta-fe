@@ -23,7 +23,8 @@ export function Crumbs({
   current,
   listHref,
 }: {
-  t: Dictionary["projectsPage"]["crumbs"] | Dictionary["servicesPage"]["crumbs"];
+  t:
+    Dictionary["projectsPage"]["crumbs"] | Dictionary["servicesPage"]["crumbs"];
   lang: string;
   /** Tiêu đề mục — chỉ truyền ở trang chi tiết. */
   current?: string;
@@ -103,35 +104,43 @@ export function ProjectsHero({
 export function ProjectsFeatured({
   project,
   t,
+  updating,
   lang,
 }: {
   project: Project;
   t: Dictionary["projectsPage"];
+  updating: string;
   lang: string;
 }) {
-  const { meta } = project.detail;
+  const { meta } = project;
 
   const facts = [
     { value: meta.handover, label: t.featured.metaLabels.handover },
     { value: meta.location, label: t.featured.metaLabels.location },
-    { value: meta.scope, label: t.featured.metaLabels.serviceGroup },
+    { value: meta.category, label: t.featured.metaLabels.category },
   ];
 
   return (
     <section className="py-14 md:py-[88px]">
       <Container className="grid grid-cols-1 items-center gap-9 md:grid-cols-[1.05fr_0.95fr] md:gap-14">
         <figure className="rounded-md border border-line bg-surface p-5">
-          <Image
-            src={project.detail.diagram.src}
-            alt={project.detail.diagram.alt}
-            width={project.detail.diagram.width}
-            height={project.detail.diagram.height}
-            loading="lazy"
-            className="h-auto w-full"
-          />
-          <figcaption className="mt-3.5 border-t border-line pt-3.5 text-[12.5px] text-text-secondary">
-            {project.detail.diagram.caption}
-          </figcaption>
+          {project.image ? (
+            <Image
+              src={project.image.src}
+              alt={project.image.alt}
+              width={project.image.width}
+              height={project.image.height}
+              // Cột 1.05fr của lưới 1.05fr/0.95fr, trừ gap 56px và p-5 của
+              // figure: ~525px khi Container đã chạm max-w-[1180px].
+              sizes="(min-width: 1180px) 525px, (min-width: 768px) 47vw, 100vw"
+              loading="lazy"
+              className="aspect-[4/3] h-auto w-full rounded-md object-cover"
+            />
+          ) : (
+            <p className="flex aspect-[4/3] w-full items-center justify-center rounded-md text-[13px] text-text-secondary">
+              {updating}
+            </p>
+          )}
         </figure>
 
         <div>
@@ -140,13 +149,13 @@ export function ProjectsFeatured({
             {project.title}
           </h2>
           <p className="mt-4 max-w-[560px] text-[17px] text-text-secondary">
-            {project.description}
+            {project.description ?? updating}
           </p>
           <dl className="mt-7 flex flex-wrap gap-x-[34px] gap-y-4 border-t border-line pt-6">
             {facts.map((fact) => (
               <div key={fact.label}>
                 <dt className="font-head text-[19px] font-extrabold text-fg">
-                  {fact.value}
+                  {fact.value ?? updating}
                 </dt>
                 <dd className="mt-1 text-[12.5px] text-text-secondary">
                   {fact.label}

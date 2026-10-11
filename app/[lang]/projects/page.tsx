@@ -9,8 +9,8 @@ import {
   ProjectsHero,
   ProjectsLifecycle,
 } from "@/components/projects-sections";
-import { getProjects } from "@/lib/data/projects";
 import { getDictionary } from "@/lib/i18n/dictionaries";
+import { getProjects } from "@/lib/server/projects";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getDictionary();
@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ProjectsPage() {
   const [locale, t] = await Promise.all([lang(), getDictionary()]);
-  const projects = getProjects();
+  const projects = await getProjects(locale);
   const [featured] = projects;
 
   return (
@@ -35,9 +35,17 @@ export default async function ProjectsPage() {
           projects={projects}
           filters={t.projectsPage.filters}
           card={t.projectsPage.card}
+          updating={t.common.updating}
           lang={locale}
         />
-        <ProjectsFeatured project={featured} t={t.projectsPage} lang={locale} />
+        {featured ? (
+          <ProjectsFeatured
+            project={featured}
+            t={t.projectsPage}
+            updating={t.common.updating}
+            lang={locale}
+          />
+        ) : null}
         <ProjectsLifecycle t={t.projectsPage} />
         <CtaDarkBand
           t={t.projectsPage.cta}

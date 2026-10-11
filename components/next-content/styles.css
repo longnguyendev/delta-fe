@@ -1,0 +1,137 @@
+/*
+ * Phần CSS cho nội dung CKEditor mà lớp Tailwind trong `next-content.tsx` không
+ * lo được.
+ *
+ * Ở đây chỉ có những class do chính CKEditor đặt và `sanitizeRichText` giữ lại:
+ * căn lề ảnh, ảnh có chú thích, bọc bảng, danh sách việc. Chúng nằm trong DB nên
+ * Tailwind không quét thấy và không sinh utility cho chúng được — đó là lý do
+ * file này tồn tại. Mọi thứ còn lại (đoạn văn, heading, danh sách, trích dẫn,
+ * code, bảng, ảnh) đã có lớp Tailwind trong `TAG_CLASS`.
+ *
+ * Hai điều cần nhớ khi thêm luật vào đây:
+ *
+ * 1. File này không nằm trong `@layer` nào, mà CSS không layer thắng
+ *    `@layer utilities` của Tailwind. Đặt vào đây một thuộc tính mà `TAG_CLASS`
+ *    cũng đặt là đè mất lớp Tailwind đó.
+ * 2. Chỉ dùng token trong `app/variables.css`, không dùng mã màu trực tiếp — đó
+ *    là cách duy nhất để chế độ tối (`.dark`) theo đúng.
+ */
+
+/*
+ * Ảnh căn lề dùng `float`. `flow-root` lập một định dạng ngữ cảnh riêng để ảnh
+ * được giữ trong khối nội dung, thay vì tràn xuống đè lên các mục phía dưới.
+ */
+.next-content {
+  display: flow-root;
+}
+
+/* --- Ảnh --- */
+
+/*
+ * Ảnh có chú thích được bọc trong `figure.image`. `display: table` cho khối co
+ * lại đúng bề rộng tấm ảnh, nhờ vậy chú thích nằm thẳng dưới ảnh chứ không chạy
+ * hết chiều ngang cột; ảnh trần không có lớp này nên vẫn là một dòng bình thường.
+ */
+.next-content figure.image {
+  display: table;
+  margin-inline: auto;
+}
+
+.next-content figcaption {
+  text-align: center;
+}
+
+/*
+ * `image_resized`: CKEditor thu nhỏ ảnh bằng `width` trong `style` inline, mà
+ * sanitizer bỏ toàn bộ `style` — nên ảnh đã thu nhỏ trong trình soạn thảo sẽ
+ * hiện ở bề rộng tự nhiên. Muốn giữ đúng tỉ lệ đã đặt thì phải cho `width` đi
+ * qua sanitizer, đánh đổi không đáng.
+ */
+.next-content figure.image-style-align-left,
+.next-content figure.image-style-align-right,
+.next-content figure.image-style-side {
+  max-width: 50%;
+}
+
+.next-content figure.image-style-align-left {
+  float: left;
+  margin-inline: 0 1rem;
+}
+
+.next-content figure.image-style-align-right,
+.next-content figure.image-style-side {
+  float: right;
+  margin-inline: 1rem 0;
+}
+
+/* `image-style-align-center` đã đúng nhờ `margin-inline: auto` ở trên. */
+
+/* --- Bảng --- */
+
+/* Bảng nhiều cột không nhồi vừa khổ hẹp — cho cuộn ngang thay vì tràn trang. */
+.next-content figure.table {
+  overflow-x: auto;
+}
+
+/* --- Danh sách việc --- */
+
+.next-content .todo-list {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+.next-content .todo-list > li {
+  position: relative;
+  padding-inline-start: 1.75rem;
+}
+
+/*
+ * Ô tick là `<input type="checkbox" disabled>` do sanitizer dựng lại, chỉ để
+ * hiển thị. Ô tick mặc định của trình duyệt lấy màu nhấn của hệ điều hành — đè
+ * bằng `appearance: none` rồi tự vẽ, nếu không sẽ có một mảng xanh dương ngoài
+ * bảng màu.
+ */
+.next-content .todo-list > li > input[type='checkbox'] {
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0.32em;
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  appearance: none;
+  /*
+   * Không dùng `--brand-color-border` (#dddfe1): trên nền trắng nó chỉ đạt
+   * 1,34:1, viền ô vuông gần như biến mất. `--brand-color-text-tertiary` cho
+   * 2,6:1 — vẫn nhẹ đúng nhịp hệ thống nhưng nhìn ra được là một cái ô.
+   */
+  border: 1.5px solid var(--brand-color-text-tertiary);
+  border-radius: 3px;
+  background-color: var(--brand-color-bg-container);
+  pointer-events: none;
+}
+
+/* Nền lime luôn đi với mực `--brand-color-primary-text`, không bao giờ màu trắng. */
+.next-content .todo-list > li > input[type='checkbox']:checked {
+  border-color: var(--brand-color-primary);
+  background-color: var(--brand-color-primary);
+}
+
+/* Dấu tick là hai cạnh của một ô vuông xoay 45°. */
+.next-content .todo-list > li > input[type='checkbox']:checked::after {
+  content: '';
+  position: absolute;
+  left: 0.32em;
+  top: 0.14em;
+  width: 0.26em;
+  height: 0.5em;
+  border: solid var(--brand-color-primary-text);
+  border-width: 0 0.15em 0.15em 0;
+  transform: rotate(45deg);
+}
+
+/* --- Đường kẻ --- */
+
+/* `[&>*+*]:mt-4` ở lớp bọc chỉ đủ cho một dòng chữ; đường kẻ cần khoảng thở. */
+.next-content hr {
+  margin-block: 1.75rem;
+}

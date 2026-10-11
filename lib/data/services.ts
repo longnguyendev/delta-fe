@@ -6,24 +6,21 @@
  * Khi đó chỉ cần thay `getServices` / `getService` bằng fetcher thật, phần component
  * giữ nguyên vì đã đọc qua type `Service` bên dưới.
  *
- * Slug dịch vụ trùng đúng `projectCategories`, nhờ đó hạng mục cùng nhóm được lọc
- * trực tiếp từ `projects` mà không cần bảng ánh xạ riêng.
- *
  * Nội dung entity chỉ có tiếng Việt (theo yêu cầu); phần chrome của giao diện
  * (nhãn, nút, tiêu đề mục) nằm trong dictionary `lib/i18n`.
  */
 
-import {
-  projectCategories,
-  projects,
-  type Project,
-  type ProjectCategory,
-  type ProjectImage,
-} from "./projects";
+import { type Project, type ProjectImage } from "./projects";
 
-/** Bốn slug dịch vụ — giữ đúng thứ tự `projectCategories` để lưới đánh số 01–04 khớp thiết kế. */
-export const serviceCategories = projectCategories;
-export type ServiceCategory = ProjectCategory;
+/** Bốn slug dịch vụ — giữ đúng thứ tự để lưới đánh số 01–04 khớp thiết kế. */
+export const serviceCategories = [
+  "tu-van",
+  "thiet-bi",
+  "lap-dat",
+  "bao-tri",
+] as const;
+
+export type ServiceCategory = (typeof serviceCategories)[number];
 export type ServiceImage = ProjectImage;
 
 export type ServiceScopeItem = { title: string; body: string };
@@ -247,7 +244,8 @@ export const services: Service[] = [
         width: 300,
         height: 190,
         alt: "Sơ đồ van điều khiển và đồng hồ đo lường trong danh mục cung cấp",
-        caption: "Sơ đồ vị trí van điều khiển và thiết bị đo trong danh mục cung cấp.",
+        caption:
+          "Sơ đồ vị trí van điều khiển và thiết bị đo trong danh mục cung cấp.",
       },
       timeline: [
         {
@@ -531,11 +529,15 @@ export function getProducts(): Product[] {
 }
 
 /**
- * Hạng mục cùng nhóm dịch vụ — lọc từ `projects` theo slug trùng `projectCategories`.
- * Nhóm nào chưa có đủ 2 dự án trong dữ liệu mock thì trả về ít hơn.
+ * Hạng mục cùng nhóm dịch vụ.
+ *
+ * Chưa nối được với Strapi: slug dịch vụ ở đây (`tu-van`, `lap-dat`…) không
+ * trùng giá trị của `project_category` bên BE ("Tư vấn giải pháp kỹ thuật"…),
+ * nên không có khoá nào để lọc. Trả rỗng — `ServiceDetailProjects` tự ẩn mục
+ * khi không có dự án, thay vì hiển thị dự án không liên quan.
  */
-export function getServiceProjects(service: Service): Project[] {
-  return projects.filter((project) => project.category === service.slug).slice(0, 2);
+export function getServiceProjects(): Project[] {
+  return [];
 }
 
 /** Số thứ tự canonical của dịch vụ trong lưới 01–04. */

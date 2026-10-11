@@ -1,0 +1,4 @@
+fragment Sector on Sector {
+  documentId
+  value
+}

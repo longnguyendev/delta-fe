@@ -74,7 +74,8 @@
 
   /* --- Type --- */
   --font-sans: var(--font-inter), var(--brand-font-family);
-  --font-head: var(--font-montserrat), system-ui, -apple-system, "Segoe UI",
+  --font-head:
+    var(--font-montserrat), system-ui, -apple-system, "Segoe UI",
     "Helvetica Neue", Arial, sans-serif;
   --font-mono: var(--brand-font-family-code);
 

@@ -1,3 +1,6 @@
+# Không truyền `locale`: Strapi trả bản ghi ở ngôn ngữ mặc định kèm `localizations`,
+# nhờ đó `lib/server/projects.ts` tự chọn bản dịch và vẫn có nội dung khi bản dịch
+# chưa được tạo.
 query ProjectsDetail(
   $filters: ProjectFiltersInput
   $sort: [String]

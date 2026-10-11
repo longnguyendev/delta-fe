@@ -2,72 +2,82 @@
 
 import { useState } from "react";
 import type { Dictionary } from "@/lib/i18n/vi";
-import type { Project, ProjectCategory } from "@/lib/data/projects";
+import type { Project } from "@/lib/data/projects";
 import { Container } from "./ui";
 import { ProjectCard } from "./project-card";
 
 /**
- * Thứ tự chip lọc — khai báo tại đây (thay vì import mảng từ `lib/data`) để
- * module dữ liệu mock không lọt vào client bundle.
+ * Chip lọc dựng từ chính hạng mục đang có trên các dự án, thay vì một danh sách
+ * cứng: hạng mục do quản trị viên tạo bên Strapi nên FE không biết trước. Nhờ
+ * vậy chip luôn khớp dữ liệu và không bao giờ có chip rỗng.
  */
-const CATEGORY_ORDER: ProjectCategory[] = [
-  "tu-van",
-  "thiet-bi",
-  "lap-dat",
-  "bao-tri",
-];
+function categoriesOf(projects: Project[]): string[] {
+  const values = projects
+    .map((project) => project.meta.category)
+    .filter((value): value is string => value !== null);
 
-type FilterValue = ProjectCategory | "all";
+  return [...new Set(values)].sort((a, b) => a.localeCompare(b));
+}
 
 export function ProjectsFilters({
   projects,
   filters,
   card,
+  updating,
   lang,
 }: {
   projects: Project[];
   filters: Dictionary["projectsPage"]["filters"];
   card: Dictionary["projectsPage"]["card"];
+  updating: string;
   lang: string;
 }) {
-  const [active, setActive] = useState<FilterValue>("all");
+  /** `null` là "tất cả" — trùng với giá trị của dự án chưa gán hạng mục. */
+  const [active, setActive] = useState<string | null>(null);
 
+  const categories = categoriesOf(projects);
   const visible =
-    active === "all"
+    active === null
       ? projects
-      : projects.filter((project) => project.category === active);
+      : projects.filter((project) => project.meta.category === active);
 
   return (
     <>
       <div className="border-b border-line bg-container py-[22px]">
         <Container>
-          <div
-            role="group"
-            aria-label={filters.label}
-            className="flex flex-wrap items-center gap-2.5"
-          >
-            {(["all", ...CATEGORY_ORDER] as FilterValue[]).map((value) => {
-              const pressed = value === active;
+          {categories.length > 0 ? (
+            <div
+              role="group"
+              aria-label={filters.label}
+              className="flex flex-wrap items-center gap-2.5"
+            >
+              {[null, ...categories].map((value) => {
+                const pressed = value === active;
 
-              return (
-                <button
-                  key={value}
-                  type="button"
-                  aria-pressed={pressed}
-                  onClick={() => setActive(value)}
-                  className={`inline-flex min-h-11 items-center rounded-md border px-4 text-[13.5px] font-semibold transition-colors duration-150 ease-brand ${
-                    pressed
-                      ? "border-fg bg-fg text-white"
-                      : "border-line bg-surface text-text-secondary hover:border-text-secondary hover:bg-container hover:text-fg"
-                  }`}
-                >
-                  {value === "all" ? filters.all : filters.categories[value]}
-                </button>
-              );
-            })}
-          </div>
-          <p role="status" className="mt-3.5 text-[13px] text-text-secondary">
-            {filters.showing} <b className="font-semibold text-fg">{visible.length}</b>{" "}
+                return (
+                  <button
+                    key={value ?? "all"}
+                    type="button"
+                    aria-pressed={pressed}
+                    onClick={() => setActive(value)}
+                    className={`inline-flex min-h-11 items-center rounded-md border px-4 text-[13.5px] font-semibold transition-colors duration-150 ease-brand ${
+                      pressed
+                        ? "border-fg bg-fg text-white"
+                        : "border-line bg-surface text-text-secondary hover:border-text-secondary hover:bg-container hover:text-fg"
+                    }`}
+                  >
+                    {value ?? filters.all}
+                  </button>
+                );
+              })}
+            </div>
+          ) : null}
+          <p
+            role="status"
+            className={`text-[13px] text-text-secondary ${categories.length > 0 ? "mt-3.5" : ""}`}
+          >
+            {filters.showing}{" "}
+            <b className="font-semibold text-fg">{visible.length}</b>{" "}
             {filters.of} {projects.length} {filters.unit}.
           </p>
         </Container>
@@ -75,21 +85,21 @@ export function ProjectsFilters({
 
       <section className="border-b border-line bg-surface py-14 md:py-[88px]">
         <Container>
-          <div className="grid grid-cols-1 gap-[22px] md:grid-cols-2 min-[60rem]:grid-cols-3">
-            {visible.map((project) => (
-              <ProjectCard
-                key={project.slug}
-                project={project}
-                href={`/${lang}/projects/${project.slug}`}
-                linkLabel={card.viewDetail}
-              />
-            ))}
-          </div>
-          {visible.length === 0 ? (
-            <p className="mt-6 text-[14.5px] text-text-secondary">
-              {filters.empty}
-            </p>
-          ) : null}
+          {visible.length > 0 ? (
+            <div className="grid grid-cols-1 gap-[22px] md:grid-cols-2 min-[60rem]:grid-cols-3">
+              {visible.map((project) => (
+                <ProjectCard
+                  key={project.slug}
+                  project={project}
+                  href={`/${lang}/projects/${project.slug}`}
+                  linkLabel={card.viewDetail}
+                  updating={updating}
+                />
+              ))}
+            </div>
+          ) : (
+            <p className="text-[14.5px] text-text-secondary">{filters.empty}</p>
+          )}
         </Container>
       </section>
     </>

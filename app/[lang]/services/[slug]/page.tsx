@@ -66,8 +66,9 @@ export default async function ServiceDetailPage(
         <ServiceDetailSystem service={service} t={t.serviceDetail} />
         <ServiceDetailTimeline service={service} t={t.serviceDetail} />
         <ServiceDetailProjects
-          projects={getServiceProjects(service)}
+          projects={getServiceProjects()}
           t={t.serviceDetail}
+          updating={t.common.updating}
           lang={locale}
         />
         <ServiceOtherServices

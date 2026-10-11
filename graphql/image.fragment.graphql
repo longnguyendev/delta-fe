@@ -3,4 +3,5 @@ fragment Image on UploadFile {
   width
   height
   formats
+  alternativeText
 }

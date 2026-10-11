@@ -42,6 +42,7 @@ const config: CodegenConfig = {
         addInfiniteQuery: true,
         exposeFetcher: true,
         scalars: {
+          Date: "string",
           DateTime: "string",
           JSON: "Formats",
           Upload: "Promise<GraphQLFileUpload>",

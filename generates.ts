@@ -52,6 +52,7 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean };
   Int: { input: number; output: number };
   Float: { input: number; output: number };
+  Date: { input: string; output: string };
   DateTime: { input: string; output: string };
   I18NLocaleCode: { input: string; output: string };
   JSON: { input: Formats; output: Formats };
@@ -187,6 +188,31 @@ export type ContactInput = {
   publishedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
 };
 
+export type DateFilterInput = {
+  and?: InputMaybe<Array<InputMaybe<Scalars["Date"]["input"]>>>;
+  between?: InputMaybe<Array<InputMaybe<Scalars["Date"]["input"]>>>;
+  contains?: InputMaybe<Scalars["Date"]["input"]>;
+  containsi?: InputMaybe<Scalars["Date"]["input"]>;
+  endsWith?: InputMaybe<Scalars["Date"]["input"]>;
+  eq?: InputMaybe<Scalars["Date"]["input"]>;
+  eqi?: InputMaybe<Scalars["Date"]["input"]>;
+  gt?: InputMaybe<Scalars["Date"]["input"]>;
+  gte?: InputMaybe<Scalars["Date"]["input"]>;
+  in?: InputMaybe<Array<InputMaybe<Scalars["Date"]["input"]>>>;
+  lt?: InputMaybe<Scalars["Date"]["input"]>;
+  lte?: InputMaybe<Scalars["Date"]["input"]>;
+  ne?: InputMaybe<Scalars["Date"]["input"]>;
+  nei?: InputMaybe<Scalars["Date"]["input"]>;
+  not?: InputMaybe<DateFilterInput>;
+  notContains?: InputMaybe<Scalars["Date"]["input"]>;
+  notContainsi?: InputMaybe<Scalars["Date"]["input"]>;
+  notIn?: InputMaybe<Array<InputMaybe<Scalars["Date"]["input"]>>>;
+  notNull?: InputMaybe<Scalars["Boolean"]["input"]>;
+  null?: InputMaybe<Scalars["Boolean"]["input"]>;
+  or?: InputMaybe<Array<InputMaybe<Scalars["Date"]["input"]>>>;
+  startsWith?: InputMaybe<Scalars["Date"]["input"]>;
+};
+
 export type DateTimeFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]["input"]>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]["input"]>>>;
@@ -253,8 +279,11 @@ export type GenericMorph =
   | Contact
   | I18NLocale
   | Project
+  | ProjectCategory
+  | ProjectStatus
   | ReviewWorkflowsWorkflow
   | ReviewWorkflowsWorkflowStage
+  | Sector
   | Service
   | ServiceItem
   | UploadFile
@@ -372,8 +401,11 @@ export type Mutation = {
   createBlog?: Maybe<Blog>;
   createContact?: Maybe<Contact>;
   createProject?: Maybe<Project>;
+  createProjectCategory?: Maybe<ProjectCategory>;
+  createProjectStatus?: Maybe<ProjectStatus>;
   createReviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>;
   createReviewWorkflowsWorkflowStage?: Maybe<ReviewWorkflowsWorkflowStage>;
+  createSector?: Maybe<Sector>;
   createService?: Maybe<Service>;
   createServiceItem?: Maybe<ServiceItem>;
   /** Create a new role */
@@ -383,8 +415,11 @@ export type Mutation = {
   deleteBlog?: Maybe<DeleteMutationResponse>;
   deleteContact?: Maybe<DeleteMutationResponse>;
   deleteProject?: Maybe<DeleteMutationResponse>;
+  deleteProjectCategory?: Maybe<DeleteMutationResponse>;
+  deleteProjectStatus?: Maybe<DeleteMutationResponse>;
   deleteReviewWorkflowsWorkflow?: Maybe<DeleteMutationResponse>;
   deleteReviewWorkflowsWorkflowStage?: Maybe<DeleteMutationResponse>;
+  deleteSector?: Maybe<DeleteMutationResponse>;
   deleteService?: Maybe<DeleteMutationResponse>;
   deleteServiceItem?: Maybe<DeleteMutationResponse>;
   deleteUploadFile?: Maybe<UploadFile>;
@@ -404,8 +439,11 @@ export type Mutation = {
   updateBlog?: Maybe<Blog>;
   updateContact?: Maybe<Contact>;
   updateProject?: Maybe<Project>;
+  updateProjectCategory?: Maybe<ProjectCategory>;
+  updateProjectStatus?: Maybe<ProjectStatus>;
   updateReviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>;
   updateReviewWorkflowsWorkflowStage?: Maybe<ReviewWorkflowsWorkflowStage>;
+  updateSector?: Maybe<Sector>;
   updateService?: Maybe<Service>;
   updateServiceItem?: Maybe<ServiceItem>;
   updateUploadFile: UploadFile;
@@ -438,6 +476,18 @@ export type MutationCreateProjectArgs = {
   status?: InputMaybe<PublicationStatus>;
 };
 
+export type MutationCreateProjectCategoryArgs = {
+  data: ProjectCategoryInput;
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]["input"]>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+export type MutationCreateProjectStatusArgs = {
+  data: ProjectStatusInput;
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]["input"]>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
 export type MutationCreateReviewWorkflowsWorkflowArgs = {
   data: ReviewWorkflowsWorkflowInput;
   status?: InputMaybe<PublicationStatus>;
@@ -445,6 +495,12 @@ export type MutationCreateReviewWorkflowsWorkflowArgs = {
 
 export type MutationCreateReviewWorkflowsWorkflowStageArgs = {
   data: ReviewWorkflowsWorkflowStageInput;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+export type MutationCreateSectorArgs = {
+  data: SectorInput;
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]["input"]>;
   status?: InputMaybe<PublicationStatus>;
 };
 
@@ -482,12 +538,27 @@ export type MutationDeleteProjectArgs = {
   locale?: InputMaybe<Scalars["I18NLocaleCode"]["input"]>;
 };
 
+export type MutationDeleteProjectCategoryArgs = {
+  documentId: Scalars["ID"]["input"];
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]["input"]>;
+};
+
+export type MutationDeleteProjectStatusArgs = {
+  documentId: Scalars["ID"]["input"];
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]["input"]>;
+};
+
 export type MutationDeleteReviewWorkflowsWorkflowArgs = {
   documentId: Scalars["ID"]["input"];
 };
 
 export type MutationDeleteReviewWorkflowsWorkflowStageArgs = {
   documentId: Scalars["ID"]["input"];
+};
+
+export type MutationDeleteSectorArgs = {
+  documentId: Scalars["ID"]["input"];
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]["input"]>;
 };
 
 export type MutationDeleteServiceArgs = {
@@ -554,6 +625,20 @@ export type MutationUpdateProjectArgs = {
   status?: InputMaybe<PublicationStatus>;
 };
 
+export type MutationUpdateProjectCategoryArgs = {
+  data: ProjectCategoryInput;
+  documentId: Scalars["ID"]["input"];
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]["input"]>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+export type MutationUpdateProjectStatusArgs = {
+  data: ProjectStatusInput;
+  documentId: Scalars["ID"]["input"];
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]["input"]>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
 export type MutationUpdateReviewWorkflowsWorkflowArgs = {
   data: ReviewWorkflowsWorkflowInput;
   documentId: Scalars["ID"]["input"];
@@ -563,6 +648,13 @@ export type MutationUpdateReviewWorkflowsWorkflowArgs = {
 export type MutationUpdateReviewWorkflowsWorkflowStageArgs = {
   data: ReviewWorkflowsWorkflowStageInput;
   documentId: Scalars["ID"]["input"];
+  status?: InputMaybe<PublicationStatus>;
+};
+
+export type MutationUpdateSectorArgs = {
+  data: SectorInput;
+  documentId: Scalars["ID"]["input"];
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]["input"]>;
   status?: InputMaybe<PublicationStatus>;
 };
 
@@ -614,30 +706,21 @@ export type Project = {
   __typename?: "Project";
   content: Scalars["String"]["output"];
   createdAt?: Maybe<Scalars["DateTime"]["output"]>;
+  delivery_date?: Maybe<Scalars["Date"]["output"]>;
   description: Scalars["String"]["output"];
   documentId: Scalars["ID"]["output"];
-  images: Array<Maybe<UploadFile>>;
-  images_connection: UploadFileRelationResponseCollection;
   locale?: Maybe<Scalars["String"]["output"]>;
   localizations: Array<Maybe<Project>>;
   localizations_connection?: Maybe<ProjectRelationResponseCollection>;
+  location?: Maybe<Scalars["String"]["output"]>;
+  project_category?: Maybe<ProjectCategory>;
+  project_status?: Maybe<ProjectStatus>;
   publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+  sector?: Maybe<Sector>;
   slug: Scalars["String"]["output"];
   thumbnail: UploadFile;
   title: Scalars["String"]["output"];
   updatedAt?: Maybe<Scalars["DateTime"]["output"]>;
-};
-
-export type ProjectImagesArgs = {
-  filters?: InputMaybe<UploadFileFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
-};
-
-export type ProjectImages_ConnectionArgs = {
-  filters?: InputMaybe<UploadFileFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
 };
 
 export type ProjectLocalizationsArgs = {
@@ -652,6 +735,59 @@ export type ProjectLocalizations_ConnectionArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
 };
 
+export type ProjectCategory = {
+  __typename?: "ProjectCategory";
+  createdAt?: Maybe<Scalars["DateTime"]["output"]>;
+  documentId: Scalars["ID"]["output"];
+  locale?: Maybe<Scalars["String"]["output"]>;
+  localizations: Array<Maybe<ProjectCategory>>;
+  localizations_connection?: Maybe<ProjectCategoryRelationResponseCollection>;
+  publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]["output"]>;
+  value: Scalars["String"]["output"];
+};
+
+export type ProjectCategoryLocalizationsArgs = {
+  filters?: InputMaybe<ProjectCategoryFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+};
+
+export type ProjectCategoryLocalizations_ConnectionArgs = {
+  filters?: InputMaybe<ProjectCategoryFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+};
+
+export type ProjectCategoryEntityResponseCollection = {
+  __typename?: "ProjectCategoryEntityResponseCollection";
+  nodes: Array<ProjectCategory>;
+  pageInfo: Pagination;
+};
+
+export type ProjectCategoryFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ProjectCategoryFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  documentId?: InputMaybe<IdFilterInput>;
+  locale?: InputMaybe<StringFilterInput>;
+  localizations?: InputMaybe<ProjectCategoryFiltersInput>;
+  not?: InputMaybe<ProjectCategoryFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ProjectCategoryFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+  value?: InputMaybe<StringFilterInput>;
+};
+
+export type ProjectCategoryInput = {
+  publishedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  value?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type ProjectCategoryRelationResponseCollection = {
+  __typename?: "ProjectCategoryRelationResponseCollection";
+  nodes: Array<ProjectCategory>;
+};
+
 export type ProjectEntityResponseCollection = {
   __typename?: "ProjectEntityResponseCollection";
   nodes: Array<Project>;
@@ -662,13 +798,18 @@ export type ProjectFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ProjectFiltersInput>>>;
   content?: InputMaybe<StringFilterInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
+  delivery_date?: InputMaybe<DateFilterInput>;
   description?: InputMaybe<StringFilterInput>;
   documentId?: InputMaybe<IdFilterInput>;
   locale?: InputMaybe<StringFilterInput>;
   localizations?: InputMaybe<ProjectFiltersInput>;
+  location?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<ProjectFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ProjectFiltersInput>>>;
+  project_category?: InputMaybe<ProjectCategoryFiltersInput>;
+  project_status?: InputMaybe<ProjectStatusFiltersInput>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
+  sector?: InputMaybe<SectorFiltersInput>;
   slug?: InputMaybe<StringFilterInput>;
   title?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
@@ -676,9 +817,13 @@ export type ProjectFiltersInput = {
 
 export type ProjectInput = {
   content?: InputMaybe<Scalars["String"]["input"]>;
+  delivery_date?: InputMaybe<Scalars["Date"]["input"]>;
   description?: InputMaybe<Scalars["String"]["input"]>;
-  images?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  location?: InputMaybe<Scalars["String"]["input"]>;
+  project_category?: InputMaybe<Scalars["ID"]["input"]>;
+  project_status?: InputMaybe<Scalars["ID"]["input"]>;
   publishedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  sector?: InputMaybe<Scalars["ID"]["input"]>;
   slug?: InputMaybe<Scalars["String"]["input"]>;
   thumbnail?: InputMaybe<Scalars["ID"]["input"]>;
   title?: InputMaybe<Scalars["String"]["input"]>;
@@ -687,6 +832,59 @@ export type ProjectInput = {
 export type ProjectRelationResponseCollection = {
   __typename?: "ProjectRelationResponseCollection";
   nodes: Array<Project>;
+};
+
+export type ProjectStatus = {
+  __typename?: "ProjectStatus";
+  createdAt?: Maybe<Scalars["DateTime"]["output"]>;
+  documentId: Scalars["ID"]["output"];
+  locale?: Maybe<Scalars["String"]["output"]>;
+  localizations: Array<Maybe<ProjectStatus>>;
+  localizations_connection?: Maybe<ProjectStatusRelationResponseCollection>;
+  publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]["output"]>;
+  value?: Maybe<Scalars["String"]["output"]>;
+};
+
+export type ProjectStatusLocalizationsArgs = {
+  filters?: InputMaybe<ProjectStatusFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+};
+
+export type ProjectStatusLocalizations_ConnectionArgs = {
+  filters?: InputMaybe<ProjectStatusFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+};
+
+export type ProjectStatusEntityResponseCollection = {
+  __typename?: "ProjectStatusEntityResponseCollection";
+  nodes: Array<ProjectStatus>;
+  pageInfo: Pagination;
+};
+
+export type ProjectStatusFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ProjectStatusFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  documentId?: InputMaybe<IdFilterInput>;
+  locale?: InputMaybe<StringFilterInput>;
+  localizations?: InputMaybe<ProjectStatusFiltersInput>;
+  not?: InputMaybe<ProjectStatusFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ProjectStatusFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+  value?: InputMaybe<StringFilterInput>;
+};
+
+export type ProjectStatusInput = {
+  publishedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  value?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type ProjectStatusRelationResponseCollection = {
+  __typename?: "ProjectStatusRelationResponseCollection";
+  nodes: Array<ProjectStatus>;
 };
 
 export enum PublicationFilter {
@@ -718,6 +916,12 @@ export type Query = {
   i18NLocales_connection?: Maybe<I18NLocaleEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
   project?: Maybe<Project>;
+  projectCategories: Array<Maybe<ProjectCategory>>;
+  projectCategories_connection?: Maybe<ProjectCategoryEntityResponseCollection>;
+  projectCategory?: Maybe<ProjectCategory>;
+  projectStatus?: Maybe<ProjectStatus>;
+  projectStatuses: Array<Maybe<ProjectStatus>>;
+  projectStatuses_connection?: Maybe<ProjectStatusEntityResponseCollection>;
   projects: Array<Maybe<Project>>;
   projects_connection?: Maybe<ProjectEntityResponseCollection>;
   reviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>;
@@ -726,6 +930,9 @@ export type Query = {
   reviewWorkflowsWorkflowStages_connection?: Maybe<ReviewWorkflowsWorkflowStageEntityResponseCollection>;
   reviewWorkflowsWorkflows: Array<Maybe<ReviewWorkflowsWorkflow>>;
   reviewWorkflowsWorkflows_connection?: Maybe<ReviewWorkflowsWorkflowEntityResponseCollection>;
+  sector?: Maybe<Sector>;
+  sectors: Array<Maybe<Sector>>;
+  sectors_connection?: Maybe<SectorEntityResponseCollection>;
   service?: Maybe<Service>;
   serviceItem?: Maybe<ServiceItem>;
   serviceItems: Array<Maybe<ServiceItem>>;
@@ -829,6 +1036,62 @@ export type QueryProjectArgs = {
   status?: InputMaybe<PublicationStatus>;
 };
 
+export type QueryProjectCategoriesArgs = {
+  filters?: InputMaybe<ProjectCategoryFiltersInput>;
+  hasPublishedVersion?: InputMaybe<Scalars["Boolean"]["input"]>;
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]["input"]>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationFilter?: InputMaybe<PublicationFilter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+export type QueryProjectCategories_ConnectionArgs = {
+  filters?: InputMaybe<ProjectCategoryFiltersInput>;
+  hasPublishedVersion?: InputMaybe<Scalars["Boolean"]["input"]>;
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]["input"]>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationFilter?: InputMaybe<PublicationFilter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+export type QueryProjectCategoryArgs = {
+  documentId: Scalars["ID"]["input"];
+  hasPublishedVersion?: InputMaybe<Scalars["Boolean"]["input"]>;
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]["input"]>;
+  publicationFilter?: InputMaybe<PublicationFilter>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+export type QueryProjectStatusArgs = {
+  documentId: Scalars["ID"]["input"];
+  hasPublishedVersion?: InputMaybe<Scalars["Boolean"]["input"]>;
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]["input"]>;
+  publicationFilter?: InputMaybe<PublicationFilter>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+export type QueryProjectStatusesArgs = {
+  filters?: InputMaybe<ProjectStatusFiltersInput>;
+  hasPublishedVersion?: InputMaybe<Scalars["Boolean"]["input"]>;
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]["input"]>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationFilter?: InputMaybe<PublicationFilter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+export type QueryProjectStatuses_ConnectionArgs = {
+  filters?: InputMaybe<ProjectStatusFiltersInput>;
+  hasPublishedVersion?: InputMaybe<Scalars["Boolean"]["input"]>;
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]["input"]>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationFilter?: InputMaybe<PublicationFilter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
 export type QueryProjectsArgs = {
   filters?: InputMaybe<ProjectFiltersInput>;
   hasPublishedVersion?: InputMaybe<Scalars["Boolean"]["input"]>;
@@ -893,6 +1156,34 @@ export type QueryReviewWorkflowsWorkflowsArgs = {
 export type QueryReviewWorkflowsWorkflows_ConnectionArgs = {
   filters?: InputMaybe<ReviewWorkflowsWorkflowFiltersInput>;
   hasPublishedVersion?: InputMaybe<Scalars["Boolean"]["input"]>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationFilter?: InputMaybe<PublicationFilter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+export type QuerySectorArgs = {
+  documentId: Scalars["ID"]["input"];
+  hasPublishedVersion?: InputMaybe<Scalars["Boolean"]["input"]>;
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]["input"]>;
+  publicationFilter?: InputMaybe<PublicationFilter>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+export type QuerySectorsArgs = {
+  filters?: InputMaybe<SectorFiltersInput>;
+  hasPublishedVersion?: InputMaybe<Scalars["Boolean"]["input"]>;
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]["input"]>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationFilter?: InputMaybe<PublicationFilter>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+export type QuerySectors_ConnectionArgs = {
+  filters?: InputMaybe<SectorFiltersInput>;
+  hasPublishedVersion?: InputMaybe<Scalars["Boolean"]["input"]>;
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]["input"]>;
   pagination?: InputMaybe<PaginationArg>;
   publicationFilter?: InputMaybe<PublicationFilter>;
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
@@ -1127,6 +1418,59 @@ export type ReviewWorkflowsWorkflowStageRelationResponseCollection = {
   nodes: Array<ReviewWorkflowsWorkflowStage>;
 };
 
+export type Sector = {
+  __typename?: "Sector";
+  createdAt?: Maybe<Scalars["DateTime"]["output"]>;
+  documentId: Scalars["ID"]["output"];
+  locale?: Maybe<Scalars["String"]["output"]>;
+  localizations: Array<Maybe<Sector>>;
+  localizations_connection?: Maybe<SectorRelationResponseCollection>;
+  publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]["output"]>;
+  value: Scalars["String"]["output"];
+};
+
+export type SectorLocalizationsArgs = {
+  filters?: InputMaybe<SectorFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+};
+
+export type SectorLocalizations_ConnectionArgs = {
+  filters?: InputMaybe<SectorFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+};
+
+export type SectorEntityResponseCollection = {
+  __typename?: "SectorEntityResponseCollection";
+  nodes: Array<Sector>;
+  pageInfo: Pagination;
+};
+
+export type SectorFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<SectorFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  documentId?: InputMaybe<IdFilterInput>;
+  locale?: InputMaybe<StringFilterInput>;
+  localizations?: InputMaybe<SectorFiltersInput>;
+  not?: InputMaybe<SectorFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<SectorFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+  value?: InputMaybe<StringFilterInput>;
+};
+
+export type SectorInput = {
+  publishedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  value?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type SectorRelationResponseCollection = {
+  __typename?: "SectorRelationResponseCollection";
+  nodes: Array<Sector>;
+};
+
 export type Service = {
   __typename?: "Service";
   createdAt?: Maybe<Scalars["DateTime"]["output"]>;
@@ -1335,11 +1679,6 @@ export type UploadFileFiltersInput = {
   updatedAt?: InputMaybe<DateTimeFilterInput>;
   url?: InputMaybe<StringFilterInput>;
   width?: InputMaybe<IntFilterInput>;
-};
-
-export type UploadFileRelationResponseCollection = {
-  __typename?: "UploadFileRelationResponseCollection";
-  nodes: Array<UploadFile>;
 };
 
 export type UsersPermissionsCreateRolePayload = {
@@ -1572,6 +1911,7 @@ export type BlogDetailFragment = {
     width?: number | null;
     height?: number | null;
     formats?: Formats | null;
+    alternativeText?: string | null;
   };
 };
 
@@ -1590,6 +1930,7 @@ export type BlogFragment = {
     width?: number | null;
     height?: number | null;
     formats?: Formats | null;
+    alternativeText?: string | null;
   };
 };
 
@@ -1627,6 +1968,7 @@ export type BlogsDetailQuery = {
         width?: number | null;
         height?: number | null;
         formats?: Formats | null;
+        alternativeText?: string | null;
       };
     } | null>;
     thumbnail: {
@@ -1635,6 +1977,7 @@ export type BlogsDetailQuery = {
       width?: number | null;
       height?: number | null;
       formats?: Formats | null;
+      alternativeText?: string | null;
     };
   } | null>;
 };
@@ -1673,6 +2016,7 @@ export type BlogsQuery = {
         width?: number | null;
         height?: number | null;
         formats?: Formats | null;
+        alternativeText?: string | null;
       };
     }>;
     pageInfo: {
@@ -1700,6 +2044,7 @@ export type ImageFragment = {
   width?: number | null;
   height?: number | null;
   formats?: Formats | null;
+  alternativeText?: string | null;
 };
 
 export type LocalesQueryVariables = Exact<{ [key: string]: never }>;
@@ -1712,6 +2057,12 @@ export type LocalesQuery = {
   } | null>;
 };
 
+export type ProjectCategoryFragment = {
+  __typename?: "ProjectCategory";
+  documentId: string;
+  value: string;
+};
+
 export type ProjectDetailFragment = {
   __typename?: "Project";
   content: string;
@@ -1722,20 +2073,33 @@ export type ProjectDetailFragment = {
   createdAt?: string | null;
   updatedAt?: string | null;
   locale?: string | null;
+  location?: string | null;
+  delivery_date?: string | null;
+  sector?: { __typename?: "Sector"; documentId: string; value: string } | null;
   thumbnail: {
     __typename?: "UploadFile";
     url: string;
     width?: number | null;
     height?: number | null;
     formats?: Formats | null;
+    alternativeText?: string | null;
   };
-  images: Array<{
-    __typename?: "UploadFile";
-    url: string;
-    width?: number | null;
-    height?: number | null;
-    formats?: Formats | null;
-  } | null>;
+  project_category?: {
+    __typename?: "ProjectCategory";
+    documentId: string;
+    value: string;
+  } | null;
+  project_status?: {
+    __typename?: "ProjectStatus";
+    documentId: string;
+    value?: string | null;
+  } | null;
+};
+
+export type ProjectStatusFragment = {
+  __typename?: "ProjectStatus";
+  documentId: string;
+  value?: string | null;
 };
 
 export type ProjectFragment = {
@@ -1748,20 +2112,27 @@ export type ProjectFragment = {
   updatedAt?: string | null;
   locale?: string | null;
   content: string;
+  location?: string | null;
+  delivery_date?: string | null;
+  sector?: { __typename?: "Sector"; documentId: string; value: string } | null;
   thumbnail: {
     __typename?: "UploadFile";
     url: string;
     width?: number | null;
     height?: number | null;
     formats?: Formats | null;
+    alternativeText?: string | null;
   };
-  images: Array<{
-    __typename?: "UploadFile";
-    url: string;
-    width?: number | null;
-    height?: number | null;
-    formats?: Formats | null;
-  } | null>;
+  project_category?: {
+    __typename?: "ProjectCategory";
+    documentId: string;
+    value: string;
+  } | null;
+  project_status?: {
+    __typename?: "ProjectStatus";
+    documentId: string;
+    value?: string | null;
+  } | null;
 };
 
 export type ProjectsDetailQueryVariables = Exact<{
@@ -1785,6 +2156,8 @@ export type ProjectsDetailQuery = {
     updatedAt?: string | null;
     locale?: string | null;
     content: string;
+    location?: string | null;
+    delivery_date?: string | null;
     localizations: Array<{
       __typename?: "Project";
       documentId: string;
@@ -1795,35 +2168,55 @@ export type ProjectsDetailQuery = {
       updatedAt?: string | null;
       locale?: string | null;
       content: string;
+      location?: string | null;
+      delivery_date?: string | null;
+      sector?: {
+        __typename?: "Sector";
+        documentId: string;
+        value: string;
+      } | null;
       thumbnail: {
         __typename?: "UploadFile";
         url: string;
         width?: number | null;
         height?: number | null;
         formats?: Formats | null;
+        alternativeText?: string | null;
       };
-      images: Array<{
-        __typename?: "UploadFile";
-        url: string;
-        width?: number | null;
-        height?: number | null;
-        formats?: Formats | null;
-      } | null>;
+      project_category?: {
+        __typename?: "ProjectCategory";
+        documentId: string;
+        value: string;
+      } | null;
+      project_status?: {
+        __typename?: "ProjectStatus";
+        documentId: string;
+        value?: string | null;
+      } | null;
     } | null>;
+    sector?: {
+      __typename?: "Sector";
+      documentId: string;
+      value: string;
+    } | null;
     thumbnail: {
       __typename?: "UploadFile";
       url: string;
       width?: number | null;
       height?: number | null;
       formats?: Formats | null;
+      alternativeText?: string | null;
     };
-    images: Array<{
-      __typename?: "UploadFile";
-      url: string;
-      width?: number | null;
-      height?: number | null;
-      formats?: Formats | null;
-    } | null>;
+    project_category?: {
+      __typename?: "ProjectCategory";
+      documentId: string;
+      value: string;
+    } | null;
+    project_status?: {
+      __typename?: "ProjectStatus";
+      documentId: string;
+      value?: string | null;
+    } | null;
   } | null>;
 };
 
@@ -1850,26 +2243,37 @@ export type ProjectsQuery = {
       updatedAt?: string | null;
       locale?: string | null;
       content: string;
+      location?: string | null;
+      delivery_date?: string | null;
       localizations: Array<{
         __typename?: "Project";
         slug: string;
         locale?: string | null;
         updatedAt?: string | null;
       } | null>;
+      sector?: {
+        __typename?: "Sector";
+        documentId: string;
+        value: string;
+      } | null;
       thumbnail: {
         __typename?: "UploadFile";
         url: string;
         width?: number | null;
         height?: number | null;
         formats?: Formats | null;
+        alternativeText?: string | null;
       };
-      images: Array<{
-        __typename?: "UploadFile";
-        url: string;
-        width?: number | null;
-        height?: number | null;
-        formats?: Formats | null;
-      } | null>;
+      project_category?: {
+        __typename?: "ProjectCategory";
+        documentId: string;
+        value: string;
+      } | null;
+      project_status?: {
+        __typename?: "ProjectStatus";
+        documentId: string;
+        value?: string | null;
+      } | null;
     }>;
     pageInfo: {
       __typename?: "Pagination";
@@ -1879,6 +2283,12 @@ export type ProjectsQuery = {
       pageCount: number;
     };
   } | null;
+};
+
+export type SectorFragment = {
+  __typename?: "Sector";
+  documentId: string;
+  value: string;
 };
 
 export type ServiceFragment = {
@@ -1892,6 +2302,7 @@ export type ServiceFragment = {
     width?: number | null;
     height?: number | null;
     formats?: Formats | null;
+    alternativeText?: string | null;
   };
   service_items: Array<{
     __typename?: "ServiceItem";
@@ -1922,6 +2333,7 @@ export type ServicesQuery = {
       width?: number | null;
       height?: number | null;
       formats?: Formats | null;
+      alternativeText?: string | null;
     };
     service_items: Array<{
       __typename?: "ServiceItem";
@@ -1937,6 +2349,7 @@ export const ImageFragmentDoc = `
   width
   height
   formats
+  alternativeText
 }
     `;
 export const BlogFragmentDoc = `
@@ -1959,6 +2372,24 @@ export const BlogDetailFragmentDoc = `
   content
 }
     ${BlogFragmentDoc}`;
+export const SectorFragmentDoc = `
+    fragment Sector on Sector {
+  documentId
+  value
+}
+    `;
+export const ProjectCategoryFragmentDoc = `
+    fragment ProjectCategory on ProjectCategory {
+  documentId
+  value
+}
+    `;
+export const ProjectStatusFragmentDoc = `
+    fragment ProjectStatus on ProjectStatus {
+  documentId
+  value
+}
+    `;
 export const ProjectFragmentDoc = `
     fragment Project on Project {
   documentId
@@ -1969,14 +2400,25 @@ export const ProjectFragmentDoc = `
   updatedAt
   locale
   content
+  location
+  sector {
+    ...Sector
+  }
+  delivery_date
   thumbnail {
     ...Image
   }
-  images {
-    ...Image
+  project_category {
+    ...ProjectCategory
+  }
+  project_status {
+    ...ProjectStatus
   }
 }
-    ${ImageFragmentDoc}`;
+    ${SectorFragmentDoc}
+${ImageFragmentDoc}
+${ProjectCategoryFragmentDoc}
+${ProjectStatusFragmentDoc}`;
 export const ProjectDetailFragmentDoc = `
     fragment ProjectDetail on Project {
   ...Project
