@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { company } from "@/constants";
 import { locales } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/vi";
 import { ButtonLink, Container } from "./ui";
@@ -119,7 +120,7 @@ export function Header({ t, lang }: HeaderProps) {
           </div>
           {/* Wrapper carries the breakpoint — `ButtonLink` always sets `inline-flex`. */}
           <div className="hidden min-[68.75rem]:block">
-            <ButtonLink href="tel:19001234" variant="ghost">
+            <ButtonLink href={company.phone.href} variant="ghost">
               {t.call}
             </ButtonLink>
           </div>
@@ -211,7 +212,7 @@ export function Header({ t, lang }: HeaderProps) {
             <div className="mt-auto flex flex-col gap-3 pt-6">
               <LanguageSwitcher current={lang} t={t} />
               <ButtonLink
-                href="tel:19001234"
+                href={company.phone.href}
                 variant="secondary"
                 className="w-full"
               >

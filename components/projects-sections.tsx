@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { company } from "@/constants";
 import type { Dictionary } from "@/lib/i18n/vi";
 import type { Project } from "@/lib/data/projects";
 import { ButtonLink, Container, Kicker, SectionHead } from "./ui";
@@ -236,7 +237,7 @@ export function CtaDarkBand({
             {t.quote}
           </ButtonLink>
           <a
-            href="tel:19001234"
+            href={company.phone.href}
             className="inline-flex h-[50px] items-center justify-center rounded-md border-[1.5px] border-line px-[26px] text-[15px] font-semibold leading-none text-white transition-colors duration-150 ease-brand hover:border-white hover:bg-white hover:text-fg"
           >
             {t.call}

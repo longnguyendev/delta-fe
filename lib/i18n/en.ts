@@ -1,9 +1,14 @@
+import { company } from "@/constants/company";
+
 import type { Dictionary } from "./vi";
 
 /**
  * English copy. Typed against `Dictionary`, so it must mirror `vi.ts` exactly.
  * Same voice as the Vietnamese source: technical, plain-spoken, proof over
  * adjectives — no superlatives, no exclamation marks in headings.
+ *
+ * Contact facts come from `@/constants/company` for the same reason as `vi.ts`;
+ * the legal name and addresses stay in Vietnamese in both locales.
  */
 export const en: Dictionary = {
   meta: {
@@ -25,7 +30,7 @@ export const en: Dictionary = {
       { href: "#faq", label: "FAQ" },
       { href: "#contact", label: "Contact" },
     ],
-    call: "Call 1900 1234",
+    call: `Call ${company.phone.display}`,
     openMenu: "Open menu",
     closeMenu: "Close menu",
     drawerLabel: "Navigation menu",
@@ -115,7 +120,7 @@ export const en: Dictionary = {
   },
   ctaBand: {
     title: "Need advice on your system right now?",
-    lead: "Call the hotline on 1900 1234 — we reply during working hours.",
+    lead: `Call the hotline on ${company.phone.display} — we reply during working hours.`,
     cta: "Call for advice",
   },
   services: {
@@ -228,7 +233,7 @@ export const en: Dictionary = {
       title: "Talk to us about your scope of work",
       lead: "Send us the current condition or system drawings and Delta Energy's engineering team will survey and propose a suitable solution.",
       quote: "Request a quote",
-      call: "Call 1900 1234",
+      call: `Call ${company.phone.display}`,
     },
   },
   projectDetail: {
@@ -253,7 +258,7 @@ export const en: Dictionary = {
       title: "Need a survey for similar work?",
       lead: "Send us the current condition or system drawings and Delta Energy's engineering team will survey and propose a suitable solution.",
       quote: "Request a quote",
-      call: "Call 1900 1234",
+      call: `Call ${company.phone.display}`,
     },
   },
   servicesPage: {
@@ -307,7 +312,7 @@ export const en: Dictionary = {
       title: "Need advice on a service group?",
       lead: "Send us the current condition or system drawings and Delta Energy's engineering team will survey and propose a suitable solution.",
       quote: "Request a quote",
-      call: "Call 1900 1234",
+      call: `Call ${company.phone.display}`,
     },
   },
   serviceDetail: {
@@ -349,7 +354,7 @@ export const en: Dictionary = {
       title: "Need a survey for similar work?",
       lead: "Send us the current condition or system drawings and Delta Energy's engineering team will survey and propose a suitable solution.",
       quote: "Request a quote",
-      call: "Call 1900 1234",
+      call: `Call ${company.phone.display}`,
     },
   },
   faq: {
@@ -374,7 +379,7 @@ export const en: Dictionary = {
       },
       {
         q: "How do I get in touch?",
-        a: "You can call the hotline on 1900 1234, message us on Zalo, or send a quote request through the form on this page. Note: the site does not support online ordering yet.",
+        a: `You can call the hotline on ${company.phone.display}, message us on Zalo, or send a quote request through the form on this page. Note: the site does not support online ordering yet.`,
       },
     ],
   },
@@ -387,7 +392,7 @@ export const en: Dictionary = {
       {
         title: "Quote by hotline",
         body: "Talk directly to an engineer about your requirements.",
-        cta: "Call 1900 1234",
+        cta: `Call ${company.phone.display}`,
       },
       {
         title: "Advice via Zalo",
@@ -452,20 +457,27 @@ export const en: Dictionary = {
       reset: "Send another request",
     },
     error: {
-      generic:
-        "We couldn't send your request. Please try again, or call the hotline 1900 1234 for help.",
+      generic: `We couldn't send your request. Please try again, or call the hotline ${company.phone.display} for help.`,
     },
   },
   finalCta: {
     title: "Ready for more stable operations?",
     lead: "Send your request today — we reply within the working day.",
-    call: "Call for advice — 1900 1234",
+    call: `Call for advice — ${company.phone.display}`,
     zalo: "Message on Zalo →",
     note: "Reply within the working day · Transparent pricing",
   },
   footer: {
     tagline:
       "Delta Energy supplies equipment, engineering solutions and field services for factories and industrial facilities — from consulting and equipment supply through installation and maintenance.",
+    /** Labels for the company-information block — values live in `@/constants/company`. */
+    info: {
+      headOffice: "Head office",
+      workshop: "Workshop",
+      email: "Email",
+      taxCode: "Tax code",
+      workingHours: "Working hours",
+    },
     cols: [
       {
         heading: "Navigation",
@@ -487,13 +499,16 @@ export const en: Dictionary = {
       {
         heading: "Contact",
         links: [
-          { href: "tel:19001234", label: "Hotline 1900 1234" },
+          {
+            href: company.phone.href,
+            label: `Hotline ${company.phone.display}`,
+          },
           { href: "#contact", label: "Message on Zalo" },
           { href: "#contact", label: "Send a quote request" },
         ],
       },
     ],
-    legal: "© 2026 Delta Energy · CÔNG TY TNHH DỊCH VỤ KỸ THUẬT DELTA ENERGY",
+    legal: `© 2026 Delta Energy · ${company.legalName}`,
     values: "Engineering · Reliable · Clear",
   },
 };

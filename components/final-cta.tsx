@@ -1,3 +1,4 @@
+import { company } from "@/constants";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { Container } from "./ui";
 
@@ -26,7 +27,7 @@ export async function FinalCta() {
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <a
-                href="tel:19001234"
+                href={company.phone.href}
                 className="inline-flex h-[50px] items-center justify-center rounded-md bg-white px-[26px] text-[15px] font-semibold leading-none text-fg transition-colors duration-150 hover:bg-surface"
               >
                 {t.finalCta.call}

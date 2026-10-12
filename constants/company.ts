@@ -1,0 +1,42 @@
+/**
+ * Thông tin pháp nhân & liên hệ thật của công ty — nguồn dữ liệu duy nhất.
+ *
+ * Dictionary (`lib/i18n`), các component và JSON-LD (`lib/server/organization.ts`)
+ * đều đọc từ đây, nên số điện thoại/địa chỉ chỉ tồn tại ở đúng một chỗ và không
+ * thể lệch nhau. Địa chỉ và tên pháp nhân là dữ kiện không đổi theo ngôn ngữ —
+ * giữ tiếng Việt cho cả `/vi` lẫn `/en`, không đưa vào dictionary.
+ */
+const PHONE_E164 = "+84968275436";
+
+export const company = {
+  legalName: "CÔNG TY TNHH DỊCH VỤ KỸ THUẬT DELTA ENERGY",
+  shortName: "Delta Energy",
+  phone: {
+    /** Chuỗi hiển thị trên giao diện. */
+    display: "+84 968 275 436",
+    /** Dạng E.164 cho `telephone` trong JSON-LD. */
+    e164: PHONE_E164,
+    /** Link gọi — suy ra từ `e164` để hai giá trị không lệch nhau. */
+    href: `tel:${PHONE_E164}`,
+  },
+  email: {
+    address: "info@delta-enc.com.vn",
+    href: "mailto:info@delta-enc.com.vn",
+  },
+  address: {
+    headOffice:
+      "925/55, Đường 30/4, Phường Phước Thắng, Thành phố Hồ Chí Minh, Việt Nam",
+    workshop:
+      "155/8 Đường Đô Lương, Phường Phước Thắng, Thành phố Hồ Chí Minh, Việt Nam",
+  },
+  taxCode: "3502508868",
+  workingHours: {
+    /** Chuỗi hiển thị — giờ hành chính, nghỉ trưa 11h30–13h30. */
+    display: "7h–11h30, 13h30–17h",
+    /** Hai khối giờ mở cửa, dạng ISO 8601 cho JSON-LD. */
+    blocks: [
+      { opens: "07:00", closes: "11:30" },
+      { opens: "13:30", closes: "17:00" },
+    ],
+  },
+} as const;

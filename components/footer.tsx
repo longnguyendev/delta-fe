@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { lang } from "next/root-params";
+import { company } from "@/constants";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { Container } from "./ui";
 
@@ -19,6 +20,23 @@ function resolveHref(href: string, locale: string) {
 export async function Footer() {
   const [locale, t] = await Promise.all([lang(), getDictionary()]);
 
+  /**
+   * Thông tin pháp nhân — nhãn đổi theo ngôn ngữ, giá trị lấy từ
+   * `@/constants/company` nên địa chỉ và tên pháp nhân giữ nguyên tiếng Việt ở
+   * cả hai locale.
+   */
+  const info = [
+    { label: t.footer.info.headOffice, value: company.address.headOffice },
+    { label: t.footer.info.workshop, value: company.address.workshop },
+    {
+      label: t.footer.info.email,
+      value: company.email.address,
+      href: company.email.href,
+    },
+    { label: t.footer.info.taxCode, value: company.taxCode },
+    { label: t.footer.info.workingHours, value: company.workingHours.display },
+  ];
+
   return (
     <footer className="bg-fg py-12 text-sm md:py-16">
       <Container>
@@ -36,6 +54,27 @@ export async function Footer() {
             <p className="mt-3 max-w-[36ch] text-[13px] leading-relaxed text-footer-text">
               {t.footer.tagline}
             </p>
+            {/* Nhãn xếp trên giá trị: địa chỉ dài cần trọn bề rộng cột, và cách
+                này không phụ thuộc độ dài nhãn của từng ngôn ngữ. */}
+            <dl className="mt-6 flex flex-col gap-3 text-[13px] leading-relaxed">
+              {info.map((row) => (
+                <div key={row.label}>
+                  <dt className="text-footer-muted">{row.label}</dt>
+                  <dd className="text-footer-text">
+                    {row.href ? (
+                      <a
+                        href={row.href}
+                        className="transition-colors duration-150 hover:text-footer-muted"
+                      >
+                        {row.value}
+                      </a>
+                    ) : (
+                      row.value
+                    )}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
           {t.footer.cols.map((col) => (
             <nav key={col.heading} aria-label={col.heading}>

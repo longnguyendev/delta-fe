@@ -1,6 +1,12 @@
+import { company } from "@/constants/company";
+
 /**
  * Vietnamese copy — the source of truth for the dictionary shape.
  * `en.ts` is typed against `Dictionary`, so a missing key fails the build.
+ *
+ * Dữ kiện liên hệ (số điện thoại, tên pháp nhân) không viết cứng ở đây mà lấy
+ * từ `@/constants/company` — cùng nguồn với JSON-LD, nên số trên giao diện và
+ * số trong structured data không thể lệch nhau.
  */
 export const vi = {
   meta: {
@@ -22,7 +28,7 @@ export const vi = {
       { href: "#faq", label: "FAQ" },
       { href: "#contact", label: "Liên hệ" },
     ],
-    call: "Gọi 1900 1234",
+    call: `Gọi ${company.phone.display}`,
     openMenu: "Mở menu",
     closeMenu: "Đóng menu",
     drawerLabel: "Menu điều hướng",
@@ -112,7 +118,7 @@ export const vi = {
   },
   ctaBand: {
     title: "Cần tư vấn ngay cho hệ thống của Quý khách?",
-    lead: "Gọi hotline 1900 1234 — chúng tôi phản hồi trong giờ làm việc.",
+    lead: `Gọi hotline ${company.phone.display} — chúng tôi phản hồi trong giờ làm việc.`,
     cta: "Gọi tư vấn ngay",
   },
   services: {
@@ -227,7 +233,7 @@ export const vi = {
       title: "Trao đổi về hạng mục của bạn",
       lead: "Gửi hiện trạng hoặc bản vẽ hệ thống, đội ngũ kỹ thuật Delta Energy sẽ khảo sát và tư vấn giải pháp phù hợp.",
       quote: "Gửi yêu cầu báo giá",
-      call: "Gọi 1900 1234",
+      call: `Gọi ${company.phone.display}`,
     },
   },
   projectDetail: {
@@ -252,7 +258,7 @@ export const vi = {
       title: "Cần khảo sát một hạng mục tương tự?",
       lead: "Gửi hiện trạng hoặc bản vẽ hệ thống, đội ngũ kỹ thuật Delta Energy sẽ khảo sát và đề xuất giải pháp phù hợp.",
       quote: "Gửi yêu cầu báo giá",
-      call: "Gọi 1900 1234",
+      call: `Gọi ${company.phone.display}`,
     },
   },
   servicesPage: {
@@ -306,7 +312,7 @@ export const vi = {
       title: "Cần tư vấn một nhóm dịch vụ?",
       lead: "Gửi hiện trạng hoặc bản vẽ hệ thống, đội ngũ kỹ thuật Delta Energy sẽ khảo sát và đề xuất giải pháp phù hợp.",
       quote: "Gửi yêu cầu báo giá",
-      call: "Gọi 1900 1234",
+      call: `Gọi ${company.phone.display}`,
     },
   },
   serviceDetail: {
@@ -348,7 +354,7 @@ export const vi = {
       title: "Cần khảo sát một hạng mục tương tự?",
       lead: "Gửi hiện trạng hoặc bản vẽ hệ thống, đội ngũ kỹ thuật Delta Energy sẽ khảo sát và đề xuất giải pháp phù hợp.",
       quote: "Gửi yêu cầu báo giá",
-      call: "Gọi 1900 1234",
+      call: `Gọi ${company.phone.display}`,
     },
   },
   faq: {
@@ -373,7 +379,7 @@ export const vi = {
       },
       {
         q: "Làm thế nào để liên hệ?",
-        a: "Quý khách có thể gọi hotline 1900 1234, nhắn Zalo hoặc gửi yêu cầu báo giá qua biểu mẫu trên trang. Lưu ý: trang hiện chưa hỗ trợ đặt mua trực tuyến.",
+        a: `Quý khách có thể gọi hotline ${company.phone.display}, nhắn Zalo hoặc gửi yêu cầu báo giá qua biểu mẫu trên trang. Lưu ý: trang hiện chưa hỗ trợ đặt mua trực tuyến.`,
       },
     ],
   },
@@ -386,7 +392,7 @@ export const vi = {
       {
         title: "Báo giá qua hotline",
         body: "Trao đổi trực tiếp với kỹ thuật viên về nhu cầu của Quý khách.",
-        cta: "Gọi 1900 1234",
+        cta: `Gọi ${company.phone.display}`,
       },
       {
         title: "Tư vấn qua Zalo",
@@ -451,20 +457,27 @@ export const vi = {
       reset: "Gửi yêu cầu khác",
     },
     error: {
-      generic:
-        "Không gửi được yêu cầu. Quý khách vui lòng thử lại, hoặc gọi hotline 1900 1234 để được hỗ trợ.",
+      generic: `Không gửi được yêu cầu. Quý khách vui lòng thử lại, hoặc gọi hotline ${company.phone.display} để được hỗ trợ.`,
     },
   },
   finalCta: {
     title: "Sẵn sàng cho hệ thống vận hành ổn định hơn?",
     lead: "Gửi yêu cầu hôm nay, chúng tôi phản hồi trong ngày làm việc.",
-    call: "Gọi tư vấn ngay — 1900 1234",
+    call: `Gọi tư vấn ngay — ${company.phone.display}`,
     zalo: "Nhắn Zalo →",
     note: "Phản hồi trong ngày làm việc · Báo giá minh bạch",
   },
   footer: {
     tagline:
       "Delta Energy cung cấp thiết bị, giải pháp kỹ thuật và dịch vụ hiện trường cho nhà máy và công trình công nghiệp — từ tư vấn, cung cấp thiết bị đến lắp đặt và bảo trì vận hành.",
+    /** Nhãn cho khối thông tin pháp nhân — giá trị nằm ở `@/constants/company`. */
+    info: {
+      headOffice: "Trụ sở",
+      workshop: "Xưởng",
+      email: "Email",
+      taxCode: "MST",
+      workingHours: "Giờ làm việc",
+    },
     cols: [
       {
         heading: "Điều hướng",
@@ -486,13 +499,16 @@ export const vi = {
       {
         heading: "Liên hệ",
         links: [
-          { href: "tel:19001234", label: "Hotline 1900 1234" },
+          {
+            href: company.phone.href,
+            label: `Hotline ${company.phone.display}`,
+          },
           { href: "#contact", label: "Nhắn Zalo" },
           { href: "#contact", label: "Gửi yêu cầu báo giá" },
         ],
       },
     ],
-    legal: "© 2026 Delta Energy · CÔNG TY TNHH DỊCH VỤ KỸ THUẬT DELTA ENERGY",
+    legal: `© 2026 Delta Energy · ${company.legalName}`,
     values: "Kỹ thuật · Đáng tin cậy · Rõ ràng",
   },
 };

@@ -1,3 +1,4 @@
+import { company } from "@/constants";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { ButtonLink, Container } from "./ui";
 
@@ -15,7 +16,7 @@ export async function CtaBand() {
             </h3>
             <p className="mt-1 text-text-secondary">{t.ctaBand.lead}</p>
           </div>
-          <ButtonLink href="tel:19001234" variant="secondary" size="lg">
+          <ButtonLink href={company.phone.href} variant="secondary" size="lg">
             {t.ctaBand.cta}
           </ButtonLink>
         </div>

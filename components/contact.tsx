@@ -1,11 +1,12 @@
 import { lang } from "next/root-params";
+import { company } from "@/constants";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { ContactForm } from "./contact-form";
 import { ButtonLink, Container, SectionHead } from "./ui";
 
 /** Destinations are language-independent — zipped with `t.contact.items`. */
 const CHANNEL_TARGETS = [
-  { href: "tel:19001234", highlighted: false },
+  { href: company.phone.href, highlighted: false },
   { href: "#contact", highlighted: true },
   { href: "#contact-form", highlighted: false },
 ];
