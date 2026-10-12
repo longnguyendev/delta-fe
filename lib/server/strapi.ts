@@ -1,15 +1,15 @@
 /**
  * Tầng gọi Strapi GraphQL từ Server Component.
  *
- * Khác `lib/client/fetcher.ts` ở chỗ đây là hàm async trả thẳng dữ liệu và gắn
- * `next.revalidate`, nên kết quả được Next cache theo ISR thay vì phải gọi lại
- * mỗi request.
+ * Khác `lib/client/fetcher.ts` ở chỗ đây là hàm async trả thẳng dữ liệu.
+ *
+ * `cache: "no-store"` — không đi qua Data Cache của Next: mỗi lượt truy cập gọi
+ * thẳng Strapi nên nội dung sửa trong CMS hiện ra ngay ở lần tải kế tiếp, không
+ * phải chờ hết hạn revalidate. Đổi lại, mỗi request tốn một lượt GraphQL, và các
+ * trang đọc hàm này render ở request time thay vì được dựng sẵn lúc build.
  */
 
 const endpoint = `${process.env.NEXT_PUBLIC_API ?? "http://localhost:1337"}/graphql`;
-
-/** Nội dung Strapi đổi chậm — 5 phút, khớp `staleTime` của React Query. */
-const REVALIDATE_SECONDS = 300;
 
 type GraphQLResponse<TData> = {
   data?: TData;
@@ -28,7 +28,7 @@ export async function strapiRequest<
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ query, variables }),
-    next: { revalidate: REVALIDATE_SECONDS },
+    cache: "no-store",
   });
 
   if (!response.ok) {

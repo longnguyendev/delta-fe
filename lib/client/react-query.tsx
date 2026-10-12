@@ -7,8 +7,9 @@ function makeQueryClient() {
   return new QueryClient({
     defaultOptions: {
       queries: {
-        // Nội dung Strapi thay đổi chậm — 5 phút là đủ tươi.
-        staleTime: 5 * 60 * 1000,
+        // Khớp `cache: "no-store"` của tầng server: mỗi lần mount là một lần
+        // lấy dữ liệu mới, không giữ bản cũ trong cache của client.
+        staleTime: 0,
         // Mạng localhost hay chập chờn khi dev — thử lại tối đa 2 lần.
         retry: 2,
         // Site nội dung, không cần refetch khi quay lại tab.

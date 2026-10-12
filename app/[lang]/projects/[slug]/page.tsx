@@ -10,18 +10,13 @@ import {
 } from "@/components/project-detail-sections";
 import { CtaDarkBand } from "@/components/projects-sections";
 import { getDictionary } from "@/lib/i18n/dictionaries";
-import { defaultLocale } from "@/lib/i18n/config";
 import { getProject, getProjects, pickRelated } from "@/lib/server/projects";
 
-/**
- * Dựng sẵn các slug đang có trên Strapi; slug thêm sau vẫn render được ngay nhờ
- * `dynamicParams` mặc định, không phải build lại.
+/*
+ * Cố ý không có `generateStaticParams`: dữ liệu dự án đọc ở chế độ `no-store`
+ * (xem `lib/server/strapi.ts`) nên trang render ngay lúc có request — slug nào
+ * cũng vậy, thêm dự án trên Strapi là vào được luôn, không phải build lại.
  */
-export async function generateStaticParams() {
-  const projects = await getProjects(defaultLocale);
-
-  return projects.map((project) => ({ slug: project.slug }));
-}
 
 export async function generateMetadata(
   props: PageProps<"/[lang]/projects/[slug]">,

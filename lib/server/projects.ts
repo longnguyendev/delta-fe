@@ -131,22 +131,28 @@ function toProject(node: ProjectNode): Project {
 }
 
 /**
- * Các bản ghi dự án theo ngôn ngữ mặc định, mới nhất trước.
+ * Các bản ghi dự án theo ngôn ngữ mặc định, mới nhất trước, tối đa `limit` bản.
  *
  * Lọc theo `project_category.slug` chứ không theo `value`: slug là khoá ổn định,
  * còn tên hạng mục sửa lúc nào cũng được. Việc lọc do Strapi làm nên trang chỉ
  * tải về đúng hạng mục đang xem.
+ *
+ * Vòng lặp dừng theo hai đường: đã đủ `limit` bản, hoặc trang trả về ít hơn
+ * `pageSize` (hết dữ liệu). Chỉ dựa vào đường thứ hai là sai khi `limit` nhỏ —
+ * Strapi vẫn trả đủ `pageSize` bản ở mọi trang cho tới hết collection, nên xin 1
+ * bản mà quên `limit` sẽ tốn một request cho mỗi dự án.
  */
 async function fetchEntries(
   categorySlug?: string | null,
-  pageSize = PAGE_SIZE,
+  limit = Number.POSITIVE_INFINITY,
 ): Promise<ProjectEntry[]> {
   const entries: ProjectEntry[] = [];
+  const pageSize = Math.min(PAGE_SIZE, limit);
   const filters: ProjectsDetailQueryVariables["filters"] = categorySlug
     ? { project_category: { slug: { eq: categorySlug } } }
     : undefined;
 
-  for (let page = 1; ; page += 1) {
+  for (let page = 1; entries.length < limit; page += 1) {
     const data = await strapiRequest<
       ProjectsDetailQuery,
       ProjectsDetailQueryVariables
@@ -160,8 +166,10 @@ async function fetchEntries(
       ...data.projects.filter((entry): entry is ProjectEntry => entry !== null),
     );
 
-    if (data.projects.length < pageSize) return entries;
+    if (data.projects.length < pageSize) break;
   }
+
+  return entries.slice(0, limit);
 }
 
 /**
@@ -173,6 +181,19 @@ export async function getProjects(
   categorySlug?: string | null,
 ): Promise<Project[]> {
   const entries = await fetchEntries(categorySlug);
+
+  return entries.map((entry) => toProject(localize(entry, locale)));
+}
+
+/**
+ * `limit` dự án mới nhất của toàn bộ danh mục — cho khối gọn ở trang chủ, nơi
+ * chỉ cần đúng một hàng lưới chứ không cần cả hồ sơ năng lực.
+ */
+export async function getLatestProjects(
+  locale: string,
+  limit: number,
+): Promise<Project[]> {
+  const entries = await fetchEntries(null, limit);
 
   return entries.map((entry) => toProject(localize(entry, locale)));
 }
@@ -214,9 +235,9 @@ export async function getProjectsTotal(): Promise<number> {
 export async function getFeaturedProject(
   locale: string,
 ): Promise<Project | null> {
-  const [entry] = await fetchEntries(null, 1);
+  const [project] = await getLatestProjects(locale, 1);
 
-  return entry ? toProject(localize(entry, locale)) : null;
+  return project ?? null;
 }
 
 /** Một dự án theo slug, `null` nếu không tồn tại. */

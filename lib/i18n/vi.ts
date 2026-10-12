@@ -159,27 +159,11 @@ export const vi = {
     kicker: "Hồ sơ năng lực",
     title: "Những dự án đã bàn giao trên thực tế",
     lead: "Kết quả thực tế từ các công trình chúng tôi đã thực hiện — bằng con số, không bằng tính từ.",
-    readMore: "Đọc thêm →",
-    items: [
-      {
-        tag: "Điện công nghiệp",
-        title: "Nâng cấp hệ thống điện điều khiển",
-        body: "Thay thế tủ điều khiển cũ, đấu nối và chạy thử toàn bộ hệ thống điện cho dây chuyền sản xuất.",
-        alt: "Minh họa dự án nâng cấp hệ thống điện điều khiển",
-      },
-      {
-        tag: "Thiết bị công nghiệp",
-        title: "Cung cấp cụm bơm & đường ống",
-        body: "Cung cấp và lắp đặt cụm bơm cùng hệ thống đường ống cho nhà máy chế biến.",
-        alt: "Minh họa dự án cung cấp cụm bơm và đường ống",
-      },
-      {
-        tag: "Bảo trì vận hành",
-        title: "Bảo trì định kỳ giàn máy",
-        body: "Lập lịch và thực hiện bảo trì định kỳ giàn máy theo khuyến nghị của nhà sản xuất.",
-        alt: "Minh họa dự án bảo trì định kỳ giàn máy",
-      },
-    ],
+    viewAll: "Xem tất cả dự án →",
+    /*
+     * Không có `items` viết cứng: ba thẻ ở khối này lấy từ Strapi qua
+     * `getLatestProjects`, xem `components/projects.tsx`.
+     */
   },
   projectsPage: {
     meta: {

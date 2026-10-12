@@ -162,27 +162,9 @@ export const en: Dictionary = {
     kicker: "Capability profile",
     title: "Projects handed over on real sites",
     lead: "Results from work we have actually delivered — in numbers, not adjectives.",
-    readMore: "Read more →",
-    items: [
-      {
-        tag: "Industrial electrical",
-        title: "Control electrical system upgrade",
-        body: "Replaced ageing control cabinets, re-wired and commissioned the full electrical system for a production line.",
-        alt: "Illustration of a control electrical system upgrade project",
-      },
-      {
-        tag: "Industrial equipment",
-        title: "Pump skid & piping supply",
-        body: "Supplied and installed a pump skid together with the piping system for a processing plant.",
-        alt: "Illustration of a pump skid and piping supply project",
-      },
-      {
-        tag: "Maintenance",
-        title: "Periodic rig maintenance",
-        body: "Scheduled and carried out periodic rig maintenance to the manufacturer's recommendations.",
-        alt: "Illustration of a periodic rig maintenance project",
-      },
-    ],
+    viewAll: "View all projects →",
+    /* No hard-coded `items` — the three cards come from Strapi; see
+     * `components/projects.tsx`. */
   },
   projectsPage: {
     meta: {
