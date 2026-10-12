@@ -17,7 +17,7 @@ export const en: Dictionary = {
   },
   nav: {
     label: "Main navigation",
-    home: "Delta Energy — back to top",
+    home: "Delta Energy — back to home page",
     items: [
       { href: "#solutions", label: "Solutions" },
       { href: "/services", label: "Services" },

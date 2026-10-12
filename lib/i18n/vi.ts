@@ -14,7 +14,7 @@ export const vi = {
   },
   nav: {
     label: "Điều hướng chính",
-    home: "Delta Energy — về đầu trang",
+    home: "Delta Energy — về trang chủ",
     items: [
       { href: "#solutions", label: "Giải pháp" },
       { href: "/services", label: "Dịch vụ" },

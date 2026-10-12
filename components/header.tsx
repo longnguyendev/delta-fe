@@ -59,8 +59,8 @@ export function Header({ t, lang }: HeaderProps) {
 
   /**
    * Nav items are home-page anchors (`#services`) plus real routes (`/projects`).
-   * On the home page the anchors stay in-page; anywhere else they — and the
-   * logo — need the locale prefix, or the browser looks for the anchor here.
+   * On the home page the anchors stay in-page; anywhere else they need the
+   * locale prefix, or the browser looks for the anchor here.
    */
   function resolveHref(href: string) {
     if (href.startsWith("#")) return onHome ? href : `/${lang}${href}`;
@@ -72,18 +72,29 @@ export function Header({ t, lang }: HeaderProps) {
   return (
     <header className="sticky top-0 z-20 border-b border-line bg-container">
       <Container className="flex h-[76px] items-center justify-between gap-6">
+        {/*
+          The badge is sized by width, never by an `h-*` utility: the unlayered
+          `img { height: auto }` block in globals.css outranks every layered
+          utility, so an image here can only take its height from the ratio.
+          `w-12` on both the link and the image also keeps `max-width: 100%`
+          off a shrink-to-fit box, which collapsed the old logo to 0×0.
+
+          The link targets the home route, or `#top` when already there — a
+          link to the page you are on would otherwise do nothing at all.
+        */}
         <Link
-          href={resolveHref("#top")}
+          href={onHome ? "#top" : `/${lang}`}
           aria-label={t.home}
-          className="shrink-0"
+          className="flex h-12 w-12 shrink-0 items-center"
         >
           <Image
-            src="/logos/delta-energy-lockup.svg"
+            src="/logos/delta-energy-logo-square.jpg"
             alt="Delta Energy"
-            width={214}
+            width={48}
             height={48}
-            priority
-            className="h-12 w-auto"
+            sizes="48px"
+            loading="eager"
+            className="w-12"
           />
         </Link>
 
@@ -150,13 +161,21 @@ export function Header({ t, lang }: HeaderProps) {
           />
           <div className="absolute right-0 top-0 flex h-full w-[280px] flex-col border-l border-line bg-container p-6">
             <div className="mb-2 flex items-center justify-between">
-              <Image
-                src="/logos/delta-energy-lockup.svg"
-                alt="Delta Energy"
-                width={214}
-                height={48}
-                className="h-9 w-auto"
-              />
+              <Link
+                href={onHome ? "#top" : `/${lang}`}
+                aria-label={t.home}
+                onClick={() => setOpen(false)}
+                className="flex h-11 w-11 shrink-0 items-center justify-center"
+              >
+                <Image
+                  src="/logos/delta-energy-logo-square.jpg"
+                  alt="Delta Energy"
+                  width={36}
+                  height={36}
+                  sizes="36px"
+                  className="w-9"
+                />
+              </Link>
               <button
                 type="button"
                 aria-label={t.closeMenu}

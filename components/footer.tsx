@@ -24,12 +24,14 @@ export async function Footer() {
       <Container>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-[2fr_1fr_1fr_1fr]">
           <div>
+            {/* Width, not `h-12`: the unlayered `img { height: auto }` in
+                globals.css outranks utilities, so the height follows the ratio. */}
             <Image
               src="/logos/delta-energy-lockup-light.svg"
               alt="Delta Energy"
               width={214}
               height={48}
-              className="h-12 w-auto"
+              className="w-[214px]"
             />
             <p className="mt-3 max-w-[36ch] text-[13px] leading-relaxed text-footer-text">
               {t.footer.tagline}
