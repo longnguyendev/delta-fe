@@ -25,12 +25,12 @@ export default async function Page() {
         <Hero />
         <TrustStrip />
         <Problem />
+        <Projects />
         <Pillars />
         <HowItWorks />
         <CtaBand />
         <Services />
         <StatsBand />
-        <Projects />
         <Faq />
         <Contact />
         <FinalCta />
