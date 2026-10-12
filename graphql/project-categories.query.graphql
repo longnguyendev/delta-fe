@@ -1,0 +1,16 @@
+# Danh sách hạng mục cho dãy chip lọc.
+#
+# Phải hỏi riêng chứ không suy ra từ danh sách dự án như trước: từ khi bộ lọc
+# chạy ở server, kết quả trả về chỉ còn đúng hạng mục đang chọn nên các chip
+# khác sẽ biến mất khỏi giao diện.
+#
+# Không truyền `locale` — cùng cách với `ProjectsDetail`: Strapi trả bản ngôn
+# ngữ mặc định kèm `localizations`, `lib/server/projects.ts` tự chọn bản dịch.
+query ProjectCategories {
+  projectCategories(pagination: { pageSize: 100 }, sort: ["value:asc"]) {
+    ...ProjectCategory
+    localizations {
+      ...ProjectCategory
+    }
+  }
+}

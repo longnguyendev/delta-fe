@@ -16,10 +16,26 @@ export type ProjectImage = {
   alt: string;
 };
 
+/**
+ * Hạng mục của dự án — quan hệ `project_category`.
+ *
+ * Tách `slug` khỏi `value` vì hai thứ phục vụ hai việc khác nhau: `value` là
+ * chữ hiển thị và đổi được bất cứ lúc nào, còn `slug` là khoá dùng cho bộ lọc
+ * và tham số `?q=` trên URL. Lọc theo `value` sẽ hỏng ngay khi quản trị viên sửa
+ * tên hạng mục, và gộp nhầm hai hạng mục trùng tên.
+ *
+ * `slug` nullable đúng như Strapi khai: hạng mục chưa đặt slug vẫn có thật,
+ * nhưng không dựng chip lọc cho nó được.
+ */
+export type ProjectCategoryRef = {
+  value: string;
+  slug: string | null;
+};
+
 /** Năm ô thông tin ở hero trang chi tiết. */
 export type ProjectMeta = {
   /** Hạng mục — quan hệ `project_category`. */
-  category: string | null;
+  category: ProjectCategoryRef | null;
   location: string | null;
   sector: string | null;
   /** Trạng thái bàn giao — quan hệ `project_status`. */

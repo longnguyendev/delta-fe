@@ -743,6 +743,7 @@ export type ProjectCategory = {
   localizations: Array<Maybe<ProjectCategory>>;
   localizations_connection?: Maybe<ProjectCategoryRelationResponseCollection>;
   publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+  slug?: Maybe<Scalars["String"]["output"]>;
   updatedAt?: Maybe<Scalars["DateTime"]["output"]>;
   value: Scalars["String"]["output"];
 };
@@ -774,12 +775,14 @@ export type ProjectCategoryFiltersInput = {
   not?: InputMaybe<ProjectCategoryFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ProjectCategoryFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
+  slug?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
   value?: InputMaybe<StringFilterInput>;
 };
 
 export type ProjectCategoryInput = {
   publishedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  slug?: InputMaybe<Scalars["String"]["input"]>;
   value?: InputMaybe<Scalars["String"]["input"]>;
 };
 
@@ -2057,10 +2060,32 @@ export type LocalesQuery = {
   } | null>;
 };
 
+export type ProjectCategoriesQueryVariables = Exact<{ [key: string]: never }>;
+
+export type ProjectCategoriesQuery = {
+  __typename?: "Query";
+  projectCategories: Array<{
+    __typename?: "ProjectCategory";
+    documentId: string;
+    value: string;
+    slug?: string | null;
+    locale?: string | null;
+    localizations: Array<{
+      __typename?: "ProjectCategory";
+      documentId: string;
+      value: string;
+      slug?: string | null;
+      locale?: string | null;
+    } | null>;
+  } | null>;
+};
+
 export type ProjectCategoryFragment = {
   __typename?: "ProjectCategory";
   documentId: string;
   value: string;
+  slug?: string | null;
+  locale?: string | null;
 };
 
 export type ProjectDetailFragment = {
@@ -2088,6 +2113,8 @@ export type ProjectDetailFragment = {
     __typename?: "ProjectCategory";
     documentId: string;
     value: string;
+    slug?: string | null;
+    locale?: string | null;
   } | null;
   project_status?: {
     __typename?: "ProjectStatus";
@@ -2127,11 +2154,23 @@ export type ProjectFragment = {
     __typename?: "ProjectCategory";
     documentId: string;
     value: string;
+    slug?: string | null;
+    locale?: string | null;
   } | null;
   project_status?: {
     __typename?: "ProjectStatus";
     documentId: string;
     value?: string | null;
+  } | null;
+};
+
+export type ProjectsCountQueryVariables = Exact<{ [key: string]: never }>;
+
+export type ProjectsCountQuery = {
+  __typename?: "Query";
+  projects_connection?: {
+    __typename?: "ProjectEntityResponseCollection";
+    pageInfo: { __typename?: "Pagination"; total: number };
   } | null;
 };
 
@@ -2187,6 +2226,8 @@ export type ProjectsDetailQuery = {
         __typename?: "ProjectCategory";
         documentId: string;
         value: string;
+        slug?: string | null;
+        locale?: string | null;
       } | null;
       project_status?: {
         __typename?: "ProjectStatus";
@@ -2211,6 +2252,8 @@ export type ProjectsDetailQuery = {
       __typename?: "ProjectCategory";
       documentId: string;
       value: string;
+      slug?: string | null;
+      locale?: string | null;
     } | null;
     project_status?: {
       __typename?: "ProjectStatus";
@@ -2268,6 +2311,8 @@ export type ProjectsQuery = {
         __typename?: "ProjectCategory";
         documentId: string;
         value: string;
+        slug?: string | null;
+        locale?: string | null;
       } | null;
       project_status?: {
         __typename?: "ProjectStatus";
@@ -2382,6 +2427,8 @@ export const ProjectCategoryFragmentDoc = `
     fragment ProjectCategory on ProjectCategory {
   documentId
   value
+  slug
+  locale
 }
     `;
 export const ProjectStatusFragmentDoc = `
@@ -2711,6 +2758,195 @@ useLocalesQuery.fetcher = (
 ) =>
   fetcher<LocalesQuery, LocalesQueryVariables>(
     LocalesDocument,
+    variables,
+    options,
+  );
+
+export const ProjectCategoriesDocument = `
+    query ProjectCategories {
+  projectCategories(pagination: {pageSize: 100}, sort: ["value:asc"]) {
+    ...ProjectCategory
+    localizations {
+      ...ProjectCategory
+    }
+  }
+}
+    ${ProjectCategoryFragmentDoc}`;
+
+export const useProjectCategoriesQuery = <
+  TData = ProjectCategoriesQuery,
+  TError = unknown,
+>(
+  variables?: ProjectCategoriesQueryVariables,
+  options?: Omit<
+    UseQueryOptions<ProjectCategoriesQuery, TError, TData>,
+    "queryKey"
+  > & {
+    queryKey?: UseQueryOptions<
+      ProjectCategoriesQuery,
+      TError,
+      TData
+    >["queryKey"];
+  },
+) => {
+  return useQuery<ProjectCategoriesQuery, TError, TData>({
+    queryKey:
+      variables === undefined
+        ? ["ProjectCategories"]
+        : ["ProjectCategories", variables],
+    queryFn: fetcher<ProjectCategoriesQuery, ProjectCategoriesQueryVariables>(
+      ProjectCategoriesDocument,
+      variables,
+    ),
+    ...options,
+  });
+};
+
+useProjectCategoriesQuery.getKey = (
+  variables?: ProjectCategoriesQueryVariables,
+) =>
+  variables === undefined
+    ? ["ProjectCategories"]
+    : ["ProjectCategories", variables];
+
+export const useInfiniteProjectCategoriesQuery = <
+  TData = InfiniteData<ProjectCategoriesQuery>,
+  TError = unknown,
+>(
+  variables: ProjectCategoriesQueryVariables,
+  options: Omit<
+    UseInfiniteQueryOptions<ProjectCategoriesQuery, TError, TData>,
+    "queryKey"
+  > & {
+    queryKey?: UseInfiniteQueryOptions<
+      ProjectCategoriesQuery,
+      TError,
+      TData
+    >["queryKey"];
+  },
+) => {
+  return useInfiniteQuery<ProjectCategoriesQuery, TError, TData>(
+    (() => {
+      const { queryKey: optionsQueryKey, ...restOptions } = options;
+      return {
+        queryKey:
+          (optionsQueryKey ?? variables === undefined)
+            ? ["ProjectCategories.infinite"]
+            : ["ProjectCategories.infinite", variables],
+        queryFn: (metaData) =>
+          fetcher<ProjectCategoriesQuery, ProjectCategoriesQueryVariables>(
+            ProjectCategoriesDocument,
+            { ...variables, ...(metaData.pageParam ?? {}) },
+          )(),
+        ...restOptions,
+      };
+    })(),
+  );
+};
+
+useInfiniteProjectCategoriesQuery.getKey = (
+  variables?: ProjectCategoriesQueryVariables,
+) =>
+  variables === undefined
+    ? ["ProjectCategories.infinite"]
+    : ["ProjectCategories.infinite", variables];
+
+useProjectCategoriesQuery.fetcher = (
+  variables?: ProjectCategoriesQueryVariables,
+  options?: RequestInit["headers"],
+) =>
+  fetcher<ProjectCategoriesQuery, ProjectCategoriesQueryVariables>(
+    ProjectCategoriesDocument,
+    variables,
+    options,
+  );
+
+export const ProjectsCountDocument = `
+    query ProjectsCount {
+  projects_connection {
+    pageInfo {
+      total
+    }
+  }
+}
+    `;
+
+export const useProjectsCountQuery = <
+  TData = ProjectsCountQuery,
+  TError = unknown,
+>(
+  variables?: ProjectsCountQueryVariables,
+  options?: Omit<
+    UseQueryOptions<ProjectsCountQuery, TError, TData>,
+    "queryKey"
+  > & {
+    queryKey?: UseQueryOptions<ProjectsCountQuery, TError, TData>["queryKey"];
+  },
+) => {
+  return useQuery<ProjectsCountQuery, TError, TData>({
+    queryKey:
+      variables === undefined
+        ? ["ProjectsCount"]
+        : ["ProjectsCount", variables],
+    queryFn: fetcher<ProjectsCountQuery, ProjectsCountQueryVariables>(
+      ProjectsCountDocument,
+      variables,
+    ),
+    ...options,
+  });
+};
+
+useProjectsCountQuery.getKey = (variables?: ProjectsCountQueryVariables) =>
+  variables === undefined ? ["ProjectsCount"] : ["ProjectsCount", variables];
+
+export const useInfiniteProjectsCountQuery = <
+  TData = InfiniteData<ProjectsCountQuery>,
+  TError = unknown,
+>(
+  variables: ProjectsCountQueryVariables,
+  options: Omit<
+    UseInfiniteQueryOptions<ProjectsCountQuery, TError, TData>,
+    "queryKey"
+  > & {
+    queryKey?: UseInfiniteQueryOptions<
+      ProjectsCountQuery,
+      TError,
+      TData
+    >["queryKey"];
+  },
+) => {
+  return useInfiniteQuery<ProjectsCountQuery, TError, TData>(
+    (() => {
+      const { queryKey: optionsQueryKey, ...restOptions } = options;
+      return {
+        queryKey:
+          (optionsQueryKey ?? variables === undefined)
+            ? ["ProjectsCount.infinite"]
+            : ["ProjectsCount.infinite", variables],
+        queryFn: (metaData) =>
+          fetcher<ProjectsCountQuery, ProjectsCountQueryVariables>(
+            ProjectsCountDocument,
+            { ...variables, ...(metaData.pageParam ?? {}) },
+          )(),
+        ...restOptions,
+      };
+    })(),
+  );
+};
+
+useInfiniteProjectsCountQuery.getKey = (
+  variables?: ProjectsCountQueryVariables,
+) =>
+  variables === undefined
+    ? ["ProjectsCount.infinite"]
+    : ["ProjectsCount.infinite", variables];
+
+useProjectsCountQuery.fetcher = (
+  variables?: ProjectsCountQueryVariables,
+  options?: RequestInit["headers"],
+) =>
+  fetcher<ProjectsCountQuery, ProjectsCountQueryVariables>(
+    ProjectsCountDocument,
     variables,
     options,
   );

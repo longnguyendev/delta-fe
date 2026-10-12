@@ -39,7 +39,7 @@ export function DetailHero({
   const { meta } = project;
 
   const facts = [
-    { value: meta.category, label: t.metaLabels.category },
+    { value: meta.category?.value, label: t.metaLabels.category },
     { value: meta.location, label: t.metaLabels.location },
     { value: meta.sector, label: t.metaLabels.sector },
     { value: meta.status, label: t.metaLabels.status },

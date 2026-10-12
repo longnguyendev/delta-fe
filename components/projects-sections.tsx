@@ -117,7 +117,7 @@ export function ProjectsFeatured({
   const facts = [
     { value: meta.handover, label: t.featured.metaLabels.handover },
     { value: meta.location, label: t.featured.metaLabels.location },
-    { value: meta.category, label: t.featured.metaLabels.category },
+    { value: meta.category?.value, label: t.featured.metaLabels.category },
   ];
 
   return (

@@ -1,4 +1,10 @@
+# `slug` là định danh dùng cho bộ lọc và tham số `?q=` trên URL — tên hiển thị
+# (`value`) đổi được lúc nào cũng được nên không dùng làm khoá. Strapi khai
+# `slug` là nullable: hạng mục chưa đặt slug thì không lọc được, và bộ lọc tự bỏ
+# qua nó thay vì dựng ra một chip dẫn tới danh sách rỗng.
 fragment ProjectCategory on ProjectCategory {
   documentId
   value
+  slug
+  locale
 }

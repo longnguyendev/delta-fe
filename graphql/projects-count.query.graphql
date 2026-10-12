@@ -1,0 +1,11 @@
+# Tổng số dự án, không kèm bản ghi.
+#
+# Dòng "Đang hiển thị N trên M dự án" cần M là tổng của tất cả hạng mục, kể cả
+# khi đang lọc. Hỏi mỗi con số thay vì tải hết dự án về chỉ để đếm.
+query ProjectsCount {
+  projects_connection {
+    pageInfo {
+      total
+    }
+  }
+}

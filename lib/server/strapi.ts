@@ -20,10 +20,10 @@ type GraphQLResponse<TData> = {
  * Lỗi được ném ra thay vì trả về giá trị rỗng: một trang dự án trắng trông như
  * "chưa có dữ liệu", còn lỗi thì chỉ đúng chỗ cần sửa (schema, biến, endpoint).
  */
-export async function strapiRequest<TData, TVariables>(
-  query: string,
-  variables?: TVariables,
-): Promise<TData> {
+export async function strapiRequest<
+  TData,
+  TVariables = Record<string, never>,
+>(query: string, variables?: TVariables): Promise<TData> {
   const response = await fetch(endpoint, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
