@@ -11,40 +11,125 @@ import { Container, SectionHead } from "./ui";
 const INK = "#1F2937";
 
 const STEP_VISUALS = [
-  // 1 · Khảo sát & tư vấn — đồng hồ áp suất trên tuyến ống
+  // 1 · Tiếp nhận & báo giá — bản vẽ kỹ thuật có đường kích thước
   <>
-    <rect x="24" y="86" width="76" height="10" fill={INK} fillOpacity="0.16" />
-    <rect x="24" y="96" width="76" height="6" fill={INK} fillOpacity="0.34" />
-    <rect x="58" y="68" width="8" height="20" fill={INK} fillOpacity="0.45" />
-    <rect x="50" y="64" width="24" height="6" fill={INK} fillOpacity="0.3" />
-    <circle cx="62" cy="40" r="30" fill="none" stroke={INK} strokeOpacity="0.55" strokeWidth="4" />
-    <path d="M62 40 L62 14 A26 26 0 0 1 88 40 Z" fill="var(--brand-color-primary)" />
-    <path d="M62 40 L84 27" fill="none" stroke={INK} strokeOpacity="0.8" strokeWidth="4" />
-    <circle cx="62" cy="40" r="4.5" fill={INK} fillOpacity="0.85" />
+    <rect x="28" y="16" width="68" height="76" fill={INK} fillOpacity="0.08" />
+    <rect
+      x="28"
+      y="16"
+      width="68"
+      height="76"
+      fill="none"
+      stroke={INK}
+      strokeOpacity="0.5"
+      strokeWidth="4"
+    />
+    <rect
+      x="34"
+      y="22"
+      width="56"
+      height="50"
+      fill="none"
+      stroke={INK}
+      strokeOpacity="0.15"
+      strokeWidth="3"
+    />
+    <rect x="42" y="40" width="40" height="9" fill={INK} fillOpacity="0.3" />
+    <rect x="42" y="49" width="40" height="4" fill={INK} fillOpacity="0.18" />
+    {/* Đường kích thước + hai dấu giới hạn — một path, một điểm lime. */}
+    <path
+      d="M42 62 V70 M42 66 H82 M82 62 V70"
+      fill="none"
+      stroke="var(--brand-color-primary)"
+      strokeWidth="4"
+    />
+    <rect x="28" y="76" width="68" height="16" fill={INK} fillOpacity="0.1" />
+    <path
+      d="M78 76 V92"
+      fill="none"
+      stroke={INK}
+      strokeOpacity="0.2"
+      strokeWidth="3"
+    />
   </>,
-  // 2 · Báo giá & cung cấp — tủ điều khiển
+  // 2 · Vật tư & gia công — thép tấm khoan lỗ, vạch cắt
   <>
-    <rect x="28" y="92" width="68" height="8" fill={INK} fillOpacity="0.18" />
-    <rect x="34" y="12" width="56" height="80" fill={INK} fillOpacity="0.1" />
-    <rect x="34" y="12" width="56" height="80" fill="none" stroke={INK} strokeOpacity="0.5" strokeWidth="4" />
-    <rect x="44" y="22" width="36" height="20" rx="2" fill="var(--brand-color-primary)" />
-    <circle cx="48" cy="54" r="3.2" fill={INK} fillOpacity="0.5" />
-    <circle cx="62" cy="54" r="3.2" fill={INK} fillOpacity="0.5" />
-    <circle cx="76" cy="54" r="3.2" fill={INK} fillOpacity="0.5" />
-    <path d="M44 70 H80 M44 78 H80" fill="none" stroke={INK} strokeOpacity="0.28" strokeWidth="4" />
-    <rect x="84" y="44" width="4" height="24" fill={INK} fillOpacity="0.6" />
+    <rect x="24" y="30" width="76" height="56" fill={INK} fillOpacity="0.12" />
+    <rect
+      x="24"
+      y="30"
+      width="76"
+      height="56"
+      fill="none"
+      stroke={INK}
+      strokeOpacity="0.5"
+      strokeWidth="4"
+    />
+    <circle
+      cx="40"
+      cy="48"
+      r="3.5"
+      fill="none"
+      stroke={INK}
+      strokeOpacity="0.4"
+      strokeWidth="3"
+    />
+    <circle
+      cx="62"
+      cy="48"
+      r="3.5"
+      fill="none"
+      stroke={INK}
+      strokeOpacity="0.4"
+      strokeWidth="3"
+    />
+    <circle
+      cx="84"
+      cy="48"
+      r="3.5"
+      fill="none"
+      stroke={INK}
+      strokeOpacity="0.4"
+      strokeWidth="3"
+    />
+    <path
+      d="M30 34 L94 82"
+      fill="none"
+      stroke="var(--brand-color-primary)"
+      strokeWidth="4"
+      strokeDasharray="7 7"
+    />
+    <path
+      d="M24 92 H100"
+      fill="none"
+      stroke={INK}
+      strokeOpacity="0.18"
+      strokeWidth="3"
+    />
   </>,
-  // 3 · Lắp đặt & bàn giao — van điều khiển trên tuyến ống đã đấu nối
+  // 3 · Kiểm tra & bàn giao — mối hàn góc, tia lửa tại chân mối hàn
   <>
-    <rect x="8" y="65" width="38" height="16" fill={INK} fillOpacity="0.16" />
-    <rect x="8" y="65" width="38" height="5" fill={INK} fillOpacity="0.34" />
-    <rect x="78" y="65" width="38" height="16" fill={INK} fillOpacity="0.16" />
-    <rect x="78" y="65" width="38" height="5" fill={INK} fillOpacity="0.34" />
-    <rect x="46" y="61" width="8" height="24" fill={INK} fillOpacity="0.4" />
-    <rect x="70" y="61" width="8" height="24" fill={INK} fillOpacity="0.4" />
-    <path d="M54 57 L62 73 L54 89 Z M70 57 L62 73 L70 89 Z" fill={INK} fillOpacity="0.55" />
-    <rect x="59" y="37" width="6" height="20" fill={INK} fillOpacity="0.45" />
-    <rect x="46" y="17" width="32" height="20" rx="3" fill="var(--brand-color-primary)" />
+    <rect x="24" y="70" width="56" height="14" fill={INK} fillOpacity="0.55" />
+    <rect x="60" y="40" width="14" height="44" fill={INK} fillOpacity="0.55" />
+    <path d="M60 84 H74 L60 70 Z" fill={INK} fillOpacity="0.8" />
+    <path
+      d="M62 70 L60 84"
+      fill="none"
+      stroke={INK}
+      strokeOpacity="0.5"
+      strokeWidth="3"
+    />
+    <path
+      d="M64 64 L67 71 L74 74 L67 77 L64 84 L61 77 L54 74 L61 71 Z"
+      fill="var(--brand-color-primary)"
+    />
+    <path
+      d="M20 92 H104"
+      fill="none"
+      stroke={INK}
+      strokeOpacity="0.18"
+      strokeWidth="3"
+    />
   </>,
 ];
 

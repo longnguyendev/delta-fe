@@ -6,32 +6,38 @@ import { Container, Kicker, SectionHead } from "./ui";
 
 /**
  * Slug trang chi tiết của từng mục, zip với `t.services.items` theo index.
- * Thứ tự band trang chủ khác thứ tự canonical (thiết bị đứng trước tư vấn),
- * nên không dùng thẳng `getServices()` ở đây.
+ * Thứ tự ở band trang chủ trùng thứ tự canonical (`serviceCategories`), nên
+ * mảng này phải giữ đúng 01–04: lệch một vị trí là thẻ dịch vụ dẫn sang
+ * trang chi tiết của nhóm khác.
  */
-const HOME_SERVICE_SLUGS = ["thiet-bi", "tu-van", "lap-dat", "bao-tri"];
+const HOME_SERVICE_SLUGS = [
+  "ket-cau-thep",
+  "cau-kien-kim-loai",
+  "ket-cau-phu-tro",
+  "han-lap-rap",
+];
 
 /** Artwork is language-independent — zipped with `t.services.items` by index. */
 const SERVICE_MEDIA = [
   {
-    img: "/imagery/project-pump-pipeline.svg",
-    width: 300,
-    height: 190,
-  },
-  {
-    img: "/imagery/hero-system-diagram.svg",
+    img: "/imagery/service-steel-frame.svg",
     width: 480,
     height: 400,
   },
   {
-    img: "/imagery/project-electrical-upgrade.svg",
-    width: 300,
-    height: 190,
+    img: "/imagery/service-metal-fabrication.svg",
+    width: 480,
+    height: 400,
   },
   {
-    img: "/imagery/project-maintenance-rig.svg",
-    width: 300,
-    height: 190,
+    img: "/imagery/service-platform-stairs.svg",
+    width: 480,
+    height: 400,
+  },
+  {
+    img: "/imagery/service-welding.svg",
+    width: 480,
+    height: 400,
   },
 ];
 

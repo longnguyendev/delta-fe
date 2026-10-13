@@ -12,9 +12,9 @@ import type { Dictionary } from "./vi";
  */
 export const en: Dictionary = {
   meta: {
-    title: "Delta Energy — Industrial Engineering Services & Solutions",
+    title: "Delta Energy — Steel Structure Fabrication & Manufacturing",
     description:
-      "Delta Energy (CÔNG TY TNHH DỊCH VỤ KỸ THUẬT DELTA ENERGY) supplies equipment, engineering solutions and field services for factories and industrial facilities — from solution consulting and equipment supply through installation and maintenance.",
+      "Delta Energy (CÔNG TY TNHH DỊCH VỤ KỸ THUẬT DELTA ENERGY) manufactures and fabricates steel structures and metal components to design drawings — steel frames, beams, columns, trusses, access platforms, stairways and auxiliary components for construction works and industrial workshops.",
   },
   /** Shared — stands in for a field with no data in Strapi yet. */
   common: {
@@ -38,10 +38,10 @@ export const en: Dictionary = {
     languageNames: { vi: "Tiếng Việt", en: "English" },
   },
   hero: {
-    eyebrow: "Industrial engineering services",
-    h1Pre: "A technical partner for ",
-    h1Accent: "sustainable industrial operations",
-    lead: "We supply genuine equipment, engineering solutions and field services for factories and industrial facilities — from solution consulting and equipment supply through installation and maintenance.",
+    eyebrow: "Industrial steel fabrication",
+    h1Pre: "A fabrication partner for ",
+    h1Accent: "steel structures built to drawing",
+    lead: "We manufacture and fabricate steel structures and metal components to design drawings — steel frames, beams, columns, trusses and auxiliary components for construction works and industrial workshops.",
     ctaPrimary: "Request a quote",
     ctaSecondary: "View capability profile",
     stats: [
@@ -49,7 +49,7 @@ export const en: Dictionary = {
       { value: "150+", label: "Projects delivered" },
       { value: "40+", label: "Strategic partners" },
     ],
-    imgAlt: "Technical system diagram on a 40px blueprint grid",
+    imgAlt: "Technical drawing diagram on a 40px blueprint grid",
   },
   trust: {
     line: "Trusted by 40+ strategic partners",
@@ -62,96 +62,96 @@ export const en: Dictionary = {
     ],
   },
   problem: {
-    kicker: "Operational issues",
-    title: "Every hour of downtime has a cost",
-    lead: "Sound familiar? Left alone, these problems quietly erode your plant's operating performance.",
+    kicker: "Common problems",
+    title: "The wrong fabrication partner costs the whole project",
+    lead: "Sound familiar? Left alone, these problems push schedule and cost further out of your control.",
     items: [
       {
-        title: "Unplanned downtime",
-        body: "A small fault left untreated escalates into unplanned downtime, costing output and pushing delivery schedules back.",
+        title: "Fabrication runs late",
+        body: "A late fabrication handover drags the whole erection and finishing schedule behind it.",
       },
       {
-        title: "Maintenance costs hard to forecast",
-        body: "Equipment without a periodic maintenance schedule fails without warning, and the repair costs that follow are hard to control.",
+        title: "Inconsistent quality",
+        body: "Dimension errors and welds below requirement force rework, adding cost and time.",
       },
       {
-        title: "Equipment of unknown origin",
-        body: "Non-genuine equipment carries safety risk, shortens system service life and comes with no technical support from the manufacturer.",
+        title: "Opaque quotes",
+        body: "Quotes without clear material grades and quantities lead to hard-to-control extras during execution.",
       },
     ],
   },
   pillars: {
     kicker: "Why Delta Energy",
-    title: "How we solve operational problems",
-    lead: "Three pillars shape the way Delta Energy works with every customer.",
+    title: "How we keep quality and schedule",
+    lead: "Three pillars shape how Delta Energy takes on every order.",
     items: [
       {
-        title: "A full-lifecycle partner",
-        body: "Solution consulting → equipment supply → installation → maintenance, handled end to end by one engineering team.",
+        title: "One point of contact from drawing to handover",
+        body: "Drawing intake → material preparation → fabrication → handover, handled end to end by one engineering team.",
       },
       {
         title: "Proof over adjectives",
         body: "10+ years of experience, 150+ projects delivered, 40+ strategic partners — the numbers are published on this page.",
       },
       {
-        title: "Continuous operation is the commitment",
-        body: "Minimise downtime and keep systems running 24/7 — safely and efficiently, on every site.",
+        title: "To the agreed technical requirements",
+        body: "Fabrication follows the drawings and specifications agreed, with dimension and weld checks at every stage before handover.",
       },
     ],
   },
   process: {
     kicker: "How we work",
-    title: "Stable operations in three steps",
-    lead: "No production interruption. No projects that drag on for months.",
+    title: "From drawing to product in three steps",
+    lead: "No step without inspection. No schedule left to drift.",
     items: [
       {
-        title: "Survey & consult",
-        body: "Our engineers survey the site, listen to your operating requirements and propose a suitable solution.",
+        title: "Intake & quote",
+        body: "We take your drawings, check the technical requirements and quote with clear material grades and quantities.",
       },
       {
-        title: "Quote & supply",
-        body: "Transparent pricing, genuine equipment, a clear delivery schedule.",
+        title: "Materials & fabrication",
+        body: "Steel sections and plates prepared to the bill of materials; cutting, drilling, welding and assembly to the agreed drawings.",
       },
       {
-        title: "Install & hand over",
-        body: "Installation, commissioning and handover to operations, with technical support after handover.",
+        title: "Inspection & handover",
+        body: "Dimension, weld and surface checks before handover on the agreed schedule.",
       },
     ],
   },
   ctaBand: {
-    title: "Need advice on your system right now?",
+    title: "Need a quote for steel structure work?",
     lead: `Call the hotline on ${company.phone.display} — we reply during working hours.`,
     cta: "Call for advice",
   },
   services: {
     kicker: "Services",
-    title: "Four core engineering service lines",
-    lead: "Each service line has its own process — and they all come back to one goal: continuous operation.",
+    title: "Four core fabrication service lines",
+    lead: "Each service line has its own process — and they all come back to one goal: product to drawing, on schedule.",
     readMore: "Read more →",
     items: [
       {
         kicker: "Service 01",
-        title: "Genuine industrial equipment supply",
-        body: "Equipment with clear provenance, supplied with documentation and the manufacturer's warranty — pumps, control valves, instrumentation and system accessories.",
-        alt: "Illustration of an industrial pump and piping assembly",
+        title: "Steel structure manufacturing",
+        body: "Manufacturing steel frames, beams, columns, trusses and structural components to design drawings for construction works and industrial workshops.",
+        alt: "Illustration of a workshop steel frame with beams and columns",
       },
       {
         kicker: "Service 02",
-        title: "Engineering solutions to requirement",
-        body: "We survey the site, analyse operating requirements and propose an engineering solution suited to each industrial facility.",
-        alt: "Industrial technical system diagram",
+        title: "Metal component fabrication",
+        body: "Fabricating steel plate, steel sections and metal parts to the dimensions, specification and drawings required — from cutting and drilling through welding, assembly and finishing.",
+        alt: "Illustration of steel plate fabrication with a cut line and drilled holes",
       },
       {
         kicker: "Service 03",
-        title: "System installation & upgrade",
-        body: "Installation, wiring and upgrade of electrical, piping and equipment systems — inspected and commissioned before handover.",
-        alt: "Illustration of a control electrical system upgrade",
+        title: "Industrial auxiliary steel fabrication",
+        body: "Fabricating access platforms, steel stairs, handrails, supports and auxiliary metal components for factories, workshops and industrial works.",
+        alt: "Illustration of an access platform and steel stairs",
       },
       {
         kicker: "Service 04",
-        title: "Periodic maintenance & operation",
-        body: "Maintenance scheduled to manufacturer recommendations and actual operating conditions, reducing downtime and extending equipment service life.",
-        alt: "Illustration of periodic rig maintenance",
+        title: "Welding, assembly & finishing",
+        body: "Welded connections, assembly and finishing of steel components to the technical requirements, meeting product quality and the handover schedule.",
+        alt: "Illustration of welded steel component joints",
       },
     ],
   },
@@ -175,7 +175,7 @@ export const en: Dictionary = {
     meta: {
       title: "Delivered projects — Delta Energy",
       description:
-        "Delta Energy capability profile: representative works in pumping, process piping, control cabinets and maintenance of valve and instrument systems for industrial plants.",
+        "Delta Energy capability profile: representative works in manufacturing and fabricating steel structures and metal components for construction works and industrial workshops.",
     },
     crumbs: { label: "You are here", home: "Home", current: "Projects" },
     hero: {
@@ -212,26 +212,26 @@ export const en: Dictionary = {
       lead: "Every engagement runs through these four service groups — one point of responsibility end to end.",
       items: [
         {
-          title: "Engineering solution consulting",
-          body: "Survey the existing system and propose the best technical and cost-effective solution for each project.",
+          title: "Steel structure manufacturing",
+          body: "Manufacturing steel frames, beams, columns, trusses and structural components to design drawings.",
         },
         {
-          title: "Equipment & technical materials",
-          body: "Supply genuine equipment, spare parts and technical materials to the correct specification for each system.",
+          title: "Metal component fabrication",
+          body: "Fabricating steel plate, steel sections and metal parts to the required dimensions, specification and drawings.",
         },
         {
-          title: "System installation & operation",
-          body: "Carry out installation, commissioning and handover to the technical standards agreed for the project.",
+          title: "Industrial auxiliary steel fabrication",
+          body: "Fabricating access platforms, steel stairs, handrails, supports and auxiliary components for factories and workshops.",
         },
         {
-          title: "System maintenance & repair",
-          body: "Periodic maintenance, fault response and industrial equipment repair that minimise plant downtime.",
+          title: "Welding, assembly & finishing",
+          body: "Welded connections, assembly and finishing of steel components to the technical requirements, on the handover schedule.",
         },
       ],
     },
     cta: {
       title: "Talk to us about your scope of work",
-      lead: "Send us the current condition or system drawings and Delta Energy's engineering team will survey and propose a suitable solution.",
+      lead: "Send your drawings or technical requirements and Delta Energy's team will review the fabrication approach and quote line by line.",
       quote: "Request a quote",
       call: `Call ${company.phone.display}`,
     },
@@ -255,23 +255,23 @@ export const en: Dictionary = {
       linkLabel: "View details",
     },
     cta: {
-      title: "Need a survey for similar work?",
-      lead: "Send us the current condition or system drawings and Delta Energy's engineering team will survey and propose a suitable solution.",
+      title: "Need a quote for similar work?",
+      lead: "Send your drawings or technical requirements and Delta Energy's team will review the fabrication approach and quote accordingly.",
       quote: "Request a quote",
       call: `Call ${company.phone.display}`,
     },
   },
   servicesPage: {
     meta: {
-      title: "Core engineering services — Delta Energy",
+      title: "Steel fabrication services — Delta Energy",
       description:
-        "Delta Energy's four service groups: engineering solution consulting, equipment & materials, installation & operation, and system maintenance & repair for industrial plants.",
+        "Delta Energy's four service groups: steel structure manufacturing, metal component fabrication, industrial auxiliary steel fabrication, and welding, assembly & finishing for construction works and industrial workshops.",
     },
     crumbs: { label: "You are here", home: "Home", current: "Services" },
     hero: {
       eyebrow: "Areas of operation",
-      title: "Core engineering services",
-      lead: "Four service groups that help customers run industrial systems safely, efficiently and on schedule.",
+      title: "Steel fabrication services",
+      lead: "Four service groups that take a product from design drawing to handover — to the agreed technical specification, on schedule.",
       stats: [
         { value: "10+", label: "Years of experience" },
         { value: "150+", label: "Projects delivered" },
@@ -280,37 +280,37 @@ export const en: Dictionary = {
     },
     list: {
       eyebrow: "Four service groups",
-      title: "From survey to operation & maintenance",
-      lead: "Delta Energy works with customers across the whole system lifecycle — one point of responsibility from solution consulting and equipment supply through installation to maintenance.",
+      title: "From drawing to finished product",
+      lead: "Delta Energy manufactures and fabricates steel structures and metal components for construction works and industrial workshops — one point of responsibility from drawing intake and material preparation through fabrication and handover.",
       viewDetail: "View service details",
     },
     products: {
       eyebrow: "Products by service group",
-      title: "Equipment & technical materials",
-      lead: "Products are organised by category, with detailed information and images. Please contact us for a quote — the site does not support online ordering yet.",
+      title: "Steel structures & metal components",
+      lead: "Products are organised by group and fabricated to the drawings and technical requirements of each order. Please contact us for a quote — the site does not support online ordering yet.",
       quote: "Request a quote",
     },
     commitments: {
       eyebrow: "Service commitments",
-      title: "Three things Delta Energy holds to on every scope",
+      title: "Three things Delta Energy holds to on every order",
       items: [
         {
-          title: "Minimise downtime",
-          body: "Maintenance and fault response are organised so the system returns to stable operation as soon as possible.",
+          title: "To drawing and specification",
+          body: "Components are fabricated to the agreed drawings, with dimension and weld checks at every stage.",
         },
         {
-          title: "Genuine equipment, correct specification",
-          body: "Equipment, spare parts and materials are supplied to the exact type called for in each system's technical file.",
+          title: "Materials of clear grade",
+          body: "Steel sections, plate and input materials are checked for grade and specification against the order's bill of materials.",
         },
         {
-          title: "To the technical standard agreed",
-          body: "Every scope carries acceptance records and the full handover documentation for the plant.",
+          title: "On the agreed schedule",
+          body: "The schedule is agreed before the order is accepted, with progress updates throughout fabrication.",
         },
       ],
     },
     cta: {
-      title: "Need advice on a service group?",
-      lead: "Send us the current condition or system drawings and Delta Energy's engineering team will survey and propose a suitable solution.",
+      title: "Need a quote for a service group?",
+      lead: "Send your drawings or technical requirements and Delta Energy's team will review the fabrication approach and quote line by line.",
       quote: "Request a quote",
       call: `Call ${company.phone.display}`,
     },
@@ -324,7 +324,7 @@ export const en: Dictionary = {
     metaLabels: {
       group: "Service group",
       scope: "Scope",
-      equipment: "Equipment",
+      equipment: "Materials",
       acceptance: "Acceptance",
       handover: "Handover",
     },
@@ -332,13 +332,13 @@ export const en: Dictionary = {
     scope: {
       eyebrow: "Four work items",
       title: "What Delta Energy delivers in this service group",
-      lead: "From survey and agreement of the approach through to documentation handover — every step carries records and clear acceptance standards.",
+      lead: "From drawing intake and material preparation through fabrication and handover — every step carries checks and clear acceptance standards.",
     },
-    system: { eyebrow: "Equipment & systems covered" },
+    system: { eyebrow: "Materials & items covered" },
     timeline: {
       eyebrow: "Delivery process",
       title: "Four delivery stages",
-      lead: "The standard Delta Energy process applied to every scope in this service group.",
+      lead: "The standard Delta Energy process applied to every order in this service group.",
     },
     projects: {
       eyebrow: "Delivered projects",
@@ -351,8 +351,8 @@ export const en: Dictionary = {
       viewDetail: "View service details",
     },
     cta: {
-      title: "Need a survey for similar work?",
-      lead: "Send us the current condition or system drawings and Delta Energy's engineering team will survey and propose a suitable solution.",
+      title: "Need a quote for similar work?",
+      lead: "Send your drawings or technical requirements and Delta Energy's team will review the fabrication approach and quote accordingly.",
       quote: "Request a quote",
       call: `Call ${company.phone.display}`,
     },
@@ -362,24 +362,28 @@ export const en: Dictionary = {
     title: "Frequently asked questions",
     items: [
       {
-        q: "What services does Delta Energy provide?",
-        a: "We supply genuine industrial equipment, engineering solutions to requirement, system installation and upgrades, and periodic maintenance for factories and industrial facilities.",
+        q: "What products and services does Delta Energy provide?",
+        a: "We focus on manufacturing and fabricating steel structures and metal components for construction and industry. Products are made to the drawings, specifications and technical requirements of each project.",
       },
       {
-        q: "How long does a quote take?",
-        a: "We respond within the working day of receiving your request, and send a detailed quote after surveying the site where one is needed.",
+        q: "Do you fabricate to customer drawings?",
+        a: "Yes. We take your technical drawings and requirements and review the fabrication feasibility, the method of execution and a suitable quotation.",
       },
       {
-        q: "Is the equipment genuine?",
-        a: "All equipment supplied by Delta Energy has clear provenance, with documentation and warranty under the manufacturer's terms.",
+        q: "How does Delta Energy control product quality?",
+        a: "Quality is controlled against the technical requirements and the criteria agreed in the contract, covering material, dimension, weld and finish inspection within the scope of each order.",
       },
       {
-        q: "Do you support periodic maintenance?",
-        a: "Yes. We build the maintenance schedule around manufacturer recommendations and actual operating conditions, which helps reduce downtime.",
+        q: "How long does fabrication and order completion take?",
+        a: "Lead time depends on the volume, the complexity of the product, material availability and the technical requirements. A firm schedule is confirmed after we review the documents and agree it with you.",
       },
       {
-        q: "How do I get in touch?",
-        a: `You can call the hotline on ${company.phone.display}, message us on Zalo, or send a quote request through the form on this page. Note: the site does not support online ordering yet.`,
+        q: "What information do I need to provide for a quote?",
+        a: "You should provide drawings, product specification and dimensions, material type, quantity, surface finish requirements and the delivery location. If your drawings are not final yet, we can talk first to work out what is needed.",
+      },
+      {
+        q: "How do I get in touch and work with Delta Energy?",
+        a: `You can call the hotline on ${company.phone.display}, email ${company.email.address}, or leave a request on the website. We receive it, discuss the technical requirements and review a suitable way to work together.`,
       },
     ],
   },
@@ -443,7 +447,7 @@ export const en: Dictionary = {
       message: {
         label: "What do you need?",
         placeholder:
-          "Describe your requirement — equipment to quote, scale, expected timing…",
+          "Describe your requirement — scope to quote, drawings, quantity, expected timing…",
         required: "Please describe your request.",
       },
       submit: "Send request",
@@ -461,15 +465,15 @@ export const en: Dictionary = {
     },
   },
   finalCta: {
-    title: "Ready for more stable operations?",
-    lead: "Send your request today — we reply within the working day.",
+    title: "Looking for a reliable steel fabrication partner?",
+    lead: "Contact Delta Energy for advice on a solution that fits your technical requirements and project schedule.",
     call: `Call for advice — ${company.phone.display}`,
     zalo: "Message on Zalo →",
     note: "Reply within the working day · Transparent pricing",
   },
   footer: {
     tagline:
-      "Delta Energy supplies equipment, engineering solutions and field services for factories and industrial facilities — from consulting and equipment supply through installation and maintenance.",
+      "Delta Energy manufactures and fabricates steel structures and metal components to design drawings — steel frames, beams, columns, trusses and auxiliary components for construction works and industrial workshops.",
     /** Labels for the company-information block — values live in `@/constants/company`. */
     info: {
       headOffice: "Head office",

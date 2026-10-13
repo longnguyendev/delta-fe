@@ -150,7 +150,7 @@ export function ServiceDetailScope({
   );
 }
 
-/** Thiết bị & hệ thống đảm nhận — sơ đồ bên trái, danh mục hạng mục bên phải. */
+/** Vật tư & hạng mục đảm nhận — sơ đồ bên trái, danh mục hạng mục bên phải. */
 export function ServiceDetailSystem({
   service,
   t,

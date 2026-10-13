@@ -14,10 +14,10 @@ import { type Project, type ProjectImage } from "./projects";
 
 /** Bốn slug dịch vụ — giữ đúng thứ tự để lưới đánh số 01–04 khớp thiết kế. */
 export const serviceCategories = [
-  "tu-van",
-  "thiet-bi",
-  "lap-dat",
-  "bao-tri",
+  "ket-cau-thep",
+  "cau-kien-kim-loai",
+  "ket-cau-phu-tro",
+  "han-lap-rap",
 ] as const;
 
 export type ServiceCategory = (typeof serviceCategories)[number];
@@ -40,7 +40,7 @@ export type ServiceMeta = {
 export type ServiceTimelineItem = {
   /** Nhãn giai đoạn — "Giai đoạn 1". */
   stage: string;
-  /** Chú thích nhỏ dưới nhãn — "Khảo sát", "Bàn giao"… */
+  /** Chú thích nhỏ dưới nhãn — "Tiếp nhận", "Bàn giao"… */
   caption: string;
   title: string;
   body: string;
@@ -53,7 +53,7 @@ export type ServiceDetail = {
   /** Bối cảnh — hai đoạn văn xuôi ở cột phải. */
   context: string[];
   scope: ServiceScopeItem[];
-  /** Tiêu đề mục thiết bị — "Những hạng mục nằm trong gói …" (entity VI). */
+  /** Tiêu đề mục vật tư — "Những hạng mục nằm trong phạm vi …" (entity VI). */
   systemTitle: string;
   kit: ServiceKitItem[];
   /** Sơ đồ nguyên lý kèm chú thích. */
@@ -75,397 +75,395 @@ export type Product = {
   width: number;
   height: number;
   alt: string;
-  /** Nhãn danh mục — "Thiết bị bơm". */
+  /** Nhãn danh mục — "Khung nhà xưởng". */
   category: string;
   name: string;
 };
 
 export const services: Service[] = [
   {
-    slug: "tu-van",
-    name: "Tư vấn giải pháp kỹ thuật",
+    slug: "ket-cau-thep",
+    name: "Sản xuất kết cấu thép",
     description:
-      "Khảo sát hiện trạng, đề xuất giải pháp tối ưu về kỹ thuật và chi phí đầu tư cho từng dự án.",
+      "Sản xuất, chế tạo khung thép, dầm, cột, giàn thép và các cấu kiện kết cấu theo bản vẽ thiết kế cho công trình xây dựng và nhà xưởng công nghiệp.",
     scope: [
-      "Khảo sát hiện trạng hệ thống tại nhà máy",
-      "Đối chiếu sơ đồ công nghệ và thông số vận hành",
-      "Đề xuất phương án theo tiêu chí kỹ thuật và chi phí",
-      "Lập hồ sơ kỹ thuật phục vụ đấu thầu và nghiệm thu",
+      "Chế tạo khung thép, dầm và cột theo bản vẽ thiết kế",
+      "Sản xuất giàn thép và cấu kiện kết cấu cho nhà xưởng",
+      "Gia công theo yêu cầu kỹ thuật của từng công trình",
+      "Kiểm tra kích thước và chất lượng trước khi xuất xưởng",
     ],
     detail: {
       meta: {
-        group: "Tư vấn giải pháp kỹ thuật",
-        scope: "Nhà máy & công trình công nghiệp",
-        equipment: "Theo phương án đề xuất",
-        acceptance: "Theo tiêu chuẩn kỹ thuật",
-        handover: "Báo cáo & hồ sơ kỹ thuật",
+        group: "Sản xuất kết cấu thép",
+        scope: "Công trình xây dựng & nhà xưởng công nghiệp",
+        equipment: "Thép hình & thép tấm theo bản vẽ",
+        acceptance: "Theo bản vẽ và yêu cầu kỹ thuật",
+        handover: "Sản phẩm & hồ sơ chế tạo",
       },
-      contextTitle: "Một đầu mối từ khảo sát đến hồ sơ kỹ thuật",
+      contextTitle: "Một đầu mối từ bản vẽ đến sản phẩm kết cấu",
       context: [
-        "Delta Energy nhận khảo sát và tư vấn giải pháp cho các hệ thống kỹ thuật trong nhà máy: từ cụm bơm, đường ống công nghệ, van và thiết bị đo đến tủ điện điều khiển. Công việc bắt đầu bằng việc đo đạc hiện trạng và làm rõ yêu cầu vận hành của chủ đầu tư.",
-        "Toàn bộ quá trình khảo sát, phân tích và lập hồ sơ kỹ thuật do một đội kỹ thuật chịu trách nhiệm xuyên suốt, giúp chủ đầu tư có đủ cơ sở để so sánh phương án và ra quyết định đầu tư.",
+        "Delta Energy nhận sản xuất, chế tạo kết cấu thép cho công trình xây dựng và nhà xưởng công nghiệp: khung thép, dầm, cột, giàn thép và các cấu kiện theo bản vẽ thiết kế. Công việc bắt đầu bằng việc tiếp nhận hồ sơ bản vẽ và thống nhất yêu cầu kỹ thuật với chủ đầu tư.",
+        "Toàn bộ quá trình từ triển khai bản vẽ chế tạo, chuẩn bị vật tư đến gia công và kiểm tra chất lượng do một đội kỹ thuật chịu trách nhiệm xuyên suốt, giúp sản phẩm đáp ứng đúng yêu cầu của công trình và tiến độ bàn giao.",
       ],
       scope: [
         {
-          title: "Khảo sát hiện trạng hệ thống",
-          body: "Đo đạc mặt bằng, đối chiếu sơ đồ công nghệ và ghi nhận thông số vận hành của từng cụm thiết bị.",
+          title: "Tiếp nhận bản vẽ & thống nhất yêu cầu kỹ thuật",
+          body: "Tiếp nhận hồ sơ thiết kế, đối chiếu thông số kỹ thuật và thống nhất phạm vi chế tạo với chủ đầu tư.",
         },
         {
-          title: "Phân tích nhu cầu vận hành mục tiêu",
-          body: "Làm rõ yêu cầu vận hành sau đầu tư để xác định các điểm nghẽn cần xử lý trước.",
+          title: "Triển khai bản vẽ chế tạo & chuẩn bị vật tư",
+          body: "Triển khai bản vẽ chế tạo, lập bảng vật tư thép hình, thép tấm và kiểm tra vật liệu đầu vào.",
         },
         {
-          title: "Đề xuất phương án theo từng hạng mục",
-          body: "Đề xuất giải pháp kỹ thuật cho từng hạng mục, kèm ước tính chi phí đầu tư và thứ tự ưu tiên.",
+          title: "Cắt, uốn, hàn & tổ hợp cấu kiện",
+          body: "Gia công cắt, khoan, uốn, hàn và tổ hợp khung, dầm, cột, giàn thép theo bản vẽ đã chốt.",
         },
         {
-          title: "Lập hồ sơ kỹ thuật & báo cáo tư vấn",
-          body: "Hoàn thiện hồ sơ kỹ thuật phục vụ đấu thầu, nghiệm thu và bàn giao báo cáo khảo sát cho chủ đầu tư.",
+          title: "Kiểm tra chất lượng & xuất xưởng",
+          body: "Kiểm tra kích thước, mối hàn và tình trạng bề mặt theo yêu cầu kỹ thuật trước khi bàn giao sản phẩm.",
         },
       ],
-      systemTitle: "Những hạng mục nằm trong gói tư vấn",
+      systemTitle: "Những hạng mục nằm trong phạm vi sản xuất",
       kit: [
         {
-          label: "Hồ sơ khảo sát",
-          body: "Biên bản đo đạc hiện trạng, số liệu vận hành và ảnh chụp tại từng cụm thiết bị",
+          label: "Khung & dầm cột",
+          body: "Khung thép, dầm, cột và giàn thép cho công trình xây dựng và nhà xưởng công nghiệp",
         },
         {
-          label: "Phương án kỹ thuật",
-          body: "Đề xuất giải pháp cho từng hạng mục, kèm ước tính chi phí đầu tư và thứ tự ưu tiên",
+          label: "Cấu kiện tổ hợp",
+          body: "Các cấu kiện kết cấu được tổ hợp theo bản vẽ thiết kế và quy cách kỹ thuật",
         },
         {
-          label: "Hồ sơ đấu thầu",
-          body: "Thuyết minh kỹ thuật, bản vẽ sơ bộ và bảng khối lượng phục vụ mời thầu",
+          label: "Vật liệu đầu vào",
+          body: "Thép hình, thép tấm được kiểm tra chủng loại, quy cách theo bảng vật tư",
         },
         {
-          label: "Hồ sơ nghiệm thu",
-          body: "Tiêu chuẩn kỹ thuật, checklist nghiệm thu và biên bản bàn giao",
+          label: "Hoàn thiện bề mặt",
+          body: "Làm sạch bề mặt và sơn phủ theo yêu cầu kỹ thuật của từng đơn hàng",
         },
       ],
       diagram: {
-        src: "/imagery/about-factory-blocks.svg",
-        width: 400,
-        height: 320,
-        alt: "Sơ đồ khối nhà máy và các cụm thiết bị trong phạm vi khảo sát",
-        caption: "Sơ đồ khối nhà máy và phạm vi khảo sát hiện trạng.",
-      },
-      timeline: [
-        {
-          stage: "Giai đoạn 1",
-          caption: "Khảo sát",
-          title: "Khảo sát hiện trạng & ghi nhận số liệu",
-          body: "Đo đạc mặt bằng, đối chiếu sơ đồ công nghệ và ghi nhận thông số vận hành của từng cụm thiết bị.",
-        },
-        {
-          stage: "Giai đoạn 2",
-          caption: "Phân tích",
-          title: "Phân tích nhu cầu vận hành mục tiêu",
-          body: "Đối chiếu hiện trạng với yêu cầu vận hành để xác định các điểm nghẽn cần xử lý trước.",
-        },
-        {
-          stage: "Giai đoạn 3",
-          caption: "Đề xuất",
-          title: "Đề xuất phương án & ước tính chi phí",
-          body: "Lập phương án kỹ thuật cho từng hạng mục kèm ước tính chi phí đầu tư tương ứng.",
-        },
-        {
-          stage: "Giai đoạn 4",
-          caption: "Bàn giao",
-          title: "Bàn giao hồ sơ kỹ thuật & tư vấn",
-          body: "Bàn giao báo cáo khảo sát, so sánh phương án và khuyến nghị lộ trình đầu tư theo giai đoạn.",
-        },
-      ],
-    },
-  },
-
-  {
-    slug: "thiet-bi",
-    name: "Thiết bị & vật tư kỹ thuật",
-    description:
-      "Cung cấp thiết bị, phụ tùng và vật tư kỹ thuật chính hãng, đúng thông số cho từng hệ thống.",
-    scope: [
-      "Thiết bị bơm, van điều khiển, thiết bị đo lường",
-      "Tủ điện điều khiển và phụ kiện điện công nghiệp",
-      "Phụ tùng thay thế theo đúng chủng loại thiết bị",
-      "Chứng từ và tài liệu kỹ thuật kèm theo",
-    ],
-    detail: {
-      meta: {
-        group: "Thiết bị & vật tư",
-        scope: "Nhà máy & công trình công nghiệp",
-        equipment: "Chính hãng, đúng thông số",
-        acceptance: "Theo hồ sơ kỹ thuật",
-        handover: "Chứng từ & tài liệu kỹ thuật",
-      },
-      contextTitle: "Một đầu mối từ rà soát đến giao nhận thiết bị",
-      context: [
-        "Delta Energy cung cấp thiết bị, phụ tùng và vật tư kỹ thuật cho các hệ thống công nghiệp: máy bơm, van điều khiển, thiết bị đo lường, tủ điện và phụ kiện. Danh mục được lập theo từng vị trí lắp đặt thay vì theo mã hàng chung.",
-        "Toàn bộ thiết bị do Delta Energy cung cấp có nguồn gốc rõ ràng, kèm chứng từ xuất xứ và tài liệu kỹ thuật. Quá trình rà soát, đối chiếu thông số và giao nhận do một đội kỹ thuật chịu trách nhiệm xuyên suốt.",
-      ],
-      scope: [
-        {
-          title: "Rà soát danh mục thiết bị cần cung cấp",
-          body: "Đối chiếu hồ sơ kỹ thuật và tình trạng thực tế để xác định danh mục thiết bị, vật tư cần thay thế.",
-        },
-        {
-          title: "Đối chiếu thông số từng vị trí lắp đặt",
-          body: "Kiểm tra dải đo, cấp chịu áp và kiểu kết nối của từng vị trí trước khi chốt chủng loại.",
-        },
-        {
-          title: "Cung cấp thiết bị chính hãng",
-          body: "Cung cấp thiết bị, phụ tùng và vật tư chính hãng, đúng thông số, kèm chứng từ xuất xứ.",
-        },
-        {
-          title: "Giao nhận & hướng dẫn lắp đặt",
-          body: "Giao nhận theo tiến độ nhà máy yêu cầu, kèm tài liệu kỹ thuật và hướng dẫn lắp đặt, hiệu chỉnh.",
-        },
-      ],
-      systemTitle: "Những hạng mục nằm trong gói cung cấp",
-      kit: [
-        {
-          label: "Thiết bị bơm",
-          body: "Máy bơm công nghiệp, cụm bơm và phụ kiện đi kèm theo thông số hệ thống",
-        },
-        {
-          label: "Van điều khiển",
-          body: "Van điều khiển khí nén, van điện và phụ kiện theo cấp chịu áp của từng vị trí",
-        },
-        {
-          label: "Thiết bị đo lường",
-          body: "Đồng hồ đo áp suất, lưu lượng và thiết bị đo tại các vị trí vận hành",
-        },
-        {
-          label: "Điện & điều khiển",
-          body: "Tủ điện điều khiển, thiết bị đóng cắt và phụ kiện điện công nghiệp",
-        },
-      ],
-      diagram: {
-        src: "/imagery/news-valve-line.svg",
-        width: 300,
-        height: 190,
-        alt: "Sơ đồ van điều khiển và đồng hồ đo lường trong danh mục cung cấp",
-        caption:
-          "Sơ đồ vị trí van điều khiển và thiết bị đo trong danh mục cung cấp.",
-      },
-      timeline: [
-        {
-          stage: "Giai đoạn 1",
-          caption: "Rà soát",
-          title: "Rà soát danh mục thiết bị cần cung cấp",
-          body: "Đối chiếu hồ sơ kỹ thuật và tình trạng thực tế để xác định danh mục thiết bị, vật tư.",
-        },
-        {
-          stage: "Giai đoạn 2",
-          caption: "Chốt thông số",
-          title: "Đối chiếu thông số từng vị trí lắp đặt",
-          body: "Xác nhận dải đo, cấp chịu áp và kiểu kết nối trước khi chốt chủng loại thay thế.",
-        },
-        {
-          stage: "Giai đoạn 3",
-          caption: "Cung cấp",
-          title: "Cung cấp thiết bị theo tiến độ",
-          body: "Giao thiết bị chính hãng theo tiến độ nhà máy yêu cầu, kèm chứng từ và tài liệu kỹ thuật.",
-        },
-        {
-          stage: "Giai đoạn 4",
-          caption: "Bàn giao",
-          title: "Giao nhận & hướng dẫn lắp đặt",
-          body: "Giao nhận đầy đủ, hướng dẫn lắp đặt và hiệu chỉnh cho đội bảo trì của nhà máy.",
-        },
-      ],
-    },
-  },
-
-  {
-    slug: "lap-dat",
-    name: "Lắp đặt & vận hành hệ thống",
-    description:
-      "Thi công lắp đặt, chạy thử và bàn giao hệ thống theo đúng tiêu chuẩn kỹ thuật đề ra.",
-    scope: [
-      "Thi công lắp đặt theo bản vẽ đã chốt",
-      "Chạy thử có tải và hiệu chỉnh thông số",
-      "Nghiệm thu theo tiêu chuẩn kỹ thuật",
-      "Bàn giao hồ sơ và hướng dẫn vận hành",
-    ],
-    detail: {
-      meta: {
-        group: "Lắp đặt & vận hành",
-        scope: "Nhà máy & công trình công nghiệp",
-        equipment: "Chính hãng, đúng thông số",
-        acceptance: "Theo tiêu chuẩn kỹ thuật",
-        handover: "Hồ sơ & hướng dẫn vận hành",
-      },
-      contextTitle: "Một đầu mối từ thi công đến bàn giao",
-      context: [
-        "Delta Energy nhận thi công lắp đặt trọn gói cho các hệ thống kỹ thuật trong nhà máy: từ cụm bơm, đường ống công nghệ, van và thiết bị đo đến tủ điện điều khiển. Công việc bắt đầu từ khảo sát hiện trạng và chốt phương án với chủ đầu tư.",
-        "Toàn bộ quá trình thi công, chạy thử và nghiệm thu do một đội kỹ thuật chịu trách nhiệm xuyên suốt, hạn chế việc phải phối hợp nhiều nhà thầu và rút ngắn thời gian đưa hệ thống vào vận hành.",
-      ],
-      scope: [
-        {
-          title: "Thi công theo bản vẽ đã chốt",
-          body: "Lắp đặt thiết bị, đường ống, tủ điện và hệ thống điều khiển theo bản vẽ kỹ thuật đã thống nhất với chủ đầu tư.",
-        },
-        {
-          title: "Chạy thử có tải & hiệu chỉnh",
-          body: "Chạy thử hệ thống có tải, hiệu chỉnh thông số vận hành và kiểm tra từng cụm thiết bị trước khi nghiệm thu.",
-        },
-        {
-          title: "Nghiệm thu theo tiêu chuẩn kỹ thuật",
-          body: "Nghiệm thu theo đúng tiêu chuẩn kỹ thuật đề ra, có biên bản và hồ sơ hoàn công đầy đủ.",
-        },
-        {
-          title: "Bàn giao & hướng dẫn vận hành",
-          body: "Bàn giao hồ sơ, tài liệu thiết bị và hướng dẫn vận hành — bảo trì cho đội ngũ nhà máy.",
-        },
-      ],
-      systemTitle: "Những hạng mục nằm trong gói lắp đặt",
-      kit: [
-        {
-          label: "Bơm & đường ống",
-          body: "Cụm bơm công nghiệp, đường ống công nghệ và phụ kiện theo thông số hệ thống",
-        },
-        {
-          label: "Van & thiết bị đo",
-          body: "Van điều khiển, đồng hồ đo áp suất và thiết bị đo lường tại các vị trí vận hành",
-        },
-        {
-          label: "Điện & điều khiển",
-          body: "Tủ điện điều khiển, thiết bị đóng cắt và hệ thống giám sát vận hành",
-        },
-        {
-          label: "Kết cấu đỡ & phụ kiện",
-          body: "Giá đỡ, bệ móng thiết bị và phụ kiện lắp đặt đi kèm",
-        },
-      ],
-      diagram: {
-        src: "/imagery/hero-system-diagram.svg",
+        src: "/imagery/service-steel-frame.svg",
         width: 480,
         height: 400,
-        alt: "Sơ đồ hệ thống kỹ thuật: cụm bơm, đường ống, van và đồng hồ đo áp suất",
-        caption:
-          "Sơ đồ nguyên lý hệ thống Delta Energy thi công, chạy thử và bàn giao cho nhà máy.",
+        alt: "Sơ đồ khung thép nhà xưởng: dầm, cột và giàn mái",
+        caption: "Sơ đồ khung thép nhà xưởng: dầm, cột và giàn mái.",
       },
       timeline: [
         {
           stage: "Giai đoạn 1",
-          caption: "Khảo sát",
-          title: "Khảo sát hiện trạng & chốt phương án",
-          body: "Đo đạc mặt bằng, đối chiếu sơ đồ công nghệ và thống nhất phương án lắp đặt với chủ đầu tư.",
+          caption: "Tiếp nhận",
+          title: "Tiếp nhận bản vẽ & thống nhất yêu cầu",
+          body: "Tiếp nhận hồ sơ thiết kế, đối chiếu yêu cầu kỹ thuật và thống nhất phạm vi, tiến độ chế tạo.",
         },
         {
           stage: "Giai đoạn 2",
-          caption: "Thiết bị",
-          title: "Cung cấp thiết bị & vật tư",
-          body: "Cung cấp thiết bị chính hãng, đúng thông số theo hồ sơ kỹ thuật của từng hệ thống.",
+          caption: "Vật tư",
+          title: "Triển khai bản vẽ chế tạo & chuẩn bị vật tư",
+          body: "Triển khai bản vẽ chế tạo, lập bảng vật tư và kiểm tra thép hình, thép tấm đầu vào.",
         },
         {
           stage: "Giai đoạn 3",
-          caption: "Lắp đặt",
-          title: "Thi công, chạy thử & hiệu chỉnh",
-          body: "Lắp đặt theo bản vẽ đã chốt, chạy thử có tải và hiệu chỉnh thông số vận hành.",
+          caption: "Gia công",
+          title: "Cắt, uốn, hàn & tổ hợp cấu kiện",
+          body: "Gia công cắt, khoan, uốn, hàn và tổ hợp khung, dầm, cột, giàn thép theo bản vẽ đã chốt.",
         },
         {
           stage: "Giai đoạn 4",
           caption: "Bàn giao",
-          title: "Nghiệm thu & bàn giao hệ thống",
-          body: "Nghiệm thu theo tiêu chuẩn kỹ thuật đề ra, bàn giao hồ sơ và hướng dẫn vận hành.",
+          title: "Kiểm tra chất lượng & xuất xưởng",
+          body: "Kiểm tra kích thước, mối hàn và tình trạng bề mặt, bàn giao sản phẩm và hồ sơ chế tạo.",
         },
       ],
     },
   },
-
   {
-    slug: "bao-tri",
-    name: "Bảo trì & sửa chữa hệ thống",
+    slug: "cau-kien-kim-loai",
+    name: "Gia công cấu kiện kim loại",
     description:
-      "Bảo trì định kỳ, xử lý sự cố và sửa chữa thiết bị công nghiệp, giảm thiểu thời gian ngừng máy.",
+      "Gia công thép tấm, thép hình và các chi tiết kim loại theo kích thước, quy cách và bản vẽ kỹ thuật — từ cắt, khoan, hàn đến lắp ráp và hoàn thiện sản phẩm.",
     scope: [
-      "Bảo trì định kỳ theo kế hoạch bảo dưỡng",
-      "Hiệu chuẩn thiết bị đo lường và van điều khiển",
-      "Xử lý sự cố và sửa chữa thiết bị tại nhà máy",
-      "Theo dõi tình trạng vận hành sau bảo trì",
+      "Cắt thép tấm, thép hình theo kích thước và quy cách",
+      "Khoan, hàn và lắp ráp chi tiết theo bản vẽ kỹ thuật",
+      "Hoàn thiện bề mặt sản phẩm theo yêu cầu đơn hàng",
+      "Kiểm tra kích thước và chất lượng từng lô sản phẩm",
     ],
     detail: {
       meta: {
-        group: "Bảo trì & sửa chữa",
-        scope: "Nhà máy & công trình công nghiệp",
-        equipment: "Chính hãng, đúng chủng loại",
-        acceptance: "Theo tiêu chuẩn kỹ thuật",
-        handover: "Biên bản & đề xuất kỳ tới",
+        group: "Gia công cấu kiện kim loại",
+        scope: "Nhà máy, nhà xưởng & công trình công nghiệp",
+        equipment: "Thép tấm & thép hình theo bản vẽ",
+        acceptance: "Theo kích thước và quy cách kỹ thuật",
+        handover: "Sản phẩm gia công theo lô",
       },
-      contextTitle: "Một đầu mối từ bảo dưỡng đến theo dõi vận hành",
+      contextTitle: "Một đầu mối từ bản vẽ đến sản phẩm gia công",
       context: [
-        "Delta Energy thực hiện bảo trì định kỳ, hiệu chuẩn và sửa chữa cho các hệ thống kỹ thuật trong nhà máy: cụm bơm, đường ống, van điều khiển, thiết bị đo và tủ điện. Lịch bảo trì được xây dựng theo khuyến nghị nhà sản xuất kết hợp điều kiện vận hành thực tế.",
-        "Công việc được bố trí theo từng cụm thiết bị trong các khung thời gian nhà máy cho phép, nhờ đó hệ thống vẫn vận hành theo đúng kế hoạch. Sau mỗi kỳ bảo trì, tình trạng thiết bị được ghi nhận làm cơ sở cho kế hoạch thay thế tiếp theo.",
+        "Delta Energy nhận gia công thép tấm, thép hình và các chi tiết kim loại theo bản vẽ kỹ thuật của khách hàng. Công việc bắt đầu bằng việc tiếp nhận bản vẽ, đối chiếu kích thước, quy cách và thống nhất yêu cầu hoàn thiện bề mặt.",
+        "Các công đoạn cắt, khoan, hàn, lắp ráp và hoàn thiện được thực hiện theo một quy trình thống nhất, có kiểm tra kích thước theo từng lô sản phẩm trước khi bàn giao.",
       ],
       scope: [
         {
-          title: "Lập kế hoạch bảo trì theo cụm",
-          body: "Xây dựng lịch bảo trì theo khuyến nghị nhà sản xuất và điều kiện vận hành thực tế của từng cụm thiết bị.",
+          title: "Tiếp nhận bản vẽ & lập phương án gia công",
+          body: "Đối chiếu kích thước, quy cách và yêu cầu kỹ thuật để lập phương án gia công cho từng lô sản phẩm.",
         },
         {
-          title: "Bảo dưỡng & hiệu chuẩn định kỳ",
-          body: "Bảo dưỡng van điều khiển, hiệu chuẩn đồng hồ đo lường và đối chiếu sai số với tiêu chuẩn kỹ thuật.",
+          title: "Cắt & khoan theo bản vẽ",
+          body: "Cắt thép tấm, thép hình và khoan lỗ theo kích thước, vị trí ghi trên bản vẽ kỹ thuật.",
         },
         {
-          title: "Xử lý sự cố & sửa chữa tại nhà máy",
-          body: "Tiếp nhận sự cố, xử lý và sửa chữa thiết bị tại chỗ bằng phụ tùng đúng chủng loại theo hồ sơ thiết bị.",
+          title: "Hàn & lắp ráp chi tiết",
+          body: "Hàn liên kết và lắp ráp các chi tiết thành cụm sản phẩm theo đúng quy cách kỹ thuật.",
         },
         {
-          title: "Báo cáo tình trạng & theo dõi sau bảo trì",
-          body: "Bàn giao biên bản bảo trì, ghi nhận tình trạng thiết bị và theo dõi vận hành sau mỗi kỳ bảo dưỡng.",
+          title: "Hoàn thiện & kiểm tra xuất xưởng",
+          body: "Làm sạch bề mặt, hoàn thiện sản phẩm và kiểm tra kích thước từng lô trước khi bàn giao.",
         },
       ],
-      systemTitle: "Những hạng mục nằm trong gói bảo trì",
+      systemTitle: "Những hạng mục nằm trong phạm vi gia công",
       kit: [
         {
-          label: "Bơm & đường ống",
-          body: "Kiểm tra, bảo dưỡng cụm bơm, đường ống công nghệ và phụ kiện theo kế hoạch",
+          label: "Cắt & khoan",
+          body: "Cắt thép tấm, thép hình theo kích thước và khoan lỗ theo vị trí bản vẽ",
         },
         {
-          label: "Van & thiết bị đo",
-          body: "Bảo dưỡng van điều khiển, hiệu chuẩn đồng hồ đo và thiết bị đo lường tại vị trí vận hành",
+          label: "Hàn liên kết",
+          body: "Hàn liên kết các chi tiết kim loại theo quy cách mối hàn ghi trên bản vẽ",
         },
         {
-          label: "Điện & điều khiển",
-          body: "Kiểm tra tủ điện điều khiển, thiết bị đóng cắt và hệ thống giám sát vận hành",
+          label: "Lắp ráp",
+          body: "Lắp ráp chi tiết thành cụm sản phẩm theo đúng trình tự kỹ thuật",
         },
         {
-          label: "Kết cấu đỡ & phụ kiện",
-          body: "Kiểm tra giá đỡ, bệ móng thiết bị và phụ kiện lắp đặt đi kèm",
+          label: "Hoàn thiện",
+          body: "Làm sạch bề mặt, mài nhẵn và hoàn thiện theo yêu cầu của từng đơn hàng",
         },
       ],
       diagram: {
-        src: "/imagery/project-maintenance-rig.svg",
-        width: 300,
-        height: 190,
-        alt: "Sơ đồ cụm van và thiết bị đo thuộc phạm vi bảo trì định kỳ",
-        caption: "Sơ đồ cụm van và thiết bị đo thuộc phạm vi bảo trì định kỳ.",
+        src: "/imagery/service-metal-fabrication.svg",
+        width: 480,
+        height: 400,
+        alt: "Sơ đồ gia công cấu kiện kim loại: thép tấm, cắt và khoan lỗ",
+        caption:
+          "Sơ đồ các công đoạn gia công cấu kiện kim loại: cắt, khoan và hàn.",
       },
       timeline: [
         {
           stage: "Giai đoạn 1",
-          caption: "Khảo sát",
-          title: "Thống kê thiết bị & lịch bảo dưỡng",
-          body: "Kiểm tra danh mục thiết bị và đối chiếu lịch bảo dưỡng hiện hành của nhà máy.",
+          caption: "Tiếp nhận",
+          title: "Tiếp nhận bản vẽ & chốt phương án",
+          body: "Tiếp nhận bản vẽ kỹ thuật, đối chiếu kích thước, quy cách và thống nhất yêu cầu hoàn thiện.",
         },
         {
           stage: "Giai đoạn 2",
-          caption: "Lập kế hoạch",
-          title: "Chốt kế hoạch bảo trì theo cụm",
-          body: "Thống nhất thứ tự và khung thời gian thực hiện cho từng cụm để không ảnh hưởng vận hành.",
+          caption: "Vật tư",
+          title: "Chuẩn bị vật tư theo bảng kê",
+          body: "Kiểm tra thép tấm, thép hình và vật tư theo bảng kê kỹ thuật của đơn hàng.",
         },
         {
           stage: "Giai đoạn 3",
-          caption: "Thực hiện",
-          title: "Bảo dưỡng, hiệu chuẩn theo kế hoạch",
-          body: "Thực hiện bảo dưỡng, hiệu chuẩn và ghi nhận kết quả của từng hạng mục.",
+          caption: "Gia công",
+          title: "Cắt, khoan, hàn & lắp ráp",
+          body: "Thực hiện cắt, khoan, hàn và lắp ráp chi tiết theo bản vẽ và quy cách kỹ thuật.",
         },
         {
           stage: "Giai đoạn 4",
           caption: "Bàn giao",
-          title: "Bàn giao biên bản & đề xuất kỳ tới",
-          body: "Bàn giao biên bản bảo trì, ghi nhận tình trạng thiết bị và đề xuất hạng mục cần thay thế.",
+          title: "Hoàn thiện & bàn giao theo lô",
+          body: "Hoàn thiện bề mặt, kiểm tra kích thước và bàn giao sản phẩm theo lô.",
+        },
+      ],
+    },
+  },
+  {
+    slug: "ket-cau-phu-tro",
+    name: "Gia công kết cấu thép phụ trợ công nghiệp",
+    description:
+      "Gia công sàn thao tác, cầu thang thép, lan can, giá đỡ và các cấu kiện kim loại phụ trợ cho nhà máy, nhà xưởng và công trình công nghiệp.",
+    scope: [
+      "Sàn thao tác và cầu thang thép cho nhà xưởng",
+      "Lan can, giá đỡ và kết cấu phụ trợ theo bản vẽ",
+      "Gia công theo năng lực thực tế của từng đơn hàng",
+      "Kiểm tra kích thước và chất lượng trước khi bàn giao",
+    ],
+    detail: {
+      meta: {
+        group: "Kết cấu thép phụ trợ",
+        scope: "Nhà máy, nhà xưởng & công trình công nghiệp",
+        equipment: "Thép hình & thép tấm theo bản vẽ",
+        acceptance: "Theo bản vẽ và yêu cầu kỹ thuật",
+        handover: "Sản phẩm & hồ sơ kỹ thuật",
+      },
+      contextTitle: "Một đầu mối cho các cấu kiện phụ trợ công nghiệp",
+      context: [
+        "Delta Energy nhận gia công sàn thao tác, cầu thang thép, lan can, giá đỡ và các cấu kiện kim loại phụ trợ phục vụ nhà máy, nhà xưởng và công trình công nghiệp. Phạm vi nhận việc được xác nhận theo năng lực thực tế của từng đơn hàng.",
+        "Từng cấu kiện được gia công theo bản vẽ và yêu cầu kỹ thuật của công trình, có kiểm tra kích thước và mối hàn trước khi bàn giao cho công tác lắp đặt.",
+      ],
+      scope: [
+        {
+          title: "Tiếp nhận bản vẽ & đối chiếu hiện trạng",
+          body: "Tiếp nhận bản vẽ, đối chiếu kích thước hiện trạng và thống nhất phạm vi gia công với chủ đầu tư.",
+        },
+        {
+          title: "Chế tạo sàn thao tác & cầu thang thép",
+          body: "Cắt, hàn và tổ hợp sàn thao tác, cầu thang thép theo bản vẽ và quy cách kỹ thuật.",
+        },
+        {
+          title: "Gia công lan can, giá đỡ & cấu kiện phụ trợ",
+          body: "Gia công lan can, giá đỡ và các cấu kiện kim loại phụ trợ theo bản vẽ của từng công trình.",
+        },
+        {
+          title: "Kiểm tra & bàn giao",
+          body: "Kiểm tra kích thước, mối hàn và tình trạng bề mặt, bàn giao sản phẩm theo tiến độ lắp đặt của công trình.",
+        },
+      ],
+      systemTitle: "Những cấu kiện nằm trong phạm vi gia công",
+      kit: [
+        {
+          label: "Sàn thao tác",
+          body: "Sàn thao tác cho khu vực vận hành, bảo trì thiết bị trong nhà máy, nhà xưởng",
+        },
+        {
+          label: "Cầu thang thép",
+          body: "Cầu thang thép cho nhà xưởng và công trình công nghiệp theo bản vẽ",
+        },
+        {
+          label: "Lan can & giá đỡ",
+          body: "Lan can an toàn, giá đỡ thiết bị và đường ống theo yêu cầu kỹ thuật",
+        },
+        {
+          label: "Cấu kiện phụ trợ",
+          body: "Các cấu kiện kim loại phụ trợ khác theo năng lực thực tế của từng đơn hàng",
+        },
+      ],
+      diagram: {
+        src: "/imagery/service-platform-stairs.svg",
+        width: 480,
+        height: 400,
+        alt: "Sơ đồ sàn thao tác, cầu thang thép và lan can",
+        caption:
+          "Sơ đồ sàn thao tác, cầu thang thép và lan can phục vụ nhà xưởng.",
+      },
+      timeline: [
+        {
+          stage: "Giai đoạn 1",
+          caption: "Tiếp nhận",
+          title: "Tiếp nhận bản vẽ & đối chiếu hiện trạng",
+          body: "Tiếp nhận bản vẽ kỹ thuật, đối chiếu kích thước hiện trạng và thống nhất phạm vi gia công.",
+        },
+        {
+          stage: "Giai đoạn 2",
+          caption: "Vật tư",
+          title: "Chuẩn bị vật tư theo bảng kê",
+          body: "Kiểm tra thép hình, thép tấm và vật tư theo bảng kê kỹ thuật của từng đơn hàng.",
+        },
+        {
+          stage: "Giai đoạn 3",
+          caption: "Gia công",
+          title: "Cắt, hàn & tổ hợp cấu kiện",
+          body: "Cắt, khoan, hàn và tổ hợp sàn thao tác, cầu thang, lan can và giá đỡ theo bản vẽ.",
+        },
+        {
+          stage: "Giai đoạn 4",
+          caption: "Bàn giao",
+          title: "Kiểm tra chất lượng & bàn giao",
+          body: "Kiểm tra kích thước, mối hàn và tình trạng bề mặt, bàn giao sản phẩm theo tiến độ công trình.",
+        },
+      ],
+    },
+  },
+  {
+    slug: "han-lap-rap",
+    name: "Hàn, lắp ráp và hoàn thiện sản phẩm",
+    description:
+      "Thực hiện hàn liên kết, lắp ráp và hoàn thiện cấu kiện thép theo yêu cầu kỹ thuật, đảm bảo chất lượng sản phẩm và tiến độ bàn giao.",
+    scope: [
+      "Hàn liên kết cấu kiện thép theo bản vẽ kỹ thuật",
+      "Lắp ráp cụm cấu kiện theo đúng trình tự thiết kế",
+      "Hoàn thiện bề mặt sản phẩm theo yêu cầu đơn hàng",
+      "Kiểm tra mối hàn và chất lượng trước khi bàn giao",
+    ],
+    detail: {
+      meta: {
+        group: "Hàn, lắp ráp & hoàn thiện",
+        scope: "Cấu kiện thép theo đơn hàng",
+        equipment: "Vật liệu hàn theo quy cách kỹ thuật",
+        acceptance: "Theo yêu cầu kỹ thuật đã thống nhất",
+        handover: "Sản phẩm hoàn thiện theo tiến độ",
+      },
+      contextTitle: "Một đầu mối từ hàn liên kết đến hoàn thiện",
+      context: [
+        "Delta Energy thực hiện hàn liên kết, lắp ráp và hoàn thiện cấu kiện thép theo yêu cầu kỹ thuật của từng đơn hàng. Công việc bắt đầu bằng việc tiếp nhận bản vẽ và thống nhất quy cách mối hàn, trình tự lắp ráp và yêu cầu hoàn thiện bề mặt.",
+        "Chất lượng mối hàn và kích thước sau lắp ráp được kiểm tra theo yêu cầu kỹ thuật đã thống nhất, giúp sản phẩm đáp ứng đúng tiến độ bàn giao của công trình.",
+      ],
+      scope: [
+        {
+          title: "Tiếp nhận bản vẽ & thống nhất quy cách hàn",
+          body: "Đối chiếu bản vẽ kỹ thuật, thống nhất quy cách mối hàn và trình tự lắp ráp cho từng cụm cấu kiện.",
+        },
+        {
+          title: "Hàn liên kết theo bản vẽ",
+          body: "Hàn liên kết các chi tiết, cụm cấu kiện thép theo quy cách mối hàn ghi trên bản vẽ.",
+        },
+        {
+          title: "Lắp ráp & kiểm tra kích thước",
+          body: "Lắp ráp cấu kiện theo trình tự thiết kế và kiểm tra kích thước sau từng công đoạn.",
+        },
+        {
+          title: "Hoàn thiện & bàn giao",
+          body: "Làm sạch bề mặt, hoàn thiện sản phẩm và bàn giao theo tiến độ đã thống nhất.",
+        },
+      ],
+      systemTitle: "Những hạng mục nằm trong phạm vi hàn và lắp ráp",
+      kit: [
+        {
+          label: "Hàn liên kết",
+          body: "Hàn liên kết cấu kiện thép theo quy cách mối hàn ghi trên bản vẽ kỹ thuật",
+        },
+        {
+          label: "Lắp ráp",
+          body: "Lắp ráp các chi tiết thành cụm cấu kiện theo trình tự thiết kế",
+        },
+        {
+          label: "Hoàn thiện bề mặt",
+          body: "Làm sạch, mài nhẵn và hoàn thiện bề mặt theo yêu cầu của từng đơn hàng",
+        },
+        {
+          label: "Kiểm tra chất lượng",
+          body: "Kiểm tra mối hàn, kích thước và tình trạng hoàn thiện trước khi bàn giao",
+        },
+      ],
+      diagram: {
+        src: "/imagery/service-welding.svg",
+        width: 480,
+        height: 400,
+        alt: "Sơ đồ mối hàn liên kết và tia lửa hàn trên cấu kiện thép",
+        caption:
+          "Sơ đồ mối hàn liên kết và công đoạn hoàn thiện cấu kiện thép.",
+      },
+      timeline: [
+        {
+          stage: "Giai đoạn 1",
+          caption: "Tiếp nhận",
+          title: "Tiếp nhận bản vẽ & chốt quy cách hàn",
+          body: "Tiếp nhận bản vẽ kỹ thuật, thống nhất quy cách mối hàn và yêu cầu hoàn thiện bề mặt.",
+        },
+        {
+          stage: "Giai đoạn 2",
+          caption: "Chuẩn bị",
+          title: "Chuẩn bị vật tư & dụng cụ hàn",
+          body: "Kiểm tra vật liệu hàn, dụng cụ và bề mặt chi tiết trước khi vào từng công đoạn.",
+        },
+        {
+          stage: "Giai đoạn 3",
+          caption: "Thi công",
+          title: "Hàn, lắp ráp & hoàn thiện",
+          body: "Thực hiện hàn liên kết, lắp ráp và hoàn thiện cấu kiện theo yêu cầu kỹ thuật.",
+        },
+        {
+          stage: "Giai đoạn 4",
+          caption: "Bàn giao",
+          title: "Kiểm tra chất lượng & bàn giao",
+          body: "Kiểm tra mối hàn, kích thước và tình trạng hoàn thiện, bàn giao sản phẩm theo tiến độ.",
         },
       ],
     },
@@ -475,36 +473,36 @@ export const services: Service[] = [
 /** Minh hoạ phẳng 200×150 — vẽ theo luật imagery của design system, mỗi ảnh một điểm lime. */
 export const products: Product[] = [
   {
-    src: "/imagery/product-pump.svg",
+    src: "/imagery/product-beam-column.svg",
     width: 200,
     height: 150,
-    alt: "Minh hoạ Thiết bị bơm",
-    category: "Thiết bị bơm",
-    name: "Máy bơm công nghiệp DE-P200",
+    alt: "Minh hoạ Khung nhà xưởng",
+    category: "Khung nhà xưởng",
+    name: "Khung thép nhà xưởng công nghiệp",
   },
   {
-    src: "/imagery/product-valve.svg",
+    src: "/imagery/product-steel-plate.svg",
     width: 200,
     height: 150,
-    alt: "Minh hoạ Van điều khiển",
-    category: "Van điều khiển",
-    name: "Van điều khiển khí nén VC-40",
+    alt: "Minh hoạ Cấu kiện thép tấm",
+    category: "Cấu kiện thép tấm",
+    name: "Chi tiết thép tấm gia công theo bản vẽ",
   },
   {
-    src: "/imagery/product-instrument.svg",
+    src: "/imagery/product-stairs-platform.svg",
     width: 200,
     height: 150,
-    alt: "Minh hoạ Thiết bị đo lường",
-    category: "Thiết bị đo lường",
-    name: "Đồng hồ đo áp suất DE-M10",
+    alt: "Minh hoạ Sàn & cầu thang thép",
+    category: "Sàn & cầu thang thép",
+    name: "Sàn thao tác & cầu thang thép nhà xưởng",
   },
   {
-    src: "/imagery/product-control.svg",
+    src: "/imagery/product-support-bracket.svg",
     width: 200,
     height: 150,
-    alt: "Minh hoạ Điện & điều khiển",
-    category: "Điện & điều khiển",
-    name: "Tủ điện điều khiển DE-C05",
+    alt: "Minh hoạ Giá đỡ & kết cấu phụ trợ",
+    category: "Giá đỡ & kết cấu phụ trợ",
+    name: "Giá đỡ thiết bị & cấu kiện phụ trợ",
   },
 ];
 
@@ -531,8 +529,8 @@ export function getProducts(): Product[] {
 /**
  * Hạng mục cùng nhóm dịch vụ.
  *
- * Chưa nối được với Strapi: slug dịch vụ ở đây (`tu-van`, `lap-dat`…) không
- * trùng giá trị của `project_category` bên BE ("Tư vấn giải pháp kỹ thuật"…),
+ * Chưa nối được với Strapi: slug dịch vụ ở đây (`ket-cau-thep`, `han-lap-rap`…)
+ * không trùng giá trị của `project_category` bên BE ("Sản xuất kết cấu thép"…),
  * nên không có khoá nào để lọc. Trả rỗng — `ServiceDetailProjects` tự ẩn mục
  * khi không có dự án, thay vì hiển thị dự án không liên quan.
  */

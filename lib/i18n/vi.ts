@@ -10,9 +10,9 @@ import { company } from "@/constants/company";
  */
 export const vi = {
   meta: {
-    title: "Delta Energy — Dịch vụ & Giải pháp Kỹ thuật Công nghiệp",
+    title: "Delta Energy — Gia công & Sản xuất Kết cấu Thép Công nghiệp",
     description:
-      "Delta Energy (CÔNG TY TNHH DỊCH VỤ KỸ THUẬT DELTA ENERGY) cung cấp thiết bị, giải pháp kỹ thuật và dịch vụ hiện trường cho nhà máy và công trình công nghiệp — từ tư vấn giải pháp, cung cấp thiết bị đến lắp đặt và bảo trì vận hành.",
+      "Delta Energy (CÔNG TY TNHH DỊCH VỤ KỸ THUẬT DELTA ENERGY) sản xuất, gia công kết cấu thép và cấu kiện kim loại theo bản vẽ thiết kế — khung thép, dầm, cột, giàn thép, sàn thao tác, cầu thang và cấu kiện phụ trợ cho công trình xây dựng và nhà xưởng công nghiệp.",
   },
   /** Dùng chung — chuỗi thay cho trường chưa có dữ liệu bên Strapi. */
   common: {
@@ -36,10 +36,10 @@ export const vi = {
     languageNames: { vi: "Tiếng Việt", en: "English" },
   },
   hero: {
-    eyebrow: "Giải pháp kỹ thuật công nghiệp",
-    h1Pre: "Đối tác kỹ thuật cho ",
-    h1Accent: "vận hành công nghiệp bền vững",
-    lead: "Chúng tôi cung cấp thiết bị chính hãng, giải pháp kỹ thuật và dịch vụ hiện trường cho nhà máy, công trình công nghiệp — từ tư vấn giải pháp, cung cấp thiết bị đến lắp đặt và bảo trì vận hành.",
+    eyebrow: "Gia công kết cấu thép công nghiệp",
+    h1Pre: "Đối tác gia công ",
+    h1Accent: "kết cấu thép theo bản vẽ",
+    lead: "Chúng tôi sản xuất, gia công kết cấu thép và cấu kiện kim loại theo bản vẽ thiết kế — khung thép, dầm, cột, giàn thép và cấu kiện phụ trợ cho công trình xây dựng và nhà xưởng công nghiệp.",
     ctaPrimary: "Nhận báo giá",
     ctaSecondary: "Xem hồ sơ năng lực",
     stats: [
@@ -60,96 +60,96 @@ export const vi = {
     ],
   },
   problem: {
-    kicker: "Vấn đề vận hành",
-    title: "Mỗi giờ ngừng máy đều có cái giá của nó",
-    lead: "Nghe quen không? Càng để lâu, những vấn đề này càng âm thầm bào mòn hiệu suất vận hành của nhà máy.",
+    kicker: "Vấn đề thường gặp",
+    title: "Chọn nhầm đối tác gia công, cả công trình trả giá",
+    lead: "Nghe quen không? Những vấn đề này càng để lâu càng đẩy tiến độ và chi phí dự án ra khỏi tầm kiểm soát.",
     items: [
       {
-        title: "Ngừng máy ngoài kế hoạch",
-        body: "Sự cố nhỏ không được xử lý kịp thời sẽ lan rộng thành ngừng máy ngoài kế hoạch, kéo theo thiệt hại sản lượng và trễ tiến độ giao hàng.",
+        title: "Tiến độ gia công bị trễ hẹn",
+        body: "Nhà thầu gia công chậm bàn giao kéo theo toàn bộ tiến độ lắp dựng và hoàn thiện công trình phía sau.",
       },
       {
-        title: "Chi phí bảo trì khó dự toán",
-        body: "Thiết bị thiếu lịch bảo trì định kỳ dẫn đến hỏng hóc đột xuất, chi phí sửa chữa phát sinh khó kiểm soát.",
+        title: "Chất lượng không đồng đều",
+        body: "Kích thước sai lệch, mối hàn không đạt yêu cầu khiến cấu kiện phải sửa lại, đội thêm chi phí và thời gian.",
       },
       {
-        title: "Thiết bị không rõ nguồn gốc",
-        body: "Thiết bị không chính hãng tiềm ẩn rủi ro an toàn, giảm tuổi thọ hệ thống và không có hỗ trợ kỹ thuật từ nhà sản xuất.",
+        title: "Báo giá thiếu minh bạch",
+        body: "Báo giá không rõ chủng loại vật tư và khối lượng, dẫn đến phát sinh khó kiểm soát trong quá trình thực hiện.",
       },
     ],
   },
   pillars: {
     kicker: "Vì sao chọn Delta Energy",
-    title: "Cách chúng tôi giải quyết bài toán vận hành",
-    lead: "Ba trụ cột định hình cách Delta Energy làm việc với từng khách hàng.",
+    title: "Cách chúng tôi giữ chất lượng và tiến độ",
+    lead: "Ba trụ cột định hình cách Delta Energy nhận việc với từng khách hàng.",
     items: [
       {
-        title: "Đối tác trọn vòng đời",
-        body: "Tư vấn giải pháp → cung cấp thiết bị → lắp đặt → bảo trì vận hành, do một đội kỹ thuật chịu trách nhiệm xuyên suốt.",
+        title: "Một đầu mối từ bản vẽ đến bàn giao",
+        body: "Tiếp nhận bản vẽ → chuẩn bị vật tư → gia công → bàn giao, do một đội kỹ thuật chịu trách nhiệm xuyên suốt.",
       },
       {
         title: "Bằng chứng thay lời nói",
         body: "10+ năm kinh nghiệm, 150+ dự án hoàn thành, 40+ đối tác chiến lược — con số được công bố rõ ràng ngay trên trang.",
       },
       {
-        title: "Vận hành liên tục là cam kết",
-        body: "Giảm thiểu thời gian ngừng máy, vận hành liên tục 24/7, an toàn và hiệu quả cho từng công trình.",
+        title: "Bám theo yêu cầu kỹ thuật đã chốt",
+        body: "Gia công theo bản vẽ và quy cách đã thống nhất, kiểm tra kích thước và mối hàn ở từng công đoạn trước khi bàn giao.",
       },
     ],
   },
   process: {
     kicker: "Quy trình làm việc",
-    title: "Vận hành ổn định chỉ sau ba bước",
-    lead: "Không gián đoạn sản xuất. Không dự án kéo dài hàng tháng.",
+    title: "Từ bản vẽ đến sản phẩm chỉ trong ba bước",
+    lead: "Không bước nào thiếu kiểm tra. Không tiến độ nào để trôi.",
     items: [
       {
-        title: "Khảo sát & tư vấn",
-        body: "Kỹ thuật viên khảo sát hiện trạng, lắng nghe yêu cầu vận hành và đề xuất giải pháp phù hợp.",
+        title: "Tiếp nhận & báo giá",
+        body: "Tiếp nhận bản vẽ, đối chiếu yêu cầu kỹ thuật và gửi báo giá theo chủng loại vật tư, khối lượng rõ ràng.",
       },
       {
-        title: "Báo giá & cung cấp",
-        body: "Báo giá minh bạch, thiết bị chính hãng, tiến độ giao hàng rõ ràng.",
+        title: "Vật tư & gia công",
+        body: "Chuẩn bị thép hình, thép tấm theo bảng kê; cắt, khoan, hàn và tổ hợp theo bản vẽ đã chốt.",
       },
       {
-        title: "Lắp đặt & bàn giao",
-        body: "Lắp đặt, chạy thử và bàn giao vận hành; hỗ trợ kỹ thuật sau bàn giao.",
+        title: "Kiểm tra & bàn giao",
+        body: "Kiểm tra kích thước, mối hàn và tình trạng bề mặt trước khi bàn giao theo tiến độ đã thống nhất.",
       },
     ],
   },
   ctaBand: {
-    title: "Cần tư vấn ngay cho hệ thống của Quý khách?",
+    title: "Cần báo giá cho hạng mục kết cấu thép?",
     lead: `Gọi hotline ${company.phone.display} — chúng tôi phản hồi trong giờ làm việc.`,
     cta: "Gọi tư vấn ngay",
   },
   services: {
     kicker: "Dịch vụ",
-    title: "Bốn mảng dịch vụ kỹ thuật cốt lõi",
-    lead: "Mỗi mảng dịch vụ đều có quy trình riêng — và đều quy về một mục tiêu: vận hành liên tục.",
+    title: "Bốn nhóm dịch vụ gia công cốt lõi",
+    lead: "Mỗi nhóm dịch vụ có quy trình riêng — và đều quy về một mục tiêu: sản phẩm đúng bản vẽ, đúng tiến độ.",
     readMore: "Đọc thêm →",
     items: [
       {
         kicker: "Dịch vụ 01",
-        title: "Cung cấp thiết bị công nghiệp chính hãng",
-        body: "Thiết bị có nguồn gốc rõ ràng, kèm chứng từ và bảo hành theo quy định nhà sản xuất — máy bơm, van điều khiển, thiết bị đo lường và phụ kiện hệ thống.",
-        alt: "Minh họa cụm bơm và đường ống công nghiệp",
+        title: "Sản xuất kết cấu thép",
+        body: "Sản xuất, chế tạo khung thép, dầm, cột, giàn thép và các cấu kiện kết cấu theo bản vẽ thiết kế cho công trình xây dựng và nhà xưởng công nghiệp.",
+        alt: "Minh họa khung thép nhà xưởng với dầm và cột",
       },
       {
         kicker: "Dịch vụ 02",
-        title: "Giải pháp kỹ thuật theo yêu cầu",
-        body: "Khảo sát hiện trạng, phân tích yêu cầu vận hành và đề xuất giải pháp kỹ thuật phù hợp với từng công trình công nghiệp.",
-        alt: "Sơ đồ hệ thống kỹ thuật công nghiệp",
+        title: "Gia công cấu kiện kim loại",
+        body: "Gia công thép tấm, thép hình và các chi tiết kim loại theo kích thước, quy cách và bản vẽ kỹ thuật — từ cắt, khoan, hàn đến lắp ráp và hoàn thiện sản phẩm.",
+        alt: "Minh họa gia công thép tấm với đường cắt và lỗ khoan",
       },
       {
         kicker: "Dịch vụ 03",
-        title: "Lắp đặt & nâng cấp hệ thống",
-        body: "Thi công lắp đặt, đấu nối và nâng cấp hệ thống điện, đường ống và thiết bị — có kiểm tra, chạy thử trước khi bàn giao.",
-        alt: "Minh họa nâng cấp hệ thống điện điều khiển",
+        title: "Gia công kết cấu thép phụ trợ công nghiệp",
+        body: "Gia công sàn thao tác, cầu thang thép, lan can, giá đỡ và các cấu kiện kim loại phụ trợ cho nhà máy, nhà xưởng và công trình công nghiệp.",
+        alt: "Minh họa sàn thao tác và cầu thang thép",
       },
       {
         kicker: "Dịch vụ 04",
-        title: "Bảo trì & vận hành định kỳ",
-        body: "Lịch bảo trì theo khuyến nghị nhà sản xuất và điều kiện vận hành thực tế, giúp giảm thiểu thời gian ngừng máy và kéo dài tuổi thọ thiết bị.",
-        alt: "Minh họa bảo trì định kỳ giàn máy",
+        title: "Hàn, lắp ráp và hoàn thiện sản phẩm",
+        body: "Thực hiện hàn liên kết, lắp ráp và hoàn thiện cấu kiện thép theo yêu cầu kỹ thuật, đảm bảo chất lượng sản phẩm và tiến độ bàn giao.",
+        alt: "Minh họa hàn liên kết cấu kiện thép",
       },
     ],
   },
@@ -175,7 +175,7 @@ export const vi = {
     meta: {
       title: "Dự án đã thực hiện — Delta Energy",
       description:
-        "Hồ sơ năng lực Delta Energy: các công trình tiêu biểu trong lĩnh vực bơm, đường ống công nghệ, tủ điện điều khiển và bảo trì hệ thống van, thiết bị đo cho nhà máy công nghiệp.",
+        "Hồ sơ năng lực Delta Energy: các công trình tiêu biểu trong sản xuất, gia công kết cấu thép và cấu kiện kim loại cho công trình xây dựng và nhà xưởng công nghiệp.",
     },
     crumbs: { label: "Bạn đang ở", home: "Trang chủ", current: "Dự án" },
     hero: {
@@ -212,26 +212,26 @@ export const vi = {
       lead: "Mỗi hạng mục đều đi qua bốn nhóm dịch vụ này — một đầu mối chịu trách nhiệm xuyên suốt.",
       items: [
         {
-          title: "Tư vấn giải pháp kỹ thuật",
-          body: "Khảo sát hiện trạng, đề xuất giải pháp tối ưu về kỹ thuật và chi phí đầu tư cho từng dự án.",
+          title: "Sản xuất kết cấu thép",
+          body: "Sản xuất, chế tạo khung thép, dầm, cột, giàn thép và cấu kiện kết cấu theo bản vẽ thiết kế.",
         },
         {
-          title: "Thiết bị & vật tư kỹ thuật",
-          body: "Cung cấp thiết bị, phụ tùng và vật tư kỹ thuật chính hãng, đúng thông số cho từng hệ thống.",
+          title: "Gia công cấu kiện kim loại",
+          body: "Gia công thép tấm, thép hình và chi tiết kim loại theo kích thước, quy cách và bản vẽ kỹ thuật.",
         },
         {
-          title: "Lắp đặt & vận hành hệ thống",
-          body: "Thi công lắp đặt, chạy thử và bàn giao hệ thống theo đúng tiêu chuẩn kỹ thuật đề ra.",
+          title: "Gia công kết cấu thép phụ trợ công nghiệp",
+          body: "Gia công sàn thao tác, cầu thang thép, lan can, giá đỡ và cấu kiện phụ trợ cho nhà máy, nhà xưởng.",
         },
         {
-          title: "Bảo trì & sửa chữa hệ thống",
-          body: "Bảo trì định kỳ, xử lý sự cố và sửa chữa thiết bị công nghiệp, giảm thiểu thời gian ngừng máy.",
+          title: "Hàn, lắp ráp và hoàn thiện sản phẩm",
+          body: "Hàn liên kết, lắp ráp và hoàn thiện cấu kiện thép theo yêu cầu kỹ thuật, đúng tiến độ bàn giao.",
         },
       ],
     },
     cta: {
       title: "Trao đổi về hạng mục của bạn",
-      lead: "Gửi hiện trạng hoặc bản vẽ hệ thống, đội ngũ kỹ thuật Delta Energy sẽ khảo sát và tư vấn giải pháp phù hợp.",
+      lead: "Gửi bản vẽ hoặc yêu cầu kỹ thuật, đội ngũ Delta Energy sẽ đánh giá phương án gia công và báo giá theo từng hạng mục.",
       quote: "Gửi yêu cầu báo giá",
       call: `Gọi ${company.phone.display}`,
     },
@@ -255,23 +255,23 @@ export const vi = {
       linkLabel: "Xem chi tiết",
     },
     cta: {
-      title: "Cần khảo sát một hạng mục tương tự?",
-      lead: "Gửi hiện trạng hoặc bản vẽ hệ thống, đội ngũ kỹ thuật Delta Energy sẽ khảo sát và đề xuất giải pháp phù hợp.",
+      title: "Cần báo giá một hạng mục tương tự?",
+      lead: "Gửi bản vẽ hoặc yêu cầu kỹ thuật, đội ngũ Delta Energy sẽ đánh giá phương án gia công và báo giá phù hợp.",
       quote: "Gửi yêu cầu báo giá",
       call: `Gọi ${company.phone.display}`,
     },
   },
   servicesPage: {
     meta: {
-      title: "Dịch vụ kỹ thuật cốt lõi — Delta Energy",
+      title: "Dịch vụ gia công kết cấu thép — Delta Energy",
       description:
-        "Bốn nhóm dịch vụ Delta Energy: tư vấn giải pháp kỹ thuật, thiết bị & vật tư, lắp đặt & vận hành, bảo trì & sửa chữa hệ thống cho nhà máy công nghiệp.",
+        "Bốn nhóm dịch vụ Delta Energy: sản xuất kết cấu thép, gia công cấu kiện kim loại, kết cấu thép phụ trợ công nghiệp và hàn, lắp ráp, hoàn thiện sản phẩm cho công trình xây dựng và nhà xưởng.",
     },
     crumbs: { label: "Bạn đang ở", home: "Trang chủ", current: "Dịch vụ" },
     hero: {
       eyebrow: "Lĩnh vực hoạt động",
-      title: "Dịch vụ kỹ thuật cốt lõi",
-      lead: "Bốn nhóm dịch vụ chính giúp khách hàng vận hành hệ thống công nghiệp an toàn, hiệu quả và đúng tiến độ.",
+      title: "Dịch vụ gia công kết cấu thép",
+      lead: "Bốn nhóm dịch vụ chính đưa sản phẩm từ bản vẽ thiết kế đến bàn giao — đúng quy cách kỹ thuật và đúng tiến độ.",
       stats: [
         { value: "10+", label: "Năm kinh nghiệm" },
         { value: "150+", label: "Dự án hoàn thành" },
@@ -280,37 +280,37 @@ export const vi = {
     },
     list: {
       eyebrow: "Bốn nhóm dịch vụ",
-      title: "Từ khảo sát đến bảo trì vận hành",
-      lead: "Delta Energy đồng hành cùng khách hàng xuyên suốt vòng đời hệ thống — một đầu mối chịu trách nhiệm từ tư vấn giải pháp, cung cấp thiết bị, lắp đặt đến bảo trì vận hành.",
+      title: "Từ bản vẽ đến sản phẩm hoàn thiện",
+      lead: "Delta Energy nhận sản xuất và gia công kết cấu thép, cấu kiện kim loại cho công trình xây dựng và nhà xưởng công nghiệp — một đầu mối từ tiếp nhận bản vẽ, chuẩn bị vật tư đến gia công và bàn giao.",
       viewDetail: "Xem chi tiết dịch vụ",
     },
     products: {
       eyebrow: "Sản phẩm theo nhóm dịch vụ",
-      title: "Thiết bị & vật tư kỹ thuật",
-      lead: "Sản phẩm được phân theo từng danh mục, có thông tin và hình ảnh chi tiết. Vui lòng liên hệ để được tư vấn báo giá — trang hiện chưa hỗ trợ đặt mua trực tuyến.",
+      title: "Kết cấu thép & cấu kiện kim loại",
+      lead: "Sản phẩm được phân theo từng nhóm, gia công theo bản vẽ và yêu cầu kỹ thuật của đơn hàng. Vui lòng liên hệ để được tư vấn báo giá — trang hiện chưa hỗ trợ đặt mua trực tuyến.",
       quote: "Nhận báo giá",
     },
     commitments: {
       eyebrow: "Cam kết dịch vụ",
-      title: "Ba điều Delta Energy giữ ở mọi hạng mục",
+      title: "Ba điều Delta Energy giữ ở mọi đơn hàng",
       items: [
         {
-          title: "Giảm thiểu thời gian ngừng máy",
-          body: "Công tác bảo trì và xử lý sự cố được tổ chức để hệ thống sớm trở lại trạng thái vận hành ổn định.",
+          title: "Đúng bản vẽ và quy cách kỹ thuật",
+          body: "Cấu kiện được gia công theo bản vẽ đã chốt, có kiểm tra kích thước và mối hàn ở từng công đoạn.",
         },
         {
-          title: "Thiết bị chính hãng, đúng thông số",
-          body: "Thiết bị, phụ tùng và vật tư được cung cấp đúng chủng loại theo hồ sơ kỹ thuật của từng hệ thống.",
+          title: "Vật tư rõ chủng loại",
+          body: "Thép hình, thép tấm và vật tư đầu vào được kiểm tra chủng loại, quy cách theo bảng kê kỹ thuật của đơn hàng.",
         },
         {
-          title: "Đúng tiêu chuẩn kỹ thuật đề ra",
-          body: "Mỗi hạng mục đều có hồ sơ nghiệm thu và tài liệu bàn giao đầy đủ cho nhà máy.",
+          title: "Đúng tiến độ bàn giao",
+          body: "Tiến độ thực hiện được thống nhất trước khi nhận việc và có thông tin cập nhật xuyên suốt quá trình gia công.",
         },
       ],
     },
     cta: {
-      title: "Cần tư vấn một nhóm dịch vụ?",
-      lead: "Gửi hiện trạng hoặc bản vẽ hệ thống, đội ngũ kỹ thuật Delta Energy sẽ khảo sát và đề xuất giải pháp phù hợp.",
+      title: "Cần báo giá một nhóm dịch vụ?",
+      lead: "Gửi bản vẽ hoặc yêu cầu kỹ thuật, đội ngũ Delta Energy sẽ đánh giá phương án gia công và báo giá theo từng hạng mục.",
       quote: "Gửi yêu cầu báo giá",
       call: `Gọi ${company.phone.display}`,
     },
@@ -324,7 +324,7 @@ export const vi = {
     metaLabels: {
       group: "Nhóm dịch vụ",
       scope: "Phạm vi",
-      equipment: "Thiết bị",
+      equipment: "Vật liệu",
       acceptance: "Nghiệm thu",
       handover: "Bàn giao",
     },
@@ -332,13 +332,13 @@ export const vi = {
     scope: {
       eyebrow: "Bốn hạng mục",
       title: "Delta Energy thực hiện trong nhóm dịch vụ này",
-      lead: "Từ khảo sát và chốt phương án đến bàn giao hồ sơ — mỗi bước đều có biên bản và tiêu chuẩn nghiệm thu rõ ràng.",
+      lead: "Từ tiếp nhận bản vẽ và chuẩn bị vật tư đến gia công và bàn giao — mỗi bước đều có kiểm tra và tiêu chuẩn nghiệm thu rõ ràng.",
     },
-    system: { eyebrow: "Thiết bị & hệ thống đảm nhận" },
+    system: { eyebrow: "Vật tư & hạng mục đảm nhận" },
     timeline: {
       eyebrow: "Quy trình thực hiện",
       title: "Bốn giai đoạn triển khai",
-      lead: "Quy trình chuẩn Delta Energy áp dụng cho mọi hạng mục thuộc nhóm dịch vụ này.",
+      lead: "Quy trình chuẩn Delta Energy áp dụng cho mọi đơn hàng thuộc nhóm dịch vụ này.",
     },
     projects: {
       eyebrow: "Dự án đã triển khai",
@@ -351,8 +351,8 @@ export const vi = {
       viewDetail: "Xem chi tiết dịch vụ",
     },
     cta: {
-      title: "Cần khảo sát một hạng mục tương tự?",
-      lead: "Gửi hiện trạng hoặc bản vẽ hệ thống, đội ngũ kỹ thuật Delta Energy sẽ khảo sát và đề xuất giải pháp phù hợp.",
+      title: "Cần báo giá một hạng mục tương tự?",
+      lead: "Gửi bản vẽ hoặc yêu cầu kỹ thuật, đội ngũ Delta Energy sẽ đánh giá phương án gia công và báo giá phù hợp.",
       quote: "Gửi yêu cầu báo giá",
       call: `Gọi ${company.phone.display}`,
     },
@@ -362,24 +362,28 @@ export const vi = {
     title: "Câu hỏi thường gặp từ khách hàng",
     items: [
       {
-        q: "Delta Energy cung cấp những dịch vụ nào?",
-        a: "Chúng tôi cung cấp thiết bị công nghiệp chính hãng, giải pháp kỹ thuật theo yêu cầu, lắp đặt & nâng cấp hệ thống và bảo trì vận hành định kỳ cho nhà máy, công trình công nghiệp.",
+        q: "Delta Energy cung cấp những sản phẩm và dịch vụ nào?",
+        a: "Chúng tôi tập trung vào sản xuất, gia công kết cấu thép và cấu kiện kim loại phục vụ xây dựng và công nghiệp. Sản phẩm được thực hiện theo bản vẽ, quy cách và yêu cầu kỹ thuật cụ thể của từng dự án.",
       },
       {
-        q: "Quy trình nhận báo giá mất bao lâu?",
-        a: "Sau khi nhận yêu cầu, chúng tôi phản hồi trong ngày làm việc và gửi báo giá chi tiết sau khi khảo sát hiện trạng (nếu cần).",
+        q: "Công ty có nhận gia công theo bản vẽ của khách hàng không?",
+        a: "Có. Chúng tôi tiếp nhận bản vẽ kỹ thuật và yêu cầu của Quý khách để xem xét khả năng gia công, phương án thực hiện và báo giá phù hợp.",
       },
       {
-        q: "Thiết bị có chính hãng không?",
-        a: "Toàn bộ thiết bị do Delta Energy cung cấp đều có nguồn gốc rõ ràng, kèm chứng từ và bảo hành theo quy định nhà sản xuất.",
+        q: "Delta Energy kiểm soát chất lượng sản phẩm như thế nào?",
+        a: "Chất lượng được kiểm soát theo yêu cầu kỹ thuật và tiêu chí đã thống nhất trong hợp đồng, bao gồm kiểm tra vật liệu, kích thước, mối hàn và tình trạng hoàn thiện trong phạm vi áp dụng của từng đơn hàng.",
       },
       {
-        q: "Có hỗ trợ bảo trì định kỳ không?",
-        a: "Có. Chúng tôi xây dựng lịch bảo trì theo khuyến nghị của nhà sản xuất và điều kiện vận hành thực tế, giúp giảm thiểu thời gian ngừng máy.",
+        q: "Thời gian gia công và hoàn thành đơn hàng là bao lâu?",
+        a: "Thời gian thực hiện phụ thuộc vào khối lượng, độ phức tạp của sản phẩm, tình trạng vật tư và yêu cầu kỹ thuật. Tiến độ cụ thể được xác nhận sau khi đánh giá hồ sơ và thống nhất với Quý khách.",
       },
       {
-        q: "Làm thế nào để liên hệ?",
-        a: `Quý khách có thể gọi hotline ${company.phone.display}, nhắn Zalo hoặc gửi yêu cầu báo giá qua biểu mẫu trên trang. Lưu ý: trang hiện chưa hỗ trợ đặt mua trực tuyến.`,
+        q: "Khách hàng cần cung cấp thông tin gì để nhận báo giá?",
+        a: "Quý khách nên cung cấp bản vẽ, quy cách và kích thước sản phẩm, chủng loại vật liệu, số lượng, yêu cầu hoàn thiện bề mặt và địa điểm giao hàng. Nếu chưa có bản vẽ hoàn chỉnh, Quý khách có thể trao đổi trước để xác định thông tin cần thiết.",
+      },
+      {
+        q: "Làm thế nào để liên hệ và hợp tác với Delta Energy?",
+        a: `Quý khách có thể gọi hotline ${company.phone.display}, gửi email tới ${company.email.address} hoặc để lại yêu cầu qua website. Chúng tôi tiếp nhận, trao đổi các yêu cầu kỹ thuật và xem xét phương án hợp tác phù hợp.`,
       },
     ],
   },
@@ -443,7 +447,7 @@ export const vi = {
       message: {
         label: "Nội dung yêu cầu",
         placeholder:
-          "Mô tả nhu cầu của Quý khách — thiết bị cần báo giá, quy mô, thời gian dự kiến…",
+          "Mô tả nhu cầu của Quý khách — hạng mục cần báo giá, bản vẽ, số lượng, thời gian dự kiến…",
         required: "Vui lòng nhập nội dung yêu cầu.",
       },
       submit: "Gửi yêu cầu",
@@ -461,15 +465,15 @@ export const vi = {
     },
   },
   finalCta: {
-    title: "Sẵn sàng cho hệ thống vận hành ổn định hơn?",
-    lead: "Gửi yêu cầu hôm nay, chúng tôi phản hồi trong ngày làm việc.",
+    title: "Bạn đang tìm kiếm đối tác gia công kết cấu thép đáng tin cậy?",
+    lead: "Liên hệ với DELTA ENERGY để được tư vấn giải pháp phù hợp với yêu cầu kỹ thuật và tiến độ dự án của bạn.",
     call: `Gọi tư vấn ngay — ${company.phone.display}`,
     zalo: "Nhắn Zalo →",
     note: "Phản hồi trong ngày làm việc · Báo giá minh bạch",
   },
   footer: {
     tagline:
-      "Delta Energy cung cấp thiết bị, giải pháp kỹ thuật và dịch vụ hiện trường cho nhà máy và công trình công nghiệp — từ tư vấn, cung cấp thiết bị đến lắp đặt và bảo trì vận hành.",
+      "Delta Energy sản xuất, gia công kết cấu thép và cấu kiện kim loại theo bản vẽ thiết kế — khung thép, dầm, cột, giàn thép và cấu kiện phụ trợ cho công trình xây dựng và nhà xưởng công nghiệp.",
     /** Nhãn cho khối thông tin pháp nhân — giá trị nằm ở `@/constants/company`. */
     info: {
       headOffice: "Trụ sở",
