@@ -23,6 +23,15 @@ export const company = {
     address: "info@delta-enc.com.vn",
     href: "mailto:info@delta-enc.com.vn",
   },
+  /**
+   * Zalo OA/cá nhân của công ty. `href` dùng dạng `zalo.me/<số>` — mở được cả
+   * trên desktop lẫn app; số hiển thị tách khối 3-3-3 cho dễ đọc.
+   */
+  zalo: {
+    number: "0976683505",
+    display: "0976 683 505",
+    href: "https://zalo.me/0976683505",
+  },
   address: {
     headOffice:
       "925/55, Đường 30/4, Phường Phước Thắng, Thành phố Hồ Chí Minh, Việt Nam",

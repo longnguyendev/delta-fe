@@ -125,7 +125,13 @@ const options: HTMLReactParserOptions = {
       );
     }
 
-    const className = TAG_CLASS[name];
+    /*
+     * CKEditor cho phép chọn "Heading 1", mà trang chi tiết đã có `<h1>` ở hero
+     * — thêm một `<h1>` nữa trong nội dung là hai tiêu đề chính trên cùng một
+     * trang. Hạ xuống `h2` (đúng cấp tiếp theo) và dùng luôn lớp của `h2`.
+     */
+    const tagName = name === "h1" ? "h2" : name;
+    const className = TAG_CLASS[tagName];
 
     // Thẻ ngoài bảng để nguyên — `parse` tự dựng lại, không kèm lớp nào.
     if (className === undefined) return undefined;
@@ -136,7 +142,7 @@ const options: HTMLReactParserOptions = {
     const classes = [className, attribs.class].filter(Boolean).join(" ");
 
     return createElement(
-      name,
+      tagName,
       {
         ...(name === "a" && attribs.href
           ? { href: attribs.href, rel: "noopener noreferrer" }

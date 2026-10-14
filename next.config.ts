@@ -14,6 +14,18 @@ const allowLocalImages =
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  /*
+   * Trang render động (nhánh dự án đọc Strapi ở chế độ `no-store`) nên metadata
+   * mặc định được STREAM vào `<body>` sau khi khung trang đã gửi đi. Danh sách
+   * bot mặc định chỉ phủ Google/Bing/Twitter, các bot còn lại — gồm
+   * `facebookexternalhit` và Zalo — nhận trang đã stream và không thấy thẻ
+   * `og:*` nào, nên link chia sẻ mất ảnh và mô tả.
+   *
+   * Regex "khớp mọi chuỗi" dưới đây buộc MỌI user agent nhận metadata chặn đầu
+   * vào `<head>`. Đánh đổi: TTFB của trang động cao hơn một chút vì phải chờ
+   * metadata xong mới gửi.
+   */
+  htmlLimitedBots: /.*/,
   async redirects() {
     return [
       {

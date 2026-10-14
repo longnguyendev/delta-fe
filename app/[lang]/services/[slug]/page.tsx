@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { lang } from "next/root-params";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { JsonLd } from "@/components/json-ld";
 import { CtaDarkBand } from "@/components/projects-sections";
 import {
   ServiceDetailContext,
@@ -20,6 +21,8 @@ import {
   getServices,
 } from "@/lib/data/services";
 import { getDictionary } from "@/lib/i18n/dictionaries";
+import { breadcrumbJsonLd, serviceJsonLd } from "@/lib/server/json-ld";
+import { absoluteUrl, getPageMeta } from "@/lib/server/page-meta";
 
 /** Chỉ 4 slug trong dữ liệu mock tồn tại — slug khác là 404. */
 export const dynamicParams = false;
@@ -32,13 +35,23 @@ export async function generateMetadata(
   props: PageProps<"/[lang]/services/[slug]">,
 ): Promise<Metadata> {
   const { slug } = await props.params;
+  const [locale, t] = await Promise.all([lang(), getDictionary()]);
   const service = getService(slug);
 
   if (!service) return {};
 
+  /*
+   * Title/description lấy từ dictionary theo slug chứ không lấy từ entity:
+   * `lib/data/services.ts` chỉ có tiếng Việt, dùng thẳng thì `/en/services/*`
+   * hiện meta tiếng Việt. Hậu tố "— Delta Energy" do `title.template` ở layout
+   * thêm vào, không viết ở đây.
+   */
+  const meta = t.servicePageMeta[service.slug];
+
   return {
-    title: `${service.name} — Delta Energy`,
-    description: service.description,
+    title: meta.title,
+    description: meta.description,
+    ...getPageMeta(locale, `/services/${service.slug}`),
   };
 }
 
@@ -51,9 +64,20 @@ export default async function ServiceDetailPage(
 
   if (!service) notFound();
 
+  const crumbs = t.servicesPage.crumbs;
+  const serviceUrl = absoluteUrl(locale, `/services/${service.slug}`);
+
   return (
     <div className="flex flex-1 flex-col">
       <Header t={t.nav} lang={locale} />
+      <JsonLd data={serviceJsonLd(service, serviceUrl)} />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: crumbs.home, url: absoluteUrl(locale) },
+          { name: crumbs.current, url: absoluteUrl(locale, "/services") },
+          { name: service.name, url: serviceUrl },
+        ])}
+      />
       <main>
         <ServiceDetailHero
           service={service}

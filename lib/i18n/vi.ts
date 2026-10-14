@@ -11,8 +11,12 @@ import { company } from "@/constants/company";
 export const vi = {
   meta: {
     title: "Delta Energy — Gia công & Sản xuất Kết cấu Thép Công nghiệp",
+    /*
+     * Giữ ≤160 ký tự: Google cắt phần vượt ở hầu hết khổ hiển thị. Tên pháp
+     * nhân đầy đủ đã có trong JSON-LD, không lặp lại ở đây cho tốn chỗ.
+     */
     description:
-      "Delta Energy (CÔNG TY TNHH DỊCH VỤ KỸ THUẬT DELTA ENERGY) sản xuất, gia công kết cấu thép và cấu kiện kim loại theo bản vẽ thiết kế — khung thép, dầm, cột, giàn thép, sàn thao tác, cầu thang và cấu kiện phụ trợ cho công trình xây dựng và nhà xưởng công nghiệp.",
+      "Delta Energy sản xuất, gia công kết cấu thép và cấu kiện kim loại theo bản vẽ: khung thép, dầm, cột, giàn thép cho công trình xây dựng và nhà xưởng.",
   },
   /** Dùng chung — chuỗi thay cho trường chưa có dữ liệu bên Strapi. */
   common: {
@@ -173,9 +177,9 @@ export const vi = {
   },
   projectsPage: {
     meta: {
-      title: "Dự án đã thực hiện — Delta Energy",
+      title: "Dự án đã thực hiện",
       description:
-        "Hồ sơ năng lực Delta Energy: các công trình tiêu biểu trong sản xuất, gia công kết cấu thép và cấu kiện kim loại cho công trình xây dựng và nhà xưởng công nghiệp.",
+        "Hồ sơ năng lực Delta Energy: công trình tiêu biểu trong sản xuất, gia công kết cấu thép và cấu kiện kim loại cho công trình xây dựng, nhà xưởng.",
     },
     crumbs: { label: "Bạn đang ở", home: "Trang chủ", current: "Dự án" },
     hero: {
@@ -263,9 +267,9 @@ export const vi = {
   },
   servicesPage: {
     meta: {
-      title: "Dịch vụ gia công kết cấu thép — Delta Energy",
+      title: "Dịch vụ gia công kết cấu thép",
       description:
-        "Bốn nhóm dịch vụ Delta Energy: sản xuất kết cấu thép, gia công cấu kiện kim loại, kết cấu thép phụ trợ công nghiệp và hàn, lắp ráp, hoàn thiện sản phẩm cho công trình xây dựng và nhà xưởng.",
+        "Bốn nhóm dịch vụ gia công của Delta Energy: sản xuất kết cấu thép, gia công cấu kiện kim loại, kết cấu phụ trợ công nghiệp và hàn, lắp ráp, hoàn thiện.",
     },
     crumbs: { label: "Bạn đang ở", home: "Trang chủ", current: "Dịch vụ" },
     hero: {
@@ -355,6 +359,35 @@ export const vi = {
       lead: "Gửi bản vẽ hoặc yêu cầu kỹ thuật, đội ngũ Delta Energy sẽ đánh giá phương án gia công và báo giá phù hợp.",
       quote: "Gửi yêu cầu báo giá",
       call: `Gọi ${company.phone.display}`,
+    },
+  },
+  /**
+   * Meta riêng cho từng trang dịch vụ, khoá theo slug.
+   *
+   * Nội dung entity (`lib/data/services.ts`) chỉ có tiếng Việt, nên `/en/services/*`
+   * không thể lấy `name`/`description` từ đó — bảng này giữ bản EN của phần meta
+   * trong khi phần thân trang vẫn là entity VI.
+   */
+  servicePageMeta: {
+    "ket-cau-thep": {
+      title: "Sản xuất kết cấu thép",
+      description:
+        "Sản xuất, chế tạo khung thép, dầm, cột, giàn thép và các cấu kiện kết cấu theo bản vẽ thiết kế cho công trình xây dựng và nhà xưởng công nghiệp.",
+    },
+    "cau-kien-kim-loai": {
+      title: "Gia công cấu kiện kim loại",
+      description:
+        "Gia công thép tấm, thép hình và các chi tiết kim loại theo kích thước, quy cách và bản vẽ kỹ thuật — từ cắt, khoan, hàn đến lắp ráp và hoàn thiện.",
+    },
+    "ket-cau-phu-tro": {
+      title: "Gia công kết cấu thép phụ trợ công nghiệp",
+      description:
+        "Gia công sàn thao tác, cầu thang thép, lan can, giá đỡ và các cấu kiện kim loại phụ trợ cho nhà máy, nhà xưởng và công trình công nghiệp.",
+    },
+    "han-lap-rap": {
+      title: "Hàn, lắp ráp và hoàn thiện sản phẩm",
+      description:
+        "Thực hiện hàn liên kết, lắp ráp và hoàn thiện cấu kiện thép theo yêu cầu kỹ thuật, đảm bảo chất lượng sản phẩm và tiến độ bàn giao.",
     },
   },
   faq: {
@@ -471,6 +504,12 @@ export const vi = {
     zalo: "Nhắn Zalo →",
     note: "Phản hồi trong ngày làm việc · Báo giá minh bạch",
   },
+  /** Trang 404 — nội địa hoá; Next mặc định trả bản tiếng Anh. */
+  notFound: {
+    title: "Không tìm thấy trang",
+    body: "Đường dẫn không tồn tại hoặc đã được thay đổi. Quý khách có thể quay về trang chủ hoặc liên hệ với chúng tôi để được hỗ trợ.",
+    backHome: "Về trang chủ",
+  },
   footer: {
     tagline:
       "Delta Energy sản xuất, gia công kết cấu thép và cấu kiện kim loại theo bản vẽ thiết kế — khung thép, dầm, cột, giàn thép và cấu kiện phụ trợ cho công trình xây dựng và nhà xưởng công nghiệp.",
@@ -495,8 +534,8 @@ export const vi = {
       {
         heading: "Công ty",
         links: [
-          { href: "#projects", label: "Giới thiệu" },
-          { href: "#projects", label: "Hồ sơ năng lực" },
+          { href: "#solutions", label: "Giới thiệu" },
+          { href: "/projects", label: "Hồ sơ năng lực" },
           { href: "#contact", label: "Liên hệ" },
         ],
       },
@@ -507,8 +546,8 @@ export const vi = {
             href: company.phone.href,
             label: `Hotline ${company.phone.display}`,
           },
-          { href: "#contact", label: "Nhắn Zalo" },
-          { href: "#contact", label: "Gửi yêu cầu báo giá" },
+          { href: company.zalo.href, label: "Nhắn Zalo" },
+          { href: "#contact-form", label: "Gửi yêu cầu báo giá" },
         ],
       },
     ],

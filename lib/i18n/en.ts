@@ -13,8 +13,9 @@ import type { Dictionary } from "./vi";
 export const en: Dictionary = {
   meta: {
     title: "Delta Energy — Steel Structure Fabrication & Manufacturing",
+    /* Kept under 160 characters — Google truncates the rest in most viewports. */
     description:
-      "Delta Energy (CÔNG TY TNHH DỊCH VỤ KỸ THUẬT DELTA ENERGY) manufactures and fabricates steel structures and metal components to design drawings — steel frames, beams, columns, trusses, access platforms, stairways and auxiliary components for construction works and industrial workshops.",
+      "Delta Energy fabricates steel structures and metal components to drawings — frames, beams, columns and trusses for construction and industrial workshops.",
   },
   /** Shared — stands in for a field with no data in Strapi yet. */
   common: {
@@ -173,9 +174,9 @@ export const en: Dictionary = {
   },
   projectsPage: {
     meta: {
-      title: "Delivered projects — Delta Energy",
+      title: "Delivered projects",
       description:
-        "Delta Energy capability profile: representative works in manufacturing and fabricating steel structures and metal components for construction works and industrial workshops.",
+        "Delta Energy capability profile: works in manufacturing and fabricating steel structures and metal components for construction and industrial workshops.",
     },
     crumbs: { label: "You are here", home: "Home", current: "Projects" },
     hero: {
@@ -263,9 +264,9 @@ export const en: Dictionary = {
   },
   servicesPage: {
     meta: {
-      title: "Steel fabrication services — Delta Energy",
+      title: "Steel fabrication services",
       description:
-        "Delta Energy's four service groups: steel structure manufacturing, metal component fabrication, industrial auxiliary steel fabrication, and welding, assembly & finishing for construction works and industrial workshops.",
+        "Delta Energy's four fabrication services: steel structures, metal components, industrial auxiliary steel and welding, assembly & finishing.",
     },
     crumbs: { label: "You are here", home: "Home", current: "Services" },
     hero: {
@@ -355,6 +356,33 @@ export const en: Dictionary = {
       lead: "Send your drawings or technical requirements and Delta Energy's team will review the fabrication approach and quote accordingly.",
       quote: "Request a quote",
       call: `Call ${company.phone.display}`,
+    },
+  },
+  /**
+   * Per-service meta, keyed by slug. The entity copy in `lib/data/services.ts`
+   * is Vietnamese-only, so `/en/services/*` reads its title and description
+   * here while the page body stays in the entity language.
+   */
+  servicePageMeta: {
+    "ket-cau-thep": {
+      title: "Steel structure manufacturing",
+      description:
+        "Manufacturing steel frames, beams, columns, trusses and structural components to design drawings for construction works and industrial workshops.",
+    },
+    "cau-kien-kim-loai": {
+      title: "Metal component fabrication",
+      description:
+        "Fabricating steel plate, steel sections and metal parts to the drawings required — from cutting and drilling through welding, assembly and finishing.",
+    },
+    "ket-cau-phu-tro": {
+      title: "Industrial auxiliary steel fabrication",
+      description:
+        "Fabricating access platforms, steel stairs, handrails, supports and auxiliary metal components for factories, workshops and industrial works.",
+    },
+    "han-lap-rap": {
+      title: "Welding, assembly & finishing",
+      description:
+        "Welded connections, assembly and finishing of steel components to the technical requirements, meeting product quality and the handover schedule.",
     },
   },
   faq: {
@@ -471,6 +499,12 @@ export const en: Dictionary = {
     zalo: "Message on Zalo →",
     note: "Reply within the working day · Transparent pricing",
   },
+  /** 404 page — localised; the Next.js default is English-only. */
+  notFound: {
+    title: "Page not found",
+    body: "The address does not exist or has changed. You can return to the home page or contact us for help.",
+    backHome: "Back to home",
+  },
   footer: {
     tagline:
       "Delta Energy manufactures and fabricates steel structures and metal components to design drawings — steel frames, beams, columns, trusses and auxiliary components for construction works and industrial workshops.",
@@ -495,8 +529,8 @@ export const en: Dictionary = {
       {
         heading: "Company",
         links: [
-          { href: "#projects", label: "About" },
-          { href: "#projects", label: "Capability profile" },
+          { href: "#solutions", label: "About" },
+          { href: "/projects", label: "Capability profile" },
           { href: "#contact", label: "Contact" },
         ],
       },
@@ -507,8 +541,8 @@ export const en: Dictionary = {
             href: company.phone.href,
             label: `Hotline ${company.phone.display}`,
           },
-          { href: "#contact", label: "Message on Zalo" },
-          { href: "#contact", label: "Send a quote request" },
+          { href: company.zalo.href, label: "Message on Zalo" },
+          { href: "#contact-form", label: "Send a quote request" },
         ],
       },
     ],

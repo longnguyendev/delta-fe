@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { lang } from "next/root-params";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { JsonLd } from "@/components/json-ld";
 import { ProjectsFilters } from "@/components/projects-filters";
 import {
   CtaDarkBand,
@@ -10,6 +11,8 @@ import {
   ProjectsLifecycle,
 } from "@/components/projects-sections";
 import { getDictionary } from "@/lib/i18n/dictionaries";
+import { breadcrumbJsonLd } from "@/lib/server/json-ld";
+import { absoluteUrl, getPageMeta } from "@/lib/server/page-meta";
 import {
   getFeaturedProject,
   getProjectCategories,
@@ -18,11 +21,16 @@ import {
 } from "@/lib/server/projects";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getDictionary();
+  const [locale, t] = await Promise.all([lang(), getDictionary()]);
 
   return {
     title: t.projectsPage.meta.title,
     description: t.projectsPage.meta.description,
+    /**
+     * Canonical bỏ query string: `?q=<hạng mục>` chỉ là cách lọc cùng một danh
+     * sách, để nguyên thì mỗi bộ lọc thành một URL riêng cho cùng nội dung.
+     */
+    ...getPageMeta(locale, "/projects"),
   };
 }
 
@@ -58,9 +66,17 @@ export default async function ProjectsPage(
     getFeaturedProject(locale),
   ]);
 
+  const crumbs = t.projectsPage.crumbs;
+
   return (
     <div className="flex flex-1 flex-col">
       <Header t={t.nav} lang={locale} />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: crumbs.home, url: absoluteUrl(locale) },
+          { name: crumbs.current, url: absoluteUrl(locale, "/projects") },
+        ])}
+      />
       <main>
         <ProjectsHero t={t.projectsPage} lang={locale} />
         <ProjectsFilters

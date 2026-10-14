@@ -33,7 +33,9 @@ export async function FinalCta() {
                 {t.finalCta.call}
               </a>
               <a
-                href="#contact"
+                href={company.zalo.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex h-[50px] items-center justify-center px-4 text-[15px] font-semibold leading-none text-on-primary"
               >
                 {t.finalCta.zalo}

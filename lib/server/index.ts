@@ -1,2 +1,2 @@
-export * from './getAlternates';
+export * from './page-meta';
 export * from './organization';

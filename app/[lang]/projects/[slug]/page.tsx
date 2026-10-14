@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { lang } from "next/root-params";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { JsonLd } from "@/components/json-ld";
 import {
   DetailContext,
   DetailHero,
@@ -10,6 +11,8 @@ import {
 } from "@/components/project-detail-sections";
 import { CtaDarkBand } from "@/components/projects-sections";
 import { getDictionary } from "@/lib/i18n/dictionaries";
+import { breadcrumbJsonLd } from "@/lib/server/json-ld";
+import { absoluteUrl, getPageMeta } from "@/lib/server/page-meta";
 import { getProject, getProjects, pickRelated } from "@/lib/server/projects";
 
 /*
@@ -27,9 +30,11 @@ export async function generateMetadata(
 
   if (!project) return {};
 
+  /* Hậu tố thương hiệu do `title.template` ở layout thêm — xem `app/[lang]/layout.tsx`. */
   return {
-    title: `${project.title} — Delta Energy`,
+    title: project.title,
     description: project.description ?? undefined,
+    ...getPageMeta(locale, `/projects/${slug}`),
   };
 }
 
@@ -43,10 +48,21 @@ export default async function ProjectDetailPage(
   if (!project) notFound();
 
   const related = pickRelated(project, await getProjects(locale));
+  const crumbs = t.projectsPage.crumbs;
 
   return (
     <div className="flex flex-1 flex-col">
       <Header t={t.nav} lang={locale} />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: crumbs.home, url: absoluteUrl(locale) },
+          { name: crumbs.current, url: absoluteUrl(locale, "/projects") },
+          {
+            name: project.title,
+            url: absoluteUrl(locale, `/projects/${project.slug}`),
+          },
+        ])}
+      />
       <main>
         <DetailHero
           project={project}

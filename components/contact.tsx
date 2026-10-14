@@ -4,11 +4,15 @@ import { getDictionary } from "@/lib/i18n/dictionaries";
 import { ContactForm } from "./contact-form";
 import { ButtonLink, Container, SectionHead } from "./ui";
 
-/** Destinations are language-independent — zipped with `t.contact.items`. */
+/**
+ * Destinations are language-independent — zipped with `t.contact.items`.
+ * `external` bật `target="_blank"`: Zalo mở ở tab mới để khách không mất
+ * trang đang đọc; hai kênh còn lại là link nội bộ trong cùng trang.
+ */
 const CHANNEL_TARGETS = [
-  { href: company.phone.href, highlighted: false },
-  { href: "#contact", highlighted: true },
-  { href: "#contact-form", highlighted: false },
+  { href: company.phone.href, highlighted: false, external: false },
+  { href: company.zalo.href, highlighted: true, external: true },
+  { href: "#contact-form", highlighted: false, external: false },
 ];
 
 export async function Contact() {
@@ -48,6 +52,9 @@ export async function Contact() {
                   href={CHANNEL_TARGETS[index].href}
                   variant="secondary"
                   className="w-full"
+                  {...(CHANNEL_TARGETS[index].external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
                 >
                   {channel.cta}
                 </ButtonLink>
