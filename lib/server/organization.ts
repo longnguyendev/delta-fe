@@ -31,6 +31,8 @@ export const organizationJsonLd = {
   email: company.email.address,
   telephone: company.phone.e164,
   taxID: company.taxCode,
+  /** Ngày thành lập — cùng nguồn `@/constants/company` với trang Giới thiệu. */
+  foundingDate: company.founded.iso,
   /** Hồ sơ công khai của công ty — hiện chỉ có Zalo. */
   sameAs: [company.zalo.href],
   contactPoint: [

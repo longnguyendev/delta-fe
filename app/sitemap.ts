@@ -17,6 +17,7 @@ type StaticPath = {
 const STATIC_PATHS: StaticPath[] = [
   { pathname: "", changeFrequency: "monthly", priority: 1 },
   { pathname: "/services", changeFrequency: "monthly", priority: 0.9 },
+  { pathname: "/about", changeFrequency: "monthly", priority: 0.9 },
   { pathname: "/projects", changeFrequency: "monthly", priority: 0.8 },
   ...getServices().map((service) => ({
     pathname: `/services/${service.slug}`,

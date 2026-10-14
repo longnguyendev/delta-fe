@@ -25,7 +25,9 @@ export function Crumbs({
   listHref,
 }: {
   t:
-    Dictionary["projectsPage"]["crumbs"] | Dictionary["servicesPage"]["crumbs"];
+    | Dictionary["projectsPage"]["crumbs"]
+    | Dictionary["servicesPage"]["crumbs"]
+    | Dictionary["aboutPage"]["crumbs"];
   lang: string;
   /** Tiêu đề mục — chỉ truyền ở trang chi tiết. */
   current?: string;
@@ -220,7 +222,8 @@ export function CtaDarkBand({
     | Dictionary["projectsPage"]["cta"]
     | Dictionary["projectDetail"]["cta"]
     | Dictionary["servicesPage"]["cta"]
-    | Dictionary["serviceDetail"]["cta"];
+    | Dictionary["serviceDetail"]["cta"]
+    | Dictionary["aboutPage"]["cta"];
   contactHref: string;
 }) {
   return (

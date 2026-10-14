@@ -25,6 +25,7 @@ export const en: Dictionary = {
     label: "Main navigation",
     home: "Delta Energy — back to home page",
     items: [
+      { href: "/about", label: "About" },
       { href: "#solutions", label: "Solutions" },
       { href: "/services", label: "Services" },
       { href: "/projects", label: "Projects" },
@@ -46,7 +47,7 @@ export const en: Dictionary = {
     ctaPrimary: "Request a quote",
     ctaSecondary: "View capability profile",
     stats: [
-      { value: "10+", label: "Years of experience" },
+      { value: "10+", label: "Years of team experience" },
       { value: "150+", label: "Projects delivered" },
       { value: "40+", label: "Strategic partners" },
     ],
@@ -92,7 +93,7 @@ export const en: Dictionary = {
       },
       {
         title: "Proof over adjectives",
-        body: "10+ years of experience, 150+ projects delivered, 40+ strategic partners — the numbers are published on this page.",
+        body: "A team with 10+ years of experience, 150+ projects delivered, 40+ strategic partners — the numbers are published on this page.",
       },
       {
         title: "To the agreed technical requirements",
@@ -158,7 +159,7 @@ export const en: Dictionary = {
   },
   statsBand: {
     items: [
-      { value: "10+", label: "Years of experience" },
+      { value: "10+", label: "Years of team experience" },
       { value: "150+", label: "Projects delivered" },
       { value: "40+", label: "Strategic partners" },
       { value: "24/7", label: "Technical support" },
@@ -184,7 +185,7 @@ export const en: Dictionary = {
       title: "Delivered projects",
       lead: "A selection of representative works Delta Energy has delivered with partners across the industrial sector.",
       stats: [
-        { value: "10+", label: "Years of experience" },
+        { value: "10+", label: "Years of team experience" },
         { value: "150+", label: "Projects delivered" },
         { value: "40+", label: "Strategic partners" },
       ],
@@ -274,7 +275,7 @@ export const en: Dictionary = {
       title: "Steel fabrication services",
       lead: "Four service groups that take a product from design drawing to handover — to the agreed technical specification, on schedule.",
       stats: [
-        { value: "10+", label: "Years of experience" },
+        { value: "10+", label: "Years of team experience" },
         { value: "150+", label: "Projects delivered" },
         { value: "40+", label: "Strategic partners" },
       ],
@@ -312,6 +313,98 @@ export const en: Dictionary = {
     cta: {
       title: "Need a quote for a service group?",
       lead: "Send your drawings or technical requirements and Delta Energy's team will review the fabrication approach and quote line by line.",
+      quote: "Request a quote",
+      call: `Call ${company.phone.display}`,
+    },
+  },
+  /*
+   * About page — mirrors the Vietnamese "Quá trình hình thành và phát triển"
+   * copy supplied by the client. No facts beyond those four paragraphs and the
+   * figures already published on the site.
+   */
+  aboutPage: {
+    meta: {
+      title: "About the company",
+      /* 155 characters — under 160. */
+      description: `Delta Energy fabricates and manufactures steel structures and metal components for the construction, industrial and energy sectors — founded on ${company.founded.short}.`,
+    },
+    crumbs: { label: "You are here", home: "Home", current: "About" },
+    hero: {
+      eyebrow: "About the company",
+      /** Two-part heading, as on the home hero — exactly one lime part. */
+      titlePre: "About ",
+      titleAccent: "Delta Energy",
+      lead: "We fabricate and manufacture steel structures and metal components for the construction, industrial and energy sectors.",
+    },
+    formation: {
+      eyebrow: "Company profile",
+      /** Date comes from `constants` — never hard-coded. */
+      title: `Founded on ${company.founded.short}`,
+      /** Legal name and date also come from `constants`. */
+      body: `${company.legalName} was founded on ${company.founded.long.en}, focused on fabricating and manufacturing steel structures and metal components for the construction, industrial and energy sectors.`,
+      /*
+       * The three figures already published on the home page. The experience
+       * caption names the team: the numeral "10+" sits directly above it, and
+       * the company itself was only recently founded — without that wording
+       * the two facts read as a contradiction.
+       */
+      metrics: [
+        { value: "10+", label: "Years of team experience" },
+        { value: "150+", label: "Projects delivered" },
+        { value: "40+", label: "Strategic partners" },
+      ],
+    },
+    principles: {
+      eyebrow: "Operating principles",
+      title: "Safety – Quality – Efficiency",
+      lead: "Three criteria applied throughout — from drawing intake to product handover.",
+      items: [
+        {
+          title: "Safety",
+          body: "Technical requirements are followed at every fabrication stage.",
+        },
+        {
+          title: "Quality",
+          body: "Product quality is controlled at every stage before handover.",
+        },
+        {
+          title: "Efficiency",
+          body: "Resources are optimised to keep schedule and cost under control.",
+        },
+      ],
+    },
+    directions: {
+      eyebrow: "Development direction",
+      title: "A sustainable development direction",
+      lead: "Four things Delta Energy focuses on to grow steadily for the long term.",
+      items: [
+        {
+          title: "Expand production capability",
+          body: "Grow the capacity to fabricate steel structures and metal components.",
+        },
+        {
+          title: "Refine management processes",
+          body: "Standardise the process from drawing intake to handover.",
+        },
+        {
+          title: "Develop specialist staff",
+          body: "Keep developing the expertise of our people.",
+        },
+        {
+          title: "Build long-term partnerships",
+          body: "Maintain long-standing cooperation with customers and partners.",
+        },
+      ],
+    },
+    future: {
+      eyebrow: "Looking ahead",
+      title: "Meeting the market's rising requirements",
+      lead: "We keep improving, raising the quality of our products and services, meeting the market's rising requirements and affirming our standing in mechanical engineering, steel structures and industry.",
+    },
+    /** Matches the `{ title, lead, quote, call }` shape of `CtaDarkBand`. */
+    cta: {
+      title: "Need to talk about our fabrication capability?",
+      lead: "Contact the Delta Energy team to discuss your technical requirements and our capability to fabricate and manufacture steel structures and metal components.",
       quote: "Request a quote",
       call: `Call ${company.phone.display}`,
     },
@@ -534,7 +627,7 @@ export const en: Dictionary = {
       {
         heading: "Company",
         links: [
-          { href: "#solutions", label: "About" },
+          { href: "/about", label: "About" },
           { href: "/projects", label: "Capability profile" },
           { href: "#contact", label: "Contact" },
         ],

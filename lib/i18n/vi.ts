@@ -26,6 +26,7 @@ export const vi = {
     label: "Điều hướng chính",
     home: "Delta Energy — về trang chủ",
     items: [
+      { href: "/about", label: "Giới thiệu" },
       { href: "#solutions", label: "Giải pháp" },
       { href: "/services", label: "Dịch vụ" },
       { href: "/projects", label: "Dự án" },
@@ -47,7 +48,7 @@ export const vi = {
     ctaPrimary: "Nhận báo giá",
     ctaSecondary: "Xem hồ sơ năng lực",
     stats: [
-      { value: "10+", label: "Năm kinh nghiệm" },
+      { value: "10+", label: "Năm kinh nghiệm của đội ngũ" },
       { value: "150+", label: "Dự án hoàn thành" },
       { value: "40+", label: "Đối tác chiến lược" },
     ],
@@ -93,7 +94,7 @@ export const vi = {
       },
       {
         title: "Bằng chứng thay lời nói",
-        body: "10+ năm kinh nghiệm, 150+ dự án hoàn thành, 40+ đối tác chiến lược — con số được công bố rõ ràng ngay trên trang.",
+        body: "Đội ngũ 10+ năm kinh nghiệm, 150+ dự án hoàn thành, 40+ đối tác chiến lược — con số được công bố rõ ràng ngay trên trang.",
       },
       {
         title: "Bám theo yêu cầu kỹ thuật đã chốt",
@@ -159,7 +160,7 @@ export const vi = {
   },
   statsBand: {
     items: [
-      { value: "10+", label: "Năm kinh nghiệm" },
+      { value: "10+", label: "Năm kinh nghiệm của đội ngũ" },
       { value: "150+", label: "Dự án hoàn thành" },
       { value: "40+", label: "Đối tác chiến lược" },
       { value: "24/7", label: "Hỗ trợ kỹ thuật" },
@@ -187,7 +188,7 @@ export const vi = {
       title: "Dự án đã thực hiện",
       lead: "Một số công trình tiêu biểu Delta Energy đã triển khai cùng đối tác trong ngành công nghiệp.",
       stats: [
-        { value: "10+", label: "Năm kinh nghiệm" },
+        { value: "10+", label: "Năm kinh nghiệm của đội ngũ" },
         { value: "150+", label: "Dự án hoàn thành" },
         { value: "40+", label: "Đối tác chiến lược" },
       ],
@@ -248,7 +249,7 @@ export const vi = {
     metaLabels: {
       category: "Hạng mục",
       location: "Địa điểm",
-      sector: "Lĩnh vực",
+      sector: "Lĩnh vực Của Khách Hàng",
       status: "Trạng thái",
       handover: "Bàn giao",
     },
@@ -277,7 +278,7 @@ export const vi = {
       title: "Dịch vụ gia công kết cấu thép",
       lead: "Bốn nhóm dịch vụ chính đưa sản phẩm từ bản vẽ thiết kế đến bàn giao — đúng quy cách kỹ thuật và đúng tiến độ.",
       stats: [
-        { value: "10+", label: "Năm kinh nghiệm" },
+        { value: "10+", label: "Năm kinh nghiệm của đội ngũ" },
         { value: "150+", label: "Dự án hoàn thành" },
         { value: "40+", label: "Đối tác chiến lược" },
       ],
@@ -315,6 +316,97 @@ export const vi = {
     cta: {
       title: "Cần báo giá một nhóm dịch vụ?",
       lead: "Gửi bản vẽ hoặc yêu cầu kỹ thuật, đội ngũ Delta Energy sẽ đánh giá phương án gia công và báo giá theo từng hạng mục.",
+      quote: "Gửi yêu cầu báo giá",
+      call: `Gọi ${company.phone.display}`,
+    },
+  },
+  /*
+   * Trang Giới thiệu — dựng từ nội dung "Quá trình hình thành và phát triển"
+   * do khách hàng cung cấp. Không thêm dữ kiện nào ngoài bốn đoạn đó và những
+   * con số đã công bố sẵn trên site.
+   */
+  aboutPage: {
+    meta: {
+      title: "Giới thiệu công ty",
+      /* 139 ký tự — ≤160. Ngày thành lập để dạng số gọn cho đỡ tốn chỗ. */
+      description: `Delta Energy gia công, chế tạo kết cấu thép và cấu kiện kim loại cho ngành xây dựng, công nghiệp và năng lượng — thành lập ngày ${company.founded.short}.`,
+    },
+    crumbs: { label: "Bạn đang ở", home: "Trang chủ", current: "Giới thiệu" },
+    hero: {
+      eyebrow: "Giới thiệu công ty",
+      /** Hai phần tiêu đề, như hero trang chủ — đoạn lime đúng một chỗ. */
+      titlePre: "Giới thiệu về công ty ",
+      titleAccent: "Delta Energy",
+      lead: "Chúng tôi gia công, chế tạo kết cấu thép và cấu kiện kim loại phục vụ ngành xây dựng, công nghiệp và năng lượng.",
+    },
+    formation: {
+      eyebrow: "Thông tin công ty",
+      /** Ngày lấy từ `constants` — không viết cứng ở đây. */
+      title: `Thành lập ngày ${company.founded.short}`,
+      /** Tên pháp nhân và ngày cũng lấy từ `constants`. */
+      body: `${company.legalName} thành lập ngày ${company.founded.long.vi}, định hướng lĩnh vực gia công, chế tạo kết cấu thép và cấu kiện kim loại phục vụ ngành xây dựng, công nghiệp và năng lượng.`,
+      /*
+       * Ba con số đã công bố trên trang chủ. Nhãn kinh nghiệm ghi rõ "của đội
+       * ngũ": con số "10+" đã nằm ngay trên nhãn, mà công ty mới thành lập —
+       * không nói rõ thì hai dữ kiện đá nhau.
+       */
+      metrics: [
+        { value: "10+", label: "Năm kinh nghiệm của đội ngũ" },
+        { value: "150+", label: "Dự án hoàn thành" },
+        { value: "40+", label: "Đối tác chiến lược" },
+      ],
+    },
+    principles: {
+      eyebrow: "Phương châm hoạt động",
+      title: "Phương châm An toàn – Chất lượng – Hiệu quả",
+      lead: "Ba tiêu chí được áp dụng xuyên suốt, từ tiếp nhận bản vẽ đến bàn giao sản phẩm.",
+      items: [
+        {
+          title: "An toàn",
+          body: "Tuân thủ yêu cầu kỹ thuật trong từng công đoạn gia công.",
+        },
+        {
+          title: "Chất lượng",
+          body: "Kiểm soát chất lượng sản phẩm ở từng công đoạn trước khi bàn giao.",
+        },
+        {
+          title: "Hiệu quả",
+          body: "Tối ưu hóa nguồn lực để giữ tiến độ và chi phí trong tầm kiểm soát.",
+        },
+      ],
+    },
+    directions: {
+      eyebrow: "Định hướng phát triển",
+      title: "Định hướng phát triển bền vững",
+      lead: "Bốn việc Delta Energy tập trung để phát triển ổn định và lâu dài.",
+      items: [
+        {
+          title: "Nâng cao năng lực sản xuất",
+          body: "Mở rộng năng lực gia công kết cấu thép và cấu kiện kim loại.",
+        },
+        {
+          title: "Hoàn thiện quy trình quản lý",
+          body: "Chuẩn hóa quy trình từ tiếp nhận bản vẽ đến bàn giao.",
+        },
+        {
+          title: "Phát triển đội ngũ nhân sự chuyên môn",
+          body: "Chú trọng phát triển chuyên môn cho đội ngũ nhân sự.",
+        },
+        {
+          title: "Xây dựng quan hệ hợp tác lâu dài",
+          body: "Duy trì quan hệ hợp tác lâu dài với khách hàng và đối tác.",
+        },
+      ],
+    },
+    future: {
+      eyebrow: "Mục tiêu phía trước",
+      title: "Đáp ứng yêu cầu ngày càng cao của thị trường",
+      lead: "Chúng tôi không ngừng cải tiến, nâng cao chất lượng sản phẩm và dịch vụ, đáp ứng yêu cầu ngày càng cao của thị trường, khẳng định uy tín trong lĩnh vực cơ khí, kết cấu thép và công nghiệp.",
+    },
+    /** Đúng shape `{ title, lead, quote, call }` của `CtaDarkBand`. */
+    cta: {
+      title: "Cần trao đổi về năng lực gia công?",
+      lead: "Liên hệ đội ngũ Delta Energy để trao đổi về yêu cầu kỹ thuật và năng lực gia công, chế tạo kết cấu thép và cấu kiện kim loại.",
       quote: "Gửi yêu cầu báo giá",
       call: `Gọi ${company.phone.display}`,
     },
@@ -542,7 +634,7 @@ export const vi = {
       {
         heading: "Công ty",
         links: [
-          { href: "#solutions", label: "Giới thiệu" },
+          { href: "/about", label: "Giới thiệu" },
           { href: "/projects", label: "Hồ sơ năng lực" },
           { href: "#contact", label: "Liên hệ" },
         ],

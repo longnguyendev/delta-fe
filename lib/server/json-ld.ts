@@ -63,6 +63,29 @@ export function breadcrumbJsonLd(items: { name: string; url: string }[]) {
 }
 
 /**
+ * Trang Giới thiệu — `AboutPage` với `mainEntity` trỏ về hồ sơ công ty.
+ *
+ * `foundingDate` đọc từ `@/constants/company`, cùng nguồn với khối số liệu
+ * trên trang, nên structured data không thể lệch với thứ hiển thị.
+ */
+export function aboutPageJsonLd(name: string, locale: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name,
+    url: absoluteUrl(locale, "/about"),
+    inLanguage: locale === "en" ? "en" : "vi",
+    mainEntity: {
+      "@type": "LocalBusiness",
+      name: company.legalName,
+      alternateName: company.shortName,
+      url: BASE_URL,
+      foundingDate: company.founded.iso,
+    },
+  };
+}
+
+/**
  * Danh mục sản phẩm ở trang dịch vụ.
  *
  * Cố ý KHÔNG có `offers`: site chưa hỗ trợ đặt mua trực tuyến, khai báo giá ở

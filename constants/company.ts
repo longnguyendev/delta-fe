@@ -39,6 +39,19 @@ export const company = {
       "155/8 Đường Đô Lương, Phường Phước Thắng, Thành phố Hồ Chí Minh, Việt Nam",
   },
   taxCode: "3502508868",
+  /**
+   * Ngày thành lập — do khách hàng cung cấp cùng nội dung trang Giới thiệu.
+   * Ba dạng của cùng một dữ kiện: `iso` cho JSON-LD, `short` cho khối số liệu
+   * trên giao diện, `long` cho câu văn (đọc thành lời theo từng ngôn ngữ).
+   */
+  founded: {
+    iso: "2025-10-18",
+    short: "18/10/2025",
+    long: {
+      vi: "18 tháng 10 năm 2025",
+      en: "18 October 2025",
+    },
+  },
   workingHours: {
     /** Chuỗi hiển thị — giờ hành chính, nghỉ trưa 11h30–13h30. */
     display: "7h–11h30, 13h30–17h",
