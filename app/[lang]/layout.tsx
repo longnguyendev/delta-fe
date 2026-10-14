@@ -4,6 +4,7 @@ import { lang } from "next/root-params";
 import { BASE_URL, company } from "@/constants";
 import { locales } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
+import { FloatingActions } from "@/components/floating-actions";
 import { JsonLd } from "@/components/json-ld";
 import { ReactQueryProvider } from "@/lib/client";
 import { organizationJsonLd } from "@/lib/server/organization";
@@ -74,6 +75,8 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
         {/* JSON-LD công ty — dữ liệu ở `lib/server/organization.ts`, cùng nguồn với footer. */}
         <JsonLd data={organizationJsonLd} />
         <ReactQueryProvider>{children}</ReactQueryProvider>
+        {/* Nút gọi/Zalo nổi — đặt ở layout để có mặt trên mọi trang. */}
+        <FloatingActions />
       </body>
     </html>
   );

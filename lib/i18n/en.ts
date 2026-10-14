@@ -499,6 +499,11 @@ export const en: Dictionary = {
     zalo: "Message on Zalo →",
     note: "Reply within the working day · Transparent pricing",
   },
+  /** Floating contact buttons — icon-only, so the label lives in `aria-label`. */
+  floatingActions: {
+    call: `Call the Delta Energy hotline ${company.phone.display}`,
+    zalo: "Message Delta Energy on Zalo",
+  },
   /** 404 page — localised; the Next.js default is English-only. */
   notFound: {
     title: "Page not found",

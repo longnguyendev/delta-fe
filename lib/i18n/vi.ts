@@ -504,6 +504,14 @@ export const vi = {
     zalo: "Nhắn Zalo →",
     note: "Phản hồi trong ngày làm việc · Báo giá minh bạch",
   },
+  /**
+   * Nút liên hệ nổi ở góc phải dưới. Chỉ có icon nên nhãn nằm ở `aria-label` —
+   * vẫn phải dịch vì trình đọc màn hình đọc nó.
+   */
+  floatingActions: {
+    call: `Gọi hotline Delta Energy ${company.phone.display}`,
+    zalo: "Nhắn Zalo cho Delta Energy",
+  },
   /** Trang 404 — nội địa hoá; Next mặc định trả bản tiếng Anh. */
   notFound: {
     title: "Không tìm thấy trang",
